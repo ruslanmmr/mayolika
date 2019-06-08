@@ -2,11 +2,9 @@ doctype html
 html(lang="ru")
   head
     include blocks/head
-  body
+  body.scroll-container
     .wrapper
-      aside.aside
-        .aside__container
-          .aside__content
+      include blocks/aside
       main.main
         .main__container
           include blocks/header

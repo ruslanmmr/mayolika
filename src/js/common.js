@@ -1,14 +1,24 @@
 $(document).ready(function () {
   lazy();
   nav();
-  scroll();
+  scrollInit();
 });
 $(window).resize(function () {
   innerWidth = $('body').innerWidth();
 });
 
 //global variables
-var innerWidth = $('body').innerWidth();
+var innerWidth = $('body').innerWidth(),
+//scroll-styling
+cursorcolorVar = "#C4C4C4",
+cursorwidthVar = "15px",
+cursorborderVar = "5px solid transparent",
+cursorborderradiusVar = "15px",
+zindexVar = [100],
+bouncescrollVar = false,
+$scrollContainer = $('.scroll-container');
+
+
 //lazy
 function lazy() {
   $(".lazy").Lazy({
@@ -52,3 +62,20 @@ function nav() {
     }
   }
 }
+
+//scroll
+function scrollInit() {
+  if ($('html').hasClass('android') || $('html').hasClass('ios')) {
+
+  } else {
+    $scrollContainer.niceScroll({
+      cursorcolor: cursorcolorVar,
+      cursorwidth: cursorwidthVar,
+      cursorborder: cursorborderVar,
+      cursorborderradius: cursorborderradiusVar,
+      zindex: zindexVar,
+      bouncescroll: bouncescrollVar,
+      autohidemode: true
+    });
+  }
+};
