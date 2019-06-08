@@ -2,6 +2,7 @@
   width: 280px;
   position: relative;
   flex-shrink: 0;
+  background-color: #fff;
   &__container {
     position: fixed;
     width: 280px;
@@ -27,20 +28,24 @@
 }
 
 @media all and(max-width: 768px) {
+  .logo img {
+    height: 40px;
+  }
   .aside {
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    //
-    background-color: #fcbfbf;
     &__container {
       position: relative;
       width: 100%;
       padding: 0 15px;
     }
+    &__head {
+      padding: 10px 0;
+    }
     &__content {
-      height: 60px;
+      display: none;
     }
   }
 }
