@@ -1,0 +1,12 @@
+.footer {
+  &__contaner {
+    height: 138px;
+    background-color: #EEEEEE;
+  }
+}
+
+@media all and(max-width: 768px) {
+  .footer {
+    display: none;
+  }
+}

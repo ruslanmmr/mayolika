@@ -1,0 +1,33 @@
+.aside {
+  width: 280px;
+  position: relative;
+  flex-shrink: 0;
+  &__container {
+    position: fixed;
+    width: 280px;
+    padding: 0 20px;
+  }
+  &__content {
+    background-color: #fcbfbf;
+    height: 100vh;
+  }
+}
+
+@media all and(max-width: 768px) {
+  .aside {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    //
+    background-color: #fcbfbf;
+    &__container {
+      position: relative;
+      width: 100%;
+      padding: 0 15px;
+    }
+    &__content {
+      height: 60px;
+    }
+  }
+}

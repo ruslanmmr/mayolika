@@ -1,0 +1,13 @@
+.header {
+  margin-bottom: 20px;
+  &__container {
+    height: 100px;
+    background-color: #cf6161;
+  }
+}
+
+@media all and(max-width: 768px) {
+  .header {
+    display: none;
+  }
+}
