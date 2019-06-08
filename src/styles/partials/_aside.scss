@@ -9,7 +9,20 @@
   }
   &__content {
     background-color: #fcbfbf;
-    height: 100vh;
+    height: 500px;
+  }
+  &__head {
+    padding: 35px 0 50px 0;
+  }
+}
+.logo {
+  a {
+    display: block;
+    width: 100%;
+  }
+  img {
+    display: block;
+    height: 55px;
   }
 }
 
