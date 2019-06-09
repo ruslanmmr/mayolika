@@ -124,7 +124,7 @@ function dropdown() {
       flag = true;
       setTimeout(function () {
         flag = false;
-      }, 50);
+      }, 300);
       if ((!$dropdownContainer.is(e.target) && $dropdownContainer.has(e.target).length === 0 && !$link.is(e.target) && $dropdown.hasClass('visible')) || ($link.is(e.target) && $(e.target).parents('.dropdown-item').hasClass('visible'))) {
         $dropdown.removeClass('visible');
       } else if ($link.is(e.target)) {
