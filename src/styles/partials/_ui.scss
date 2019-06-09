@@ -10,7 +10,14 @@
 }
 .dropdown-item {
   position: relative;
+  z-index: 100;
+  &__button {
+    .icon {
+      pointer-events: none;
+    }
+  }
   &.visible {
+    z-index: 150;
     .dropdown-item__container {
       visibility: visible;
       opacity: 1;
@@ -20,7 +27,7 @@
   &__container {
     position: absolute;
     top: calc(100% + 5px);
-    min-width: 150px;
+    min-width: 180px;
     max-height: 200px;
     border-radius: 4px;
     background-color: #fff;
@@ -30,12 +37,13 @@
     overflow: auto;
     opacity: 0;
     transform: translateY(5px);
+  }
+  &__content {
+    padding: 15px;
     ul  {
       list-style: none;
       padding: 0;
       margin: 0;
-    }
-    li {
     }
     a {
       text-decoration: none;
@@ -50,9 +58,6 @@
       }
     }
   }
-  &__content {
-    padding: 10px 15px 10px 10px;
-  }
   .nicescroll-rails {
     width: 15px !important;
   }
@@ -60,16 +65,91 @@
     width: 15px !important;
     &:after {
       width: 5px;
-      height: calc(100% - 20px);
-      top: 10px;
+      height: calc(100% - 30px);
+      top: 15px;
       left: 5px;
       border-radius: 5px;
     }
   }
 }
-.ios,
-.android {
-  .dropdown-item__content {
-    padding: 10px;
+
+//
+.button {
+  outline: none;
+  box-shadow: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: 0.15s;
+  padding: 0;
+  border: 0;
+  flex-shrink: 0;
+  &_style2 {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1A2434;
+    .icon {
+      width: 12px;
+      height: 12px;
+      fill: #fff;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  &_profile {
+    background-color: #ED6842;
+  }
+  &_cart {
+    position: relative;
+    .cart-count {
+      position: absolute;
+      left: -10px;
+      top: -5px;
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
+      font-size: 8px;
+      background-color: #E52329;
+      color: #fff;
+      border-radius: 100%;
+      text-align: center;
+    }
+  }
+  &_style3 {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .icon {
+      width: 17px;
+      height: 17px;
+      fill: #757575;
+    }
+  }
+  &_setup {
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+.input {
+  line-height: 1;
+  border: 0;
+  box-shadow: none;
+  outline: none;
+  font-family: 'Roboto';
+  &::placeholder {
+    color: #C4C4C4;
+  }
+  &:focus {
+    &::placeholder {
+      color: transparent;
+    }
   }
 }

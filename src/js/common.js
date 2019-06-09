@@ -3,13 +3,18 @@ $(document).ready(function () {
   nav();
   scrollInit();
   dropdown();
+  search();
 });
 $(window).resize(function () {
   innerWidth = $('body').innerWidth();
 });
+$(window).on('scroll', function() {
+  scrollTop = $(window).scrollTop();
+})
 
 //global variables
 var innerWidth = $('body').innerWidth(),
+scrollTop = $(window).scrollTop(),
 //scroll-styling
 cursorcolorVar = "transparent",
 cursorwidthVar = "15px",
@@ -62,6 +67,20 @@ function nav() {
       $overlay.fadeOut(300);
     }
   }
+  //
+  if (scrollTop>0) {
+    $('.aside').addClass('scrolled');
+  } else {
+    $('.aside').removeClass('scrolled');
+  }
+  
+  $(window).on('scroll', function() {
+    if (scrollTop>0) {
+      $('.aside').addClass('scrolled');
+    } else {
+      $('.aside').removeClass('scrolled');
+    }
+  })
 }
 
 //scroll
@@ -76,7 +95,7 @@ function scrollInit() {
       cursorborderradius: cursorborderradiusVar,
       zindex: zindexVar,
       bouncescroll: bouncescrollVar,
-      autohidemode: false
+      autohidemode: true
     });
     $scrollContainer.niceScroll(".scroll-wrapper", {
       cursorcolor: cursorcolorVar,
@@ -108,11 +127,31 @@ function dropdown() {
       }, 300);
       if ((!$dropdownContainer.is(e.target) && $dropdownContainer.has(e.target).length === 0 && !$link.is(e.target) && $dropdown.hasClass('visible')) || ($link.is(e.target) && $(e.target).parents('.dropdown-item').hasClass('visible'))) {
         $dropdown.removeClass('visible');
-      } else if ($link.is(e.target) || $link.children().is(e.target)) {
+      } else if ($link.is(e.target)) {
         $dropdown.removeClass('visible');
         $(e.target).parents('.dropdown-item').addClass('visible');
         $scrollContainer.getNiceScroll().resize();
       }
+    }
+  });
+}
+//search
+function search() {
+  var $searchOpen = $('.search-open'),
+  $searchClose = $('.search-close'),
+  $search = $('.header__search');
+
+  $searchOpen.on('click', function(e) {
+    e.preventDefault();
+    $search.addClass('visible');
+  })
+  $searchClose.on('click', function(e) {
+    e.preventDefault();
+    $search.removeClass('visible');
+  })
+  $(window).resize(function () {
+    if(innerWidth>576) {
+      $search.removeClass('visible');
     }
   });
 }

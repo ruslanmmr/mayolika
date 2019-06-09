@@ -51,12 +51,12 @@ $hover-color: #ff3c43;
     content: '';
     display: block;
     position: absolute;
-    width: 10px;
-    height: calc(100% - 10px);
-    left: 5px;
-    top: 5px;
+    width: 8px;
+    height: calc(100% - 12px);
+    left: 6px;
+    top: 6px;
     background-color: #dadada;
-    border-radius: 5px;
+    border-radius: 8px;
   }
 }
 

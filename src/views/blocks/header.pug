@@ -1,8 +1,9 @@
 header.header
   .header__container
     .header__top
+
       .city-toggle
-        span Ваш город:
+        span.city-toggle__label Ваш город:
         .city-toggle__item.dropdown-item
           a(href="#").city-toggle__button.dropdown-item__button Воронеж
             <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon21"></use></svg>
@@ -27,4 +28,48 @@ header.header
                   a(href="#") Норильск
                 li
                   a(href="#") Челябинск
+      .header__info
+        .header__info-item
+          <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon8"></use></svg>
+          <nobr>Пн-Пт, 09:00 - 19:00, </nobr> <nobr>Сб-Вс, 10:00 - 17:00</nobr>
+        .header__info-item 
+          <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon28"></use></svg>
+          <nobr>+7 (473) 207-03-96 <span>|</span> </nobr> <nobr>+7 (473) 207-03-98</nobr>
+    .header__bottom
+      .header__buttons
+        //search
+        .search.header__search
+          .search__container
+            form(action="")
+              button(type="submit").button
+                <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon15"></use></svg>
+              input(type="text" required placeholder="Поиск").input
+            button.button.search-close
+              <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon17"></use></svg>
+        //button
+        a(href="").button.button_style3.search-open
+          <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon15"></use></svg>
+        a(href="").button.button_style3.button_setup
+          <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon14"></use></svg>
+      .header__items
+        .profile-toggle
+          .profile-toggle__item.dropdown-item
+            a(href="#").profile-toggle__button.dropdown-item__button
+              <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon21"></use></svg>
+              | Ivanovkonstantin_82@gmail.com
+            .dropdown-item__container.scroll-container
+              .dropdown-item__content.scroll-wrapper
+                ul
+                  li
+                    a(href="#") Что-нибудь должно быть здесь
+                  li
+                    a(href="#") Что-нибудь должно быть здесь
+                  li
+                    a(href="#") Что-нибудь должно быть здесь
+          a(href="#").button.button_profile.button_style2
+            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon23"></use></svg>
+        a(href="#").button.button_style2.button_cart
+          <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon24"></use></svg>
+          span.cart-count 20
+
 
