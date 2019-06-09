@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="styles/libs.min.css">
     <link rel="stylesheet" href="styles/common.min.css">
   </head>
-  <body class="scroll-container">
+  <body>
     <div class="wrapper">
       <aside class="aside">
         <div class="aside__container">
@@ -32,9 +32,32 @@
       <main class="main">
         <div class="main__container">
           <header class="header">
-            <div class="header__container"></div>
+            <div class="header__container">
+              <div class="header__top">
+                <div class="city-toggle"><span>Ваш город:</span>
+                  <div class="city-toggle__item dropdown-item"><a class="city-toggle__button dropdown-item__button" href="#">
+                      Воронеж<svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon21"></use></svg></a>
+                    <div class="dropdown-item__container scroll-container">
+                      <div class="dropdown-item__content scroll-wrapper">
+                        <ul>
+                          <li><a href="#">Москва</a></li>
+                          <li><a href="#">Норильск</a></li>
+                          <li><a href="#">Челябинск</a></li>
+                          <li><a href="#">Москва</a></li>
+                          <li><a href="#">Норильск</a></li>
+                          <li><a href="#">Челябинск</a></li>
+                          <li><a href="#">Москва</a></li>
+                          <li><a href="#">Норильск</a></li>
+                          <li><a href="#">Челябинск</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </header>
-          <div class="main__content"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="main__content"><span class="dummy"></span><span class="dummy"></span><span class="dummy"></span><span class="dummy"></span><span class="dummy"></span><span class="dummy"></span><span class="dummy"></span><span class="dummy"></span><span class="dummy"></span></div>
           <footer class="footer">
             <div class="footer__contaner"></div>
           </footer>

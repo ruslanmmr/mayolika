@@ -1,0 +1,75 @@
+.icon { 
+  width: 40px; 
+  height: 40px;
+  fill: #000;
+  stroke: #000;
+  transition: inherit;
+}
+.scroll-wrapper {
+  padding-right: 15px;
+}
+.dropdown-item {
+  position: relative;
+  &.visible {
+    .dropdown-item__container {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  &__container {
+    position: absolute;
+    top: calc(100% + 5px);
+    min-width: 150px;
+    max-height: 200px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    visibility: hidden;
+    overflow: auto;
+    opacity: 0;
+    transform: translateY(5px);
+    ul  {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+    }
+    a {
+      text-decoration: none;
+      padding: 6px 10px;
+      display: block;
+      color: #616161;
+      transition: 0.1s;
+      border-radius: 3px;
+      &:hover {
+        background-color: #f3f3f3;
+        color: $main-color;
+      }
+    }
+  }
+  &__content {
+    padding: 10px 15px 10px 10px;
+  }
+  .nicescroll-rails {
+    width: 15px !important;
+  }
+  .nicescroll-cursors {
+    width: 15px !important;
+    &:after {
+      width: 5px;
+      height: calc(100% - 20px);
+      top: 10px;
+      left: 5px;
+      border-radius: 5px;
+    }
+  }
+}
+.ios,
+.android {
+  .dropdown-item__content {
+    padding: 10px;
+  }
+}

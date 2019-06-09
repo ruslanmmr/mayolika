@@ -2,6 +2,7 @@ $(document).ready(function () {
   lazy();
   nav();
   scrollInit();
+  dropdown();
 });
 $(window).resize(function () {
   innerWidth = $('body').innerWidth();
@@ -10,10 +11,10 @@ $(window).resize(function () {
 //global variables
 var innerWidth = $('body').innerWidth(),
 //scroll-styling
-cursorcolorVar = "#C4C4C4",
+cursorcolorVar = "transparent",
 cursorwidthVar = "15px",
-cursorborderVar = "5px solid transparent",
-cursorborderradiusVar = "15px",
+cursorborderVar = "0",
+cursorborderradiusVar = "0",
 zindexVar = [100],
 bouncescrollVar = false,
 $scrollContainer = $('.scroll-container');
@@ -68,14 +69,50 @@ function scrollInit() {
   if ($('html').hasClass('android') || $('html').hasClass('ios')) {
 
   } else {
-    $scrollContainer.niceScroll({
+    $('body').niceScroll({
       cursorcolor: cursorcolorVar,
       cursorwidth: cursorwidthVar,
       cursorborder: cursorborderVar,
       cursorborderradius: cursorborderradiusVar,
       zindex: zindexVar,
       bouncescroll: bouncescrollVar,
-      autohidemode: true
+      autohidemode: false
+    });
+    $scrollContainer.niceScroll(".scroll-wrapper", {
+      cursorcolor: cursorcolorVar,
+      cursorwidth: cursorwidthVar,
+      cursorborder: cursorborderVar,
+      cursorborderradius: cursorborderradiusVar,
+      zindex: zindexVar,
+      bouncescroll: bouncescrollVar,
+      autohidemode: false
     });
   }
 };
+
+//dropdowns
+function dropdown() {
+  var $link = $('.dropdown-item__button'),
+      $dropdownContainer = $('.dropdown-item__container'),
+      $dropdown = $('.dropdown-item'),
+      flag;
+
+  $(document).on('click touchstart', function (e) {
+    if ($link.is(e.target)) {
+      e.preventDefault();
+    }
+    if (!flag) {
+      flag = true;
+      setTimeout(function () {
+        flag = false;
+      }, 300);
+      if ((!$dropdownContainer.is(e.target) && $dropdownContainer.has(e.target).length === 0 && !$link.is(e.target) && $dropdown.hasClass('visible')) || ($link.is(e.target) && $(e.target).parents('.dropdown-item').hasClass('visible'))) {
+        $dropdown.removeClass('visible');
+      } else if ($link.is(e.target) || $link.children().is(e.target)) {
+        $dropdown.removeClass('visible');
+        $(e.target).parents('.dropdown-item').addClass('visible');
+        $scrollContainer.getNiceScroll().resize();
+      }
+    }
+  });
+}

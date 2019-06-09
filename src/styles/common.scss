@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap&subset=cyrillic');
+@import "./partials/fonts";
+
 
 body {
   text-rendering: optimizeSpeed;
@@ -14,6 +16,8 @@ body {
   display: flex;
   justify-content: center;
 }
+$main-color: #E52329;
+$hover-color: #ff3c43;
 .main {
   width: 100%;
   max-width: 1300px;
@@ -21,7 +25,7 @@ body {
   &__content {
     padding-bottom: 75px;
   }
-  span {
+  .dummy {
     background-color: #dddddd;
     display: block;
     height: 100px;
@@ -36,6 +40,24 @@ body {
   margin: 0 auto;
   position: relative;
   z-index: 2;
+}
+.nicescroll-rails {
+  width: 20px !important;
+}
+.nicescroll-cursors {
+  padding: 5px !important;
+  width: 20px !important;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: calc(100% - 10px);
+    left: 5px;
+    top: 5px;
+    background-color: #dadada;
+    border-radius: 5px;
+  }
 }
 
 @media all and(max-width: 1200px) {
@@ -56,8 +78,22 @@ body {
       padding: 0;
     }
   }
+  .nicescroll-rails {
+    width: 15px !important;
+  }
+  .nicescroll-cursors {
+    width: 15px !important;
+    &:after {
+      width: 5px;
+      height: calc(100% - 10px);
+      top: 5px;
+      left: 5px;
+      border-radius: 5px;
+    }
+  }
 }
 
+@import "partials/ui";
 @import "partials/header";
 @import "partials/aside";
 @import "partials/footer";
