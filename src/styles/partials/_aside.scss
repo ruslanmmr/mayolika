@@ -9,11 +9,26 @@
     padding: 0 20px;
   }
   &__content {
-    background-color: #fcbfbf;
-    height: 500px;
+    height: calc(100vh - 140px);
+  }
+  &__nav {
+    height: calc(100% - 42px);
+    .scroll-container {
+      height: 100%;
+    }
   }
   &__head {
     padding: 35px 0 50px 0;
+  }
+  &__button {
+    width: 100%;
+    position: relative;
+    .toggle-item {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 }
 .logo {
@@ -24,6 +39,23 @@
   img {
     display: block;
     height: 55px;
+  }
+}
+.nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  &__link {
+    text-decoration: none;
+    color: #1D1D1B;
+    &:hover {
+      color: $main-color;
+    }
+    &_decorated {
+      color: #F5A057;
+    }
   }
 }
 

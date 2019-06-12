@@ -104,7 +104,7 @@ function scrollInit() {
       cursorborderradius: cursorborderradiusVar,
       zindex: zindexVar,
       bouncescroll: bouncescrollVar,
-      autohidemode: false
+      autohidemode: "leave",
     });
   }
 };

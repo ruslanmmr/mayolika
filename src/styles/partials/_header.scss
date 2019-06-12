@@ -12,6 +12,9 @@
       &:not(:last-child) {
         margin-right: 30px;
       }
+      .icon {
+        fill: #757575;
+      }
     }
   }
   &__container {
@@ -207,7 +210,7 @@
     left: 0;
     margin: 0;
     box-shadow: 0 -1px 5px 1px rgba(0, 0, 0, 0.1);
-    .button_setup {
+    .setup-open {
       display: flex;
     }
     .search {
