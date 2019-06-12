@@ -23,11 +23,21 @@
   &__button {
     width: 100%;
     position: relative;
+    &:last-child {
+      margin-top: 15px;
+    }
     .toggle-item {
       position: absolute;
       right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 12px;
+    }
+  }
+  .scroll-wrapper {
+    padding: 15px 0;
+  }
+  .scroll-container {
+    .nicescroll-rails {
+      margin-left: 10px;
     }
   }
 }
@@ -41,11 +51,35 @@
     height: 55px;
   }
 }
+.toggle-item {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  .icon {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.2s;
+    &:last-child {
+      width: 16px;
+      height: 16px;
+      opacity: 0;
+    }
+  }
+}
 .nav {
   &__list {
     margin: 0;
     padding: 0;
     list-style: none;
+  }
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
   }
   &__link {
     text-decoration: none;
@@ -55,6 +89,97 @@
     }
     &_decorated {
       color: #F5A057;
+    }
+  }
+}
+.filter-toggle {
+  display: none;
+}
+.catalogue-nav {
+  display: none;
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    &:not(:last-child) {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $border-color;
+    }
+  }
+  &__link {
+    color: #757575;
+  }
+  &__item {
+    &:first-child {
+      a {
+        text-transform: uppercase;
+        font-weight: 500;
+        color: #000;
+      }
+    }
+  }
+}
+.filter {
+  display: none;
+}
+.filter-section {
+  border-bottom: 1px solid $border-color;
+  &_price {
+    .filter-section__title {
+      text-align: center;
+      cursor: default;
+    }
+  }
+  &__title {
+    font-weight: 500;
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    padding: 15px 10px 12px 10px;
+    text-align: left;
+  }
+  &__content {
+    padding: 20px 0;
+  }
+}
+
+.catalogue-opened {
+  .catalogue-toggle {
+    .icon:last-child {
+      opacity: 1;
+    }
+    .icon:first-child {
+      opacity: 0;
+    }
+  }
+  .filter-toggle {
+    display: block;
+  }
+  .nav {
+    display: none;
+  }
+  .catalogue-nav {
+    display: block;
+  }
+  .aside__nav {
+    height: calc(100% - 104px);
+  }
+}
+.filter-opened {
+  .catalogue-nav, .nav {
+    display: none;
+  }
+  .filter {
+    display: block;
+  }
+  .filter-toggle {
+    .icon:last-child {
+      opacity: 1;
+    }
+    .icon:first-child {
+      opacity: 0;
     }
   }
 }

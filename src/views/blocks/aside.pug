@@ -6,9 +6,14 @@ aside.aside
           img(src="img/logos/logo.svg", alt="main-logo")
     .aside__content
       .aside__buttons
-        a(href="#").button.button_style1.aside__button Каталог товаров
+        a(href="#").button.button_style1.aside__button.catalogue-toggle Каталог товаров
           .toggle-item
-            span
+            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon16"></use></svg>
+            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon17"></use></svg>
+        a(href="#").button.button_style4.aside__button.filter-toggle Подберите товар
+          .toggle-item
+            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon14"></use></svg>
+            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon17"></use></svg>
       .aside__nav.scroll
         .scroll-container
           .scroll-wrapper
@@ -30,3 +35,68 @@ aside.aside
                   a(href="#").nav__link.button.button_style3 О компании
                 li.nav__item
                   a(href="#").nav__link.button.button_style3 Контакты
+            .catalogue-nav
+              ul.catalogue-nav__list
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 КЕРАМИЧЕСКАЯ ПЛИТКА
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 Плитка для ванной
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 Плитка для кухни
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 Плитка для пола
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 Azori
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 AltaCera
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 Kerlife
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 Terra Design
+              ul.catalogue-nav__list
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 КЕРАМИЧЕСКИЙ ГРАНИТ
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 Керамогранит для пола 
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 Керамогранит для фасада
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 Zeus Ceramica
+              ul.catalogue-nav__list
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 СУХИЕ СМЕСИ
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 Грунтовка
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 Клей для плитки
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 Затирки
+              ul.catalogue-nav__list
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 Мозаика
+                li.catalogue-nav__item
+                  a(href="#").catalogue-nav__link.button.button_style3 Мозаика стеклянная
+            form(action="").filter
+              .filter-section.filter-section_price
+                span.filter-section__title ЦЕНА:
+                .filter-section__content
+              .filter-section
+                span.filter-section__title ПРОИЗВОДИТЕЛЬ:
+                .filter-section__content
+              .filter-section
+                span.filter-section__title ПРОИЗВОДИТЕЛЬ:
+                .filter-section__content
+              .filter-section
+                span.filter-section__title ПРОИЗВОДИТЕЛЬ:
+                .filter-section__content
+              .filter-section
+                span.filter-section__title ПРОИЗВОДИТЕЛЬ:
+                .filter-section__content
+              .filter-section
+                span.filter-section__title ПРОИЗВОДИТЕЛЬ:
+                .filter-section__content
+              .filter-section
+                span.filter-section__title ПРОИЗВОДИТЕЛЬ:
+                .filter-section__content
+
+              

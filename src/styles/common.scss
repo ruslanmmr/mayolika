@@ -5,7 +5,7 @@
 body {
   text-rendering: optimizeSpeed;
   font: 14px "Roboto", sans-serif;
-  color: #202020;
+  color: #000;
   min-width: 320px;
   position: relative;
   line-height: 1.35;
@@ -18,6 +18,8 @@ body {
 }
 $main-color: #E52329;
 $hover-color: #ff3c43;
+$border-color: #dddddd;
+
 .main {
   width: 100%;
   max-width: 1300px;

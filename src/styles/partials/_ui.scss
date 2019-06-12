@@ -58,20 +58,23 @@
   box-shadow: none;
   border-radius: 0;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.15s;
   line-height: 1;
   padding: 0;
   border: 0;
   flex-shrink: 0;
   display: inline-block;
   text-decoration: none;
-  font-family: 'Manrope';
   color: #202020;
   &_style1 {
     border-radius: 4px;
     background-color: $main-color;
     padding: 14px 20px;
     color: #fff;
+    font-family: 'Manrope';
+    .icon {
+      fill: #fff;
+    }
     &:hover {
       background-color: $hover-color;
     }
@@ -116,44 +119,26 @@
     }
   }
   &_style3 {
-    padding: 10px 15px;
+    padding: 10px 20px;
     display: block;
     border-radius: 4px;
     line-height: 1.25;
     &:hover {
       background-color: #f3f3f3;
-      color: $main-color;
+      color: $main-color !important;
     }
   }
-}
-.toggle-item {
-  display: block;
-  width: 18px;
-  height: 12px;
-  position: relative;
-  span {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #fff;
-    transition: 0.2s;
-    top: 5px;
-    &:before,
-    &:after {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 100%;
-      background-color: #fff;
-      position: absolute;
-      transition: inherit;
+  &_style4 {
+    border-radius: 4px;
+    padding: 13px 19px;
+    color: #000;
+    font-family: 'Manrope';
+    border: 1px solid $border-color;
+    .icon {
+      fill: #757575;
     }
-    &:before {
-      bottom: -5px;
-    }
-    &:after {
-      top: -5px;
+    &:hover {
+      border-color: #808080;
     }
   }
 }
