@@ -1,11 +1,10 @@
 $(document).ready(function () {
   lazy();
-  nav();
   scrollInit();
   dropdown();
   search();
   aside();
-  checkbox();
+  filter();
 });
 $(window).resize(function () {
   innerWidth = $('body').innerWidth();
@@ -17,6 +16,7 @@ $(window).on('scroll', function() {
 //global variables
 var innerWidth = $('body').innerWidth(),
 scrollTop = $(window).scrollTop(),
+$checkbox = $('.checkbox'),
 //scroll-styling
 cursorcolorVar = "transparent",
 cursorwidthVar = "15px",
@@ -34,55 +34,6 @@ function lazy() {
     effect: 'fadeIn',
     effectTime: '300'
   });
-}
-//nav
-function nav() {
-  var $navOpen = $('.nav-open'),
-    $navClose = $('.nav-close'),
-    $nav = $('.nav'),
-    $overlay = $('.overlay');
-
-  $navOpen.on('click', function (e) {
-    e.preventDefault();
-    $nav.toggleClass('active');
-    navState();
-  })
-  $navClose.on('click', function (e) {
-    e.preventDefault();
-    $nav.removeClass('active');
-    navState();
-  })
-  $overlay.on('click touchstart', function () {
-    $nav.removeClass('active');
-    navState();
-  })
-  
-  function navState() {
-    if ($nav.hasClass('active')) {
-      $('.page').addClass('active');
-      scrollLock.hide($("body"));
-      $overlay.fadeIn(300);
-    } else {
-      scrollLock.show($("body"));
-      $('.header').removeClass('active');
-      $('.page').removeClass('active');
-      $overlay.fadeOut(300);
-    }
-  }
-  //
-  if (scrollTop>0) {
-    $('.aside').addClass('scrolled');
-  } else {
-    $('.aside').removeClass('scrolled');
-  }
-  
-  $(window).on('scroll', function() {
-    if (scrollTop>0) {
-      $('.aside').addClass('scrolled');
-    } else {
-      $('.aside').removeClass('scrolled');
-    }
-  })
 }
 
 //scroll
@@ -161,39 +112,112 @@ function search() {
 //aside
 function aside() {
   var $catalogueToggle = $('.catalogue-toggle'),
-  $filterToggle = $('.filter-toggle'),
-  $sectionToggle = $('.filter-section__title');
+  $filterToggle = $('.filter-toggle, .setup-open'),
+  $sectionToggle = $('.filter-section__title'),
+  $navToggle = $('.nav-toggle');
 
+  //при клике на кнопку каталога
   $catalogueToggle.on('click', function(e) {
     e.preventDefault();
-    $('.aside').toggleClass('catalogue-opened');
-    if($('.aside').hasClass('filter-opened')) {
-      $('.aside').removeClass('filter-opened');
+    $('body').toggleClass('catalogue-opened');
+    if($('body').hasClass('filter-opened')) {
+      $('body').removeClass('filter-opened');
     }
     $scrollContainer.getNiceScroll().resize();
     $(".aside .scroll-container").getNiceScroll().doScrollPos(0,0);
   })
+
+  //при клике на кнопку фильтров
   $filterToggle.on('click', function(e) {
     e.preventDefault();
-    $('.aside').toggleClass('filter-opened');
+    if($('body').hasClass('nav-opened')) {}
+    else {
+      scrollLock.hide($("body"));
+      $('body').addClass('nav-opened');
+    }
+    $('body').toggleClass('filter-opened');
     $scrollContainer.getNiceScroll().resize();
     $(".aside .scroll-container").getNiceScroll().doScrollPos(0,0);
   })
+
+  //при клике на табы фильтров
   $sectionToggle.on('click', function(e) {
     e.preventDefault();
     $(this).parent().toggleClass('active');
     $scrollContainer.getNiceScroll().resize();
   })
+
+  //при клике на кнопку навигации
+  $navToggle.on('click', function(e) {
+    e.preventDefault();
+    if($('body').hasClass('nav-opened')) {
+      scrollLock.show($("body"));
+      $('body').removeClass('filter-opened').removeClass('catalogue-opened').removeClass('nav-opened');
+    } else {
+      scrollLock.hide($("body"));
+      $('body').addClass('nav-opened');
+    }
+  })
+  
+  //добавление тени при прокрутке
+  if(scrollTop>0) {
+    $('.aside').addClass('scrolled');
+  } else {
+    $('.aside').removeClass('scrolled');
+  }
+  $(window).on('scroll', function() {
+    if(scrollTop>0) {
+      $('.aside').addClass('scrolled');
+    } else {
+      $('.aside').removeClass('scrolled');
+    }
+  })
+  
+  //закртие навигации при условии изменения ширины монитора
+  $(window).resize(function () {
+    if(innerWidth>768) {
+      $('body').removeClass('filter-opened').removeClass('catalogue-opened').removeClass('nav-opened');
+      scrollLock.show($("body"));
+    }
+  });
 }
 
-function checkbox() {
-  var $checkbox = $('.checkbox');
+function filter() {
+  var $resetFilter = $('.filter__reset');
 
-  $checkbox.on('click', function() {
-    if($(this).find('input').prop('checked')) {
-      $(this).addClass('checked');
+  checkboxCheck();
+  filterState();
+
+  $(".filter input").on('change', function() {
+    filterState();
+    checkboxCheck();
+    $scrollContainer.getNiceScroll().resize();
+  })
+
+  function checkboxCheck() {
+    $checkbox.each(function() {
+      if($(this).find('input').prop('checked')) {
+        $(this).addClass('checked');
+      } else {
+        $(this).removeClass('checked');
+      }
+    })
+  }
+  function filterState() {
+    if($('.filter input:checked').length > 0 || $('.filter input').val()) {
+      $('.filter').addClass('active');
     } else {
-      $(this).removeClass('checked');
+      $('.filter').removeClass('active');
     }
+  }
+
+  //при клике на сброс фильтров
+  $resetFilter.on('click', function(e) {
+    e.preventDefault();
+    $('.filter').find('input').val("").prop('checked',false);
+    checkboxCheck();
+    filterState();
+    $('.filter-section').removeClass('active');
+    $scrollContainer.getNiceScroll().resize();
   })
 }
