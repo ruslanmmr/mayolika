@@ -148,17 +148,7 @@
     width: 100%;
     margin-top: 20px;
     position: relative;
-  }
-  &__reset {
-    .toggle-item {
-      position: absolute;
-      right: 20px;
-      top: 12px;
-      opacity: 1 !important;
-      .icon {
-        opacity: 1 !important;
-      }
-    }
+    text-align: center;
   }
   &.active {
     .filter__reset {
