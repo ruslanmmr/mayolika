@@ -10,6 +10,19 @@ body {
   position: relative;
   line-height: 1.35;
 }
+.nav-opened {
+  height: 100%;
+  body,
+  .wrapper {
+    height: 100%;
+  }
+  .aside {
+    height: calc(100% - 60px);
+  }
+  .aside__container {
+    height: 100%;
+  }
+}
 .wrapper {
   overflow: hidden;
   margin: 0 auto;

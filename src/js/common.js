@@ -119,9 +119,9 @@ function aside() {
   //при клике на кнопку каталога
   $catalogueToggle.on('click', function(e) {
     e.preventDefault();
-    $('body').toggleClass('catalogue-opened');
-    if($('body').hasClass('filter-opened')) {
-      $('body').removeClass('filter-opened');
+    $('html').toggleClass('catalogue-opened');
+    if($('html').hasClass('filter-opened')) {
+      $('html').removeClass('filter-opened');
     }
     $scrollContainer.getNiceScroll().resize();
     $(".aside .scroll-container").getNiceScroll().doScrollPos(0,0);
@@ -130,12 +130,12 @@ function aside() {
   //при клике на кнопку фильтров
   $filterToggle.on('click', function(e) {
     e.preventDefault();
-    if($('body').hasClass('nav-opened')) {}
+    if($('html').hasClass('nav-opened')) {}
     else {
       scrollLock.hide($("body"));
-      $('body').addClass('nav-opened');
+      $('html').addClass('nav-opened');
     }
-    $('body').toggleClass('filter-opened');
+    $('html').toggleClass('filter-opened');
     $scrollContainer.getNiceScroll().resize();
     $(".aside .scroll-container").getNiceScroll().doScrollPos(0,0);
   })
@@ -150,12 +150,12 @@ function aside() {
   //при клике на кнопку навигации
   $navToggle.on('click', function(e) {
     e.preventDefault();
-    if($('body').hasClass('nav-opened')) {
+    if($('html').hasClass('nav-opened')) {
       scrollLock.show($("body"));
-      $('body').removeClass('filter-opened').removeClass('catalogue-opened').removeClass('nav-opened');
+      $('html').removeClass('filter-opened').removeClass('catalogue-opened').removeClass('nav-opened');
     } else {
       scrollLock.hide($("body"));
-      $('body').addClass('nav-opened');
+      $('html').addClass('nav-opened');
     }
   })
   
