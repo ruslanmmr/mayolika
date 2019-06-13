@@ -28,22 +28,19 @@
 }
 .scroll-container {
   overflow: auto;
-  display: flex;
-  align-items: flex-start;
   .nicescroll-rails {
-    width: 5px !important;
-    position: relative !important;
-    flex-shrink: 0;
-    margin-left: -5px;
+    width: 15px !important;
   }
   .nicescroll-cursors {
-    width: 5px !important;
+    width: 15px !important;
+    padding: 15px 6px !important;
+    position: relative;
     &:after {
-      width: 5px;
+      width: 3px;
       height: calc(100% - 30px);
       top: 15px;
-      left: 5px;
-      border-radius: 5px;
+      left: 6px;
+      border-radius: 3px;
     }
   }
 }
@@ -163,12 +160,30 @@
   box-shadow: none;
   outline: none;
   font-family: 'Roboto';
+  appearance: none;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
   &::placeholder {
     color: #C4C4C4;
   }
   &:focus {
     &::placeholder {
       color: transparent;
+    }
+  }
+  &_style1 {
+    border: 1px solid $border-color;
+    border-radius: 6px;
+    padding: 8px;
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    width: 100%;
+    &:focus {
+      border-color: #979797;
     }
   }
 }
@@ -211,8 +226,53 @@
     .scroll-container {
       max-height: 205px;
     }
-    .nicescroll-rails {
-      margin-right: 5px;
+  }
+}
+
+//checkboxes
+.checkbox {
+  position: relative;
+  padding: 5px 5px 5px 30px;
+  display: block;
+  line-height: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+  &:before {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    border: 1px solid #757575;
+    background-color: #fff;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    transition: 0.2s;
+  }
+  &:after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    background-image: url('../img/icons/check.svg');
+    background-size: 100% 100%;
+    opacity: 0;
+    transition: 0.2s;
+  }
+  input {
+    display: none;
+  }
+  &.checked {
+    &:before {
+      background-color: #ED6842;
+      border-color: #ED6842;
+    }
+    &:after {
+      opacity: 1;
     }
   }
 }

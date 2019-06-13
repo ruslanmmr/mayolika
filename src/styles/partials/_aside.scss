@@ -13,6 +13,7 @@
   }
   &__nav {
     height: calc(100% - 42px);
+    margin: 0 -15px;
     .scroll-container {
       height: 100%;
     }
@@ -25,15 +26,15 @@
     position: relative;
     &:last-child {
       margin-top: 15px;
+      .toggle-item {
+        right: 19px;
+      }
     }
     .toggle-item {
       position: absolute;
       right: 20px;
       top: 12px;
     }
-  }
-  .scroll-wrapper {
-    padding: 15px 0;
   }
   .scroll-container {
     .nicescroll-rails {
@@ -71,6 +72,7 @@
   }
 }
 .nav {
+  display: none;
   &__list {
     margin: 0;
     padding: 0;
@@ -121,27 +123,82 @@
   }
 }
 .filter {
-  display: none;
 }
 .filter-section {
   border-bottom: 1px solid $border-color;
-  &_price {
-    .filter-section__title {
-      text-align: center;
-      cursor: default;
-    }
-  }
   &__title {
     font-weight: 500;
     text-transform: uppercase;
     display: block;
     text-align: center;
     cursor: pointer;
-    padding: 15px 10px 12px 10px;
+    padding: 15px; 
     text-align: left;
+    position: relative;
+    text-decoration: none;
+    color: #000;
+    .icon {
+      width: 10px;
+      height: 10px;
+      fill: #000;
+      margin-left: 15px;
+      transition: 0.1s;
+    }
   }
   &__content {
-    padding: 20px 0;
+    padding: 15px 15px 20px 15px;
+    display: none;
+  }
+  &_price {
+    .filter-section__title {
+      text-align: center;
+      cursor: default;
+    }
+    .filter-section__content {
+      padding: 5px 0 20px 0;
+      display: block !important;
+    }
+  }
+  &__price {
+    display: flex;
+  }
+  &__price-input {
+    width: 50%;
+    &:first-child {
+      padding-right: 8px;
+    }
+    &:last-child {
+      padding-left: 8px;
+    }
+  }
+  &__checkbox-list {
+    margin: -8px;
+  }
+  .checkbox {
+    padding: 8px 8px 8px 30px;
+    border-radius: 4px;
+    &:hover {
+      background-color: #f3f3f3;
+    }
+    &:before {
+      top: 8px;
+      left: 8px;
+    }
+    &:after {
+      top: 11px;
+      left: 11px;
+    }
+    &:hover {
+
+    }
+  }
+  &.active {
+    .filter-section__content {
+      display: block;
+    }
+    .filter-section__title .icon {
+      transform: rotate(180deg);
+    }
   }
 }
 

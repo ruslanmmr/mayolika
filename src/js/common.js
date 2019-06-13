@@ -5,6 +5,7 @@ $(document).ready(function () {
   dropdown();
   search();
   aside();
+  checkbox();
 });
 $(window).resize(function () {
   innerWidth = $('body').innerWidth();
@@ -160,7 +161,8 @@ function search() {
 //aside
 function aside() {
   var $catalogueToggle = $('.catalogue-toggle'),
-  $filterToggle = $('.filter-toggle');
+  $filterToggle = $('.filter-toggle'),
+  $sectionToggle = $('.filter-section__title');
 
   $catalogueToggle.on('click', function(e) {
     e.preventDefault();
@@ -171,14 +173,27 @@ function aside() {
     $scrollContainer.getNiceScroll().resize();
     $(".aside .scroll-container").getNiceScroll().doScrollPos(0,0);
   })
-
   $filterToggle.on('click', function(e) {
     e.preventDefault();
     $('.aside').toggleClass('filter-opened');
     $scrollContainer.getNiceScroll().resize();
     $(".aside .scroll-container").getNiceScroll().doScrollPos(0,0);
   })
+  $sectionToggle.on('click', function(e) {
+    e.preventDefault();
+    $(this).parent().toggleClass('active');
+    $scrollContainer.getNiceScroll().resize();
+  })
+}
 
+function checkbox() {
+  var $checkbox = $('.checkbox');
 
-
+  $checkbox.on('click', function() {
+    if($(this).find('input').prop('checked')) {
+      $(this).addClass('checked');
+    } else {
+      $(this).removeClass('checked');
+    }
+  })
 }
