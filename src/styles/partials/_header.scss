@@ -195,16 +195,12 @@
   }
 }
 @media all and(max-width: 992px) {
-  .header__info-item:not(:last-child) {
-    padding-right: 40px;
-  }
-}
-@media all and(max-width: 768px) {
   .profile-toggle__item {
     display: none;
   }
   .header {
     position: fixed;
+    z-index: 200;
     width: 100%;
     bottom: 0;
     left: 0;

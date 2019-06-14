@@ -4,10 +4,12 @@ $(document).ready(function () {
   dropdown();
   search();
   aside();
-  filter();
+  inputs();
+  slider();
 });
 $(window).resize(function () {
   innerWidth = $('body').innerWidth();
+  cover();
 });
 $(window).on('scroll', function() {
   scrollTop = $(window).scrollTop();
@@ -17,6 +19,7 @@ $(window).on('scroll', function() {
 var innerWidth = $('body').innerWidth(),
 scrollTop = $(window).scrollTop(),
 $checkbox = $('.checkbox'),
+$slider = $('.slider'),
 //scroll-styling
 cursorcolorVar = "transparent",
 cursorwidthVar = "15px",
@@ -30,10 +33,44 @@ $scrollContainer = $('.scroll-container');
 //lazy
 function lazy() {
   $(".lazy").Lazy({
-    visibleOnly: true,
     effect: 'fadeIn',
-    effectTime: '300'
+    visibleOnly: true,
+    afterLoad: function(element) {
+      setTimeout(function() {
+        var box = $(element).parent(),
+        boxH = box.height(),
+        boxW = box.width(),
+        imgH = element.height(),
+        imgW = element.width();
+
+        if ((boxW / boxH) >= (imgW / imgH)) {
+          element.addClass('ww').removeClass('wh');
+        } else {
+          element.addClass('wh').removeClass('ww');
+        }
+
+        element.addClass('visible');
+      }, 100)
+    }
   });
+}
+
+function cover() {
+  setTimeout(function() {
+    $('img.visible').each(function() {
+      var box = $(this).parent(),
+      boxH = box.height(),
+      boxW = box.width(),
+      imgH = $(this).height(),
+      imgW = $(this).width();
+  
+      if ((boxW / boxH) >= (imgW / imgH)) {
+        $(this).addClass('ww').removeClass('wh');
+      } else {
+        $(this).addClass('wh').removeClass('ww');
+      }
+    })
+  }, 100)
 }
 
 //scroll
@@ -59,6 +96,10 @@ function scrollInit() {
       bouncescroll: bouncescrollVar,
       autohidemode: "leave",
     });
+    var timerId = setInterval(function() {
+      $('body').getNiceScroll().resize();
+      $scrollContainer.getNiceScroll().resize();
+    }, 50);
   }
 };
 
@@ -83,7 +124,6 @@ function dropdown() {
       } else if ($link.is(e.target)) {
         $dropdown.removeClass('visible');
         $(e.target).parents('.dropdown-item').addClass('visible');
-        $scrollContainer.getNiceScroll().resize();
       }
     }
   });
@@ -123,7 +163,6 @@ function aside() {
     if($('html').hasClass('filter-opened')) {
       $('html').removeClass('filter-opened');
     }
-    $scrollContainer.getNiceScroll().resize();
     $(".aside .scroll-container").getNiceScroll().doScrollPos(0,0);
   })
 
@@ -136,7 +175,6 @@ function aside() {
       $('html').addClass('nav-opened');
     }
     $('html').toggleClass('filter-opened');
-    $scrollContainer.getNiceScroll().resize();
     $(".aside .scroll-container").getNiceScroll().doScrollPos(0,0);
   })
 
@@ -144,7 +182,6 @@ function aside() {
   $sectionToggle.on('click', function(e) {
     e.preventDefault();
     $(this).parent().toggleClass('active');
-    $scrollContainer.getNiceScroll().resize();
   })
 
   //при клике на кнопку навигации
@@ -175,23 +212,35 @@ function aside() {
   
   //закртие навигации при условии изменения ширины монитора
   $(window).resize(function () {
-    if(innerWidth>768) {
+    if(innerWidth>992) {
       $('body').removeClass('filter-opened').removeClass('catalogue-opened').removeClass('nav-opened');
       scrollLock.show($("body"));
     }
   });
 }
 
-function filter() {
-  var $resetFilter = $('.filter__reset');
+
+//checkboses
+function inputs() {
+  var $reset = $('.form-reset-btn'),
+  $input = $('input'),
+  $form = $('form');
 
   checkboxCheck();
   filterState();
 
-  $(".filter input").on('change', function() {
-    filterState();
+  $input.on('change', function() {
     checkboxCheck();
-    $scrollContainer.getNiceScroll().resize();
+    filterState();
+  })
+
+  $reset.on('click', function() {
+    //var $reset = $(this);
+    setTimeout(function() {
+      checkboxCheck();
+      //$reset.prop('disabled', true);
+      filterState();
+    }, 100)
   })
 
   function checkboxCheck() {
@@ -203,21 +252,100 @@ function filter() {
       }
     })
   }
-  function filterState() {
-    if($('.filter input:checked').length > 0 || $('.filter input').val()) {
-      $('.filter').addClass('active');
-    } else {
-      $('.filter').removeClass('active');
-    }
-  }
 
-  //при клике на сброс фильтров
-  $resetFilter.on('click', function(e) {
-    e.preventDefault();
-    $('.filter').find('input').val("").prop('checked',false);
-    checkboxCheck();
-    filterState();
-    $('.filter-section').removeClass('active');
-    $scrollContainer.getNiceScroll().resize();
-  })
+  function filterState() {
+    $form.each(function() {
+      if($(this).find($reset).length) {
+        if($(this).find('input:checked').length > 0 || $(this).find('input').val()) {
+          $(this).find($reset).prop('disabled', false);
+        } else {
+          $reset.prop('disabled', true);
+        }
+      }
+    })
+  }
+}
+
+//sliders
+function slider() {
+  $slider.on('init', function () {
+    $(this).addClass('visible');
+  });
+
+  $slider.each(function () {
+    $(this).on('init reInit afterChange', function(){
+      lazy();
+    });
+
+    var slideCount = 1,
+      slideCount1200 = 1,
+      slideCount992 = 1,
+      slideCount768 = 1,
+      slideCount576 = 1,
+      slideCount420 = 1,
+      arrows = true,
+      dots = false,
+      autoplayVar = false,
+      centerMode = false,
+      adaptiveHeight = false,
+      fadeVar = false;
+
+    if ($(this).hasClass('main-slider__slider')) {
+      fadeVar = true,
+      autoplayVar = true;
+    }
+    
+    $(this).slick({
+      infinite: true,
+      dots: dots,
+      arrows: arrows,
+      speed: 600,
+      lazyLoad: 'ondemand',
+      adaptiveHeight: adaptiveHeight,
+      centerMode: centerMode,
+      slidesToShow: slideCount,
+      slidesToScroll: slideCount,
+      fade: fadeVar,
+      autoplay: autoplayVar,
+      autoplaySpeed: 3000,
+      prevArrow: '<button class="slick-prev slick-arrow" aria-label="Previous" type="button"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon18"></use></svg></button>',
+      nextArrow: '<button class="slick-next slick-arrow" aria-label="Previous" type="button"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon18"></use></svg></button>',
+      responsive: [{
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: slideCount1200,
+            slidesToScroll: slideCount1200,
+          }
+        },
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: slideCount992,
+            slidesToScroll: slideCount992,
+          }
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: slideCount768,
+            slidesToScroll: slideCount768,
+          }
+        },
+        {
+          breakpoint: 576,
+          settings: {
+            slidesToShow: slideCount576,
+            slidesToScroll: slideCount576,
+          }
+        },
+        {
+          breakpoint: 420,
+          settings: {
+            slidesToShow: slideCount420,
+            slidesToScroll: slideCount420,
+          }
+        }
+      ]
+    });
+  });
 }

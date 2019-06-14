@@ -3,6 +3,7 @@
   position: relative;
   flex-shrink: 0;
   background-color: #fff;
+  z-index: 100;
   &__container {
     position: fixed;
     width: 280px;
@@ -15,15 +16,12 @@
   &__nav {
     height: calc(100% - 42px);
     margin: 0 -15px;
-    padding: 10px 0 0 0;
+    padding: 10px 0;
     .scroll {
       height: 100%;
     }
     .scroll-container {
       height: 100%;
-    }
-    .scroll-wrapper {
-      padding-bottom: 25px;
     }
   }
   &__title {
@@ -57,7 +55,7 @@
   }
   .scroll-container {
     .nicescroll-rails {
-      margin-left: 10px;
+      transform: translateX(4px);
     }
   }
 }
@@ -144,16 +142,10 @@
   display: none;
   &__submit,
   &__reset {
-    display: none;
     width: 100%;
     margin-top: 20px;
     position: relative;
     text-align: center;
-  }
-  &.active {
-    .filter__reset {
-      display: block;
-    }
   }
 }
 .filter-section {
@@ -298,7 +290,7 @@
   }
 }
 
-@media all and(max-width: 768px) {
+@media all and(max-width: 992px) {
   .logo img {
     height: 40px;
   }
@@ -395,9 +387,6 @@
     .toggle-item {
       display: none;
     }
-  }
-  .filter__submit {
-    display: block;
   }
   .nav-opened {
     .aside__content {
