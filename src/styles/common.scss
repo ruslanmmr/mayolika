@@ -1,11 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap&subset=cyrillic');
 @import "./partials/fonts";
 
+$color1: #E52329;
+$color2: #ff3c43;
+$color3: #dddddd;
+$color4: #000;
+$color5: #616161;
+$color6: #757575;
+$color7: #ED6842;
+$color8: #FFA54F;
 
 body {
   text-rendering: optimizeSpeed;
   font: 14px "Roboto", sans-serif;
-  color: #000;
+  color: $color5;
   min-width: 320px;
   position: relative;
   line-height: 1.5;
@@ -21,25 +29,14 @@ body {
   display: flex;
   justify-content: center;
 }
-$main-color: #E52329;
-$hover-color: #ff3c43;
-$border-color: #dddddd;
 
 .main {
   width: 100%;
-  max-width: 1300px;
+  max-width: 1200px;
   padding: 0 20px;
   overflow: hidden;
   &__content {
     padding-bottom: 75px;
-  }
-  .dummy {
-    background-color: #dddddd;
-    display: block;
-    height: 200px;
-    &:not(:last-child) {
-      margin-bottom: 20px;
-    }
   }
 }
 .container {
@@ -80,7 +77,7 @@ $border-color: #dddddd;
   .main {
     padding: 60px 15px;
     &__container {
-      padding: 20px 0 30px 0;
+      padding: 20px 0 60px 0;
     }
     &__content {
       padding: 0;
@@ -100,9 +97,25 @@ $border-color: #dddddd;
     }
   }
 }
+@media all and(max-width: 576px) {
+  .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+    padding: 0 8px 16px 8px;
+  }
+  .row {
+    margin: 0 -8px -16px -8px;
+  }
+  .main {
+    &__container {
+      padding: 20px 0 40px 0;
+    }
+  }
+}
 
 @import "partials/ui";
 @import "partials/header";
 @import "partials/aside";
+@import "partials/blocks";
+@import "partials/text";
 @import "partials/main-slider";
+@import "partials/contact-form";
 @import "partials/footer";

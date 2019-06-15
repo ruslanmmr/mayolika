@@ -1,0 +1,45 @@
+.main-page {
+  .contact-form-section {
+    margin: 70px 0 0 0;
+  }
+}
+
+.contact-form-section {
+  span {
+    display: block;
+    text-align: center;
+    color: #000;
+  }
+  &__title {
+    margin-bottom: 15px;
+  }
+  &__number {
+    font-weight: 500;
+    font-family: 'Roboto';
+    font-size: 24px;
+  }
+}
+
+.contact-form {
+  max-width: 770px;
+  margin: 30px auto 70px auto;
+  &__button {
+    display: flex;
+    justify-content: center;
+    .button {
+      width: 180px;
+    }
+  }
+}
+
+@media all and(max-width: 576px) {
+  .main-page .contact-form-section {
+    margin-top: 40px;
+  }
+  .contact-form {
+    margin: 25px 0;
+    .button {
+      width: 100%;
+    }
+  }
+}

@@ -33,7 +33,7 @@
     font-weight: 500;
     display: none;
     margin: 0 -15px;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $color3;
   }
   &__head {
     padding: 35px 0 50px 0;
@@ -101,9 +101,8 @@
   }
   &__link {
     text-decoration: none;
-    color: #1D1D1B;
     &:hover {
-      color: $main-color;
+      color: $color1;
     }
     &_decorated {
       color: #F5A057;
@@ -122,18 +121,18 @@
     &:not(:last-child) {
       margin-bottom: 10px;
       padding-bottom: 10px;
-      border-bottom: 1px solid $border-color;
+      border-bottom: 1px solid $color3;
     }
   }
   &__link {
-    color: #757575;
+    color: $color6;
   }
   &__item {
     &:first-child {
       a {
         text-transform: uppercase;
         font-weight: 500;
-        color: #000;
+        color: $color5;
       }
     }
   }
@@ -149,7 +148,7 @@
   }
 }
 .filter-section {
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid $color3;
   &__title {
     font-weight: 500;
     text-transform: uppercase;
@@ -160,7 +159,7 @@
     text-align: left;
     position: relative;
     text-decoration: none;
-    color: #000;
+    color: $color4;
     .icon {
       width: 10px;
       height: 10px;
@@ -234,15 +233,11 @@
   }
 }
 .nav-toggle {
-  padding: 10px;
   margin-right: -10px;
   display: none;
   .toggle-item {
     width: 20px;
     height: 20px;
-  }
-  .icon {
-    fill: #757575;
   }
 }
 
@@ -285,7 +280,7 @@
   }
   .setup-open {
     .icon {
-      fill: $main-color;
+      fill: $color1;
     }
   }
 }
@@ -295,7 +290,7 @@
     height: 40px;
   }
   .nav-toggle {
-    display: block;
+    display: flex;
   }
   .catalogue-nav {
     margin: 0 -15px;

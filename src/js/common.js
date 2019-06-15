@@ -35,6 +35,7 @@ function lazy() {
   $(".lazy").Lazy({
     effect: 'fadeIn',
     visibleOnly: true,
+    effectTime: 300,
     afterLoad: function(element) {
       setTimeout(function() {
         var box = $(element).parent(),

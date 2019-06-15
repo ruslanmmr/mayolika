@@ -1,5 +1,5 @@
 .main-slider {
-  margin-bottom: 35px;
+  margin-bottom: 40px;
 }
 .main-slide {
   display: block;
@@ -20,6 +20,7 @@
     padding: 20px 35px;
   }
   &__title {
+    display: block;
     margin-bottom: 15px;
     line-height: 1.25;
   }
@@ -62,7 +63,7 @@
   }
   .main-slide__title {
     margin: 5px 0 0 0;
-    color: #E52329;
+    color: $color1;
     text-decoration: underline;
   }
   .main-slide__category {
