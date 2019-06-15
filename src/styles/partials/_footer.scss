@@ -1,7 +1,45 @@
 .footer {
-  &__contaner {
-    height: 138px;
-    background-color: #EEEEEE;
+  font-size: 12px;
+  &__copy {
+    text-align: center;
+    color: $color6;
+    background-color: #F8F8F8;
+    padding: 15px 0;
+  }
+  &__contacts {
+    background: #EEEEEE;
+    padding: 20px;
+    .row {
+      justify-content: center;
+    }
+  }
+  &__section {
+    text-align: center;
+    span {
+      display: block;
+      &:first-child {
+        margin-bottom: 15px;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      display: inline-block;
+      margin: 0 5px;
+      .icon {
+        width: 14px;
+        height: 14px;
+        margin-right: 3px;
+        fill: $color6;
+        transform: translateY(0.3em);
+      }
+      &:hover {
+        color: #000;
+        .icon {
+          fill: #000;
+        }
+      }
+    }
   }
 }
 
