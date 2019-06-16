@@ -65,6 +65,21 @@ body {
   }
 }
 
+//
+.sitemap-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  li {
+    display: block;
+    border-bottom: 1px solid $color3;
+  }
+  a {
+    color: #000;
+  }
+}
+
 @media all and(max-width: 1200px) {
   .main {
     padding: 0 20px 0 0;
