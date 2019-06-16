@@ -1,14 +1,21 @@
 .title {
   display: block;
   margin: 0;
-  &_type1 {
-    font-size: 36px;
+  &_style1 {
+    margin-bottom: 45px;
+    text-align: center;
+    color: #000;
   }
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-family: 'Manrope';
+  line-height: 1.35;
 }
 .t-size-36 {
   font-size: 36px;
 }
-.t-size-22 {
+.t-size-24 {
   font-size: 24px;
 }
 .t-size-18 {
@@ -29,9 +36,18 @@
   .t-size-36 {
     font-size: 24px;
   }
+  .t-size-24 {
+    font-size: 20px;
+  }
 }
 @media all and(max-width: 576px) {
   .t-size-36 {
-    font-size: 20px;
+    font-size: 22px;
+  }
+  .title_style1 {
+    margin-bottom: 25px;
+  }
+  .t-size-24 {
+    font-size: 18px;
   }
 }
