@@ -227,6 +227,24 @@
     }
   }
 }
+
+.catalogue-sorting {
+  margin: 0 -10px -10px -10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.select-box {
+  padding: 0 10px 10px 10px;
+  width: 50%;
+  max-width: 200px;
+  &__label {
+    font-size: 14px;
+    color: $color6;
+    display: block;
+    margin-bottom: 4px;
+  }
+}
+
 .form-reset-btn[disabled] {
   cursor: default;
   color: #aaaaaa !important;
@@ -468,5 +486,9 @@
       right: 55px;
       left: auto;
     }
+  }
+  .select-box {
+    width: 50%;
+    max-width: 50%;
   }
 }

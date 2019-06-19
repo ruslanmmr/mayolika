@@ -7,6 +7,7 @@ $(document).ready(function () {
   inputs();
   slider();
   scrollBtnTop();
+  select();
 });
 $(window).resize(function () {
   innerWidth = $('body').innerWidth();
@@ -84,7 +85,13 @@ function cover() {
     })
   }, 100)
 }
-
+//select
+function select() {
+  if ($('html').hasClass('android') || $('html').hasClass('ios')) {
+  } else {
+    $('.select').niceSelect();
+  }
+}
 //scroll
 function scrollInit() {
   if ($('html').hasClass('android') || $('html').hasClass('ios')) {
