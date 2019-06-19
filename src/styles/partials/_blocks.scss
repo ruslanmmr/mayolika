@@ -3,6 +3,9 @@
     margin-bottom: 40px;
   }
 }
+.banner {
+  margin-bottom: 25px;
+}
 .tile-categories-manufacturer {
   margin-top: 45px;
 }
@@ -191,6 +194,11 @@
       height: 50%;
       .content {
         height: 100%;
+      }
+    }
+    &.block_size4 {
+      .content {
+        height: 230px;
       }
     }
     .content {

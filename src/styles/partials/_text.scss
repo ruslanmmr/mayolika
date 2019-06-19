@@ -12,6 +12,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Manrope';
   line-height: 1.35;
 }
+.t-size-64 {
+  font-size: 64px;
+  line-height: 1.25;
+}
 .t-size-36 {
   font-size: 36px;
 }
@@ -31,6 +35,9 @@ h1, h2, h3, h4, h5, h6 {
   .t-size-36 {
     font-size: 28px;
   }
+  .t-size-64 {
+    font-size: 46px;
+  }
 }
 @media all and(max-width: 768px) {
   .t-size-36 {
@@ -38,6 +45,10 @@ h1, h2, h3, h4, h5, h6 {
   }
   .t-size-24 {
     font-size: 20px;
+  }
+  .t-size-64 {
+    font-size: 46px;
+    line-height: 1.5;
   }
 }
 @media all and(max-width: 576px) {
@@ -49,5 +60,9 @@ h1, h2, h3, h4, h5, h6 {
   }
   .t-size-24 {
     font-size: 18px;
+  }
+  .t-size-64 {
+    font-size: 28px;
+    line-height: 1.5;
   }
 }

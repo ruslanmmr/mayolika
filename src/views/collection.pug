@@ -1,0 +1,21 @@
+doctype html
+html(lang="ru")
+  head
+    include blocks/head
+  body
+    .wrapper
+      a(href="#").button.button_scroll-top
+        span
+         <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon18"></use></svg>
+      include blocks/aside   
+      main.main
+        .main__container
+          include blocks/header
+          .main__content
+            include blocks/banner-title
+            include blocks/catalogue-block
+          include blocks/footer
+    script(src="https://unpkg.com/current-device/umd/current-device.min.js")       
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="js/libs.min.js")            
+    script(src="js/common.min.js")
