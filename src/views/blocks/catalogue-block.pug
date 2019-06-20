@@ -1,5 +1,5 @@
 mixin block()
-  .catalogue-block.col-xl-3
+  .catalogue-block.col-xl-3.col-lg-4.col-sm-6.col-12
     .catalogue-block__container
       .catalogue-block__image
         .cover-box
@@ -25,6 +25,21 @@ mixin block()
               span 201x505 мм
             .catalogue-block__item-right
               <svg class="icon-country"><use xlink:href="img/icons/countries-sprite.svg#italy"></use></svg>
+      .catalogue-block__collection
+        span.catalogue-block__collection-title.t-size-12 Элементы коллекции:
+        .row
+          .catalogue-block__collection-block.col-xl-3
+            a(href="#").cover-box
+              img(data-src="img/banner/stock-photo-interior1.jpg", alt="").lazy
+          .catalogue-block__collection-block.col-xl-3
+            a(href="#").cover-box
+              img(data-src="img/banner/stock-photo-interior2.jpg", alt="").lazy
+          .catalogue-block__collection-block.col-xl-3
+            a(href="#").cover-box
+              img(data-src="img/banner/stock-photo-interior3.jpg", alt="").lazy
+          .catalogue-block__collection-block.col-xl-3
+            a(href="#").cover-box
+              img(data-src="img/banner/stock-photo-interior4.jpg", alt="").lazy
 .catalogue-section
   .catalogue-sorting
     .select-box
