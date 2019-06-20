@@ -100,6 +100,7 @@ function scrollInit() {
       $("html, body").animate({ scrollTop: 0 }, 500);
     })
   } else {
+    $('html').css('overflow', 'hidden')
     $('body').niceScroll({
       cursorcolor: cursorcolorVar,
       cursorwidth: cursorwidthVar,
