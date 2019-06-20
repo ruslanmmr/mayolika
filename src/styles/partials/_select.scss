@@ -33,7 +33,7 @@ $arrow_color: $gray !default;
   white-space: nowrap;
   width: 100%;
   select {
-    display: inherit;
+    display: block;
     appearance: none;
     border: 0;
     box-shadow: 0;
@@ -45,6 +45,9 @@ $arrow_color: $gray !default;
     height: 100%;
     left: 0;
     outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   span {
     max-width: 100%;
