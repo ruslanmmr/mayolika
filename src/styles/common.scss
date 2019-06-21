@@ -81,9 +81,7 @@ body {
 }
 
 @media all and(max-width: 1200px) {
-  .main {
-    padding: 0 20px 0 0;
-  }
+  
 }
 @media all and(max-width: 992px) {
   .wrapper {
@@ -115,7 +113,7 @@ body {
 @media all and(max-width: 576px) {
   .main {
     &__container {
-      padding: 20px 0 40px 0;
+      padding: 20px 0 50px 0;
     }
   }
 }

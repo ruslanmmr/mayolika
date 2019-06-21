@@ -1,0 +1,27 @@
+mixin slide(title, brand, text)
+  .catalogue-block.catalogue-block_type2.slide
+    .catalogue-block__container
+      .catalogue-block__image
+        .cover-box.cover-box_contain
+          img(alt="").lazy&attributes(attributes)
+        .catalogue-block__more
+          a(href="#").button.button_style5 Подробнее
+          a(href="#").button.button_style5.button_icon
+            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon24"></use></svg>
+      .catalogue-block__info
+        .catalogue-block__info-section
+          a(href="#").catalogue-block__brand=brand
+          span.catalogue-block__model=title
+        .catalogue-block__info-section
+          span.catalogue-block__price <span>874.00</span> руб
+      .catalogue-block__additional
+        span.catalogue-block__additional-title.t-size-12 Описание товара:
+        p=text
+section.section.interesting-items
+  h5.section__title Вас может заинтересовать
+  .slider.slider_type2.interesting-items__slider
+    +slide('Ceresit СМ 9 Plus 25 кг', 'Клей для плитки', 'Водно-дисперсионный силиконовый гидрофобизатор для защиты от влаги и загрязнения')(data-src='img/banner/interesting1.jpg')
+    +slide('Ceresit CT 10 Super 1 л', 'Пропитка противогрибковая', 'Затирка обладает гидрофобными свойствами и устойчивостью против грибка и плесени, поэтому ее можно использовать во влажных помещениях, душевых и ванных комнатах.')(data-src='img/banner/interesting2.jpg')
+    +slide('Ceresit СМ 9 Plus 25 кг', 'Клей для плитки', 'Водно-дисперсионный силиконовый гидрофобизатор для защиты от влаги и загрязнения')(data-src='img/banner/interesting3.jpg')
+    +slide('Ceresit CT 10 Super 1 л', 'Пропитка противогрибковая', 'Водно-дисперсионный силиконовый гидрофобизатор для защиты от влаги и загрязнения')(data-src='img/banner/interesting4.jpg')
+  

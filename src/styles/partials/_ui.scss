@@ -1,8 +1,14 @@
 .slider {
   opacity: 0;
   transition: opacity 0.3s;
+  margin: -10px;
+  .slide {
+    padding: 10px;
+    height: auto;
+  }
   .slick-track {
     display: flex;
+    min-width: 100%;
   }
   &.visible {
     opacity: 1;
@@ -479,7 +485,7 @@
     .slick-arrow {
       border-radius: 4px;
       background: rgba(0,0,0,.1);
-      bottom: 0;
+      bottom: 10px;
       top: auto;
       margin: 0;
       width: 40px;
@@ -493,11 +499,14 @@
       }
     }
     .slick-next {
-      right: 0;
+      right: 10px;
     }
     .slick-prev {
-      right: 55px;
+      right: 65px;
       left: auto;
+    }
+    &_type2 {
+      padding-bottom: 68px;
     }
   }
   .select-box {

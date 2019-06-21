@@ -322,6 +322,13 @@ function slider() {
       fadeVar = true,
       autoplayVar = true;
     }
+    if ($(this).hasClass('interesting-items__slider')) {
+      slideCount1200 = 3,
+      slideCount992 = 3,
+      slideCount768 = 2,
+      slideCount576 = 1,
+      slideCount = 4;
+    }
     
     $(this).slick({
       infinite: true,
@@ -339,28 +346,28 @@ function slider() {
       prevArrow: '<button class="slick-prev slick-arrow" aria-label="Previous" type="button"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon18"></use></svg></button>',
       nextArrow: '<button class="slick-next slick-arrow" aria-label="Previous" type="button"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon18"></use></svg></button>',
       responsive: [{
-          breakpoint: 1200,
+          breakpoint: 1201,
           settings: {
             slidesToShow: slideCount1200,
             slidesToScroll: slideCount1200,
           }
         },
         {
-          breakpoint: 992,
+          breakpoint: 993,
           settings: {
             slidesToShow: slideCount992,
             slidesToScroll: slideCount992,
           }
         },
         {
-          breakpoint: 768,
+          breakpoint: 769,
           settings: {
             slidesToShow: slideCount768,
             slidesToScroll: slideCount768,
           }
         },
         {
-          breakpoint: 576,
+          breakpoint: 577,
           settings: {
             slidesToShow: slideCount576,
             slidesToScroll: slideCount576,
