@@ -86,4 +86,17 @@ mixin block(title)
       +block('Legno')
       +block('Legno')
       +block('Legno')
-
+  .catalogue-pagination
+    ul.catalogue-pagination__list
+      li.catalogue-pagination__item
+        a(href="#").catalogue-pagination__link.active 1
+      li.catalogue-pagination__item
+        a(href="#").catalogue-pagination__link 2
+      li.catalogue-pagination__item
+        a(href="#").catalogue-pagination__link 3
+      li.catalogue-pagination__item
+        a(href="#").catalogue-pagination__link ...
+      li.catalogue-pagination__item
+        a(href="#").catalogue-pagination__link 10
+  .catalogue-more
+    a(href="#").button.button_style1.catalogue-more__button Показать больше
