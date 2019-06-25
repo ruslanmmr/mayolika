@@ -11,7 +11,7 @@ $(document).ready(function () {
 });
 $(window).resize(function () {
   innerWidth = $('body').innerWidth();
-  cover();
+  imagesResize();
 });
 $(window).on('scroll', function() {
   scrollTop = $(window).scrollTop();
@@ -61,14 +61,15 @@ function lazy() {
 
 //scrollTop
 function scrollBtnTop() {
+  var $btn = $('.button_scroll-top');
   if(scrollTop>200) {
-    $('.button_scroll-top').fadeIn();
+    $btn.fadeIn();
   } else {
-    $('.button_scroll-top').fadeOut();
+    $btn.fadeOut();
   }
 }
 
-function cover() {
+function imagesResize() {
   setTimeout(function() {
     $('img.visible').each(function() {
       var box = $(this).parent(),
@@ -85,9 +86,11 @@ function cover() {
     })
   }, 100)
 }
+
 //select
 function select() {
   if ($('html').hasClass('android') || $('html').hasClass('ios')) {
+    return;
   } else {
     $('.select').niceSelect();
   }
@@ -263,10 +266,8 @@ function inputs() {
   })
 
   $reset.on('click', function() {
-    //var $reset = $(this);
     setTimeout(function() {
       checkboxCheck();
-      //$reset.prop('disabled', true);
       filterState();
     }, 100)
   })
