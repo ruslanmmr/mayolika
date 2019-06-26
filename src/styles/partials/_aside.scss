@@ -388,6 +388,9 @@
     .scroll:after {
       display: none;
     }
+    &__nav {
+      padding: 10px 0 0 0;
+    }
     &__head {
       display: flex;
       align-items: center;
