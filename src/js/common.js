@@ -9,6 +9,7 @@ $(document).ready(function () {
   scrollBtnTop();
   select();
   gallery();
+  moreInfo();
 });
 $(window).resize(function () {
   innerWidth = $('body').innerWidth();
@@ -403,4 +404,14 @@ function gallery() {
     var index = $(this).parent().index();
     $gallery.slick('slickGoTo', index);
   });
+}
+
+//more 
+function moreInfo() {
+  var $buttonToggle = $('.product-head__item .button-toggle');
+
+  $buttonToggle.on('click', function(event) {
+    event.preventDefault();
+    $(this).parents('.product-head__item').find('.product-head__more-info').toggleClass('active');
+  })
 }

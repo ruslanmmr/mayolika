@@ -148,6 +148,7 @@
 }
 .scroll-container {
   overflow: auto;
+  height: 100%;
   .nicescroll-rails {
     width: 15px !important;
   }
@@ -548,7 +549,7 @@
 //breadcrumbs
 .breadcrumbs {
   margin-top: -3px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   &__list {
     margin: 0;
     padding: 0;
