@@ -1,6 +1,44 @@
 .product-head
   .row
-    .product-head__gallery.col-lg-6
-      .product-head__slider-for.slider
-      .product-head__slider-nav.slider
-    .product-head__info.col-lg-6
+    .product-head__gallery.col-xl-6
+      .gallery-slider.slider
+        //item1
+        .gallery-slide.slide
+          .gallery-slide__container.cover-box
+            img(data-src="img/banner/gallery-item1.jpg", alt="").lazy
+        //item2
+        .gallery-slide.slide
+          .gallery-slide__container.cover-box
+            img(data-src="img/banner/stock-photo-interior1.jpg", alt="").lazy
+        //item3
+        .gallery-slide.slide
+          .gallery-slide__container.cover-box
+            img(data-src="img/banner/stock-photo-interior2.jpg", alt="").lazy
+      .gallery-nav.row
+        //item1
+        .gallery-nav__item.col-xl-4
+          a(href="#").gallery-nav__link.cover-box
+            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+            img(data-src="img/banner/gallery-item1.jpg", alt="").lazy
+        //item2
+        .gallery-nav__item.col-xl-4
+          a(href="#").gallery-nav__link.cover-box
+            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+            img(data-src="img/banner/stock-photo-interior1.jpg", alt="").lazy
+        //item3
+        .gallery-nav__item.col-xl-4
+          a(href="#").gallery-nav__link.cover-box
+            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+            img(data-src="img/banner/stock-photo-interior2.jpg", alt="").lazy
+    .product-head__info.col-xl-6
+      .product-head__top
+        .product-head__title
+          h1.t-size.t-size-36 Kerlife Intenso
+        p Коллекция плитки размерами 20,1 х 50,5 см имитирует рисунок дерева, подчеркивая рисунок легкой текстурой. Оживляют интерьер панно с мягким цветочным узором и узкие бордюры, комбинация которых позволяет сформировать оригинальный дизайн неповторимой отделки.
+      .product-head__bottom.row
+        .product-head__item.col-xl-6
+          .product-head__section
+          a(href="#").button.button_style1 Заказать дизайн проект
+        .product-head__item.col-xl-6
+          .product-head__section
+          a(href="#").button.button_style6 Больше информации

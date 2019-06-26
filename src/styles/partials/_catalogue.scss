@@ -190,11 +190,6 @@
     color: #000;
     line-height: 1.25;
   }
-  &__additional-title {
-    display: block;
-    margin-bottom: 10px;
-    color: $color5;
-  }
   &__additional-block {
     .cover-box {
       border-radius: 0;
@@ -259,6 +254,73 @@
   &__button {
     width: 238px;
     text-align: center;
+  }
+}
+//product-card
+.product-head {
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__top {
+    font-family: 'Manrope';
+    padding: 10px 20px 20px 20px;
+    color: #000;
+  }
+  &__title {
+    margin-bottom: 20px;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    .button {
+      margin-top: 15px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+  }
+  &__section {
+    border: 1px solid $color3;
+    border-radius: 4px;
+    padding: 30px 20px;
+  }
+}
+.gallery-nav {
+  margin-top: 20px;
+  &__link {
+    &:before {
+      content: '';
+      display: block;
+      padding-top: 68%;
+    }
+    .icon {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: 0.3s;
+      opacity: 0;
+      width: 36px;
+      height: 36px;
+      fill: #fff;
+    }
+    &:hover {
+      box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2);
+      .icon {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+.gallery-slide {
+  &__container {
+    &:before {
+      content: '';
+      display: block;
+      padding-top: 68%;
+    }
   }
 }
 

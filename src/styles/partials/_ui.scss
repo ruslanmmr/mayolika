@@ -125,12 +125,12 @@
   text-decoration: none;
   color: $color4;
   background-color: transparent;
+  font-family: 'Manrope';
   &_style1 {
     border-radius: 4px;
     background-color: $color1;
     padding: 14px 20px;
     color: #fff;
-    font-family: 'Manrope';
     .icon {
       fill: #fff;
     }
@@ -203,7 +203,6 @@
     border-radius: 4px;
     padding: 13px 19px;
     color: #000;
-    font-family: 'Manrope';
     border: 1px solid $color3;
     .icon {
       fill: #757575;
@@ -260,6 +259,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+  }
+  &_style6 {
+    padding: 14px 20px;
+    border-radius: 4px;
+    background-color: #000;
+    color: #fff;
+    &:hover {
+      background-color: #131313;
     }
   }
 }
@@ -471,9 +479,16 @@
     }
   }
 }
+//label
+.label {
+  font-size: 12px;
+  color: $color6;
+  display: block;
+  margin-bottom: 10px;
+}
 //breadcrumbs
 .breadcrumbs {
-  margin-top: -5px;
+  margin-top: -3px;
   margin-bottom: 20px;
   &__list {
     margin: 0;
