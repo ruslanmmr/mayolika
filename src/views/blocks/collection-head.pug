@@ -1,6 +1,6 @@
 .product-head
   .row
-    .product-head__gallery.col-xl-6
+    .product-head__gallery.col-xl-6.col-lg-5.col-sm-12
       .gallery-slider.slider
         //item1
         .gallery-slide.slide
@@ -30,15 +30,39 @@
           a(href="#").gallery-nav__link.cover-box
             <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
             img(data-src="img/banner/stock-photo-interior2.jpg", alt="").lazy
-    .product-head__info.col-xl-6
+    .product-head__info.col-xl-6.col-lg-7.col-sm-12
       .product-head__top
         .product-head__title
           h1.t-size.t-size-36 Kerlife Intenso
         p Коллекция плитки размерами 20,1 х 50,5 см имитирует рисунок дерева, подчеркивая рисунок легкой текстурой. Оживляют интерьер панно с мягким цветочным узором и узкие бордюры, комбинация которых позволяет сформировать оригинальный дизайн неповторимой отделки.
       .product-head__bottom.row
-        .product-head__item.col-xl-6
+        .product-head__item.col-xl-6.col-12
           .product-head__section
+            .product-head__section-block
+              span.label Цена
+              span.price-item <strong>от 874.00</strong> руб./м2
+            .product-head__section-block
+              span.label Производитель
+              ul.appointment-list
+                li.appointment-list__item
+                  .icon-box.icon-box_style4.appointment-list__icon <svg class="icon"><use xlink:href="img/icons/countries-sprite.svg#italy"></use></svg>
+                  span Италия
           a(href="#").button.button_style1 Заказать дизайн проект
-        .product-head__item.col-xl-6
+        .product-head__item.col-xl-6.col-12
           .product-head__section
+            .product-head__section-block
+              span.label Назначение
+              ul.appointment-list
+                li.appointment-list__item
+                  .icon-box.icon-box_style1.appointment-list__icon <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon3"></use></svg>
+                  span Для ванной
+                li.appointment-list__item
+                  .icon-box.icon-box_style1.appointment-list__icon <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon11"></use></svg>
+                  span Для кухни
+                li.appointment-list__item
+                  .icon-box.icon-box_style1.appointment-list__icon <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon7"></use></svg>
+                  span Для пола
+                li.appointment-list__item
+                  .icon-box.icon-box_style1.appointment-list__icon <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon12"></use></svg>
+                  span Для еще чего-то
           a(href="#").button.button_style6 Больше информации

@@ -131,54 +131,17 @@
     align-items: center;
     justify-content: space-between;
   }
-  &__description {
+  .appointment-list {
     margin: 15px 0 0 0;
-    padding: 0;
-    list-style: none;
-  }
-  &__item {
-    &:not(:last-child) {
-      margin-bottom: 15px;
+    &__item {
+      position: relative;
     }
-  }
-  &__item-left {
-    display: flex;
-    align-items: center;
-    .icon-box {
-      width: 30px;
-      height: 30px;
-      border-radius: 4px;
-      background-color: #ED6842;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 12px;
-    }
-    .icon {
-      width: 18px;
-      height: 18px;
-      fill: #fff;
-    }
-  }
-  &__item-right {
-    .icon-box {
-      width: 20px;
-      height: 20px;
-      border: 1px solid $color3;
-      border-radius: 100%;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      .icon {
-        width: 10px;
-        height: 10px;
-        fill: #009246;
-      }
-      .icon-country {
-        width: 100%;
-        height: 100%;
-      }
+    .icon-box_style2,
+    .icon-box_style3 {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
   &__additional {
@@ -274,6 +237,9 @@
   &__item {
     display: flex;
     flex-direction: column;
+    .label {
+      margin-bottom: 15px;
+    }
     .button {
       margin-top: 15px;
       flex-shrink: 0;
@@ -283,7 +249,21 @@
   &__section {
     border: 1px solid $color3;
     border-radius: 4px;
-    padding: 30px 20px;
+    flex: 1 1 100%;
+    .price-item {
+      font-family: 'Manrope';
+      strong {
+        font-size: 24px;
+        color: #000;
+        line-height: 1;
+      }
+    }
+  }
+  &__section-block {
+    padding: 20px;
+    &:not(:last-child) {
+      border-bottom: 1px solid $color3;
+    }
   }
 }
 .gallery-nav {
@@ -324,8 +304,25 @@
   }
 }
 
+@media all and(max-width: 1400px) {
+  .product-head__top {
+    padding: 0 0 20px 0;
+  }
+}
 @media all and(max-width: 1200px) {
   .catalogue-block__model {
     font-size: 16px;
+  }
+}
+@media all and(max-width: 992px) {
+  .product-head__title {
+    margin-bottom: 15px;
+  }
+}
+@media all and(max-width: 768px) {
+  .product-head__info {
+    &:last-child {
+      margin-top: 10px;
+    }
   }
 }

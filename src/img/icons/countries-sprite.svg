@@ -1,6 +1,7 @@
 <svg width="0" height="0" class="hidden">
-  <symbol viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg" id="italy">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.688 19.297c3.884-1.364 6.666-5.043 6.666-9.369s-2.782-8.005-6.666-9.37v18.74z" fill="#009246"></path>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.312.56C3.429 1.924.646 5.603.646 9.929c0 4.325 2.783 8.005 6.666 9.37V.558z" fill="#CE2B37"></path>
+  <symbol viewBox="0 0 31 30" fill="none" stroke="none" xmlns="http://www.w3.org/2000/svg" id="italy">
+    <path d="M10.333 0H0v30h10.333V0z" fill="#009246"></path>
+    <path d="M20.666 0H10.333v30h10.333V0z" fill="#fff"></path>
+    <path d="M31 0H20.667v30H31V0z" fill="#CE2B37"></path>
   </symbol>
 </svg>

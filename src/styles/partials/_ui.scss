@@ -59,12 +59,71 @@
   stroke: #000;
   transition: inherit;
 }
-.icon-country {
-  width: 20px;
-  height: 20px;
-  border: 1px solid #fff;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 100%;
+.icon-box {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  &_style1 {
+    border-radius: 4px;
+    background-color: #ED6842;
+    .icon {
+      width: 18px;
+      height: 18px;
+      fill: #fff;
+      stroke: #fff;
+    }
+  }
+  &_style2 {
+    width: 20px;
+    height: 20px;
+    border: 1px solid $color3;
+    border-radius: 100%;
+    overflow: hidden;
+    .icon {
+      width: 10px;
+      height: 20px;
+      fill: #009246;
+      opacity: 0.5;
+    }
+  }
+  &_style3 {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    .icon {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &_style4 {
+    width: 30px;
+    height: 30px;
+    .icon {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.appointment-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  &__item {
+    display: flex;
+    align-items: center;
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+  &__icon {
+    margin-right: 15px;
+  }
 }
 .scroll {  
   position: relative;
