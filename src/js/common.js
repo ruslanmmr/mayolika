@@ -10,6 +10,8 @@ $(document).ready(function () {
   select();
   gallery();
   moreInfo();
+  calculator();
+  popup();
 });
 $(window).resize(function () {
   innerWidth = $('body').innerWidth();
@@ -100,13 +102,8 @@ function select() {
 }
 //scroll
 function scrollInit() {
-  if ($('html').hasClass('android') || $('html').hasClass('ios')) {
-    $(".button_scroll-top").on('click', function(e) {
-      e.preventDefault();
-      $("html, body").animate({ scrollTop: 0 }, 500);
-    })
-  } else {
-    $('html').css('overflow', 'hidden')
+  if ($('html').hasClass('desktop')) {
+    $('html').css('overflow', 'hidden');
     $('body').niceScroll({
       cursorcolor: cursorcolorVar,
       cursorwidth: cursorwidthVar,
@@ -129,10 +126,14 @@ function scrollInit() {
       $('body').getNiceScroll().resize();
       $scrollContainer.getNiceScroll().resize();
     }, 50);
-
     $(".button_scroll-top").on('click', function(e) {
       e.preventDefault();
       $('body').getNiceScroll().doScrollPos(0,0);
+    })
+  } else {
+    $(".button_scroll-top").on('click', function(e) {
+      e.preventDefault();
+      $("html, body").animate({ scrollTop: 0 }, 500);
     })
   }
 };
@@ -414,4 +415,39 @@ function moreInfo() {
     event.preventDefault();
     $(this).parents('.product-head__item').find('.product-head__more-info').toggleClass('active');
   })
+}
+
+//calcutor
+function calculator() {
+
+  $(document).on('click', '.product-calculator__unit-toggle', function() {
+
+  })
+}
+//popup
+function popup() {
+
+  $(".popup-link").fancybox({
+    autoFocus: false,
+    loop: true
+  });
+  
+  $(".modal-link").fancybox({
+    autoFocus: false,
+    smallBtn: true,
+    touch: false
+  });
+
+  $('.gallery-slide a').on('click', function() {
+    var $selector = $(this).parents('.gallery').find('.slick-slide:not(.slick-cloned) a');
+
+    $.fancybox.open( $selector, {
+        selector : $selector,
+        backFocus : false,
+        loop: true,
+        animationEffect: "fade"
+    }, $selector.index( this ) );
+
+    return false;
+  });
 }

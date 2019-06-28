@@ -15,9 +15,21 @@ html(lang="ru")
             include blocks/breadcrumbs
             .product-card
               include blocks/collection-head
+              +hd()
+                .product-head__section
+                  .product-head__section-block
+                    span.label Цена
+                    span.price-item <strong>от 874.00</strong> руб./м2
+                  .product-head__section-block
+                    span.label Производитель
+                    ul.appointment-list
+                      li.appointment-list__item
+                        .icon-box.icon-box_style4.appointment-list__icon <svg class="icon"><use xlink:href="img/icons/countries-sprite.svg#italy"></use></svg>
+                        span Италия
+              include blocks/elements-block
               include blocks/interesting-items
-          include blocks/footer
-    script(src="https://unpkg.com/current-device/umd/current-device.min.js")       
+          include blocks/footer      
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="js/c3dpano.js") 
     script(src="js/libs.min.js")            
     script(src="js/common.min.js")
