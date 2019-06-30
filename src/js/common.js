@@ -419,10 +419,89 @@ function moreInfo() {
 
 //calcutor
 function calculator() {
+  var controlClass = 'product-calculator__control',
+      flag = false,
+      interval,
+      clickEvent,
+      clickTimer,
+      timerState;
 
-  $(document).on('click', '.product-calculator__unit-toggle', function() {
-
+  $(document).on('touchstart touchend mousedown mouseup', '.product-calculator', function(e) {
+    var $target = $(e.target),
+        $block = this;
+    
+    //если жмем плюс или минус
+    if($(e.target).hasClass(controlClass) || $(e.target).parents('.' + controlClass).length > 0) {
+      $(e.target).closest('.' + controlClass);
+      $target = $(e.target).closest('.' + controlClass);
+      if ($target.hasClass('product-calculator__plus')) {
+        clickProcessing('increase');
+      }
+      else {
+        clickProcessing('reduce');
+      }
+      //
+      function clickProcessing(actionType) {
+        if(e.type == 'mousedown' || e.type == 'touchstart') {
+          clickEvent = true;
+          clickTimer = setTimeout(function() {
+            timerState = true;
+            clickEvent = false;
+            interval = setInterval(function() {
+              if(timerState == true) {
+                actionProcessing($block, actionType);
+                clickTimer = setTimeout(function() {
+                  if(timerState == true) {
+                    interval = clearInterval(interval);
+                    interval = setInterval(function() {
+                      actionProcessing($block, actionType);
+                      clickTimer = setTimeout(function() {
+                        if(timerState == true) {
+                          interval = clearInterval(interval);
+                          interval = setInterval(function() {
+                            actionProcessing($block, actionType);
+                          }, 35)
+                        } else {
+                          return;
+                        }
+                      }, 1000);
+                    }, 70)
+                  } else {
+                    return;
+                  }
+                }, 1000);
+              } else {
+                return;
+              }
+            }, 140)
+          }, 300)
+        }
+        else if(e.type == 'mouseup' || e.type == 'touchend') {
+          clickTimer = clearTimeout(clickTimer);
+          interval = clearInterval(interval);
+          timerState = false;
+          if(clickEvent == true) {
+            actionProcessing($block, actionType);
+          }
+          clickEvent = false;
+        }
+      }
+    }
   })
+
+  //functions
+  function actionProcessing(block, operation) {{
+    var tileArea = +$(block).find('.product-calculator__value-input').data('area'),
+        $input = $(block).find('.product-calculator__value-input'),
+        inputVal = +$input.val();
+    if(operation == 'increase') {
+      $input.val(parseFloat((inputVal + tileArea).toFixed(2)));
+    } else if (operation == 'reduce') {
+      if(inputVal>tileArea) {
+        $input.val(parseFloat((inputVal - tileArea).toFixed(2)));
+      }
+    }
+  }}
 }
 //popup
 function popup() {
