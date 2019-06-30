@@ -420,7 +420,6 @@ function moreInfo() {
 //calcutor
 function calculator() {
   var controlClass = 'product-calculator__control',
-      flag = false,
       interval,
       clickEvent,
       clickTimer,
