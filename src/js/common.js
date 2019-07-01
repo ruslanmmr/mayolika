@@ -435,7 +435,7 @@ function calculator() {
     actionProcessing($block, 'calculatePrice');
   })
 
-  $(document).on('touchstart touchend mousedown mouseup click keyup input mouseout', '.product-calculator', function(e) {
+  $(document).on('touchstart touchend mousedown mouseup click change input mouseout', '.product-calculator', function(e) {
     var $target = $(e.target),
         $block = $(this);
     
@@ -510,7 +510,7 @@ function calculator() {
     else if($(e.target).hasClass(inputClass) || $(e.target).parents('.' + inputClass).length > 0) {
       $(e.target).closest('.' + inputClass);
       $target = $(e.target).closest('.' + inputClass);
-      if(e.type == 'input' || e.type == 'keyup') {
+      if(e.type == 'input' || e.type == 'keyup' || e.type == 'change') {
         $target.val($target.val().replace(/[^\d\.]/g, ""));
         if($target.val().match(/\./g).length > 1) {
           console.log('t')
