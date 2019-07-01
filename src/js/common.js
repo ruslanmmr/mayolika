@@ -469,7 +469,7 @@ function calculator() {
             setTimeout(function(){ flagEnd = false; flagStart = false }, 100);
 
             timerToHold = clearTimeout(timerToHold);
-            setTimeout(function(){ timerToHold = clearTimeout(timerToHold); }, 100);
+            setTimeout(function(){ timerToHold = clearTimeout(timerToHold); }, 50);
             interval = clearTimeout(interval);
             if(hold == true) {
               hold = false;
