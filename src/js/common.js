@@ -420,10 +420,12 @@ function moreInfo() {
 //calcutor
 function calculator() {
   var controlClass = 'product-calculator__control',
+      timerToHold,
+      hold = false,
+      counter,
       interval,
-      clickEvent,
-      clickTimer,
-      timerState;
+      flagStart = false,
+      flagEnd = false;
 
   $(document).on('touchstart touchend mousedown mouseup', '.product-calculator', function(e) {
     var $target = $(e.target),
@@ -442,47 +444,38 @@ function calculator() {
       //
       function clickProcessing(actionType) {
         if(e.type == 'mousedown' || e.type == 'touchstart') {
-          clickEvent = true;
-          clickTimer = setTimeout(function() {
-            timerState = true;
-            clickEvent = false;
-            interval = setInterval(function() {
-              if(timerState == true) {
+          if (!flagStart) {
+            flagStart = true;
+
+            timerToHold = setTimeout(function() {
+              hold = true;
+              counter = 150;
+
+              var myFunction = function() {
+                if(counter > 45) {
+                  counter = counter - 5;
+                }
+                interval = setTimeout(myFunction, counter);
                 actionProcessing($block, actionType);
-                clickTimer = setTimeout(function() {
-                  if(timerState == true) {
-                    interval = clearInterval(interval);
-                    interval = setInterval(function() {
-                      actionProcessing($block, actionType);
-                      clickTimer = setTimeout(function() {
-                        if(timerState == true) {
-                          interval = clearInterval(interval);
-                          interval = setInterval(function() {
-                            actionProcessing($block, actionType);
-                          }, 35)
-                        } else {
-                          return;
-                        }
-                      }, 1000);
-                    }, 70)
-                  } else {
-                    return;
-                  }
-                }, 1000);
-              } else {
-                return;
               }
-            }, 140)
-          }, 300)
+              interval = setTimeout(myFunction, counter);
+
+            }, 200)
+          }
         }
         else if(e.type == 'mouseup' || e.type == 'touchend') {
-          clickTimer = clearTimeout(clickTimer);
-          interval = clearInterval(interval);
-          timerState = false;
-          if(clickEvent == true) {
-            actionProcessing($block, actionType);
+          if (!flagEnd) {
+            flagEnd = true;
+            setTimeout(function(){ flagEnd = false; flagStart = false }, 100);
+
+            timerToHold = clearTimeout(timerToHold);
+            interval = clearTimeout(interval);
+            if(hold == true) {
+              hold = false;
+            } else {
+              actionProcessing($block, actionType);
+            }
           }
-          clickEvent = false;
         }
       }
     }
