@@ -420,6 +420,8 @@ function moreInfo() {
 //calcutor
 function calculator() {
   var controlClass = 'product-calculator__control',
+      toggleClass = 'product-calculator__js-toggle',
+      inputClass = 'product-calculator__value-input',
       timerToHold,
       hold = false,
       counter,
@@ -427,13 +429,18 @@ function calculator() {
       flagStart = false,
       flagEnd = false;
 
-  $(document).on('touchstart touchend mousedown mouseup', '.product-calculator', function(e) {
+  $('.product-calculator').each(function() {
+    var $block = $(this);
+    actionProcessing($block, 'adjustment');
+    actionProcessing($block, 'calculatePrice');
+  })
+
+  $(document).on('touchstart touchend mousedown mouseup click keyup input mouseout', '.product-calculator', function(e) {
     var $target = $(e.target),
-        $block = this;
+        $block = $(this);
     
     //если жмем плюс или минус
     if($(e.target).hasClass(controlClass) || $(e.target).parents('.' + controlClass).length > 0) {
-      $(e.target).closest('.' + controlClass);
       $target = $(e.target).closest('.' + controlClass);
       if ($target.hasClass('product-calculator__plus')) {
         clickProcessing('increase');
@@ -457,6 +464,7 @@ function calculator() {
                 }
                 interval = setTimeout(myFunction, counter);
                 actionProcessing($block, actionType);
+                actionProcessing($block, 'calculatePrice');
               }
               interval = setTimeout(myFunction, counter);
 
@@ -475,23 +483,104 @@ function calculator() {
               hold = false;
             } else {
               actionProcessing($block, actionType);
+              actionProcessing($block, 'calculatePrice');
             }
           }
         }
+      }
+    }
+    //если меняем велечину
+    else if($(e.target).hasClass(toggleClass) || $(e.target).parents('.' + toggleClass).length > 0) {
+      $(e.target).closest('.' + toggleClass);
+      $target = $(e.target).closest('.' + toggleClass);
+      if(e.type == 'click') {
+        if ($target.hasClass('product-calculator__js-toggle_switch')) {
+          $block.toggleClass('product-calculator_js-count-calc');
+          actionProcessing($block, 'measureChange');
+        } else if($target.hasClass('product-calculator__js-toggle_square')){
+          $block.removeClass('product-calculator_js-count-calc');
+          actionProcessing($block, 'measureChange');
+        } else if($target.hasClass('product-calculator__js-toggle_count')) {
+          $block.addClass('product-calculator_js-count-calc');
+          actionProcessing($block, 'measureChange');
+        }
+      }
+    }
+    //если ввод инпут
+    else if($(e.target).hasClass(inputClass) || $(e.target).parents('.' + inputClass).length > 0) {
+      $(e.target).closest('.' + inputClass);
+      $target = $(e.target).closest('.' + inputClass);
+      if(e.type == 'input' || e.type == 'keyup') {
+        $target.val($target.val().replace(/[^\d\.]/g, ""));
+        if($target.val().match(/\./g).length > 1) {
+          console.log('t')
+          $target.val($target.val().substr(0, $target.val().lastIndexOf(".")));
+        }
+        actionProcessing($block, 'calculatePrice');
+      } else if(e.type == 'mouseout') {
+        $target.blur();
+        actionProcessing($block, 'adjustment');
+        actionProcessing($block, 'calculatePrice');
       }
     }
   })
 
   //functions
   function actionProcessing(block, operation) {{
-    var tileArea = +$(block).find('.product-calculator__value-input').data('area'),
-        $input = $(block).find('.product-calculator__value-input'),
+    var tileSquare = parseFloat($(block).find('.product-calculator__value-input').data('square').toFixed(2)),
+        minSquare = parseFloat((Math.ceil(+$(block).find('.product-calculator__value-input').data('minsquare')/tileSquare) * tileSquare).toFixed(2)),
+        $input = block.find('.product-calculator__value-input'),
+        tilePrice = +$(block).find('.product-calculator__value-input').data('price'),
+        $price = block.find('.product-calculator__total-price'),
         inputVal = +$input.val();
     if(operation == 'increase') {
-      $input.val(parseFloat((inputVal + tileArea).toFixed(2)));
+      if($(block).hasClass('product-calculator_js-count-calc')) {
+        $input.val(parseFloat((inputVal + 1).toFixed(0)));
+      } else {
+        $input.val(parseFloat((inputVal + tileSquare).toFixed(2)));
+      }
     } else if (operation == 'reduce') {
-      if(inputVal>tileArea) {
-        $input.val(parseFloat((inputVal - tileArea).toFixed(2)));
+      if($(block).hasClass('product-calculator_js-count-calc')) {
+        if(inputVal>minSquare/tileSquare) {
+          $input.val(parseFloat((inputVal - 1).toFixed(0)));
+        }
+      } else {
+        if(inputVal>minSquare) {
+          $input.val(parseFloat((inputVal - tileSquare).toFixed(2)));
+        }
+      }
+    } else if (operation == 'measureChange') {
+      if($(block).hasClass('product-calculator_js-count-calc')) {
+        $input.val(parseFloat((inputVal/tileSquare).toFixed(0)));
+      } else {
+        $input.val(parseFloat((inputVal*tileSquare).toFixed(2)));
+      }
+    } else if (operation == 'calculatePrice') {
+      if($(block).hasClass('product-calculator_js-count-calc')) {
+        $price.text(parseFloat((inputVal * tileSquare * tilePrice).toFixed(2)))
+      } else {
+        $price.text(parseFloat((inputVal * tilePrice).toFixed(2)))
+      }
+    } else if (operation == 'adjustment') {
+      //количество
+      if($(block).hasClass('product-calculator_js-count-calc')) {
+        var val = Math.ceil(inputVal);
+        if(val < minSquare/tileSquare) {
+          $input.val(parseFloat((minSquare/tileSquare).toFixed(0)));
+        } else {
+          $input.val(parseFloat(val.toFixed(0)));
+        }
+      }
+      //площадь
+       else {
+        var val = parseFloat((Math.floor(inputVal/tileSquare) * tileSquare).toFixed(2));
+        if(val < minSquare) {
+          $input.val(parseFloat(minSquare.toFixed(2)))
+          console.log('1');
+        } else if(inputVal != val) {
+          console.log(val + tileSquare)
+          $input.val(parseFloat((val + tileSquare).toFixed(2)));
+        }
       }
     }
   }}

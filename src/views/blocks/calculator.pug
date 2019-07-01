@@ -1,12 +1,14 @@
 .product-calculator
   .product-calculator__section
+    span.product-calculator__total-price 0
+  .product-calculator__section.product-calculator__section_controls
     span.product-calculator__control.product-calculator__minus
       <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon1"></use></svg>
-    input(type="text" value='0.18' data-area='0.18').product-calculator__value-input
+    input(type="text" data-price='800' data-minsquare='1' data-square='0.36').product-calculator__value-input
     span.product-calculator__control.product-calculator__plus
       <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon2"></use></svg>
   .product-calculator__section
-    span.product-calculator__js-toggle.product-calculator__js-toggle_square 
+    span.product-calculator__js-toggle.product-calculator__js-toggle_square
       span м
     span.product-calculator__js-toggle.product-calculator__js-toggle_switch
     span.product-calculator__js-toggle.product-calculator__js-toggle_count 
