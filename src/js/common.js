@@ -460,7 +460,7 @@ function calculator() {
               }
               interval = setTimeout(myFunction, counter);
 
-            }, 200)
+            }, 300)
           }
         }
         else if(e.type == 'mouseup' || e.type == 'touchend') {
@@ -469,6 +469,7 @@ function calculator() {
             setTimeout(function(){ flagEnd = false; flagStart = false }, 100);
 
             timerToHold = clearTimeout(timerToHold);
+            setTimeout(function(){ timerToHold = clearTimeout(timerToHold); }, 100);
             interval = clearTimeout(interval);
             if(hold == true) {
               hold = false;
