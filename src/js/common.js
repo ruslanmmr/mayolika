@@ -434,8 +434,13 @@ function calculator() {
     actionProcessing($block, 'adjustment');
     actionProcessing($block, 'calculatePrice');
   })
+  $('.product-calculator').find('.product-calculator__value-input').on('change', function() {
+    var $block = $(this).parents('.product-calculator');
+    actionProcessing($block, 'adjustment');
+    actionProcessing($block, 'calculatePrice');
+  })
 
-  $(document).on('touchstart touchend mousedown mouseup click change input mouseout', '.product-calculator', function(e) {
+  $(document).on('touchstart touchend mousedown mouseup click input mouseout', '.product-calculator', function(e) {
     var $target = $(e.target),
         $block = $(this);
     
@@ -510,13 +515,13 @@ function calculator() {
     else if($(e.target).hasClass(inputClass) || $(e.target).parents('.' + inputClass).length > 0) {
       $(e.target).closest('.' + inputClass);
       $target = $(e.target).closest('.' + inputClass);
-      if(e.type == 'input' || e.type == 'keyup' || e.type == 'change') {
+      if(e.type == 'input') {
+        actionProcessing($block, 'calculatePrice');
         $target.val($target.val().replace(/[^\d\.]/g, ""));
         if($target.val().match(/\./g).length > 1) {
-          console.log('t')
           $target.val($target.val().substr(0, $target.val().lastIndexOf(".")));
+          actionProcessing($block, 'calculatePrice');
         }
-        actionProcessing($block, 'calculatePrice');
       } else if(e.type == 'mouseout') {
         $target.blur();
         actionProcessing($block, 'adjustment');
