@@ -516,8 +516,8 @@ function calculator() {
       $(e.target).closest('.' + inputClass);
       $target = $(e.target).closest('.' + inputClass);
       if(e.type == 'input') {
-        actionProcessing($block, 'calculatePrice');
         $target.val($target.val().replace(/[^\d\.]/g, ""));
+        actionProcessing($block, 'calculatePrice');
         if($target.val().match(/\./g).length > 1) {
           $target.val($target.val().substr(0, $target.val().lastIndexOf(".")));
           actionProcessing($block, 'calculatePrice');

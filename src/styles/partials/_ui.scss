@@ -600,10 +600,7 @@
     align-items: center;
     justify-content: center;
     &_controls {
-      margin: 8px 0;
-    }
-    &:last-child {
-      margin-top: 5px;
+      margin: 8px 0 5px 0;
     }
   }
   &__control {
@@ -666,6 +663,11 @@
       flex-shrink: 0;
       cursor: pointer;
       color: #C4C4C4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 25px;
+      width: 25px;
       span {
         text-decoration: underline;
       }
@@ -680,7 +682,7 @@
     &_switch {
       width: 40px;
       height: 20px;
-      margin: 0 5px 0 9px;
+      margin: 3px 5px 0 5px;
       position: relative;
       cursor: pointer;
       user-select: none;
@@ -765,5 +767,29 @@
   .select-box {
     width: 50%;
     max-width: 50%;
+  }
+  .product-calculator {
+    &__control {
+      width: 40px;
+      height: 40px;
+    }
+    &__plus .icon {
+      width: 12px;
+      height: 12px;
+    }
+    &__minus .icon {
+      width: 10px;
+      height: 10px;
+    }
+    &__value-input {
+      height: 40px;
+      padding: 12px;
+      max-width: 125px;
+    }
+    &__js-toggle_count, 
+    &__js-toggle_square {
+      width: 30px;
+      height: 30px;
+    }
   }
 }

@@ -1,10 +1,10 @@
 mixin block(title)
-  .catalogue-block.catalogue-block_type2.col-xl-3.col-lg-4.col-sm-6.col-12
+  .catalogue-block.catalogue-block_collection-item.col-xl-3.col-lg-4.col-sm-6.col-12
     .catalogue-block__container
-      .catalogue-block__image
+      .catalogue-block__image.catalogue-block__section
         a(href="#").cover-box.cover-box_contain
           img(alt="").lazy&attributes(attributes)
-      .catalogue-block__info
+      .catalogue-block__info.catalogue-block__section
         .catalogue-block__info-section
           a(href="#").catalogue-block__brand Плитка настенная Zeus 
           span.catalogue-block__model=title
@@ -16,8 +16,6 @@ mixin block(title)
             li.appointment-list__item
               .icon-box.icon-box_style1.appointment-list__icon <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon10"></use></svg>
               span 201x505 мм
-section.section
-  h5.section__title Элементы коллекции
-  .row
-    +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
-    +block('Marbella Arabesco')(data-src="img/banner/interyer_aura_grafite.jpg")
+      .catalogue-block__calculator.catalogue-block__section
+        include calculator
+        button.button.button_style1 В корзину

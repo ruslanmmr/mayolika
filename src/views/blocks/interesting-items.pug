@@ -1,20 +1,20 @@
 mixin slide(title, brand, text)
   .catalogue-block.catalogue-block_type2.slide
     .catalogue-block__container
-      .catalogue-block__image
+      .catalogue-block__image.catalogue-block__section
         .cover-box.cover-box_contain
           img(alt="").lazy&attributes(attributes)
         .catalogue-block__more
           a(href="#").button.button_style5 Подробнее
           a(href="#").button.button_style5.button_icon
             <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon24"></use></svg>
-      .catalogue-block__info
+      .catalogue-block__info.catalogue-block__section
         .catalogue-block__info-section
           a(href="#").catalogue-block__brand=brand
           span.catalogue-block__model=title
         .catalogue-block__info-section
           span.catalogue-block__price <span>874.00</span> руб
-      .catalogue-block__additional
+      .catalogue-block__additional.catalogue-block__section
         span.label Описание товара:
         p=text
 section.section.interesting-items
