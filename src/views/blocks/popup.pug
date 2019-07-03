@@ -1,0 +1,22 @@
+.popup.popup-succes(id='popup-succes')
+  .popup-succes__container
+    .popup-succes__icon.popup-succes__item
+      <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon20"></use></svg>
+    .popup-succes__text Благодарим за Вашу заявку. 
+    .popup-succes__text Наш дизайнер свяжется с вами в ближайшее время
+    a(href="#" data-fancybox-close).button.button_style1.popup-succes__close Закрыть
+.popup(id='popup1')
+  .contact-form-section
+    .contact-form-section__top
+      span.contact-form-section__title.t-size-18 Хотите собственный дизайн проект?
+      span Мы с радостью сделаем его для вас. Просто опишите ваши предпочтения
+    form(action="").contact-form
+      .row
+        .col-xl-6.col-12
+          input(type="text" name="name" placeholder="Ваше имя").input.input_style2
+        .col-xl-6.col-12
+          input(type="email" name="email"  placeholder="e-mail").input.input_style2
+        .col-12
+          textarea(placeholder='Текст сообщения' name="text").input.input_style2.input_textarea
+        .col-12.contact-form__button
+          button(type='submit').button.button_style1 Отправить заявку

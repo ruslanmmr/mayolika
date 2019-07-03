@@ -10,16 +10,18 @@ html(lang="ru")
       include blocks/aside   
       main.main
         .main__container
-          include blocks/header
-          .main__content
-            include blocks/main-slider
-            include blocks/categories1
-            include blocks/categories2
-            include blocks/manufacturers
-            include blocks/map-section
-            include blocks/contact-form
+          .main__top
+            include blocks/header
+            .main__content
+              include blocks/main-slider
+              include blocks/categories1
+              include blocks/categories2
+              include blocks/manufacturers
+              include blocks/map-section
+              include blocks/contact-form
           include blocks/footer
     script(src="https://unpkg.com/current-device/umd/current-device.min.js")       
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js")
     script(src="js/libs.min.js")            
     script(src="js/common.min.js")

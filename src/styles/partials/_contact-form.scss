@@ -12,11 +12,17 @@
     font-family: 'Roboto';
     font-size: 24px;
   }
+  &__bottom {
+    margin-top: 70px;
+  }
+  &__top {
+    margin-bottom: 30px;
+  }
 }
 
 .contact-form {
   max-width: 770px;
-  margin: 30px auto 70px auto;
+  margin: 0 auto;
   &__button {
     display: flex;
     justify-content: center;
@@ -28,9 +34,14 @@
 
 @media all and(max-width: 576px) {
   .contact-form {
-    margin: 25px 0;
     .button {
       width: 100%;
     }
+  }
+  .contact-form-section__bottom {
+    margin-top: 25px;
+  }
+  .contact-form-section__top {
+    margin-bottom: 25px;
   }
 }

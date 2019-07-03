@@ -34,13 +34,6 @@
   height: 100%;
   border: 0;
 }
-.catalogue-page {
-  .interesting-items {
-    margin-bottom: 55px;
-  }
-}
-
-
 .block {
   display: block;
   text-decoration: none;
@@ -212,12 +205,10 @@
       }
     }
     .block__text {
-      position: absolute;
+      position: relative;
       width: 100%;
       height: 100%;
-      bottom: 0;
-      left: 0;
-      padding: 15px;
+      padding: 25px 15px;
       background-color: rgba(0, 0, 0, 0.5);
       z-index: 2;
       text-align: center;
@@ -228,7 +219,35 @@
       justify-content: center;
     }
   }
+  &_type4-2 {
+    .button {
+      min-width: 165px;
+      margin-top: 20px;
+    }
+    .block__text {
+      background-color: rgba(0, 0, 0, 0.5) !important;
+      opacity: 0;
+    }
+    .content {
+      &:hover {
+        .block__text {
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
+.categories-block-last {
+  margin-top: 60px;
+}
+.design-order-btn {
+  margin: 40px 0 0 0;
+  text-align: center;
+  .button {
+    font-size: 18px;
+  }
+}
+
 
 @media all and(max-width: 1480px) {
   .block_type1 .content .icon {
@@ -245,6 +264,9 @@
       height: 145px;
       font-size: 16px;
     }
+  }
+  .design-order-btn .button {
+    font-size: 16px;
   }
   .block_type3 {
     .content {
@@ -263,6 +285,11 @@
   .block_type4.block_size2 .content {
     height: 500px;
   }
+  .block_type4 .block__text {
+    br {
+      display: none;
+    }
+  }
   .catalogue-page .interesting-items {
     margin-bottom: 50px;
   }
@@ -271,21 +298,27 @@
   .block_type1 .content span {
     bottom: 10px;
   }
-  .section {
+  .section,
+  .categories-block-last {
     margin-top: 50px;
   }
 }
 @media all and(max-width: 576px) {
+  .design-order-btn {
+    margin-top: 25px;
+  }
+  .design-order-btn .button {
+    font-size: 14px;
+    width: 100%;
+  }
   .tile-categories-manufacturer {
     margin-top: 40px;
-  }
-  .catalogue-page .interesting-items {
-    margin-bottom: 40px;
   }
   .block_type2 .content {
     font-size: 13px;
   }
-  .section {
+  .section,
+  .categories-block-last {
     margin-top: 40px;
   }
   .section__title {
@@ -309,9 +342,12 @@
   .block_type4.block_size3 .content {
     height: 145px;
   }
-  .block_type4 .block__text {
-    br {
-      display: none;
+  .block_type4-2 {
+    .content {
+      height: auto !important;
+    }
+    .button {
+      margin-top: 15px;
     }
   }
 }

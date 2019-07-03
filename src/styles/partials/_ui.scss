@@ -365,6 +365,7 @@
   font-family: 'Roboto';
   appearance: none;
   width: 100%;
+  transition: 0.15s;
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -372,6 +373,7 @@
   }
   &::placeholder {
     color: #C4C4C4;
+    transition: inherit;
   }
   &:focus {
     &::placeholder {
@@ -394,6 +396,9 @@
     background: #eee;
     border-radius: 4px;
     padding: 12px 20px;
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px #eee inset !important;
+    }
     &:focus {
       background: rgba(0,0,0,.1);
     }
@@ -728,11 +733,87 @@
     }
   }
 }
+.fancybox-content {
+  padding: 40px;
+  border-radius: 4px;
+}
+.fancybox-slide--html {
+  padding: 15px;
+  display: flex;
+  &:before {
+    display: none;
+  }
+  .popup {
+    margin: auto;
+  }
+}
+label.error {
+  display: block;
+  color: $color1;
+  margin-top: 5px;
+}
+.popup {
+  display: none;
+}
+.popup-succes {
+  max-width: 600px;
+  &__close {
+    min-width: 200px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__icon {
+    border-radius: 100%;
+    border: 1px solid #ED6842;
+    opacity: 0.5;
+    margin-bottom: 25px;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .icon {
+      width: 50%;
+      height: 50%;
+      fill: #ED6842;
+    }
+  }
+  &__text {
+    color: #000;
+    font-size: 18px;
+    &:not(:last-child) {
+      margin-bottom: 0.7em;
+    }
+    text-align: center;
+  }
+}
+.fancybox-close-small {
+  padding: 0;
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
 
 @media all and(max-width: 992px) {
   .button_scroll-top {
     bottom: 80px;
     right: 20px;
+  }
+  .popup-succes {
+    &__icon {
+      width: 120px;
+      height: 120px;
+    }
+    &__close {
+      margin-top: 30px;
+    }
   }
 }
 @media all and(max-width: 576px) {
@@ -790,6 +871,21 @@
     &__js-toggle_square {
       width: 30px;
       height: 30px;
+    }
+  }
+  .fancybox-content {
+    padding: 40px 20px;
+  }
+  .popup-succes {
+    &__icon {
+      width: 80px;
+      height: 80px;
+    }
+    &__close {
+      margin-top: 20px;
+    }
+    &__text {
+      font-size: 16px;
     }
   }
 }

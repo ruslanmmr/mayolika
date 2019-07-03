@@ -2,7 +2,7 @@ doctype html
 html(lang="ru")
   head
     include blocks/head
-  body.catalogue-page
+  body
     .wrapper
       a(href="#").button.button_scroll-top
         span
@@ -10,12 +10,15 @@ html(lang="ru")
       include blocks/aside   
       main.main
         .main__container
-          include blocks/header
-          .main__content
-            h1.title.title_style1.t-size-36 Плитка для ванной
-            include blocks/catalogue-block
-            include blocks/interesting-items
-            include blocks/categories2
+          .main__top
+            include blocks/header
+            .main__content
+              .page-head
+                h1.page-head__item.page-head__title.t-size-36 Плитка для ванной
+              include blocks/catalogue-block
+              include blocks/interesting-items
+              .categories-block-last
+                include blocks/categories2
           include blocks/footer
     script(src="https://unpkg.com/current-device/umd/current-device.min.js")       
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")

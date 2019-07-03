@@ -1,16 +1,18 @@
 section.section.contact-form-section
-  span.contact-form-section__title.t-size-18 Затрудняетесь с выбором плитки? Есть вопросы?
-  span Мы с радостью на них ответим. Просто напишите нам
+  .contact-form-section__top
+    span.contact-form-section__title.t-size-18 Затрудняетесь с выбором плитки? Есть вопросы?
+    span Мы с радостью на них ответим. Просто напишите нам
   form(action="").contact-form
     .row
       .col-xl-6.col-12
-        input(type="text" placeholder="Ваше имя" required).input.input_style2
+        input(type="text" name="name" placeholder="Ваше имя").input.input_style2
       .col-xl-6.col-12
-        input(type="phone" placeholder="Номер телефона +7" required).input.input_style2.input_phone
+        input(type="phone" name="phone" placeholder="Номер телефона +7").input.input_style2
       .col-12
-        textarea(placeholder='Текст сообщения' required).input.input_style2.input_textarea
+        textarea(placeholder='Текст сообщения' name="text").input.input_style2.input_textarea
       .col-12.contact-form__button
         button(type='submit').button.button_style1 Отправить
-  span.contact-form-section__title.t-size-18 Или позвоните нам по телефонам:
-  span.contact-form-section__number +7 (473) 207-03-96
-  span.contact-form-section__number +7 (473) 207-03-98
+  .contact-form-section__bottom
+    span.contact-form-section__title.t-size-18 Или позвоните нам по телефонам:
+    span.contact-form-section__number +7 (473) 207-03-96
+    span.contact-form-section__number +7 (473) 207-03-98
