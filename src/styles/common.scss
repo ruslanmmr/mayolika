@@ -10,6 +10,9 @@ $color6: #757575;
 $color7: #ED6842;
 $color8: #FFA54F;
 
+html, body {
+  overflow: hidden;
+}
 body {
   text-rendering: optimizeSpeed;
   font: 14px "Roboto", sans-serif;
@@ -130,4 +133,5 @@ body {
 @import "partials/text";
 @import "partials/main-slider";
 @import "partials/contact-form";
+@import "partials/news";
 @import "partials/footer";

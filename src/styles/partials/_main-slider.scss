@@ -12,7 +12,7 @@
   }
   &__description {
     position: absolute;
-    bottom: 20px;
+    bottom: 25px;
     left: 25px;
     background: rgba(0, 0, 0, 0.6);
     border-radius: 4px;
@@ -41,14 +41,8 @@
     width: calc(100% - 40px);
     max-width: calc(100% - 40px);
     left: 20px;
+    bottom: 20px;
     padding: 20px;
-  }
-}
-@media all and(max-width: 992px) {
-  .main-slide__description {
-    width: calc(100% - 40px);
-    max-width: calc(100% - 40px);
-    left: 20px;
   }
 }
 @media all and(max-width: 576px) {

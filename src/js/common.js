@@ -104,8 +104,20 @@ function select() {
 }
 //scroll
 function scrollInit() {
+  $scrollContainer.niceScroll(".scroll-wrapper", {
+    cursorcolor: cursorcolorVar,
+    cursorwidth: cursorwidthVar,
+    cursorborder: cursorborderVar,
+    cursorborderradius: cursorborderradiusVar,
+    zindex: zindexVar,
+    bouncescroll: bouncescrollVar,
+    autohidemode: "leave",
+  });
+  var timerId = setInterval(function() {
+    $scrollContainer.getNiceScroll().resize();
+  }, 50);
+  
   if ($('html').hasClass('desktop')) {
-    $('html').css('overflow', 'hidden');
     $('body').niceScroll({
       cursorcolor: cursorcolorVar,
       cursorwidth: cursorwidthVar,
@@ -115,24 +127,16 @@ function scrollInit() {
       bouncescroll: bouncescrollVar,
       autohidemode: true
     });
-    $scrollContainer.niceScroll(".scroll-wrapper", {
-      cursorcolor: cursorcolorVar,
-      cursorwidth: cursorwidthVar,
-      cursorborder: cursorborderVar,
-      cursorborderradius: cursorborderradiusVar,
-      zindex: zindexVar,
-      bouncescroll: bouncescrollVar,
-      autohidemode: "leave",
-    });
     var timerId = setInterval(function() {
       $('body').getNiceScroll().resize();
-      $scrollContainer.getNiceScroll().resize();
     }, 50);
+
     $(".button_scroll-top").on('click', function(e) {
       e.preventDefault();
       $('body').getNiceScroll().doScrollPos(0,0);
     })
   } else {
+    $('html, body').css('overflow', 'auto');
     $(".button_scroll-top").on('click', function(e) {
       e.preventDefault();
       $("html, body").animate({ scrollTop: 0 }, 500);
@@ -206,8 +210,7 @@ function aside() {
   //при клике на кнопку фильтров
   $filterToggle.on('click', function(e) {
     e.preventDefault();
-    if($('html').hasClass('nav-opened')) {}
-    else {
+    if(!$('html').hasClass('nav-opened')) {
       scrollLock.hide($("body"));
       $('html').addClass('nav-opened');
     }
@@ -400,13 +403,28 @@ function slider() {
 //gallery
 function gallery() {
   var $gallery = $('.gallery-slider'),
-    $galleryLink = $('.gallery-nav__link');
+    $galleryLink = $('.gallery-nav__link'),
+    activeSlide;
+
+    $gallery.on('swipe beforeChange', function(event, slick, currentSlide, nextSlide){
+      setTimeout(function() {
+        pag();
+      }, 400)
+    });
 
   $galleryLink.on('click', function(event) {
     event.preventDefault();
     var index = $(this).parent().index();
     $gallery.slick('slickGoTo', index);
+    pag();
   });
+
+  //custom pagination
+  function pag() {
+    activeSlide = $gallery.find('.slick-active').index();
+    $galleryLink.removeClass('active');
+    $('.gallery-nav__item').eq(activeSlide).find($galleryLink).addClass('active');
+  }
 }
 
 //more 
@@ -583,7 +601,6 @@ function calculator() {
         var val = parseFloat((Math.floor(inputVal/tileSquare) * tileSquare).toFixed(2));
         if(val < minSquare) {
           $input.val(parseFloat(minSquare.toFixed(2)))
-          console.log('1');
         } else if(inputVal != val) {
           console.log(val + tileSquare)
           $input.val(parseFloat((val + tileSquare).toFixed(2)));
@@ -646,88 +663,90 @@ function modalOpen(content, timer) {
 //validate
 function validation() {
   var $phoneInput = $('input[name="phone"]'),
-      $form = $(".contact-form");
+      $form = $(".validate-form");
 
-  function succes(form) {
-    $(form).find('.input').val('');
-    if($(form).parents('.popup').length > 0) {
-      $.fancybox.close();
+  if($form.length > 0) {
+    function succes(form) {
+      $(form).find('.input').val('');
+      if($(form).parents('.popup').length > 0) {
+        $.fancybox.close();
+      }
+      modalOpen($('<div class="popup popup-succes fancybox-content" id="popup-succes" style="display: none;"> <div class="popup-succes__container"> <div class="popup-succes__icon popup-succes__item"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon20"></use></svg></div><div class="popup-succes__text">Благодарим за Вашу заявку. </div><div class="popup-succes__text">Наш дизайнер свяжется с вами в ближайшее время</div><a class="button button_style1 popup-succes__close" href="#" data-fancybox-close="">Закрыть</a> </div><button type="button" data-fancybox-close="" class="button button_style2 button-toggle fancybox-button fancybox-close-small" title="Close"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" stroke="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.115 1.49L12.689.118 7.193 5.819 1.491.323.117 1.748 5.82 7.244.323 12.947l1.426 1.373 5.496-5.702 5.702 5.496 1.374-1.425-5.702-5.496 5.496-5.702z"></path></svg></button></div>'), true);
+      popupCloseTimer = setTimeout(function() {
+        $.fancybox.close();
+      }, 3000)
     }
-    modalOpen($('<div class="popup popup-succes fancybox-content" id="popup-succes" style="display: none;"> <div class="popup-succes__container"> <div class="popup-succes__icon popup-succes__item"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon20"></use></svg></div><div class="popup-succes__text">Благодарим за Вашу заявку. </div><div class="popup-succes__text">Наш дизайнер свяжется с вами в ближайшее время</div><a class="button button_style1 popup-succes__close" href="#" data-fancybox-close="">Закрыть</a> </div><button type="button" data-fancybox-close="" class="button button_style2 button-toggle fancybox-button fancybox-close-small" title="Close"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" stroke="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.115 1.49L12.689.118 7.193 5.819 1.491.323.117 1.748 5.82 7.244.323 12.947l1.426 1.373 5.496-5.702 5.702 5.496 1.374-1.425-5.702-5.496 5.496-5.702z"></path></svg></button></div>'), true);
-    popupCloseTimer = setTimeout(function() {
-      $.fancybox.close();
-    }, 3000)
-  }
-
-  $phoneInput.mask("+7 (999) 999-99-99", {completed:function(){$form.validate().element($phoneInput)}});
-
-  $phoneInput.on('keyup', function() {
-    if($(this).hasClass('error')) {
-      $form.validate().element($phoneInput);
-    }
-  })
   
-  jQuery.validator.addMethod("correctPhone", function(value, element){
-    if (/^(?!_$)([+]{1}[0-9]{1} [(]{1}[0-9]{3}[)]{1} [0-9]{3}[-]{1}[0-9]{2}[-]{1}[0-9]{2})$/.test(value)) {
-        return true;  
-    } else {
-        return false;   
-    };
-  }); 
-
-  $form.validate({
-    rules: {
-      email: {
-        required: true,
-        email: true
-      },
-      name: {
-        required: true,
-        minlength: 2 
-      },
-      text: {
-        required: true,
-        minlength: 5 
-      },
-      phone: {
-        required: true,
-        correctPhone: true
+    $phoneInput.mask("+7 (999) 999-99-99", {completed:function(){$form.validate().element($phoneInput)}});
+  
+    $phoneInput.on('keyup', function() {
+      if($(this).hasClass('error')) {
+        $form.validate().element($phoneInput);
       }
-    },
-    messages: {
-      email: {
-        required: "Пожалуйста, заполните это поле",
-        email: jQuery.validator.format("Введите корректный адрес электронной почты")
+    })
+    
+    jQuery.validator.addMethod("correctPhone", function(value, element){
+      if (/^(?!_$)([+]{1}[0-9]{1} [(]{1}[0-9]{3}[)]{1} [0-9]{3}[-]{1}[0-9]{2}[-]{1}[0-9]{2})$/.test(value)) {
+          return true;  
+      } else {
+          return false;   
+      };
+    }); 
+  
+    $form.validate({
+      rules: {
+        email: {
+          required: true,
+          email: true
+        },
+        name: {
+          required: true,
+          minlength: 2 
+        },
+        text: {
+          required: true,
+          minlength: 5 
+        },
+        phone: {
+          required: true,
+          correctPhone: true
+        }
       },
-      name: {
-        required: "Пожалуйста, заполните это поле",
-        minlength: jQuery.validator.format("Длина имени должна быть больше 1-го символa")
+      messages: {
+        email: {
+          required: "Пожалуйста, заполните это поле",
+          email: jQuery.validator.format("Введите корректный адрес электронной почты")
+        },
+        name: {
+          required: "Пожалуйста, заполните это поле",
+          minlength: jQuery.validator.format("Длина имени должна быть больше 1-го символa")
+        },
+        text: {
+          required: "Пожалуйста, заполните это поле",
+          minlength: jQuery.validator.format("Текст сообщения не должен быть короче 5-ти символов")
+        },
+        phone: {
+          required: "Пожалуйста, заполните это поле",
+          correctPhone: jQuery.validator.format("Укажите корректный номер телефона")
+        }
       },
-      text: {
-        required: "Пожалуйста, заполните это поле",
-        minlength: jQuery.validator.format("Текст сообщения не должен быть короче 5-ти символов")
-      },
-      phone: {
-        required: "Пожалуйста, заполните это поле",
-        correctPhone: jQuery.validator.format("Укажите корректный номер телефона")
+       submitHandler: function(form) {
+  
+        /*
+        var form_data = $(form).serialize();
+        $.ajax({
+        type: "POST",
+        url: "send.php",
+        data: form_data,
+        success: function() {
+          succes(form);
+        }
+        });
+        */
+  
+       //временно
+       succes(form);
       }
-    },
-     submitHandler: function(form) {
-
-      /*
-      var form_data = $(form).serialize();
-      $.ajax({
-      type: "POST",
-      url: "send.php",
-      data: form_data,
-      success: function() {
-        succes(form);
-      }
-      });
-      */
-
-     //временно
-     succes(form);
-    }
-  });
+    });
+  }
 }
