@@ -410,6 +410,9 @@
       }
     }
     &.active {
+      .icon {
+        opacity: 0.5;
+      }
       &:after {
         background-color: rgba(0, 0, 0, 0.6);
       }
