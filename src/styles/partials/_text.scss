@@ -27,20 +27,23 @@ p {
 .t-size-12 {
   font-size: 12px;
 }
+.t-size-16 {
+  font-size: 16px;
+}
 .t-size-18 {
   font-size: 18px;
 }
 .page-head {
   font-family: 'Manrope';
   color: #000;
-  margin-bottom: 35px;
+  margin-bottom: 45px;
   &__item {
     display: block;
     text-align: center;
   }
   &__title {
     &:not(:last-child) {
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
   }
 }
@@ -52,7 +55,7 @@ p {
 }
 @media all and(max-width: 992px) {
   .page-head {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
   .t-size-36 {
     font-size: 28px;
@@ -63,7 +66,7 @@ p {
 }
 @media all and(max-width: 768px) {
   .page-head {
-    margin-bottom: 25px;
+    margin-bottom: 35px;
     &__title:not(:last-child) {
       margin-bottom: 15px;
     }
