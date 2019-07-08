@@ -364,6 +364,9 @@
       height: 30px;
       transition: 0.2s;
       margin-bottom: 3px;
+      &_style2 {
+        fill: #979797;
+      }
     }
     .block__more {
       color: $color6;
@@ -371,6 +374,18 @@
       transition: 0.2s;
       opacity: 0;
       text-align: center;
+    }
+    .block__content {
+      margin-top: 25px;
+    }
+    .block__info {
+      display: block;
+      text-align: center;
+      color: #000;
+      margin: 0;
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
     }
   }
   &_size1 {
