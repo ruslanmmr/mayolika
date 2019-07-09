@@ -37,11 +37,6 @@
         padding-right: 50px;
       }
     }
-    &-text {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-    }
     .icon {
       width: 20px;
       height: 20px;
@@ -176,11 +171,9 @@
 
 @media all and(max-width: 1100px) {
   .header__info-text {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
-    span {
-      display: none;
-    }
   }
 }
 @media all and(max-width: 992px) {
