@@ -266,6 +266,9 @@
     flex-direction: column;
     justify-content: space-between;
   }
+  &__art {
+    color: #9C9898;
+  }
   &__top {
     font-family: 'Manrope';
     padding: 10px 20px 20px 20px;
@@ -467,6 +470,12 @@
   }
   &__container {
     outline: none;
+    border: 1px solid $color3;
+    &.cover-box_contain {
+      img {
+        padding: 70px;
+      }
+    }
     &:before {
       content: '';
       display: block;
@@ -481,9 +490,6 @@
   }
   .product-head__more-info .title {
     font-size: 16px;
-  }
-  .product-head__title {
-    margin-bottom: 10px;
   }
 }
 @media all and(max-width: 1200px) {
@@ -502,9 +508,15 @@
       margin-top: 10px;
     }
   }
+  .gallery-slide__container.cover-box_contain img {
+    padding: 40px;
+  }
 }
 @media all and(max-width: 576px) {
   .product-head__more-info li {
     font-size: 14px;
+  }
+  .gallery-slide__container.cover-box_contain img {
+    padding: 30px;
   }
 }

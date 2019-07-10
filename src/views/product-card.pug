@@ -15,35 +15,133 @@ html(lang="ru")
             .main__content
               include blocks/breadcrumbs
               .product-card
-                include blocks/collection-head
-                +hd()
-                  .product-head__item
-                    .product-head__section
-                      .product-head__section-block
-                        span.label Производитель
-                        ul.appointment-list
-                          li.appointment-list__item
-                            .icon-box.icon-box_style4.appointment-list__icon <svg class="icon"><use xlink:href="img/icons/countries-sprite.svg#italy"></use></svg>
-                            span Италия
-                      .product-head__section-block
-                        include blocks/calculator
-                    button.button.button_style1.product-head__button В корзину
+                .product-head
+                  .row
+                    .product-head__gallery.col-xl-6.col-lg-5.col-sm-12
+                      .gallery-slider.slider.gallery
+                        //item1
+                        .gallery-slide.slide
+                          a(href="img/banner/tile10.jpg").gallery-slide__container.cover-box.cover-box_contain
+                            img(data-src="img/banner/tile10.jpg", alt="").lazy
+                            .gallery-slide__icon
+                              <svg class="icon icon_photo"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                              span Увеличить
+                        //item2
+                        .gallery-slide.slide
+                          a(href="img/banner/tile10.jpg").gallery-slide__container.cover-box.cover-box_contain
+                            img(data-src="img/banner/tile10.jpg", alt="").lazy
+                            .gallery-slide__icon
+                              <svg class="icon icon_photo"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                              span Увеличить
+                        //item3
+                        .gallery-slide.slide
+                          a(href="img/banner/tile10.jpg").gallery-slide__container.cover-box.cover-box_contain
+                            img(data-src="img/banner/tile10.jpg", alt="").lazy
+                            .gallery-slide__icon
+                              <svg class="icon icon_photo"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                              span Увеличить
+                      .gallery-nav.row
+                        //item1
+                        .gallery-nav__item.col-xl-4
+                          a(href="#").gallery-nav__link.cover-box.active
+                            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                            img(data-src="img/banner/tile10.jpg", alt="").lazy
+                        //item2
+                        .gallery-nav__item.col-xl-4
+                          a(href="#").gallery-nav__link.cover-box
+                            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                            img(data-src="img/banner/tile10.jpg", alt="").lazy
+                        //item3
+                        .gallery-nav__item.col-xl-4
+                          a(href="#").gallery-nav__link.cover-box
+                            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                            img(data-src="img/banner/tile10.jpg", alt="").lazy
+                    .product-head__info.col-xl-6.col-lg-7.col-sm-12
+                      .product-head__top
+                        .product-head__title
+                          h1.t-size.t-size-36 Kerlife Intenso
+                          span.product-head__art Арт. 238901734
+                        p Коллекция плитки размерами 20,1 х 50,5 см имитирует рисунок дерева, подчеркивая рисунок легкой текстурой. Оживляют интерьер панно с мягким цветочным узором и узкие бордюры, комбинация которых позволяет сформировать оригинальный дизайн неповторимой отделки.
+                      .product-head__bottom.row
+                        .col-xl-6.col-12
+                          .product-head__item
+                            .product-head__section
+                              .product-head__section-block
+                                span.label Производитель
+                                ul.appointment-list
+                                  li.appointment-list__item
+                                    .icon-box.icon-box_style4.appointment-list__icon <svg class="icon"><use xlink:href="img/icons/countries-sprite.svg#italy"></use></svg>
+                                    span Италия
+                              .product-head__section-block
+                                include blocks/calculator
+                            button.button.button_style1.product-head__button В корзину
+                        .col-xl-6.col-12
+                          .product-head__item
+                            .product-head__more-info
+                              button.button.button_style2.button-toggle
+                                  <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon17"></use></svg>
+                              .scroll
+                                .scroll-container
+                                  .scroll-wrapper
+                                    span.title Информация о коллекции
+                                    ul
+                                      li
+                                        span Стиль коллекции: 
+                                        span Классика / модерн
+                                      li
+                                        span Основной цвет:
+                                        span Белый
+                                      li
+                                        span Тип:
+                                        span Керамическая плитка
+                                      li
+                                        span Категория: 
+                                        span Декор
+                                      li
+                                        span Текстура:
+                                        span Мрамор
+                                      li
+                                        span Размер:
+                                        span до 50 см ( Средний)
+                                      li
+                                        span Поверхность:
+                                        span Глянцевая/ матовая
+                                      li
+                                        span Толщина:
+                                        span от 8,5 см до 12 см
+                            .product-head__section
+                              .product-head__section-block
+                                span.label Назначение
+                                ul.appointment-list
+                                  li.appointment-list__item
+                                    .icon-box.icon-box_style1.appointment-list__icon <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon3"></use></svg>
+                                    span Для ванной
+                                  li.appointment-list__item
+                                    .icon-box.icon-box_style1.appointment-list__icon <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon11"></use></svg>
+                                    span Для кухни
+                                  li.appointment-list__item
+                                    .icon-box.icon-box_style1.appointment-list__icon <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon7"></use></svg>
+                                    span Для пола
+                                  li.appointment-list__item
+                                    .icon-box.icon-box_style1.appointment-list__icon <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon12"></use></svg>
+                                    span Для еще чего-то
+                            a(href="#").button.button_style6.product-head__button.button-toggle Больше информации
                 section.section
-                  h5.section__title Элементы коллекции
+                  h5.section__title Похожие коллекции
                   .row
                     include blocks/elements-block
                     +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
-                    +block('Marbella Arabesco')(data-src="img/banner/interyer_aura_grafite.jpg")
                     +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
-                    +block('Marbella Arabesco')(data-src="img/banner/interyer_aura_grafite.jpg")
+                    +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
+                    +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
                 section.section
                   h5.section__title Подходящие товары
                   .row
                     include blocks/elements-block
                     +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
-                    +block('Marbella Arabesco')(data-src="img/banner/interyer_aura_grafite.jpg")
                     +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
-                    +block('Marbella Arabesco')(data-src="img/banner/interyer_aura_grafite.jpg")
+                    +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
+                    +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
                 include blocks/interesting-items
           include blocks/footer
     script(src="https://unpkg.com/current-device/umd/current-device.min.js")       

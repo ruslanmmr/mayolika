@@ -241,11 +241,6 @@
   &_type5 {
     .content {
       overflow: visible;
-      &:before {
-        content: '';
-        display: block;
-        padding-top: 100%;
-      }
       &:hover {
         box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2);
         z-index: 4;
@@ -272,10 +267,7 @@
       border: 1px solid $color3;
       background-color: #fff;
       padding: 45px 20px 25px 20px;
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      top: 0;
+      position: relative;
       border-radius: 4px;
       z-index: 1;
       transition: z-index 0.3s step-end, border-radius 0.3s;
@@ -283,6 +275,7 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+      height: 100%;
     }
     .block__more {
       width: 100%;
@@ -310,7 +303,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 15px;
+      margin-bottom: 40px;
       flex-shrink: 0;
     }
     .icon {
@@ -473,6 +466,9 @@
   }
   .block_size4 .content {
     height: 200px;
+  }
+  .block_type5 .block__icon {
+    margin-bottom: 20px;
   }
   .block_size6 .content {
     height: 350px;
