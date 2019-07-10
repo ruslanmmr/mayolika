@@ -49,6 +49,14 @@ p {
 }
 
 @media all and(max-width: 1200px) {
+  .t-size-64 {
+    font-size: 60px;
+  }
+}
+@media all and(max-width: 1200px) {
+  .t-size-64 {
+    font-size: 54px;
+  }
   .t-size-36 {
     font-size: 32px;
   }
@@ -83,6 +91,9 @@ p {
   .t-size-24 {
     font-size: 20px;
   }
+  .t-size-18 {
+    font-size: 16px;
+  }
   .t-size-64 {
     font-size: 46px;
     line-height: 1.5;
@@ -90,6 +101,7 @@ p {
 }
 @media all and(max-width: 576px) {
   .page-head {
+    margin-bottom: 30px;
     &__description {
       font-size: 14px;
     }

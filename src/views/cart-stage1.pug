@@ -1,0 +1,40 @@
+doctype html
+html(lang="ru")
+  head
+    include blocks/head
+  body
+    .wrapper
+      a(href="#").button.button_scroll-top
+        span
+         <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon18"></use></svg>
+      include blocks/aside   
+      main.main
+        .main__container
+          .main__top
+            include blocks/header
+            .main__content
+              .page-head
+                h1.page-head__item.page-head__title.t-size-36 Корзина
+              .cart-navigation.row
+                .cart-navigation-stage.col-xl-3.col-sm-6
+                  a(href="#").cart-navigation-stage__container
+                    span.cart-navigation-stage__number 01
+                    span.cart-navigation-stage__title.t-size-18 Список<br> покупок
+                .cart-navigation-stage.col-xl-3.col-sm-6
+                  .cart-navigation-stage__container
+                    span.cart-navigation-stage__number 02
+                    span.cart-navigation-stage__title.t-size-18 Доставка<br> товара
+                .cart-navigation-stage.col-xl-3.col-sm-6
+                  .cart-navigation-stage__container
+                    span.cart-navigation-stage__number 03
+                    span.cart-navigation-stage__title.t-size-18 Оплата<br> покупок
+                .cart-navigation-stage.col-xl-3.col-sm-6
+                  .cart-navigation-stage__container
+                    span.cart-navigation-stage__number 04
+                    span.cart-navigation-stage__title.t-size-18 Подтверждение<br> заказа
+              include blocks/cart-products
+          include blocks/footer
+    script(src="https://unpkg.com/current-device/umd/current-device.min.js")       
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="js/libs.min.js")            
+    script(src="js/common.min.js")
