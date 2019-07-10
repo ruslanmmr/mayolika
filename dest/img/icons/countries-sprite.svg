@@ -1,7 +1,20 @@
 <svg width="0" height="0" class="hidden">
   <symbol viewBox="0 0 31 30" fill="none" stroke="none" xmlns="http://www.w3.org/2000/svg" id="italy">
-    <path d="M10.333 0H0v30h10.333V0z" fill="#009246"></path>
-    <path d="M20.666 0H10.333v30h10.333V0z" fill="#fff"></path>
-    <path d="M31 0H20.667v30H31V0z" fill="#CE2B37"></path>
+      <path d="M10.333 0H0v30h10.333V0z" fill="#009246"></path>
+      <path d="M20.666 0H10.333v30h10.333V0z" fill="#fff"></path>
+      <path d="M31 0H20.667v30H31V0z" fill="#CE2B37"></path>
+    </symbol>
+  <symbol viewBox="0 0 30 30" fill="none" stroke="none" xmlns="http://www.w3.org/2000/svg" id="russia">
+    <path d="M0 20v10h30V20H0z" fill="#E52329"></path>
+    <path d="M0 10v10h30V10H0z" fill="#143298"></path>
+    <path d="M0 0v10h30V0H0z" fill="#fff"></path>
+  </symbol>
+  <symbol viewBox="0 0 30 30" fill="none" stroke="none" xmlns="http://www.w3.org/2000/svg" id="spain">
+    <path d="M0 20v10h30V20H0zM0 0v10h30V0H0z" fill="#C60B1E"></path>
+    <path d="M0 7v16h30V7H0z" fill="#FFC400"></path>
+  </symbol>
+  <symbol viewBox="0 0 30 30" fill="none" stroke="none" xmlns="http://www.w3.org/2000/svg" id="ukraine">
+    <path d="M0 15v15h30V15H0z" fill="#FFD500"></path>
+    <path d="M0 0v15h30V0H0z" fill="#005BBA"></path>
   </symbol>
 </svg>
