@@ -552,8 +552,8 @@ function calculator() {
 
   //functions
   function actionProcessing(block, operation) {{
-    var tileSquare = parseFloat($(block).find('.product-calculator__value-input').data('square').toFixed(2)),
-        minSquare = parseFloat((Math.ceil(+$(block).find('.product-calculator__value-input').data('minsquare')/tileSquare) * tileSquare).toFixed(2)),
+    var tileSquare = parseFloat($(block).find('.product-calculator__value-input').data('square').toFixed(4)),
+        minSquare = parseFloat((Math.ceil(+$(block).find('.product-calculator__value-input').data('minsquare')/tileSquare) * tileSquare).toFixed(4)),
         $input = block.find('.product-calculator__value-input'),
         tilePrice = +$(block).find('.product-calculator__value-input').data('price'),
         $price = block.find('.product-calculator__total-price'),
@@ -562,7 +562,7 @@ function calculator() {
       if($(block).hasClass('product-calculator_js-count-calc')) {
         $input.val(parseFloat((inputVal + 1).toFixed(0)));
       } else {
-        $input.val(parseFloat((inputVal + tileSquare).toFixed(2)));
+        $input.val(parseFloat((inputVal + tileSquare).toFixed(4)));
       }
     } else if (operation == 'reduce') {
       if($(block).hasClass('product-calculator_js-count-calc')) {
@@ -571,14 +571,14 @@ function calculator() {
         }
       } else {
         if(inputVal>minSquare) {
-          $input.val(parseFloat((inputVal - tileSquare).toFixed(2)));
+          $input.val(parseFloat((inputVal - tileSquare).toFixed(4)));
         }
       }
     } else if (operation == 'measureChange') {
       if($(block).hasClass('product-calculator_js-count-calc')) {
         $input.val(parseFloat((inputVal/tileSquare).toFixed(0)));
       } else {
-        $input.val(parseFloat((inputVal*tileSquare).toFixed(2)));
+        $input.val(parseFloat((inputVal*tileSquare).toFixed(4)));
       }
     } else if (operation == 'calculatePrice') {
       if($(block).hasClass('product-calculator_js-count-calc')) {
@@ -598,12 +598,12 @@ function calculator() {
       }
       //площадь
        else {
-        var val = parseFloat((Math.floor(inputVal/tileSquare) * tileSquare).toFixed(2));
+        var val = parseFloat((Math.floor(inputVal/tileSquare) * tileSquare).toFixed(4));
         if(val < minSquare) {
-          $input.val(parseFloat(minSquare.toFixed(2)))
+          $input.val(parseFloat(minSquare.toFixed(4)))
         } else if(inputVal != val) {
           console.log(val + tileSquare)
-          $input.val(parseFloat((val + tileSquare).toFixed(2)));
+          $input.val(parseFloat((val + tileSquare).toFixed(4)));
         }
       }
     }
