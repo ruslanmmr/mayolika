@@ -1,10 +1,11 @@
 .product-calculator
+  input(type='text' data-price='800' data-minsquare='1' data-square='0.1015' hidden disabled).product-calculator__count-input
   .product-calculator__section
     span.product-calculator__total-price 0
   .product-calculator__section.product-calculator__section_controls
     span.product-calculator__control.product-calculator__minus
       <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon1"></use></svg>
-    input(type="text" data-price='800' data-minsquare='1' data-square='0.1015').product-calculator__value-input
+    input(type="text").product-calculator__value-input
     span.product-calculator__control.product-calculator__plus
       <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon2"></use></svg>
   .product-calculator__section
