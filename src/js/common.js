@@ -11,7 +11,7 @@ $(document).ready(function () {
   gallery();
   moreInfo();
   calculator();
-  popup();
+  fancybox();
   validation();
 });
 $(window).resize(function () {
@@ -618,53 +618,61 @@ function calculator() {
   }}
 }
 //popup
-function popup() {
+function fancybox() {
+  $.fancybox.defaults.btnTpl.close = '<button data-fancybox-close class="fancybox-button fancybox-button--close" title="{{CLOSE}}">' +
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.6 13.6"><path d="M6.8 5.4L1.4 0 0 1.4l5.4 5.4L0 12.2l1.4 1.4 5.4-5.4 5.4 5.4 1.4-1.4-5.4-5.4 5.4-5.4L12.2 0z"></path></svg>' +
+  "</button>";
+  $.fancybox.defaults.btnTpl.arrowLeft = '<button data-fancybox-prev class="fancybox-button fancybox-button--arrow_left" title="{{PREV}}">' +
+  '<div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 10.14"><path d="M6.28 8.77l-1.34 1.37L0 5.07 4.94 0l1.34 1.38L3.6 4.1H14v1.94H3.6z"></path></svg></div>' +
+  "</button>";
+  $.fancybox.defaults.btnTpl.arrowRight = '<button data-fancybox-prev class="fancybox-button fancybox-button--arrow_right" title="{{PREV}}">' +
+  '<div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 10.14"><path d="M10.4 6.04L7.72 8.76l1.34 1.38L14 5.07 9.06 0 7.72 1.38 10.4 4.1H0v1.94z"></path></svg></div>' +
+  "</button>";
+  $.fancybox.defaults.btnTpl.zoom = '<button data-fancybox-zoom class="fancybox-button fancybox-button--zoom" title="{{ZOOM}}">' +
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.056 14.096"> <path d="M13.756 12.356l-3-3a5.9 5.9 0 0 0-.6-7.6 5.9 5.9 0 0 0-8.4 0 5.9 5.9 0 0 0 0 8.4 5.9 5.9 0 0 0 7.7.7l3 3a1 1 0 0 0 1.3 0c.4-.5.4-1 0-1.5zm-10.6-3.5a4 4 0 0 1 0-5.7 4 4 0 0 1 5.7 0 4 4 0 0 1 0 5.7 4 4 0 0 1-5.7 0z"></path> </svg>' +
+  "</button>";
+  $.fancybox.defaults.btnTpl.download = '<a download data-fancybox-download class="fancybox-button fancybox-button--download" title="{{DOWNLOAD}}" href="javascript:;">' +
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.24 14"> <path d="M13.24 12.09V14H0v-1.91zm-2.97-6.96l1.35 1.32-5 4.87-5-4.87 1.36-1.32 2.68 2.64V0h1.92v7.77z"></path> </svg>' +
+  "</a>";
+  $.fancybox.defaults.btnTpl.slideShow = '<button data-fancybox-play class="fancybox-button fancybox-button--play" title="{{PLAY_START}}">' +
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 13.2"> <path d="M0 0v13.2l11-6.6z"></path></svg>' +
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.35 12.5" id="slideshow"><path d="M0 0h2.2v12.5H0zm5.15 0h2.2v12.5h-2.2z"></path></svg>' +
+  "</button>";
+  $.fancybox.defaults.btnTpl.smallBtn = '<button type="button" data-fancybox-close class="fancybox-button fancybox-close-small" title="{{CLOSE}}">' +
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.6 13.6"><path d="M6.8 5.4L1.4 0 0 1.4l5.4 5.4L0 12.2l1.4 1.4 5.4-5.4 5.4 5.4 1.4-1.4-5.4-5.4 5.4-5.4L12.2 0z"></path></svg>' +
+  "</button>";
+  $.fancybox.defaults.btnTpl.thumbs = '<button data-fancybox-thumbs class="fancybox-button fancybox-button--thumbs" title="{{THUMBS}}">' +
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.7 12.7" id="slideshow"><path d="M8.94 8.94h3.76v3.76H8.94zm-4.47 0h3.76v3.76H4.47zM0 8.94h3.76v3.76H0zm8.94-4.47h3.76v3.76H8.94zm-4.47 0h3.76v3.76H4.47zM0 4.47h3.76v3.76H0zM8.94 0h3.76v3.76H8.94zM4.47 0h3.76v3.76H4.47zM0 0h3.76v3.76H0z"></path></svg>' +
+  "</button>";
+  $.fancybox.defaults.i18n.ru = {
+    CLOSE       : 'Закрыть',
+    NEXT        : 'Следующий слайд',
+    PREV        : 'Предидущий слайд',
+    ERROR       : 'Ошибка загрузки, попробуйте позже.',
+    PLAY_START  : 'Запустить слайд-шоу',
+    PLAY_STOP   : 'Остановить слайд-шоу',
+    FULL_SCREEN : 'Полноэкранный режим',
+    THUMBS      : 'Миниатюры',
+    DOWNLOAD    : 'Загрузить',
+    SHARE       : 'Поделиться',
+    ZOOM        : 'Увеличить'
+  };
+  $.fancybox.defaults.lang = 'ru';
+  $.fancybox.defaults.loop = true;
+  $.fancybox.defaults.autoFocus = false;
 
-  $(".popup-link").on('click', function() {
-    var content = $($(this).attr('href'));
-    modalOpen(content, false);
-  })
-  
-  $(".modal-link").fancybox({
-    autoFocus: false,
-    smallBtn: true,
+  $('[data-fancybox]').fancybox({
+    smallBtn: false,
     touch: false
   });
 
-  $('.gallery-slide a').on('click', function() {
-    var $selector = $(this).parents('.gallery').find('.slick-slide:not(.slick-cloned) a');
-
-    $.fancybox.open( $selector, {
-        selector : $selector,
-        backFocus : false,
-        loop: true,
-        animationEffect: "fade"
-    }, $selector.index( this ) );
-
-    return false;
-  });
-}
-
-function modalOpen(content, timer) {
-  $.fancybox.open( content, {
-      autoFocus: false,
-      loop: false,
-      autoFocus: false,
-      type: 'html',
-      smallBtn: true,
-      touch: false,
-      btnTpl: {
-        smallBtn:
-        '<button type="button" data-fancybox-close class="button button_style2 button-toggle fancybox-button fancybox-close-small" title="{{CLOSE}}">' +
-        '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" stroke="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.115 1.49L12.689.118 7.193 5.819 1.491.323.117 1.748 5.82 7.244.323 12.947l1.426 1.373 5.496-5.702 5.702 5.496 1.374-1.425-5.702-5.496 5.496-5.702z"></path></svg>' +
-        "</button>"
-      },
-      afterClose: function() {
-        if(timer==true) {
-          popupCloseTimer = clearTimeout(popupCloseTimer);
-        } 
-        return;
-      }
+  $(document).on('afterShow.fb', function( e, instance, slide ) {
+    var $pano = $('.panorama')
+    if($pano.length > 0) {
+      var path = slide.$thumb.prevObject[0].dataset.pano,
+          c = document.getElementById("pano");
+      Ceramic3DPanorama({canvas: c, panorams: [[`${path}/+X.jpg`, `${path}/-X.jpg`, `${path}/+Y.jpg`, `${path}/-Y.jpg`, `${path}/+Z.jpg`, `${path}/-Z.jpg`]], cameraVersion:" 1"});
+    }
   });
 }
 
@@ -673,20 +681,8 @@ function validation() {
   var $phoneInput = $('input[name="phone"]'),
       $form = $(".validate-form");
 
-  if($form.length > 0) {
-    function succes(form) {
-      $(form).find('.input').val('');
-      if($(form).parents('.popup').length > 0) {
-        $.fancybox.close();
-      }
-      modalOpen($('<div class="popup popup-succes fancybox-content" id="popup-succes" style="display: none;"> <div class="popup-succes__container"> <div class="popup-succes__icon popup-succes__item"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon20"></use></svg></div><div class="popup-succes__text">Благодарим за Вашу заявку. </div><div class="popup-succes__text">Наш дизайнер свяжется с вами в ближайшее время</div><a class="button button_style1 popup-succes__close" href="#" data-fancybox-close="">Закрыть</a> </div><button type="button" data-fancybox-close="" class="button button_style2 button-toggle fancybox-button fancybox-close-small" title="Close"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" stroke="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.115 1.49L12.689.118 7.193 5.819 1.491.323.117 1.748 5.82 7.244.323 12.947l1.426 1.373 5.496-5.702 5.702 5.496 1.374-1.425-5.702-5.496 5.496-5.702z"></path></svg></button></div>'), true);
-      popupCloseTimer = setTimeout(function() {
-        $.fancybox.close();
-      }, 3000)
-    }
-  
-    $phoneInput.mask("+7 (999) 999-99-99", {completed:function(){$form.validate().element($phoneInput)}});
-  
+  if($form.length > 0) {  
+    $phoneInput.mask("+7 (999) 999-99-99", {completed:function(){$form.validate().element($phoneInput)}});  
     $phoneInput.on('keyup', function() {
       if($(this).hasClass('error')) {
         $form.validate().element($phoneInput);
@@ -738,23 +734,37 @@ function validation() {
           correctPhone: jQuery.validator.format("Укажите корректный номер телефона")
         }
       },
-       submitHandler: function(form) {
-  
-        /*
-        var form_data = $(form).serialize();
-        $.ajax({
-        type: "POST",
-        url: "send.php",
-        data: form_data,
-        success: function() {
-          succes(form);
-        }
-        });
-        */
-  
-       //временно
-       succes(form);
+      submitHandler: function(form) {
+        //отправка формы
+        //если отправка успешна
+        succes(form);
       }
     });
+
+    function succes(form) {
+      if($(form).hasClass('contact-form')) {
+        //очистка полей формы
+        $(form).find('.input').val('');
+        //Если форма во всплывающем окне - закрыть окно
+        if($(form).parents('.popup').length > 0) {
+          $.fancybox.close();
+        }
+        //показать окно благодарности 
+        $.fancybox.open({
+          type: 'ajax',
+          src: '../popup-succes.html',
+          smallBtn: true,
+          touch: false
+        });
+        //закрыть автоматически чрез 3 сек
+        popupCloseTimer = setTimeout(function() {
+          $.fancybox.close();
+        }, 3000)
+      }
+    }
   }
+}
+function panorama($parent) {
+  var path = $parent.data('images');
+  console.log(path);
 }

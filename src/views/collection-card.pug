@@ -7,7 +7,8 @@ html(lang="ru")
       a(href="#").button.button_scroll-top
         span
          <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon18"></use></svg>
-      include blocks/aside   
+      include blocks/aside
+      script(src="js/c3dpano.min.js")
       main.main
         .main__container
           .main__top
@@ -21,21 +22,21 @@ html(lang="ru")
                       .gallery-slider.slider.gallery
                         //item1
                         .gallery-slide.slide
-                          a(href="http://www.ceramic3d.com/get_folio/445/").gallery-slide__container.cover-box
+                          a(data-type="ajax" data-src="panorama.html" data-pano='img/pano192' href="javascript:;" data-fancybox="gallery").gallery-slide__container.cover-box
                             img(data-src="img/banner/gallery-item1.jpg", alt="").lazy
                             .gallery-slide__icon
                               <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon13"></use></svg>
                               span 3D панорама
                         //item2
                         .gallery-slide.slide
-                          a(href="img/banner/stock-photo-interior1.jpg" data-fancybox).gallery-slide__container.cover-box
+                          a(href="img/banner/stock-photo-interior1.jpg" data-fancybox="gallery").gallery-slide__container.cover-box
                             img(data-src="img/banner/stock-photo-interior1.jpg", alt="").lazy
                             .gallery-slide__icon
                               <svg class="icon icon_photo"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
                               span Увеличить
                         //item3
                         .gallery-slide.slide
-                          a(href="img/banner/stock-photo-interior2.jpg" data-fancybox).gallery-slide__container.cover-box
+                          a(href="img/banner/stock-photo-interior2.jpg" data-fancybox="gallery").gallery-slide__container.cover-box
                             img(data-src="img/banner/stock-photo-interior2.jpg", alt="").lazy
                             .gallery-slide__icon
                               <svg class="icon icon_photo"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
@@ -144,7 +145,8 @@ html(lang="ru")
                     +block('Marbella Arabesco')(data-src="img/banner/tile11.jpg")
                 include blocks/interesting-items
           include blocks/footer
-    script(src="https://unpkg.com/current-device/umd/current-device.min.js")    
+
+    script(src="https://unpkg.com/current-device/umd/current-device.min.js")
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
     script(src="js/libs.min.js")            
     script(src="js/common.min.js")
