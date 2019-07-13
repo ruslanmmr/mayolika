@@ -825,7 +825,7 @@ label.error {
   max-height: 1080px;
   position: relative;
   overflow: hidden;
-  padding: 0;
+  padding: 0 !important;
   .pano {
     display: block;
     width: 100%;
@@ -851,6 +851,9 @@ label.error {
   }
 }
 @media all and(max-width: 576px) {
+  .fancybox-slide--html {
+    padding: 15px;
+  }
   .slider {
     .slick-arrow {
       border-radius: 4px;

@@ -662,8 +662,7 @@ function fancybox() {
   $.fancybox.defaults.autoFocus = false;
 
   $('[data-fancybox]').fancybox({
-    smallBtn: false,
-    touch: false
+    smallBtn: false
   });
 
   $(document).on('afterShow.fb', function( e, instance, slide ) {
