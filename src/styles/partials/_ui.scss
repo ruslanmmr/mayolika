@@ -748,15 +748,20 @@
     align-items: center;
     transition: 0.15s !important;
     appearance: none;
-    background-color: #fff;
     svg {
-      background-color: #000;
+      display: block;
+      width: 16px;
+      height: 16px;
     }
   }
   &-navigation .fancybox-button {
     padding: 0 !important;
     div {
       padding: 10px !important;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
     }
   }
   &-content {
