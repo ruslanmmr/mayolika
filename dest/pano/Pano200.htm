@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pano192</title>
+</head>
+<body scroll="no">
+  <canvas id="Pano192" style="position: absolute; left: 0px; top: 0px; display: block;">Ваш браузер не поддерживает WebGL :(</canvas>
+  <script src="Pano192/c3dpano.js"></script>
+  <script>
+    var c = document.getElementById("Pano192");
+    function res() {
+      c.style.width = window.innerWidth + "px";
+      c.style.height = window.innerHeight + "px";
+    }
+    window.onresize = res;
+    res();
+    Ceramic3DPanorama({canvas: c, panorams: [["Pano192/+X.jpg", "Pano192/-X.jpg", "Pano192/+Y.jpg", "Pano192/-Y.jpg", "Pano192/+Z.jpg", "Pano192/-Z.jpg"]], cameraVersion:" 1"});
+  </script>
+</body>
+</html>
