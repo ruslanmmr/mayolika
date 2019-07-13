@@ -8,7 +8,6 @@ html(lang="ru")
         span
          <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon18"></use></svg>
       include blocks/aside
-      script(src="js/c3dpano.min.js")
       main.main
         .main__container
           .main__top
@@ -145,7 +144,7 @@ html(lang="ru")
                     +block('Marbella Arabesco')(data-src="img/banner/tile11.jpg")
                 include blocks/interesting-items
           include blocks/footer
-
+    script(src="js/c3dpano.min.js")
     script(src="https://unpkg.com/current-device/umd/current-device.min.js")
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
     script(src="js/libs.min.js")            

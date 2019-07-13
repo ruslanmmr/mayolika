@@ -670,7 +670,7 @@ function fancybox() {
     if($pano.length > 0) {
       var path = slide.$thumb.prevObject[0].dataset.pano,
           c = document.getElementById("pano");
-      Ceramic3DPanorama({canvas: c, panorams: [[`${path}/+X.jpg`, `${path}/-X.jpg`, `${path}/+Y.jpg`, `${path}/-Y.jpg`, `${path}/+Z.jpg`, `${path}/-Z.jpg`]], cameraVersion:" 1"});
+      Ceramic3DPanorama(c,'',path);
     }
   });
 }
