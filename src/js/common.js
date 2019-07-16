@@ -456,10 +456,6 @@ function calculator() {
     actionProcessing($block, 'totalPrice');
   })
 
-  $('.cart-form_with-total-price-count').each(function() {
-    
-  })
-
 
   $('.product-calculator').find('.product-calculator__value-input').on('change', function() {
     //var $block = $(this).parents('.product-calculator');
@@ -545,7 +541,7 @@ function calculator() {
     else if($(e.target).hasClass(inputClass) || $(e.target).parents('.' + inputClass).length > 0) {
       $(e.target).closest('.' + inputClass);
       $target = $(e.target).closest('.' + inputClass);
-      if(e.type == 'input') {
+      if(e.type == 'input' || e.type == 'change') {
         $target.val($target.val().replace(/[^\d\.]/g, ""));
         actionProcessing($block, 'calculationTile');
         actionProcessing($block, 'calculatePrice');
