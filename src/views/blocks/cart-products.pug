@@ -20,13 +20,13 @@ mixin item(title, price)
           span.cart-item__content-title Цена
           .product-price
             span=price
-            | руб
+            | ₽
       .cart-item__section.col-xl-2.col-lg-6
         .cart-item__content.cart-item__content_type2
           span.cart-item__content-title Сумма
           .product-price.product-price-total 
-            span 0
-            | руб
+            span 0 
+            | ₽
 +item('Legno','800')(data-src='img/banner/tile5.jpg')
   include calculator2
 +item('Marbella Arabesco','800')(data-src='img/banner/tile11.jpg')

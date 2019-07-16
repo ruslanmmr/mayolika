@@ -162,11 +162,9 @@
   &__price {
     margin: 15px 0 0 0;
     display: block;
-    span {
-      font-size: 18px;
-      color: #000;
-      font-weight: 500;
-    }
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
   }
   &__item {
     display: flex;
@@ -350,9 +348,11 @@
     flex: 1 1 100%;
     .price-item {
       font-family: 'Manrope';
+      color: #000;
+      font-size: 18px;
+      font-weight: 500;
       strong {
         font-size: 24px;
-        color: #000;
         line-height: 1;
       }
     }
