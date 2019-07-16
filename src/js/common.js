@@ -463,7 +463,7 @@ function calculator() {
     //actionProcessing($block, 'calculatePrice');
   })
 
-  $(document).on('touchstart touchend mousedown mouseup click blur input mouseout', '.product-calculator', function(e) {
+  $(document).on('touchstart touchend mousedown mouseup click input mouseout', '.product-calculator', function(e) {
     var $target = $(e.target),
         $block = $(this);
     
@@ -552,11 +552,13 @@ function calculator() {
           actionProcessing($block, 'calculatePrice');
           actionProcessing($block, 'totalPrice');
         }
-      } else if(e.type == 'mouseout' || e.type == 'blur') {
+        $target.on('change', function() {
+          actionProcessing($block, 'adjustment');
+          actionProcessing($block, 'calculatePrice');
+          actionProcessing($block, 'totalPrice');
+        })
+      } else if(e.type == 'mouseout') {
         $target.blur();
-        actionProcessing($block, 'adjustment');
-        actionProcessing($block, 'calculatePrice');
-        actionProcessing($block, 'totalPrice');
       }
     }
   })
