@@ -1,8 +1,38 @@
+mixin block(title)
+  section.news-preview.col-xl-6.col-12
+    .news-preview__container
+      .block.block_size5.block_background.news-preview__image
+        a(href="#").content.background
+          .lazy(data-src='img/banner/terra.jpg')
+      .news-preview__content
+        .news-preview__top
+          a(href="#").news-preview__title
+            h2=title
+          p.news-preview__text Когда ванная комната отделывается плитками, последней операцией обязательно заделываются швы между ними. Лишь после этого отделочная работа считается завершенной, и поверхность приобретает аккуратный вид.
+        .news-preview__more
+          a(href="#").button.button_style1 Читать полностью
 section.news
   .news__head.block.block_type4.block_size6
     .content.background
       .lazy(data-src='img/banner/bg-news.jpg')
       .block__text
         h1.block__title.t-size-64 Информация<br> для покупателя
-  .news__container
-    section.news-preview
+  .news__container.row
+    +block('Ремонт своими руками')
+    +block('Способы и особенности укладки керамической плитки')
+    +block('Ремонт своими руками')
+    +block('Ремонт своими руками')
+  .catalogue-pagination
+    ul.catalogue-pagination__list
+      li.catalogue-pagination__item
+        a(href="#").catalogue-pagination__link.active 1
+      li.catalogue-pagination__item
+        a(href="#").catalogue-pagination__link 2
+      li.catalogue-pagination__item
+        a(href="#").catalogue-pagination__link 3
+      li.catalogue-pagination__item
+        a(href="#").catalogue-pagination__link ...
+      li.catalogue-pagination__item
+        a(href="#").catalogue-pagination__link 10
+  .catalogue-more
+    a(href="#").button.button_style1.catalogue-more__button Показать больше

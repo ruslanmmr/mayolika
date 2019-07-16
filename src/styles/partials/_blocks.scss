@@ -186,13 +186,9 @@
         opacity: 0;
         transition: opacity 0.3s;
       }
-    }
-    .content {
       &:hover {
-        .background {
-          &:after {
-            opacity: 1;
-          }
+        &:after {
+          opacity: 1;
         }
       }
     }
