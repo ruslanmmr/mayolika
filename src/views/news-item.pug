@@ -1,0 +1,53 @@
+doctype html
+html(lang="ru")
+  head
+    include blocks/head
+  body
+    .wrapper
+      a(href="#").button.button_scroll-top
+        span
+         <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon18"></use></svg>
+      include blocks/aside   
+      main.main
+        .main__container
+          .main__top
+            include blocks/header
+            .main__content
+              section.news
+                .news__head.block.block_type4.block_size6
+                  .content.background
+                    .lazy(data-src='img/banner/bg-news.jpg')
+                    .block__text
+                      h1.block__title.t-size-64 Способы и особенности укладки керамической плитки
+                .news__content.t-size-16
+                  .news__images
+                    .gallery.row
+                      .gallery-slide.col-xl-12.col-6
+                        a(href="img/banner/tile10.jpg" data-fancybox="gallery").gallery-slide__container.cover-box
+                          img(data-src="img/banner/tile10.jpg", alt="").lazy
+                          .gallery-slide__icon
+                            <svg class="icon icon_photo"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                            span Увеличить
+                      .gallery-slide.col-xl-12.col-6
+                        a(href="img/banner/gallery-item1.jpg" data-fancybox="gallery").gallery-slide__container.cover-box
+                          img(data-src="img/banner/gallery-item1.jpg", alt="").lazy
+                          .gallery-slide__icon
+                            <svg class="icon icon_photo"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                            span Увеличить
+                      .gallery-slide.col-xl-12.col-6
+                        a(href="img/banner/azori_eclipse_indigo.jpg" data-fancybox="gallery").gallery-slide__container.cover-box
+                          img(data-src="img/banner/azori_eclipse_indigo.jpg", alt="").lazy
+                          .gallery-slide__icon
+                            <svg class="icon icon_photo"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                            span Увеличить
+                  .news__text
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet nisl non quam lobortis sodales ut nec enim. Donec id suscipit nulla, sed lacinia quam. Proin sodales bibendum est eu venenatis. Suspendisse tellus diam, tempor quis lectus non, semper interdum sapien. Nullam consequat felis pulvinar elit euismod, quis iaculis risus auctor. Nulla facilisi. Nulla porttitor iaculis quam vitae pellentesque. Curabitur ullamcorper faucibus sem sed imperdiet. Pellentesque a erat id turpis eleifend vestibulum non ac enim. Donec at ultricies mi. Aliquam maximus quis orci et vulputate.
+                    p In dictum dictum nisl, et accumsan ante pretium at. Duis pharetra lectus vestibulum sapien semper ornare. Quisque ac lectus vitae ante euismod dapibus. Praesent nec libero at enim dapibus scelerisque nec vitae dui. Nunc vitae vehicula lorem. Phasellus eu neque vestibulum, dapibus nulla at, hendrerit nunc. Cras at ultrices eros.
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim id nisl ut lacinia. Vivamus ac scelerisque massa, non gravida ligula. Aliquam auctor, dui ut sagittis cursus, magna diam gravida tortor, vitae porta quam nunc ac enim. Etiam sollicitudin enim at felis molestie faucibus. Nullam nisi justo, ultricies in sollicitudin quis, egestas non mi. Mauris tincidunt sit amet sapien ut fringilla. Aliquam ac tristique dui, a aliquam enim. Donec enim ipsum, fermentum a sagittis a, ornare nec metus.
+                    p Mauris non neque ex. Donec scelerisque facilisis purus rhoncus interdum. Etiam ullamcorper congue dui, ut sollicitudin lacus mollis non. Quisque pulvinar urna at massa cursus maximus. Sed vulputate ligula id condimentum congue. Nam dictum, dui quis ultricies semper, erat erat auctor tortor, a scelerisque dui diam viverra dolor. Proin convallis pharetra velit eget dictum. Vivamus varius varius lorem, et rhoncus elit consequat eget. Nam eu velit sed leo semper sollicitudin. Nam varius tellus sit amet nisl egestas sodales.
+                    p Maecenas varius est vitae blandit porta. Proin dapibus lorem ut tellus vehicula, id ornare leo cursus. Duis hendrerit congue arcu sit amet lobortis. Donec ut enim nulla. Ut ultricies posuere urna quis vestibulum. Donec id turpis id nisi egestas imperdiet. Nam feugiat id purus non finibus. Nunc sed purus id nisl pulvinar eleifend. Suspendisse congue auctor mattis. Vivamus euismod, sapien id laoreet pretium, ligula quam imperdiet orci, quis maximus nunc enim non erat. Etiam ultricies quam ipsum, id condimentum sapien pharetra a. Vestibulum euismod velit et velit mattis sagittis. Morbi ac cursus neque, ac euismod felis. Mauris sit amet ex lorem.
+          include blocks/footer
+    script(src="https://unpkg.com/current-device/umd/current-device.min.js")       
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="js/libs.min.js")            
+    script(src="js/common.min.js")
