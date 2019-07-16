@@ -463,7 +463,7 @@ function calculator() {
     //actionProcessing($block, 'calculatePrice');
   })
 
-  $(document).on('touchstart touchend mousedown mouseup click change input mouseout', '.product-calculator', function(e) {
+  $(document).on('touchstart touchend mousedown mouseup click blur input mouseout', '.product-calculator', function(e) {
     var $target = $(e.target),
         $block = $(this);
     
@@ -541,7 +541,7 @@ function calculator() {
     else if($(e.target).hasClass(inputClass) || $(e.target).parents('.' + inputClass).length > 0) {
       $(e.target).closest('.' + inputClass);
       $target = $(e.target).closest('.' + inputClass);
-      if(e.type == 'input' || e.type == 'change') {
+      if(e.type == 'input') {
         $target.val($target.val().replace(/[^\d\.]/g, ""));
         actionProcessing($block, 'calculationTile');
         actionProcessing($block, 'calculatePrice');
@@ -552,7 +552,7 @@ function calculator() {
           actionProcessing($block, 'calculatePrice');
           actionProcessing($block, 'totalPrice');
         }
-      } else if(e.type == 'mouseout') {
+      } else if(e.type == 'mouseout' || e.type == 'blur') {
         $target.blur();
         actionProcessing($block, 'adjustment');
         actionProcessing($block, 'calculatePrice');
