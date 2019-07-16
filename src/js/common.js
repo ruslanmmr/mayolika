@@ -453,14 +453,21 @@ function calculator() {
     var $block = $(this);
     actionProcessing($block, 'adjustment');
     actionProcessing($block, 'calculatePrice');
-  })
-  $('.product-calculator').find('.product-calculator__value-input').on('change', function() {
-    var $block = $(this).parents('.product-calculator');
-    actionProcessing($block, 'adjustment');
-    actionProcessing($block, 'calculatePrice');
+    actionProcessing($block, 'totalPrice');
   })
 
-  $(document).on('touchstart touchend mousedown mouseup click input mouseout', '.product-calculator', function(e) {
+  $('.cart-form_with-total-price-count').each(function() {
+    
+  })
+
+
+  $('.product-calculator').find('.product-calculator__value-input').on('change', function() {
+    //var $block = $(this).parents('.product-calculator');
+    //actionProcessing($block, 'adjustment');
+    //actionProcessing($block, 'calculatePrice');
+  })
+
+  $(document).on('touchstart touchend mousedown mouseup click change input mouseout', '.product-calculator', function(e) {
     var $target = $(e.target),
         $block = $(this);
     
@@ -490,9 +497,9 @@ function calculator() {
                 interval = setTimeout(myFunction, counter);
                 actionProcessing($block, actionType);
                 actionProcessing($block, 'calculatePrice');
+                actionProcessing($block, 'totalPrice');
               }
               interval = setTimeout(myFunction, counter);
-
             }, 300)
           }
         }
@@ -509,6 +516,7 @@ function calculator() {
             } else {
               actionProcessing($block, actionType);
               actionProcessing($block, 'calculatePrice');
+              actionProcessing($block, 'totalPrice');
             }
           }
         }
@@ -518,16 +526,18 @@ function calculator() {
     else if($(e.target).hasClass(toggleClass) || $(e.target).parents('.' + toggleClass).length > 0) {
       $(e.target).closest('.' + toggleClass);
       $target = $(e.target).closest('.' + toggleClass);
-      if(e.type == 'click') {
-        if ($target.hasClass('product-calculator__js-toggle_switch')) {
-          $block.toggleClass('product-calculator_js-count-calc');
-          actionProcessing($block, 'measureChange');
-        } else if($target.hasClass('product-calculator__js-toggle_square')){
-          $block.removeClass('product-calculator_js-count-calc');
-          actionProcessing($block, 'measureChange');
-        } else if($target.hasClass('product-calculator__js-toggle_count')) {
-          $block.addClass('product-calculator_js-count-calc');
-          actionProcessing($block, 'measureChange');
+      if($block.hasClass('product-calculator_tile')) {
+        if(e.type == 'click') {
+          if ($target.hasClass('product-calculator__js-toggle_switch')) {
+            $block.toggleClass('product-calculator_js-count-calc');
+            actionProcessing($block, 'measureChange');
+          } else if($target.hasClass('product-calculator__js-toggle_square')){
+            $block.removeClass('product-calculator_js-count-calc');
+            actionProcessing($block, 'measureChange');
+          } else if($target.hasClass('product-calculator__js-toggle_count')) {
+            $block.addClass('product-calculator_js-count-calc');
+            actionProcessing($block, 'measureChange');
+          }
         }
       }
     }
@@ -539,34 +549,39 @@ function calculator() {
         $target.val($target.val().replace(/[^\d\.]/g, ""));
         actionProcessing($block, 'calculationTile');
         actionProcessing($block, 'calculatePrice');
+        actionProcessing($block, 'totalPrice');
         if($target.val().match(/\./g).length > 1) {
           $target.val($target.val().substr(0, $target.val().lastIndexOf(".")));
           actionProcessing($block, 'calculationTile');
           actionProcessing($block, 'calculatePrice');
+          actionProcessing($block, 'totalPrice');
         }
       } else if(e.type == 'mouseout') {
         $target.blur();
         actionProcessing($block, 'adjustment');
         actionProcessing($block, 'calculatePrice');
+        actionProcessing($block, 'totalPrice');
       }
     }
   })
 
   //functions
-  function actionProcessing(block, operation) {{
-    var $price = block.find('.product-calculator__total-price'),
-        $input = block.find('.product-calculator__value-input'),
-        $hiddenInput = block.find('.product-calculator__count-input'),
+  function actionProcessing($block, operation) {{
+    var $price = $block.closest('.product-item').find('.product-price-total span'),
+        $totalPrice = $block.parents('.cart-form_with-total-price-count').find('.total-price span'),
+        $input = $block.find('.product-calculator__value-input'),
+        $hiddenInput = $block.find('.product-calculator__count-input'),
         hiddenInputVal = parseFloat(+$hiddenInput.val()),
         frontInputVal = parseFloat(+$input.val()),
         tileSquare = parseFloat($hiddenInput.data('square')),
-        minSquare = parseFloat((Math.ceil($hiddenInput.data('minsquare')/tileSquare) * tileSquare)),
-        minCount = parseFloat(Math.ceil(minSquare/tileSquare)),
-        tilePrice = parseFloat($hiddenInput.data('price'));
+        minCount = parseFloat($hiddenInput.data('mincount')),
+        price = parseFloat($hiddenInput.data('price')),
+        sum = 0;
+
     if(operation == 'increase') {
       $hiddenInput.val(hiddenInputVal + 1);
       hiddenInputVal = parseFloat(+$hiddenInput.val());
-      if(block.hasClass('product-calculator_js-count-calc')) {
+      if($block.hasClass('product-calculator_js-count-calc')) {
         $input.val(hiddenInputVal);
       } else {
         $input.val(parseFloat((hiddenInputVal * tileSquare).toFixed(2)));
@@ -575,45 +590,50 @@ function calculator() {
       if (hiddenInputVal>minCount) {
         $hiddenInput.val(hiddenInputVal - 1);
         hiddenInputVal = parseFloat(+$hiddenInput.val());
-        if($(block).hasClass('product-calculator_js-count-calc')) {
+        if($block.hasClass('product-calculator_js-count-calc')) {
           $input.val(hiddenInputVal);
         } else {
           $input.val(parseFloat((hiddenInputVal * tileSquare).toFixed(2)));
         }
       }
     } else if (operation == 'measureChange') {
-      if($(block).hasClass('product-calculator_js-count-calc')) {
+      if($block.hasClass('product-calculator_js-count-calc')) {
         $input.val(hiddenInputVal);
       } else {
         $input.val(parseFloat((hiddenInputVal * tileSquare).toFixed(2)));
       }
     } else if (operation == 'calculatePrice') {
-      $price.text(parseFloat((((hiddenInputVal*tileSquare).toFixed(2))*tilePrice).toFixed(2)));
-    } else if (operation == 'adjustment') {      
-      //количество
-      if($(block).hasClass('product-calculator_js-count-calc')) {
-        if(minCount > frontInputVal) {
-          $hiddenInput.val(minCount);
+      if($block.hasClass('product-calculator_tile')) {
+        $price.text(parseFloat((((hiddenInputVal*tileSquare).toFixed(2))*price).toFixed(2)));
+      } else {
+        $price.text(parseFloat((hiddenInputVal*price).toFixed(2)));
+      }
+    } else if (operation == 'adjustment') {
+      if(minCount > hiddenInputVal) {
+        $hiddenInput.val(minCount);
+        if($block.hasClass('product-calculator_js-count-calc')) {
           $input.val(minCount);
         } else {
-          $input.val(hiddenInputVal);
+          $input.val(parseFloat((minCount * tileSquare).toFixed(2)));
         }
-      }
-      //площадь
-       else {
-        if(minSquare > frontInputVal) {
-          $hiddenInput.val(minCount);
-          $input.val(parseFloat(minSquare.toFixed(2)));
+      } else {
+        if($block.hasClass('product-calculator_js-count-calc')) {
+          $input.val(hiddenInputVal);
         } else {
           $input.val(parseFloat((hiddenInputVal*tileSquare).toFixed(2)));
         }
       }
     } else if (operation == 'calculationTile') {
-      if(block.hasClass('product-calculator_js-count-calc')) {
+      if($block.hasClass('product-calculator_js-count-calc')) {
         $hiddenInput.val(Math.ceil(frontInputVal));
       } else {
         $hiddenInput.val(Math.ceil(frontInputVal/tileSquare));
       }
+    } else if (operation == 'totalPrice') {
+      $('.product-price-total span').each(function(i, element) {
+        sum = sum + parseFloat($(element).text());
+      })
+      $totalPrice.text(parseFloat(sum.toFixed(2)));
     }
   }}
 }
@@ -661,16 +681,15 @@ function fancybox() {
   $.fancybox.defaults.loop = true;
   $.fancybox.defaults.autoFocus = false;
 
-  $('[data-fancybox]').fancybox({
-    smallBtn: false
-  });
-
   $(document).on('afterShow.fb', function( e, instance, slide ) {
-    var $pano = $('.panorama')
+    var $pano = $('.panorama');
     if($pano.length > 0) {
       var path = slide.$thumb.prevObject[0].dataset.pano,
           c = document.getElementById("pano");
       Ceramic3DPanorama(c,'',path);
+    }
+    if($(slide.$content).hasClass('popup')) {
+      validation();
     }
   });
 }

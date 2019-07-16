@@ -1,1 +1,37 @@
-form(action="#").cart-products
+mixin item(title, price)
+  .cart-item.product-item
+    .row
+      .cart-item__section.col-xl-5.col-lg-6.col-12
+        .cart-item__content.cart-item__content_type1
+          .cart-item__image.cover-box.cover-box_contain
+            img(src="#" alt="").lazy&attributes(attributes)
+          .cart-item__text
+            span.cart-item__art Арт. 238901734
+            a(href="#").cart-item__brand Плитка Zeus Ceramica
+            span.cart-item__model=title
+          button.button.button_style2.button_close.cart-item__delete-button
+            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon17"></use></svg>
+      .cart-item__section.col-xl-3.col-lg-6.col-12
+        .cart-item__content.cart-item__content_type2
+          span.cart-item__content-title Количество
+          block
+      .cart-item__section.col-xl-2.col-lg-6
+        .cart-item__content.cart-item__content_type2
+          span.cart-item__content-title Цена
+          .product-price
+            span=price
+            | руб
+      .cart-item__section.col-xl-2.col-lg-6
+        .cart-item__content.cart-item__content_type2
+          span.cart-item__content-title Сумма
+          .product-price.product-price-total 
+            span 0
+            | руб
++item('Legno','800')(data-src='img/banner/tile5.jpg')
+  include calculator2
++item('Marbella Arabesco','800')(data-src='img/banner/tile11.jpg')
+  include calculator2
++item('Marbella Arabesco','800')(data-src='img/banner/tile5.jpg')
+  include calculator2
++item('Ceresit CT 10 Super 1 л','400')(data-src='img/banner/interesting4.jpg')
+  include calculator3

@@ -223,10 +223,10 @@
                     <div class="search header__search">
                       <div class="search__container">
                         <form action="#">
-                          <button class="button button_style2" type="submit"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon15"></use></svg></button>
+                          <button class="button button_style2 search__submit" type="submit"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon15"></use></svg></button>
                           <input class="input" type="text" required placeholder="Поиск">
                         </form>
-                        <button class="button button_style2 search-close"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon17"></use></svg></button>
+                        <button class="button button_style2 button_close search-close"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon17"></use></svg></button>
                       </div>
                     </div>
                     <!--button--><a class="button button_style2 search-open" href=""><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon15"></use></svg></a><a class="button button_style2 setup-open" href=""><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon14"></use></svg></a>
@@ -337,7 +337,7 @@
                   </div>
                 </div>
               </div>
-              <div class="design-order-btn"><a class="button button_style1 popup-link" href="#popup1">Заказать дизайн-проект</a></div>
+              <div class="design-order-btn"><a class="button button_style1" data-type="ajax" data-src="popup1.html" href="javascript:;" data-fancybox>Заказать дизайн-проект</a></div>
               <div class="categories-block-last">
                 <div class="categories">
                   <div class="row">
@@ -351,34 +351,6 @@
                         <div class="lazy" data-src="img/banner/stock-photo-interior3.jpg"></div>
                         <div class="block__text"><span class="button button_style1">Распродажа</span></div></a></div>
                   </div>
-                </div>
-              </div>
-              <div class="popup popup-succes" id="popup-succes">
-                <div class="popup-succes__container">
-                  <div class="popup-succes__icon popup-succes__item"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon20"></use></svg></div>
-                  <div class="popup-succes__text">Благодарим за Вашу заявку. </div>
-                  <div class="popup-succes__text">Наш дизайнер свяжется с вами в ближайшее время</div><a class="button button_style1 popup-succes__close" href="#" data-fancybox-close>Закрыть</a>
-                </div>
-              </div>
-              <div class="popup" id="popup1">
-                <div class="contact-form-section">
-                  <div class="contact-form-section__top"><span class="contact-form-section__title t-size-18">Хотите собственный дизайн проект?</span><span>Мы с радостью сделаем его для вас. Просто опишите ваши предпочтения</span></div>
-                  <form class="contact-form validate-form" action="#">
-                    <div class="row">
-                      <div class="col-xl-6 col-12">
-                        <input class="input input_style2" type="text" name="name" placeholder="Ваше имя">
-                      </div>
-                      <div class="col-xl-6 col-12">
-                        <input class="input input_style2" type="email" name="email" placeholder="e-mail">
-                      </div>
-                      <div class="col-12">
-                        <textarea class="input input_style2 input_textarea" placeholder="Текст сообщения" name="text"></textarea>
-                      </div>
-                      <div class="col-12 contact-form__button">
-                        <button class="button button_style1" type="submit">Отправить заявку</button>
-                      </div>
-                    </div>
-                  </form>
                 </div>
               </div>
             </div>

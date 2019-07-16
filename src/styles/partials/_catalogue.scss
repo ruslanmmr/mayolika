@@ -313,17 +313,10 @@
       height: 100%;
     }
     .button-toggle {
-      background-color: #fff;
       position: absolute;
       right: 0;
       top: 0;
-      margin: 0;
       z-index: 3;
-      border-radius: 4px;
-      .icon {
-        width: 16px;
-        height: 16px;
-      }
     }
     .title {
       display: block;

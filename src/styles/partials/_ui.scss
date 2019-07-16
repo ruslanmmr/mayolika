@@ -250,6 +250,18 @@
       text-align: center;
     }
   }
+  &_close {
+    .icon {
+      width: 16px;
+      height: 16px;
+      fill: #C4C4C4;
+    }
+    &:hover {
+      .icon {
+        fill: $color5;
+      }
+    }
+  }
   &_style3 {
     padding: 10px 20px;
     display: block;
@@ -540,6 +552,7 @@
   }
   &_contain {
     background-color: transparent;
+    border-radius: 0;
     .wh {
       width:100%!important;
       height: auto!important;
@@ -585,8 +598,19 @@
     }
   }
 }
+.product-price {
+  span {
+    font-size: 18px;
+    color: #000;
+    font-family: 'Manrope';
+    font-weight: 500;
+    line-height: 1.1;
+    margin-right: 5px;
+  }
+}
 //calculator
 .product-calculator {
+  width: 100%;
   &_js-count-calc {
     .product-calculator {
       &__js-toggle_square {
@@ -600,6 +624,11 @@
       &__js-toggle_switch:after {
         left: calc(100% - 20px);
       }
+    }
+  }
+  &_other {
+    .product-calculator__js-toggle {
+      pointer-events: none !important;
     }
   }
   &__section {
@@ -721,19 +750,6 @@
       }
     }
   }
-  &__total-price {
-    font-size: 18px;
-    color: #000;
-    font-family: 'Manrope';
-    font-weight: 500;
-    line-height: 1.1;
-    &:after {
-      content: 'руб';
-      font-size: 14px;
-      color: $color5;
-      margin-left: 5px;
-    }
-  }
 }
 .fancybox {
   &-toolbar {
@@ -764,6 +780,17 @@
       }
     }
   }
+  &-slide--html {
+    .fancybox-content {
+      cursor: default;
+    }
+    .fancybox-close-small {
+      color: #C4C4C4;
+      &:hover {
+        color: $color5;
+      }
+    }
+  }
   &-content {
     padding: 40px;
     border-radius: 4px;
@@ -776,21 +803,21 @@
     height: 40px;
     line-height: 40px;
   }
-}
-.fancybox-progress {
-  background-color: $color1;
-}
-.fancybox-error {
-  margin: auto;
-}
-.fancybox-slide--html {
-  padding: 55px;
-}
-.fancybox-navigation .fancybox-button {
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  top: calc(50% - 22px);
+  &-progress {
+    background-color: $color1;
+  }
+  &-error {
+    margin: auto;
+  }
+  &-slide--html {
+    padding: 55px;
+  }
+  &-navigation .fancybox-button {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    top: calc(50% - 22px);
+  }
 }
 label.error {
   display: block;
