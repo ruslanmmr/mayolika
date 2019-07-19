@@ -791,9 +791,9 @@ function validation() {
       }
       //временно
       if($(form).hasClass('cart-form2')) {
-        document.location.href = "/cart-stage3.html";
+        document.location.href = "cart-stage3.html";
       } else if($(form).hasClass('cart-form3')) {
-        document.location.href = "/cart-stage4.html";
+        document.location.href = "cart-stage4.html";
       }
     }
   }
