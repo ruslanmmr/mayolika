@@ -1,0 +1,83 @@
+doctype html
+html(lang="ru")
+  head
+    include blocks/head
+  body
+    .wrapper
+      a(href="#").button.button_scroll-top
+        span
+         <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon18"></use></svg>
+      include blocks/aside   
+      main.main
+        .main__container
+          .main__top
+            include blocks/header
+            .main__content
+              section.cart
+                .page-head
+                  h1.page-head__item.page-head__title.t-size-36 Корзина
+                .cart-navigation.cart__section
+                  .row
+                    .cart-navigation-stage.col-xl-3.col-sm-6
+                      a(href="cart-stage1.html").cart-navigation-stage__container
+                        span.cart-navigation-stage__number 01
+                        span.cart-navigation-stage__title.t-size-18 Список<br> покупок
+                    .cart-navigation-stage.col-xl-3.col-sm-6
+                      a(href="cart-stage2.html").cart-navigation-stage__container
+                        span.cart-navigation-stage__number 02
+                        span.cart-navigation-stage__title.t-size-18 Доставка<br> товара
+                    .cart-navigation-stage.col-xl-3.col-sm-6
+                      a(href="cart-stage3.html").cart-navigation-stage__container
+                        span.cart-navigation-stage__number 03
+                        span.cart-navigation-stage__title.t-size-18 Оплата<br> покупок
+                    .cart-navigation-stage.col-xl-3.col-sm-6.active
+                      .cart-navigation-stage__container
+                        span.cart-navigation-stage__number 04
+                        span.cart-navigation-stage__title.t-size-18 Подтверждение<br> заказа
+                form(action="#").form.cart-form_with-total-price-count
+                  .form__section.cart__section
+                    h5.section__title Выбранные товары
+                    include blocks/cart-products
+                  .form__section.cart__section
+                    h5.section__title Данные о покупке
+                    .order-info.row
+                      .order-info__section.order-info__section_price.col-xl-4.col-lg-6.col-12
+                        .order-info__content
+                          span.label Товары:
+                          span.order-info__text 4 товара на  
+                            span.total-price
+                              span 0  
+                              | ₽
+                        .order-info__content
+                          span.label Доставка:
+                          span.order-info__text.product-price-other Доставка и разгрузка на 
+                            span 350 
+                            | ₽
+                        .order-info__content
+                          span.order-info__text.order-price Итого: 
+                            span 0
+                            | ₽
+                      .order-info__section.col-xl-4.col-lg-6.col-12
+                        .order-info__content
+                          span.label Покупатель:
+                          span.order-info__text Иванов Иван 
+                        .order-info__content
+                          span.label Телефон:
+                          span.order-info__text +7 (980) 880-88-80
+                        .order-info__content
+                          span.label e-mail:
+                          span.order-info__text remeslo36@gmail.com
+                      .order-info__section.col-xl-4.col-lg-6.col-12
+                        .order-info__content
+                          span.label Доставка:
+                          span.order-info__text г. Красноярск, ул. Героев Сибиряков, д 24, кв. 12, корп. 9а
+                        .order-info__content
+                          span.label Оплата
+                          span.order-info__text Безналичный расчет
+                  .cart__section.cart__next
+                    a(href="cart-stage5.html").button.button_style1 Оформить заказ
+          include blocks/footer
+    script(src="https://unpkg.com/current-device/umd/current-device.min.js")       
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="js/libs.min.js")            
+    script(src="js/common.min.js")

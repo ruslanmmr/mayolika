@@ -18,32 +18,28 @@ html(lang="ru")
                   h1.page-head__item.page-head__title.t-size-36 Корзина
                 .cart-navigation.cart__section
                   .row
-                    .cart-navigation-stage.col-xl-3.col-sm-6.active
-                      a(href="#").cart-navigation-stage__container
+                    .cart-navigation-stage.col-xl-3.col-sm-6
+                      a(href="cart-stage1.html").cart-navigation-stage__container
                         span.cart-navigation-stage__number 01
                         span.cart-navigation-stage__title.t-size-18 Список<br> покупок
                     .cart-navigation-stage.col-xl-3.col-sm-6
-                      .cart-navigation-stage__container
+                      a(href="cart-stage2.html").cart-navigation-stage__container
                         span.cart-navigation-stage__number 02
                         span.cart-navigation-stage__title.t-size-18 Доставка<br> товара
                     .cart-navigation-stage.col-xl-3.col-sm-6
-                      .cart-navigation-stage__container
+                      a(href="cart-stage3.html").cart-navigation-stage__container
                         span.cart-navigation-stage__number 03
                         span.cart-navigation-stage__title.t-size-18 Оплата<br> покупок
-                    .cart-navigation-stage.col-xl-3.col-sm-6
+                    .cart-navigation-stage.col-xl-3.col-sm-6.active
                       .cart-navigation-stage__container
                         span.cart-navigation-stage__number 04
-                        span.cart-navigation-stage__title.t-size-18 Подтверждение<br> заказа
-                form(action="#").cart-form.cart-form_with-total-price-count.cart__section
-                  include blocks/cart-products
-                  .cart__label.t-size-18
-                    strong Итого: 4 
-                    | товара, 
-                    span.total-price
-                      span 0  
-                      | ₽
+                        span.cart-navigation-stage__title.t-size-18 Подтверждение<br> заказа          
+                .cart__section
+                  h5.section__title Поздравляем! Ваш заказ успешно оформлен!
+                  .cart__text
+                    p.t-size-18 В течении некоторого времени на вашу почту придет письмо с уведомлением о вашем заказе. Подробности вы можете узнать у вашего менеджера по телефону +7 (473) 207-03-96
                 .cart__section.cart__next
-                  a(href="cart-stage2.html").button.button_style1 Продолжить
+                  a(href="category.html").button.button_style1 Вернуться в каталог
           include blocks/footer
     script(src="https://unpkg.com/current-device/umd/current-device.min.js")       
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")

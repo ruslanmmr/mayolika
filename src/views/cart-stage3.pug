@@ -1,0 +1,64 @@
+doctype html
+html(lang="ru")
+  head
+    include blocks/head
+  body
+    .wrapper
+      a(href="#").button.button_scroll-top
+        span
+         <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon18"></use></svg>
+      include blocks/aside   
+      main.main
+        .main__container
+          .main__top
+            include blocks/header
+            .main__content
+              section.cart
+                .page-head
+                  h1.page-head__item.page-head__title.t-size-36 Корзина
+                .cart-navigation.cart__section
+                  .row
+                    .cart-navigation-stage.col-xl-3.col-sm-6
+                      a(href="cart-stage1.html").cart-navigation-stage__container
+                        span.cart-navigation-stage__number 01
+                        span.cart-navigation-stage__title.t-size-18 Список<br> покупок
+                    .cart-navigation-stage.col-xl-3.col-sm-6
+                      a(href="cart-stage2.html").cart-navigation-stage__container
+                        span.cart-navigation-stage__number 02
+                        span.cart-navigation-stage__title.t-size-18 Доставка<br> товара
+                    .cart-navigation-stage.col-xl-3.col-sm-6.active
+                      .cart-navigation-stage__container
+                        span.cart-navigation-stage__number 03
+                        span.cart-navigation-stage__title.t-size-18 Оплата<br> покупок
+                    .cart-navigation-stage.col-xl-3.col-sm-6
+                      .cart-navigation-stage__container
+                        span.cart-navigation-stage__number 04
+                        span.cart-navigation-stage__title.t-size-18 Подтверждение<br> заказа
+                form(action="" id='payment').form.form_payment.cart-form3.validate-form.cart__section
+                  .form__section
+                    .row
+                      .block.block_type6.col-xl-6.col-12
+                        label(for='cash').content.checkbox
+                          .block__top
+                            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon22"></use></svg>
+                            .block__title.t-size-16 Оплата наличными
+                          .block__more
+                            p.t-size-12 Оплатите в магазине или курьеру<br> при доставке
+                      .block.block_type6.col-xl-6.col-12
+                        label(for='card').content.checkbox
+                          .block__top
+                            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon39"></use></svg>
+                            .block__title.t-size-16 Безналичный расчет
+                          .block__more
+                            p.t-size-12 Счет на оплату придет вам на e-mail<br> после согласования заказа с менеджером
+                  .form__hidden-content
+                    input(type="radio" id='cash' name='payment')
+                    input(type="radio" id='card' name='payment')
+                .cart__section.cart__next
+                  button(type='submit' form='payment').button.button_style1 Продолжить
+          include blocks/footer
+    script(src="https://unpkg.com/current-device/umd/current-device.min.js")       
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js")
+    script(src="js/libs.min.js")            
+    script(src="js/common.min.js")

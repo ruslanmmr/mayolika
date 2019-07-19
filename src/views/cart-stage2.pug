@@ -1,0 +1,96 @@
+doctype html
+html(lang="ru")
+  head
+    include blocks/head
+  body
+    .wrapper
+      a(href="#").button.button_scroll-top
+        span
+         <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon18"></use></svg>
+      include blocks/aside   
+      main.main
+        .main__container
+          .main__top
+            include blocks/header
+            .main__content
+              section.cart
+                .page-head
+                  h1.page-head__item.page-head__title.t-size-36 Корзина
+                .cart-navigation.cart__section
+                  .row
+                    .cart-navigation-stage.col-xl-3.col-sm-6
+                      a(href="cart-stage1.html").cart-navigation-stage__container
+                        span.cart-navigation-stage__number 01
+                        span.cart-navigation-stage__title.t-size-18 Список<br> покупок
+                    .cart-navigation-stage.col-xl-3.col-sm-6.active
+                      .cart-navigation-stage__container
+                        span.cart-navigation-stage__number 02
+                        span.cart-navigation-stage__title.t-size-18 Доставка<br> товара
+                    .cart-navigation-stage.col-xl-3.col-sm-6
+                      .cart-navigation-stage__container
+                        span.cart-navigation-stage__number 03
+                        span.cart-navigation-stage__title.t-size-18 Оплата<br> покупок
+                    .cart-navigation-stage.col-xl-3.col-sm-6
+                      .cart-navigation-stage__container
+                        span.cart-navigation-stage__number 04
+                        span.cart-navigation-stage__title.t-size-18 Подтверждение<br> заказа
+                form(action="#").form.cart-form.cart-form2.validate-form
+                  .cart__section
+                    .row
+                      .form__section.col-xl-4.col-lg-5.col-sm-6.col-12
+                        .row
+                          .form__item.col-xl-12
+                            input(type="text" name="name" placeholder="Имя и фамилия").input.input_style3.required
+                          .form__item.col-xl-12
+                            input(type="email" name="email" placeholder="e-mail").input.input_style3
+                          .form__item.col-xl-12
+                            input(type="text" name="phone" placeholder="Номер телефона +7").input.input_style3
+                          .form__item.col-xl-12
+                            .select
+                              select
+                                option(value="") Самовывоз
+                                option(value="") Доставка по Воронежу и области
+                      .form__section.col-xl-8.col-lg-7.col-sm-6.col-12
+                        .form__item.form__item_textarea
+                          textarea(placeholder='Текст сообщения' name="text").input.input_style3.input_textarea
+                  .cart__section.cart__label Забрать ваш заказ вы можете по адресу: 
+                    a(href="https://yandex.ua/maps/-/CCDAIA1f" target='_blank').link г. Воронеж, пер. Отличников 1а
+                    | . Режим работы с 9.00-18.00, Пн-Пт. 
+                  .form__section
+                    h5.section__title Доставка по Воронежу и области
+                    .row
+                      .form__section.col-xl-4.col-lg-5.col-sm-6.col-12
+                        .row
+                          .form__item.col-xl-12
+                            input(type="text" name="city" placeholder="Населенный пункт").input.input_style3.required
+                          .form__item.col-xl-12
+                            input(type="text" name="street" placeholder="Улица").input.input_style3.required
+                          .col-xl-12
+                            .row
+                              .form__item.col-xl-6
+                                .validate-input
+                                  input(type="text" name="house" placeholder="Дом").input.input_style3.required
+                              .form__item.col-xl-6
+                                input(type="text" name="apartment" placeholder="Квартира").input.input_style3
+                      .form__section.col-xl-8.col-lg-7.col-sm-6.col-12
+                        .form__item.form__item_textarea
+                          textarea(placeholder='Комментарии к доставке' name="text").input.input_style3.input_textarea
+                  ul.form__checkboxes.cart__section
+                    li
+                      label.checkbox
+                        input(type="checkbox")
+                        | Нужна разгрузка и подъем на этаж (Стоимость услуги: 350 руб)
+                    li
+                      label.checkbox
+                        | Я даю свое согласие на обработку моих 
+                        a(href="#").link персональных данных
+                        | .
+                        input(type="checkbox" name="personalData").required
+                  .cart__section.cart__next
+                    button(type='submit').button.button_style1 Продолжить
+          include blocks/footer
+    script(src="https://unpkg.com/current-device/umd/current-device.min.js")       
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js")
+    script(src="js/libs.min.js")            
+    script(src="js/common.min.js")

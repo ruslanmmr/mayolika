@@ -285,6 +285,8 @@ function inputs() {
     $checkbox.each(function() {
       if($(this).find('input').prop('checked')) {
         $(this).addClass('checked');
+      } else if($('#' + $(this).attr('for')).prop('checked')) {
+        $(this).addClass('checked');
       } else {
         $(this).removeClass('checked');
       }
@@ -565,7 +567,8 @@ function calculator() {
 
   //functions
   function actionProcessing($block, operation) {{
-    var $price = $block.closest('.product-item').find('.product-price-total span'),
+    var $price = $block.closest('.product-item').find('.product-price-item span'),
+        $orderPrice = $block.parents('.cart-form_with-total-price-count').find('.order-price span'),
         $totalPrice = $block.parents('.cart-form_with-total-price-count').find('.total-price span'),
         $input = $block.find('.product-calculator__value-input'),
         $hiddenInput = $block.find('.product-calculator__count-input'),
@@ -574,7 +577,8 @@ function calculator() {
         tileSquare = parseFloat($hiddenInput.data('square')),
         minCount = parseFloat($hiddenInput.data('mincount')),
         price = parseFloat($hiddenInput.data('price')),
-        sum = 0;
+        items = 0,
+        other = 0;
 
     if(operation == 'increase') {
       $hiddenInput.val(hiddenInputVal + 1);
@@ -628,10 +632,18 @@ function calculator() {
         $hiddenInput.val(Math.ceil(frontInputVal/tileSquare));
       }
     } else if (operation == 'totalPrice') {
-      $('.product-price-total span').each(function(i, element) {
-        sum = sum + parseFloat($(element).text());
+      $('.product-price-item span').each(function(i, element) {
+        items = items + parseFloat($(element).text());
       })
-      $totalPrice.text(parseFloat(sum.toFixed(2)));
+      $totalPrice.text(parseFloat(items.toFixed(2)));
+      if($orderPrice.length > 0) {
+        if($('.product-price-other span').length > 0) {
+          $('.product-price-other span').each(function(i, element) {
+            other = other + parseFloat($(element).text());
+          })
+        }
+        $orderPrice.text(parseFloat((items + other).toFixed(2)));
+      }
     }
   }}
 }
@@ -705,31 +717,33 @@ function validation() {
       }
     })
     
-    jQuery.validator.addMethod("correctPhone", function(value, element){
+    $.validator.addMethod("correctPhone", function(value, element){
       if (/^(?!_$)([+]{1}[0-9]{1} [(]{1}[0-9]{3}[)]{1} [0-9]{3}[-]{1}[0-9]{2}[-]{1}[0-9]{2})$/.test(value)) {
           return true;  
       } else {
           return false;   
       };
-    }); 
-  
+    });
+
+    $.validator.addMethod("req", $.validator.methods.required,
+    "Пожалуйста, заполните это поле");
+
+    $.validator.addClassRules("required", { req: true});
+
     $form.validate({
       rules: {
         email: {
-          required: true,
           email: true
-        },
-        name: {
-          required: true,
-          minlength: 2 
-        },
-        text: {
-          required: true,
-          minlength: 5 
         },
         phone: {
           required: true,
           correctPhone: true
+        },
+        personalData: {
+          required: true
+        },
+        payment: {
+          required: true
         }
       },
       messages: {
@@ -737,13 +751,11 @@ function validation() {
           required: "Пожалуйста, заполните это поле",
           email: jQuery.validator.format("Введите корректный адрес электронной почты")
         },
-        name: {
-          required: "Пожалуйста, заполните это поле",
-          minlength: jQuery.validator.format("Длина имени должна быть больше 1-го символa")
+        payment: {
+          required: "Пожалуйста, выберите способ оплаты",
         },
-        text: {
-          required: "Пожалуйста, заполните это поле",
-          minlength: jQuery.validator.format("Текст сообщения не должен быть короче 5-ти символов")
+        personalData: {
+          required: "Согласие обязательно для продолжения",
         },
         phone: {
           required: "Пожалуйста, заполните это поле",
@@ -776,6 +788,12 @@ function validation() {
         popupCloseTimer = setTimeout(function() {
           $.fancybox.close();
         }, 3000)
+      }
+      //временно
+      if($(form).hasClass('cart-form2')) {
+        document.location.href = "/cart-stage3.html";
+      } else if($(form).hasClass('cart-form3')) {
+        document.location.href = "/cart-stage4.html";
       }
     }
   }

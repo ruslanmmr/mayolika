@@ -371,6 +371,16 @@
     }
   }
 }
+.link {
+  color: $color1;
+  transition: 0.15s;
+  text-decoration: none;
+  border-bottom: 1px solid $color1;
+  &:hover {
+    color: $color2;
+    border-color: transparent;
+  }
+}
 .input {
   line-height: 1;
   border: 0;
@@ -381,13 +391,14 @@
   appearance: none;
   width: 100%;
   transition: 0.15s;
+  resize: none;
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
   &::placeholder {
-    color: #C4C4C4;
+    color: #757575;
     transition: inherit;
   }
   &:focus {
@@ -419,8 +430,46 @@
     }
   }
   &_textarea {
-    height: 110px;
-    resize: none;
+    min-height: 110px;
+    height: 100%;
+  }
+  &_style3 {
+    border: 1px solid $color3;
+    padding: 10px 20px;
+    line-height: 20px;
+    &:-webkit-autofill {
+      box-shadow: 0 0 0 1000px #fff inset !important;
+    }
+    &:hover {
+      border-color: #808080;
+    }
+  }
+}
+.formated-input {
+  position: relative;
+  .error {
+    border-color: $color1;
+  }
+  .valid {
+    border-color: #009246;
+  }
+  .error-icon {
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    visibility: hidden;
+  }
+  .error ~ .error-icon {
+    visibility: visible;
+    background: url('../img/icons/error.svg') no-repeat;
+    background-size: 100% 100%;
+  }
+  .valid ~ .error-icon {
+    visibility: visible;
+    background: url('../img/icons/valid.svg') no-repeat;
+    background-size: 100% 100%;
   }
 }
 .dropdown-item {
@@ -467,11 +516,12 @@
 //checkboxes
 .checkbox {
   position: relative;
-  padding: 5px 5px 5px 30px;
-  display: block;
+  padding: 0 0 0 25px;
+  display: inline-block;
   line-height: 16px;
   cursor: pointer;
   transition: 0.2s;
+  overflow: hidden;
   &:before {
     content: '';
     display: block;
@@ -481,9 +531,10 @@
     border: 1px solid #757575;
     background-color: #fff;
     position: absolute;
-    left: 5px;
-    top: 5px;
+    left: 0;
+    top: 0;
     transition: 0.2s;
+    z-index: 2;
   }
   &:after {
     content: '';
@@ -491,15 +542,21 @@
     width: 10px;
     height: 10px;
     position: absolute;
-    left: 8px;
-    top: 8px;
+    z-index: 3;
+    left: 3px;
+    top: 3px;
     background-image: url('../img/icons/check.svg');
     background-size: 100% 100%;
     opacity: 0;
     transition: 0.2s;
   }
   input {
-    display: none;
+    position: absolute;
+    visibility: hidden;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    bottom: 0;
   }
   &.checked {
     &:before {
@@ -605,12 +662,13 @@
   font-weight: 500;
   line-height: 1.1;
   span {
-    margin-right: 5px;
+    margin-right: 0.2em;
   }
 }
-.total-price {
+.total-price,
+.order-price {
   span {
-    margin-right: 5px;
+    margin-right: 0.2em;
   }
 }
 //calculator
@@ -828,6 +886,7 @@ label.error {
   display: block;
   color: $color1;
   margin-top: 5px;
+  font-size: 12px;
 }
 .popup-succes {
   max-width: 600px;
