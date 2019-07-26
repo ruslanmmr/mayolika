@@ -13,6 +13,7 @@ $(document).ready(function () {
   calculator();
   fancybox();
   validation();
+  designSlider();
 });
 $(window).resize(function () {
   innerWidth = $('body').innerWidth();
@@ -323,7 +324,7 @@ function slider() {
       slideCount768 = 1,
       slideCount576 = 1,
       slideCount420 = 1,
-      sliderSpeed = 400,
+      sliderSpeed = 300,
       arrows = true,
       dots = false,
       autoplayVar = false,
@@ -332,7 +333,7 @@ function slider() {
       fadeVar = false;
 
     if ($(this).hasClass('main-slider__slider')) {
-      fadeVar = true,
+      fadeVar = true;
       autoplayVar = true;
     }
     if ($(this).hasClass('interesting-items__slider')) {
@@ -345,6 +346,10 @@ function slider() {
     if ($(this).hasClass('gallery-slider')) {
       arrows = false,
       fadeVar = true
+    }
+    if ($(this).hasClass('design-slider__slider')) {
+      fadeVar = true,
+      adaptiveHeight = true;
     }
     
     $(this).slick({
@@ -411,7 +416,7 @@ function gallery() {
     $gallery.on('swipe beforeChange', function(event, slick, currentSlide, nextSlide){
       setTimeout(function() {
         pag();
-      }, 400)
+      }, 300)
     });
 
   $galleryLink.on('click', function(event) {
@@ -426,6 +431,32 @@ function gallery() {
     activeSlide = $gallery.find('.slick-active').index();
     $galleryLink.removeClass('active');
     $('.gallery-nav__item').eq(activeSlide).find($galleryLink).addClass('active');
+  }
+}
+//
+function designSlider() {
+  var $slider = $('.design-slider__slider'),
+    $link = $('.design-slider__nav-item .button'),
+    $activeSlide;
+
+    $slider.on('swipe beforeChange', function(event, slick, currentSlide, nextSlide){
+      setTimeout(function() {
+        pag();
+      }, 300)
+    });
+
+  $link.on('click', function(event) {
+    event.preventDefault();
+    var index = $(this).parent().index();
+    $slider.slick('slickGoTo', index);
+    pag();
+  });
+
+  //custom pagination
+  function pag() {
+    $activeSlide = $slider.find('.slick-active').index();
+    $link.removeClass('active');
+    $link.parent().eq($activeSlide).find($link).addClass('active');
   }
 }
 
@@ -456,13 +487,6 @@ function calculator() {
     actionProcessing($block, 'adjustment');
     actionProcessing($block, 'calculatePrice');
     actionProcessing($block, 'totalPrice');
-  })
-
-
-  $('.product-calculator').find('.product-calculator__value-input').on('change', function() {
-    //var $block = $(this).parents('.product-calculator');
-    //actionProcessing($block, 'adjustment');
-    //actionProcessing($block, 'calculatePrice');
   })
 
   $(document).on('touchstart touchend mousedown mouseup click input mouseout', '.product-calculator', function(e) {
@@ -544,17 +568,16 @@ function calculator() {
       $(e.target).closest('.' + inputClass);
       $target = $(e.target).closest('.' + inputClass);
       if(e.type == 'input') {
-        $target.val($target.val().replace(/[^\d\.]/g, ""));
+        $target.val($target.val()
+          .replace(/[^\d,.]*/g, '')
+          .replace(/([,.])[,.]+/g, '$1')
+          .replace(/^[^\d]*(\d+([.,]\d{0,5})?).*$/g, '$1')
+        )
         actionProcessing($block, 'calculationTile');
         actionProcessing($block, 'calculatePrice');
         actionProcessing($block, 'totalPrice');
-        if($target.val().match(/\./g).length > 1) {
-          $target.val($target.val().substr(0, $target.val().lastIndexOf(".")));
-          actionProcessing($block, 'calculationTile');
-          actionProcessing($block, 'calculatePrice');
-          actionProcessing($block, 'totalPrice');
-        }
         $target.on('change', function() {
+          console.log('change')
           actionProcessing($block, 'adjustment');
           actionProcessing($block, 'calculatePrice');
           actionProcessing($block, 'totalPrice');
@@ -797,8 +820,4 @@ function validation() {
       }
     }
   }
-}
-function panorama($parent) {
-  var path = $parent.data('images');
-  console.log(path);
 }

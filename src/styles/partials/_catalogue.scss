@@ -420,8 +420,8 @@
   &__icon {
     position: absolute;
     background: #000;
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
     z-index: 3;
     border-radius: 4px;
     top: 50%;
@@ -489,6 +489,14 @@
 @media all and(max-width: 1200px) {
   .catalogue-block__model {
     font-size: 16px;
+  }
+  .gallery-slide__icon {
+    width: 80px;
+    height: 80px;
+    .icon {
+      width: 35px;
+      height: 35px;
+    }
   }
 }
 @media all and(max-width: 992px) {

@@ -1,10 +1,13 @@
 .slider {
   opacity: 0;
   transition: opacity 0.3s;
-  margin: -10px;
+  margin: 0 -10px;
   .slide {
-    padding: 10px;
+    padding: 0 10px;
     height: auto;
+    &__container {
+      position: relative;
+    }
   }
   .slick-track {
     display: flex;
@@ -40,13 +43,13 @@
     }
   }
   .slick-prev {
-    left: 30px;
+    left: 40px;
     .icon {
       transform: rotate(-90deg);
     }
   }
   .slick-next {
-    right: 30px;
+    right: 40px;
     .icon {
       transform: rotate(90deg);
     }
@@ -965,7 +968,7 @@ label.error {
     .slick-arrow {
       border-radius: 4px;
       background: rgba(0,0,0,.1);
-      bottom: 10px;
+      bottom: 0;
       top: auto;
       margin: 0;
       width: 40px;
@@ -986,7 +989,7 @@ label.error {
       left: auto;
     }
     &_type2 {
-      padding-bottom: 68px;
+      padding-bottom: 55px;
     }
   }
   .select-box {

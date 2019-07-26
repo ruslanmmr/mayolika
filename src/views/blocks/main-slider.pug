@@ -1,12 +1,13 @@
 mixin slide(description, title)
   a(href="#").main-slide.slide
-    .main-slide__image
-      .cover-box
-        img&attributes(attributes).lazy
-    .main-slide__description
-      span.main-slide__category Коллекция плитки
-      span.t-size-36.main-slide__title=title
-      .main-slide__text=description
+    .slide__container
+      .main-slide__image
+        .cover-box
+          img&attributes(attributes).lazy
+      .main-slide__description
+        span.main-slide__category Коллекция плитки
+        span.t-size-36.main-slide__title=title
+        .main-slide__text=description
 .main-slider
   .main-slider__container
     .main-slider__slider.slider

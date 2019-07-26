@@ -1,0 +1,32 @@
+.design {
+  &__title {
+    color: #000;
+  }
+  .slide {
+    height: 100%;
+  }
+}
+.design-slider__nav {
+  margin-bottom: 20px;
+  &-item {
+    .button {
+      width: 100%;
+      text-align: center;
+      &.active {
+        pointer-events: none;
+        background-color: $color1;
+        border-color: $color1;
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media all and(max-width: 768px) {
+  .design-slider {
+    .block_size6 .content {
+      height: auto;
+      min-height: 350px;
+    }
+  }
+}
