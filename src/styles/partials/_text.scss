@@ -52,13 +52,13 @@ p {
   .t-size-64 {
     font-size: 60px;
   }
+  .t-size-36 {
+    font-size: 32px;
+  }
 }
 @media all and(max-width: 1200px) {
   .t-size-64 {
     font-size: 54px;
-  }
-  .t-size-36 {
-    font-size: 32px;
   }
 }
 @media all and(max-width: 992px) {
