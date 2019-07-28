@@ -634,7 +634,7 @@
   }
   &_size-auto {
     display: flex;
-    min-height: 100px;
+    align-items: center;
     .lazy {
       position: relative;
       left: 0;
@@ -642,7 +642,6 @@
       width:100%!important;
       height: auto!important;
       transform: translate(0);
-      margin: auto;
     }
   }
 }
