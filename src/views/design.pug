@@ -14,33 +14,67 @@ html(lang="ru")
             include blocks/header
             .main__content
               section.design
-                mixin slide(title, text)
-                  .slide.block.block_type7.block_size6
-                    .slide__container.content.background
-                      .lazy&attributes(attributes)
-                      .block__text
-                        h2.block__title.t-size-36=title
-                        p.block__description.t-size-18=text
                 .design__head.block.block_type4.block_size6
-                  .content.background
+                  .content.background-box
                     .lazy(data-src='img/banner/design-preview.jpg')
                     .block__text
                       h1.block__title.t-size-64 Закажите<br> дизайн проект!
                       span.block__sub-title.t-size-18 Правильно созданный дизайн-проект - <br>залог качественногои продуманного интерьера
-                .section.design-slider
+                .section.design-info
                   h5.section__title.design__title.t-size-36 Вы получаете:
-                  .design-slider__nav
+                  .design-info__nav
                     .row
-                      .design-slider__nav-item.col-xl-4.col-sm-6.col-12
+                      .design-info__nav-item.col-xl-4.col-sm-6.col-12
                         a(href="#").button.button_style4.t-size-16.active Визуализация
-                      .design-slider__nav-item.col-xl-4.col-sm-6.col-12
+                      .design-info__nav-item.col-xl-4.col-sm-6.col-12
                         a(href="#").button.button_style4.t-size-16 Раскладка
-                      .design-slider__nav-item.col-xl-4.col-sm-6.col-12
+                      .design-info__nav-item.col-xl-4.col-sm-6.col-12
                         a(href="#").button.button_style4.t-size-16 Расчет материала
-                  .design-slider__slider.slider.slider_type2
-                    +slide('Визуализация', '3D визуализация — это набор созданных дизайнером изображений, дающий представление об общей картине помещения: как будут сочетаться разные материалы, цвета и элементы. Вы сможете визуально оценить заранее и исправить все недочеты, чтобы итоговый вариант на 100% соответствовал вашим ожиданиям.')(data-src='img/banner/demo-bath.jpg')
-                    +slide('Раскладка', '3D визуализация — это набор созданных исправить все недочеты, чтобы итоговый вариант на 100% соответствовал вашим ожиданиям.')(data-src='img/banner/stock-photo-interior3.jpg')
-                    +slide('Расчет материала', '3D визуализация — это набор созданных дизайнером изображений, дающий представление об общей картине помещения: как будут сочетаться разные материалы, цвета и элементы. Вы сможете визуально оценить заранее и исправить все недочеты, чтобы итоговый вариант на 100% соответствовал вашим ожиданиям.')(data-src='img/banner/terra.jpg')
+                  .design-info__tabs
+                    .design-tab
+                      .design-tab__image
+                        .slider.slider_type2.design-tab__slider
+                          .slide.block.block_type4.block_size6
+                            a(href="img/banner/demo-bath.jpg" data-fancybox="gallery").content.cover-box.zoom-item.zoom-item_type-big
+                              img.lazy(alt='image' data-src='img/banner/demo-bath.jpg')
+                              .zoom-item__icon
+                                <svg class="icon icon_photo"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                                span Увеличить
+                          .slide.block.block_type4.block_size6
+                            a(href="img/banner/design-preview.jpg" data-fancybox="gallery").content.cover-box.zoom-item.zoom-item_type-big
+                              img.lazy(alt='image' data-src='img/banner/design-preview.jpg')
+                              .zoom-item__icon
+                                <svg class="icon icon_photo"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                                span Увеличить
+                          .slide.block.block_type4.block_size6
+                            a(href="img/banner/stock-photo-interior1.jpg" data-fancybox="gallery").content.cover-box.zoom-item.zoom-item_type-big
+                              img.lazy(alt='image' data-src='img/banner/stock-photo-interior1.jpg')
+                              .zoom-item__icon
+                                <svg class="icon icon_photo"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                                span Увеличить
+                      .design-tab__text
+                        h5.design-tab__title.t-size-36 Визуализация
+                        p.design-tab__text.t-size-18 3D визуализация — это набор созданных дизайнером изображений, дающий представление об общей картине помещения: как будут сочетаться разные материалы, цвета и элементы. Вы сможете визуально оценить заранее и исправить все недочеты, чтобы итоговый вариант на 100% соответствовал вашим ожиданиям.
+                    .design-tab
+                      .design-tab__image
+                        a(href="img/design/image2.jpg" data-fancybox).cover-box.cover-box_size-auto.zoom-item.zoom-item_type-big
+                          img.lazy(alt='image' data-src='img/design/image2.jpg')
+                          .zoom-item__icon
+                            <svg class="icon icon_photo"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                            span Увеличить
+                      .design-tab__text
+                        h5.design-tab__title.t-size-36 Раскладка
+                        p.design-tab__text.t-size-18 3D визуализация — это набор созданных дизайнером изображений, дающий представление об общей картине помещения: как будут сочетаться разные материалы, цвета и элементы. Вы сможете визуально оценить заранее и исправить все недочеты, чтобы итоговый вариант на 100% соответствовал вашим ожиданиям.
+                    .design-tab
+                      .design-tab__image
+                        a(href="img/design/image3.jpg" data-fancybox).cover-box.cover-box_size-auto.zoom-item.zoom-item_type-big
+                          img.lazy(alt='image' data-src='img/design/image3.jpg')
+                          .zoom-item__icon
+                            <svg class="icon icon_photo"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                            span Увеличить
+                      .design-tab__text
+                        h5.design-tab__title.t-size-36 Расчет материала
+                        p.design-tab__text.t-size-18 3D визуализация — это набор созданных дизайнером изображений, дающий представление об общей картине помещения: как будут сочетаться разные материалы, цвета и элементы. Вы сможете визуально оценить заранее и исправить все недочеты, чтобы итоговый вариант на 100% соответствовал вашим ожиданиям.
           include blocks/footer
     script(src="https://unpkg.com/current-device/umd/current-device.min.js")       
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")

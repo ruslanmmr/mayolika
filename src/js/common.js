@@ -13,11 +13,15 @@ $(document).ready(function () {
   calculator();
   fancybox();
   validation();
-  designSlider();
+  designTab();
 });
 $(window).resize(function () {
   innerWidth = $('body').innerWidth();
-  imagesResize();
+  setTimeout(function() {
+    $('img').each(function() {
+      imagesResize($(this))
+    });
+  }, 100)
 });
 $(window).on('scroll', function() {
   scrollTop = $(window).scrollTop();
@@ -50,19 +54,8 @@ function lazy() {
     imageBase: false,
     defaultImage: false,
     afterLoad: function(element) {
-      var box = $(element).parent(),
-        boxH = box.height(),
-        boxW = box.width(),
-        imgH = element.height(),
-        imgW = element.width();
-
-        if ((boxW / boxH) >= (imgW / imgH)) {
-          element.addClass('ww').removeClass('wh');
-        } else {
-          element.addClass('wh').removeClass('ww');
-        }
-
-        element.addClass('visible');
+      imagesResize(element);
+      element.addClass('visible');
     }
   });
 }
@@ -77,22 +70,19 @@ function scrollBtnTop() {
   }
 }
 
-function imagesResize() {
-  setTimeout(function() {
-    $('img.visible').each(function() {
-      var box = $(this).parent(),
-      boxH = box.height(),
+function imagesResize(element) {
+  var box = element.parent();
+  if(!box.hasClass('cover-box_size-auto')) {
+    var boxH = box.height(),
       boxW = box.width(),
-      imgH = $(this).height(),
-      imgW = $(this).width();
-  
-      if ((boxW / boxH) >= (imgW / imgH)) {
-        $(this).addClass('ww').removeClass('wh');
-      } else {
-        $(this).addClass('wh').removeClass('ww');
-      }
-    })
-  }, 100)
+      imgH = element.height(),
+      imgW = element.width();
+    if ((boxW / boxH) >= (imgW / imgH)) {
+      element.addClass('ww').removeClass('wh');
+    } else {
+      element.addClass('wh').removeClass('ww');
+    }
+  }
 }
 
 //select
@@ -332,7 +322,7 @@ function slider() {
       adaptiveHeight = false,
       fadeVar = false;
 
-    if ($(this).hasClass('main-slider__slider')) {
+    if ($(this).hasClass('main-banner__slider')) {
       fadeVar = true;
       autoplayVar = true;
     }
@@ -343,13 +333,12 @@ function slider() {
       slideCount576 = 1,
       slideCount = 4;
     }
-    if ($(this).hasClass('gallery-slider')) {
+    if ($(this).hasClass('product-slider')) {
       arrows = false,
       fadeVar = true
     }
-    if ($(this).hasClass('design-slider__slider')) {
-      fadeVar = true,
-      adaptiveHeight = true;
+    if ($(this).hasClass('design-tab__slider')) {
+      fadeVar = true;
     }
     
     $(this).slick({
@@ -409,8 +398,8 @@ function slider() {
 
 //gallery
 function gallery() {
-  var $gallery = $('.gallery-slider'),
-    $galleryLink = $('.gallery-nav__link'),
+  var $gallery = $('.product-slider'),
+    $galleryLink = $('.product-slider-nav__item a'),
     activeSlide;
 
     $gallery.on('swipe beforeChange', function(event, slick, currentSlide, nextSlide){
@@ -430,34 +419,25 @@ function gallery() {
   function pag() {
     activeSlide = $gallery.find('.slick-active').index();
     $galleryLink.removeClass('active');
-    $('.gallery-nav__item').eq(activeSlide).find($galleryLink).addClass('active');
+    $('.product-slider-nav__item').eq(activeSlide).find($galleryLink).addClass('active');
   }
 }
 //
-function designSlider() {
-  var $slider = $('.design-slider__slider'),
-    $link = $('.design-slider__nav-item .button'),
-    $activeSlide;
+function designTab() {
+  var $tabItem = $('.design-tab'),
+    $tabLink = $('.design-info__nav-item .button');
 
-    $slider.on('swipe beforeChange', function(event, slick, currentSlide, nextSlide){
-      setTimeout(function() {
-        pag();
-      }, 300)
-    });
+  $tabItem.not(':first-child').hide();
 
-  $link.on('click', function(event) {
-    event.preventDefault();
+  $tabLink.on('click', function(e) {
+    e.preventDefault();
     var index = $(this).parent().index();
-    $slider.slick('slickGoTo', index);
-    pag();
-  });
+    $tabLink.removeClass('active');
+    $(this).addClass('active');
+    $tabItem.hide().eq(index).fadeIn(300);
+    lazy();
+  })
 
-  //custom pagination
-  function pag() {
-    $activeSlide = $slider.find('.slick-active').index();
-    $link.removeClass('active');
-    $link.parent().eq($activeSlide).find($link).addClass('active');
-  }
 }
 
 //more 

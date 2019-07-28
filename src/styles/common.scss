@@ -96,7 +96,7 @@ body {
   .main {
     padding: 60px 15px;
     &__container {
-      padding: 20px 0 60px 0;
+      padding: 20px 0 70px 0;
       min-height: calc(100vh - 120px)
     }
     &__content {
@@ -114,13 +114,6 @@ body {
       top: 5px;
       left: 5px;
       border-radius: 5px;
-    }
-  }
-}
-@media all and(max-width: 576px) {
-  .main {
-    &__container {
-      padding: 20px 0 50px 0;
     }
   }
 }

@@ -18,43 +18,46 @@ html(lang="ru")
                 .product-head
                   .row
                     .product-head__gallery.col-xl-6.col-lg-5.col-sm-12
-                      .gallery-slider.slider.gallery
+                      .product-slider.slider
                         //item1
-                        .gallery-slide.slide
-                          a(href="img/banner/tile10.jpg" data-fancybox="gallery").gallery-slide__container.cover-box.cover-box_contain
+                        .product-slider__slide.slide
+                          a(href="img/banner/tile10.jpg" data-fancybox="gallery").block.block_size-image.cover-box.cover-box_contain.zoom-item.zoom-item_type-big
                             img(data-src="img/banner/tile10.jpg", alt="").lazy
-                            .gallery-slide__icon
+                            .zoom-item__icon
                               <svg class="icon icon_photo"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
                               span Увеличить
                         //item2
-                        .gallery-slide.slide
-                          a(href="img/banner/tile10.jpg" data-fancybox="gallery").gallery-slide__container.cover-box.cover-box_contain
-                            img(data-src="img/banner/tile10.jpg", alt="").lazy
-                            .gallery-slide__icon
+                        .product-slider__slide.slide
+                          a(href="img/banner/stock-photo-interior1.jpg" data-fancybox="gallery").block.block_size-image.cover-box.zoom-item.zoom-item_type-big
+                            img(data-src="img/banner/stock-photo-interior1.jpg", alt="").lazy
+                            .zoom-item__icon
                               <svg class="icon icon_photo"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
                               span Увеличить
                         //item3
-                        .gallery-slide.slide
-                          a(href="img/banner/tile10.jpg" data-fancybox="gallery").gallery-slide__container.cover-box.cover-box_contain
+                        .product-slider__slide.slide
+                          a(href="img/banner/tile10.jpg" data-fancybox="gallery").block.block_size-image.cover-box.cover-box_contain.zoom-item.zoom-item_type-big
                             img(data-src="img/banner/tile10.jpg", alt="").lazy
-                            .gallery-slide__icon
+                            .zoom-item__icon
                               <svg class="icon icon_photo"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
                               span Увеличить
-                      .gallery-nav.row
+                      .product-slider-nav.row
                         //item1
-                        .gallery-nav__item.col-xl-4
-                          a(href="#").gallery-nav__link.cover-box.active
-                            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                        .product-slider-nav__item.col-xl-4
+                          a(href="#").block.block_size-image.cover-box.zoom-item.zoom-item_type-small.active
+                            .zoom-item__icon
+                              <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
                             img(data-src="img/banner/tile10.jpg", alt="").lazy
                         //item2
-                        .gallery-nav__item.col-xl-4
-                          a(href="#").gallery-nav__link.cover-box
-                            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                        .product-slider-nav__item.col-xl-4
+                          a(href="#").block.block_size-image.cover-box.zoom-item.zoom-item_type-small
+                            .zoom-item__icon
+                              <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
                             img(data-src="img/banner/tile10.jpg", alt="").lazy
                         //item3
-                        .gallery-nav__item.col-xl-4
-                          a(href="#").gallery-nav__link.cover-box
-                            <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
+                        .product-slider-nav__item.col-xl-4
+                          a(href="#").block.block_size-image.cover-box.zoom-item.zoom-item_type-small
+                            .zoom-item__icon
+                              <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
                             img(data-src="img/banner/tile10.jpg", alt="").lazy
                     .product-head__info.col-xl-6.col-lg-7.col-sm-12
                       .product-head__top

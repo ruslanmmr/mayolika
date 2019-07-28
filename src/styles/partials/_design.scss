@@ -2,12 +2,29 @@
   &__title {
     color: #000;
   }
-  .slide {
-    height: 100%;
+}
+.design-tab {
+  color: #000;
+  text-align: center;
+  &__image {
+    margin-bottom: 25px;
+    position: relative;
+    &_2 {
+      &:before {
+        content: '';
+        display: block;
+        padding-top: 65.7%;
+      }
+    }
+  }
+  &__title {
+    display: block;
+    margin-bottom: 0.5em;
   }
 }
-.design-slider__nav {
+.design-info__nav {
   margin-bottom: 20px;
+  overflow: hidden;
   &-item {
     .button {
       width: 100%;
@@ -23,10 +40,5 @@
 }
 
 @media all and(max-width: 768px) {
-  .design-slider {
-    .block_size6 .content {
-      height: auto;
-      min-height: 350px;
-    }
-  }
+  
 }

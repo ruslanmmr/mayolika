@@ -1,15 +1,15 @@
 mixin slide(description, title)
   a(href="#").main-slide.slide
     .slide__container
-      .main-slide__image
-        .cover-box
-          img&attributes(attributes).lazy
+      .block.block_type4.block_size6
+        .content.background-box
+          .lazy&attributes(attributes)
       .main-slide__description
         span.main-slide__category Коллекция плитки
         span.t-size-36.main-slide__title=title
         .main-slide__text=description
-.main-slider
-  .main-slider__container
-    .main-slider__slider.slider
+.main-banner
+  .main-banner__container
+    .slider.slider_type2.main-banner__slider
       +slide('Натуральные природные оттенки и сочное текстильное оформление обеспечивают роскошный интерьер.', 'Azori Nuvola Verde')(src='#' data-src="img/banner/stock-photo-interior-of-bathroom-with-wooden-ceiling-d-rendering-311164529.jpg", alt="")
       +slide('Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et enim sed tellus sodales gravida ac a arcu. In congue feugiat bibendum. Etiam eget leo turpis. Cras vel auctor purus.', 'Azori Nuvola Another')(src='#' data-src="img/banner/shutterstock_396818590.jpg", alt="")

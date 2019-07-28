@@ -1,5 +1,9 @@
-.main-slider {
+.main-banner {
   margin-bottom: 40px;
+  &__container {
+    width: 100%;
+    display: flex;
+  }
 }
 .main-slide {
   display: block;
@@ -7,9 +11,6 @@
   color: #fff;
   position: relative;
   font-family: 'Manrope';
-  &__image {
-    height: 500px;
-  }
   &__description {
     position: absolute;
     bottom: 25px;
@@ -34,9 +35,6 @@
 
 
 @media all and(max-width: 1400px) {
-  .main-slide__image {
-    height: 450px;
-  }
   .main-slide__description {
     width: calc(100% - 40px);
     max-width: calc(100% - 40px);
@@ -47,16 +45,15 @@
 }
 @media all and(max-width: 576px) {
   .main-slide__description {
-    position: relative;
     left: 0;
-    bottom: 0;
+    bottom: -55px;
     width: 100%;
     max-width: 100%;
     background: transparent;
-    padding: 15px 0 0 0;
+    padding: 0;
   }
   .main-slide__title {
-    margin: 5px 0 0 0;
+    margin: 0;
     color: $color1;
     text-decoration: underline;
   }
@@ -66,8 +63,5 @@
   }
   .main-slide__text {
     display: none;
-  }
-  .main-slide__image {
-    height: 370px;
   }
 }
