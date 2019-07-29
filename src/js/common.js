@@ -280,7 +280,7 @@ function inputs() {
   $('input[type="file"]').on('input', function() {
     if($(this).val() != '') {
       $(this).parents('.input-box').find('.label-loaded').remove();
-      $(this).parents('.input-box').prepend('<span class="label-loaded">План помещения упешно загружен!</span>');
+      $(this).parents('.input-box').prepend('<span class="label-loaded">План помещения успешно загружен!</span>');
     }
   })
 
