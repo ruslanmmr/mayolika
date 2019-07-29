@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Майолика | Керамическая плитка</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
     <link rel="shortcut icon" href="img/favicons/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="img/favicons/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="57x57" href="img/favicons/apple-touch-icon-57x57.png">
@@ -195,7 +196,7 @@
                           </div>
                         </div>
                       </div>
-                      <button class="button button_style4 filter__reset form-reset-btn" type="reset" disabled>Сбросить фильтры</button>
+                      <button class="button button_style4 filter__reset reset-btn" type="reset" disabled>Сбросить фильтры</button>
                       <button class="button button_style1 filter__submit" type="submit">Показать результаты</button>
                     </form>
                   </div>
@@ -266,9 +267,9 @@
                   <h5 class="section__title design__title t-size-36">Вы получаете:</h5>
                   <div class="design-info__nav">
                     <div class="row">
-                      <div class="design-info__nav-item col-xl-4 col-sm-6 col-12"><a class="button button_style4 t-size-16 active" href="#">Визуализация</a></div>
-                      <div class="design-info__nav-item col-xl-4 col-sm-6 col-12"><a class="button button_style4 t-size-16" href="#">Раскладка</a></div>
-                      <div class="design-info__nav-item col-xl-4 col-sm-6 col-12"><a class="button button_style4 t-size-16" href="#">Расчет материала</a></div>
+                      <div class="design-info__nav-item col-xl-4 col-sm-6 col-12"><a class="button button_style4 button_toggle t-size-16 active" href="#">Визуализация</a></div>
+                      <div class="design-info__nav-item col-xl-4 col-sm-6 col-12"><a class="button button_style4 button_toggle t-size-16" href="#">Раскладка</a></div>
+                      <div class="design-info__nav-item col-xl-4 col-sm-6 col-12"><a class="button button_style4 button_toggle t-size-16" href="#">Расчет материала</a></div>
                     </div>
                   </div>
                   <div class="design-info__tabs">
@@ -306,6 +307,218 @@
                     </div>
                   </div>
                 </div>
+                <div class="section design-form">
+                  <h5 class="section__title design__title t-size-36">Закажите дизайн проект прямо сейчас!</h5>
+                  <form class="design-form__form validate-form" action="#">
+                    <div class="design-form__head">
+                      <div class="row">
+                        <div class="design-form__head-section col-xl-4 col-lg-12">
+                          <div class="row row_inner">
+                            <div class="design-form__toggle-section col-xl-12 col-lg-6 col-12"><a class="button button_style4 button_toggle button_toggle_state2 active" href="#">Могу заказать самостоятельно</a></div>
+                            <div class="design-form__toggle-section col-xl-12 col-lg-6 col-12"><a class="button button_style4 button_toggle button_toggle_state1" href="#">Нужна помощь дизайнера</a></div>
+                          </div>
+                        </div>
+                        <div class="design-form__head-section col-xl-8 col-lg-12">
+                          <div class="row">
+                            <div class="block block_type1 col-xl-3 col-6"><a class="content" href="#"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon29"></use></svg><span>Санузел</span></a></div>
+                            <div class="block block_type1 col-xl-3 col-6"><a class="content" href="#"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon30"></use></svg><span>Кухня</span></a></div>
+                            <div class="block block_type1 col-xl-3 col-6"><a class="content" href="#"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon40"></use></svg><span>Гостинная</span></a></div>
+                            <div class="block block_type1 col-xl-3 col-6"><a class="content" href="#"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon31"></use></svg><span>Другое</span></a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="design-form__brand">
+                      <div class="row">
+                        <div class="select-box col-xl-3 col-lg-4 col-sm-6">
+                          <label class="select-box__label">Производитель</label>
+                          <div class="select">
+                            <select>
+                              <option value="" data-display="Не выбрано">Не выбрано</option>
+                              <option value="">значение</option>
+                              <option value="">значение</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="select-box col-xl-3 col-lg-4 col-sm-6">
+                          <label class="select-box__label">Коллекция</label>
+                          <div class="select">
+                            <select>
+                              <option value="" data-display="Все размеры">Не выбрано</option>
+                              <option value="">значение</option>
+                              <option value="">значение</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="design-form__blocks">
+                      <div class="row">
+                        <div class="design-form__block col-xl-4 col-lg-6 col-12">
+                          <div class="design-form__block-container">
+                            <div class="design-form__block-section design-form__block-section_title"><span>01</span><span class="t-size-18">Помещение</span></div>
+                            <div class="design-form__block-section">
+                              <div class="design-form__tab row">
+                                <div class="input-box col-xl-12">
+                                  <label class="radio">
+                                    <input type="radio" name="room">Ванная
+                                  </label>
+                                </div>
+                                <div class="input-box col-xl-12">
+                                  <label class="radio">
+                                    <input type="radio" name="room">Туалет
+                                  </label>
+                                </div>
+                                <div class="input-box col-xl-12">
+                                  <label class="radio">
+                                    <input type="radio" name="room">Совмещеный
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="design-form__tab row">
+                                <div class="input-box col-xl-12">
+                                  <label class="radio">
+                                    <input type="radio" name="room">Кухня
+                                  </label>
+                                </div>
+                                <div class="input-box col-xl-12">
+                                  <label class="radio">
+                                    <input type="radio" name="room">Фартук
+                                  </label>
+                                </div>
+                                <div class="input-box col-xl-12">
+                                  <label class="radio">
+                                    <input type="radio" name="room">Все помещение
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="design-form__tab row">
+                                <div class="input-box col-xl-12">
+                                  <label class="radio">
+                                    <input type="radio" name="room">Гостиная
+                                  </label>
+                                </div>
+                                <div class="input-box col-xl-12">
+                                  <label class="radio">
+                                    <input type="radio" name="room">Холл
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="design-form__tab row">
+                                <div class="input-box col-xl-12">
+                                  <label class="input-box__label">Помещение</label>
+                                  <input class="input input_style3" type="text">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="design-form__block-section">
+                              <div class="row">
+                                <div class="input-box col-xl-4">
+                                  <label class="input-box__label">Длина (м.)</label>
+                                  <input class="input input_number input_style3" type="text" placeholder="0">
+                                </div>
+                                <div class="input-box col-xl-4">
+                                  <label class="input-box__label">Ширина (м.)</label>
+                                  <input class="input input_number input_style3" type="text" placeholder="0">
+                                </div>
+                                <div class="input-box col-xl-4">
+                                  <label class="input-box__label">Высота (м.)</label>
+                                  <input class="input input_number input_style3" type="text" placeholder="0">
+                                </div>
+                                <div class="input-box col-xl-12">
+                                  <textarea class="input input_style3 input_textarea" placeholder="Особенности"></textarea>
+                                </div>
+                                <div class="input-box col-xl-12">
+                                  <label class="button button_load">Загрузить план помещения
+                                    <input type="file">
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="design-form__block design-form__block_style active col-xl-4 col-lg-6 col-12">
+                          <div class="design-form__block-container">
+                            <div class="design-form__block-section design-form__block-section_title"><span>02</span><span class="t-size-18">Направление<br> и стиль укладки</span></div>
+                            <div class="design-form__block-section">
+                              <div class="row">
+                                <div class="input-box col-xl-12">
+                                  <label class="radio">
+                                    <input type="radio" name="style1">Вертикальная
+                                  </label>
+                                </div>
+                                <div class="input-box col-xl-12">
+                                  <label class="radio">
+                                    <input type="radio" name="style1">Горизонтальная
+                                  </label>
+                                </div>
+                                <div class="input-box col-xl-12">
+                                  <label class="radio">
+                                    <input type="radio" name="style1">Диагональная
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="design-form__block-section">
+                              <div class="row">
+                                <div class="input-box col-xl-12">
+                                  <label class="radio">
+                                    <input type="radio" name="style2">Классический (светлый верх, тёмный низ)
+                                  </label>
+                                </div>
+                                <div class="input-box col-xl-12">
+                                  <label class="radio">
+                                    <input type="radio" name="style2">Зонирование
+                                  </label>
+                                </div>
+                                <div class="input-box col-xl-12">
+                                  <label class="radio">
+                                    <input type="radio" name="style2">На усмотрение дизайнера
+                                  </label>
+                                </div>
+                                <div class="input-box col-xl-12">
+                                  <textarea class="input input_style3 input_textarea" placeholder="Особенности"></textarea>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="design-form__block col-xl-4 col-lg-12">
+                          <div class="design-form__block-container">
+                            <div class="design-form__block-section design-form__block-section_title"><span>03</span><span class="t-size-18">Контактные<br> данные</span></div>
+                            <div class="design-form__block-section">
+                              <div class="row">
+                                <div class="input-box col-xl-12 col-lg-6 col-12">
+                                  <input class="input input_style3 required" type="text" name="name" placeholder="Имя">
+                                </div>
+                                <div class="input-box col-xl-12 col-lg-6 col-12">
+                                  <input class="input input_style3" type="text" name="name2" placeholder="Фамилия">
+                                </div>
+                                <div class="input-box col-xl-12 col-lg-6 col-12">
+                                  <input class="input input_style3" type="text" name="name3" placeholder="Отчество">
+                                </div>
+                                <div class="input-box col-xl-12 col-lg-6 col-12">
+                                  <input class="input input_style3 required" type="email" name="email" placeholder="e-mail">
+                                </div>
+                                <div class="input-box col-xl-12 col-lg-6 col-12">
+                                  <input class="input input_style3" type="text" name="phone" placeholder="Номер телефона +7">
+                                </div>
+                                <div class="input-box col-xl-12">
+                                  <textarea class="input input_style3 input_textarea" placeholder="Комментарии"></textarea>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="design-form__submit row">
+                      <div class="col-xl-4 col-sm-6 col-12">
+                        <button class="button button_style1" type="submit">Заказать</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
               </section>
             </div>
           </div>
@@ -327,6 +540,7 @@
     </div>
     <script src="https://unpkg.com/current-device/umd/current-device.min.js">      </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
     <script src="js/libs.min.js">           </script>
     <script src="js/common.min.js"></script>
   </body>

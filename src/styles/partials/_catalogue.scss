@@ -1,7 +1,4 @@
 .select-box {
-  padding: 0 10px 10px 10px;
-  width: 50%;
-  max-width: 200px;
   &__label {
     font-size: 12px;
     color: $color6;
@@ -10,12 +7,7 @@
   }
 }
 .catalogue-sorting {
-  margin: 0 -10px -10px -10px;
-  display: flex;
-  flex-wrap: wrap;
-}
-.catalogue-sorting {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .catalogue-block {
   &_type2 {
@@ -53,7 +45,7 @@
   }
   &__container {
     border-radius: 4px;
-    transition: 0.3s;
+    transition: 0.2s;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -125,7 +117,7 @@
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.4);
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.2s;
     a {
       &:first-child {
         margin-right: 10px;
@@ -134,7 +126,6 @@
   }
   &__info {
     padding: 15px 12px;
-    font-family: 'Manrope';
     flex: 1 1 100%;
     display: flex;
     flex-direction: column;
@@ -146,7 +137,7 @@
     text-decoration: none;
     line-height: 1;
     display: inline;
-    transition: 0.15s;
+    transition: 0.2s;
     &:hover {
       color: $color2;
       border-color: transparent;
@@ -200,7 +191,7 @@
         padding-top: 100%;
         position: relative;
         z-index: 3;
-        transition: 0.3s;
+        transition: 0.2s;
       }
       &:hover {
         &:before {
@@ -238,7 +229,7 @@
     border: 1px solid $color3;
     text-align: center;
     line-height: 42px;
-    transition: 0.3s;
+    transition: 0.2s;
     &:hover {
       border-color: #808080;
     }
@@ -268,7 +259,6 @@
     color: #9C9898;
   }
   &__top {
-    font-family: 'Manrope';
     padding: 10px 20px 20px 20px;
     color: #000;
   }
@@ -299,7 +289,7 @@
     box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     background-color: #fff;
-    transition: 0.3s;
+    transition: 0.2s;
     opacity: 0;
     visibility: hidden;
     padding-top: 25px;
@@ -347,7 +337,6 @@
     border-radius: 4px;
     flex: 1 1 100%;
     .price-item {
-      font-family: 'Manrope';
       color: #000;
       font-size: 18px;
       font-weight: 500;

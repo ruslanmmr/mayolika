@@ -1,5 +1,4 @@
 .header {
-  font-family: 'Manrope';
   font-size: 12px;
   background-color: #fff;
   &__buttons {
@@ -76,7 +75,7 @@
   &__button {
     text-decoration: none;
     color: $color5;
-    transition: 0.15s;
+    transition: 0.2s;
     display: inline-block;
     &:hover {
       color: #000;
@@ -203,7 +202,7 @@
       font-size: 14px;
       visibility: hidden;
       opacity: 0;
-      transition: 0.3s;
+      transition: 0.2s;
       &.visible {
         visibility: visible;
         opacity: 1;

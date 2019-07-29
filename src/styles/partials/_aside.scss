@@ -196,7 +196,7 @@
       fill: #000;
       margin-left: 15px;
       margin-bottom: 2px;
-      transition: 0.1s;
+      transition: 0.2s;
       background: url('../img/icons/arrow.svg') no-repeat center center;
       background-size: contain;
     }
@@ -386,7 +386,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    transition: box-shadow 0.3s;
+    transition: box-shadow 0.2s;
     .scroll:after {
       display: none;
     }

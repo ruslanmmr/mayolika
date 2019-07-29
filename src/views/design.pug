@@ -25,11 +25,11 @@ html(lang="ru")
                   .design-info__nav
                     .row
                       .design-info__nav-item.col-xl-4.col-sm-6.col-12
-                        a(href="#").button.button_style4.t-size-16.active Визуализация
+                        a(href="#").button.button_style4.button_toggle.t-size-16.active Визуализация
                       .design-info__nav-item.col-xl-4.col-sm-6.col-12
-                        a(href="#").button.button_style4.t-size-16 Раскладка
+                        a(href="#").button.button_style4.button_toggle.t-size-16 Раскладка
                       .design-info__nav-item.col-xl-4.col-sm-6.col-12
-                        a(href="#").button.button_style4.t-size-16 Расчет материала
+                        a(href="#").button.button_style4.button_toggle.t-size-16 Расчет материала
                   .design-info__tabs
                     .design-tab
                       .design-tab__image
@@ -75,8 +75,174 @@ html(lang="ru")
                       .design-tab__text
                         h5.design-tab__title.t-size-36 Расчет материала
                         p.design-tab__text.t-size-18 3D визуализация — это набор созданных дизайнером изображений, дающий представление об общей картине помещения: как будут сочетаться разные материалы, цвета и элементы. Вы сможете визуально оценить заранее и исправить все недочеты, чтобы итоговый вариант на 100% соответствовал вашим ожиданиям.
+                .section.design-form
+                  h5.section__title.design__title.t-size-36 Закажите дизайн проект прямо сейчас!
+                  form(action="#").design-form__form.validate-form
+                    .design-form__head
+                      .row
+                        .design-form__head-section.col-xl-4.col-lg-12
+                          .row.row_inner
+                            .design-form__toggle-section.col-xl-12.col-lg-6.col-12
+                              a(href="#").button.button_style4.button_toggle.button_toggle_state2.active Могу заказать самостоятельно
+                            .design-form__toggle-section.col-xl-12.col-lg-6.col-12
+                              a(href="#").button.button_style4.button_toggle.button_toggle_state1 Нужна помощь дизайнера
+                        .design-form__head-section.col-xl-8.col-lg-12
+                          .row
+                            .block.block_type1.col-xl-3.col-6
+                              a(href="#").content
+                                <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon29"></use></svg>
+                                span Санузел
+                            .block.block_type1.col-xl-3.col-6
+                              a(href="#").content
+                                <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon30"></use></svg>
+                                span Кухня
+                            .block.block_type1.col-xl-3.col-6
+                              a(href="#").content
+                                <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon40"></use></svg>
+                                span Гостинная
+                            .block.block_type1.col-xl-3.col-6
+                              a(href="#").content
+                                <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon31"></use></svg>
+                                span Другое
+                    .design-form__brand
+                      .row
+                        .select-box.col-xl-3.col-lg-4.col-sm-6
+                          label.select-box__label Производитель
+                          .select
+                            select
+                              option(value="" data-display="Не выбрано") Не выбрано
+                              option(value="") значение
+                              option(value="") значение
+                        .select-box.col-xl-3.col-lg-4.col-sm-6
+                          label.select-box__label Коллекция
+                          .select
+                            select
+                              option(value="" data-display="Все размеры") Не выбрано
+                              option(value="") значение
+                              option(value="") значение
+                    .design-form__blocks
+                      .row
+                        .design-form__block.col-xl-4.col-lg-6.col-12
+                          .design-form__block-container
+                            .design-form__block-section.design-form__block-section_title
+                              span 01
+                              span.t-size-18 Помещение
+                            .design-form__block-section
+                              .design-form__tab.row
+                                .input-box.col-xl-12
+                                  label.radio
+                                    input(type="radio" name='room')
+                                    | Ванная
+                                .input-box.col-xl-12
+                                  label.radio
+                                    input(type="radio" name='room')
+                                    | Туалет
+                                .input-box.col-xl-12
+                                  label.radio
+                                    input(type="radio" name='room')
+                                    | Совмещеный
+                              .design-form__tab.row
+                                .input-box.col-xl-12
+                                  label.radio
+                                    input(type="radio" name='room')
+                                    | Кухня
+                                .input-box.col-xl-12
+                                  label.radio
+                                    input(type="radio" name='room')
+                                    | Фартук
+                                .input-box.col-xl-12
+                                  label.radio
+                                    input(type="radio" name='room')
+                                    | Все помещение
+                              .design-form__tab.row
+                                .input-box.col-xl-12
+                                  label.radio
+                                    input(type="radio" name='room')
+                                    | Гостиная
+                                .input-box.col-xl-12
+                                  label.radio
+                                    input(type="radio" name='room')
+                                    | Холл
+                              .design-form__tab.row
+                                .input-box.col-xl-12
+                                  label.input-box__label Помещение
+                                  input(type="text").input.input_style3
+                            .design-form__block-section
+                              .row
+                                .input-box.col-xl-4
+                                  label.input-box__label Длина (м.)
+                                  input(type="text" placeholder='0').input.input_number.input_style3
+                                .input-box.col-xl-4
+                                  label.input-box__label Ширина (м.)
+                                  input(type="text" placeholder='0').input.input_number.input_style3
+                                .input-box.col-xl-4
+                                  label.input-box__label Высота (м.)
+                                  input(type="text" placeholder='0').input.input_number.input_style3
+                                .input-box.col-xl-12
+                                  textarea(placeholder='Особенности').input.input_style3.input_textarea
+                                .input-box.col-xl-12
+                                  label.button.button_load Загрузить план помещения
+                                    input(type="file")
+                        .design-form__block.design-form__block_style.active.col-xl-4.col-lg-6.col-12
+                          .design-form__block-container
+                            .design-form__block-section.design-form__block-section_title
+                              span 02
+                              span.t-size-18 Направление<br> и стиль укладки
+                            .design-form__block-section
+                              .row
+                                .input-box.col-xl-12
+                                  label.radio
+                                    input(type="radio" name='style1')
+                                    | Вертикальная
+                                .input-box.col-xl-12
+                                  label.radio
+                                    input(type="radio" name='style1')
+                                    | Горизонтальная
+                                .input-box.col-xl-12
+                                  label.radio
+                                    input(type="radio" name='style1')
+                                    | Диагональная
+                            .design-form__block-section
+                              .row
+                                .input-box.col-xl-12
+                                  label.radio
+                                    input(type="radio" name='style2')
+                                    | Классический (светлый верх, тёмный низ)
+                                .input-box.col-xl-12
+                                  label.radio
+                                    input(type="radio" name='style2')
+                                    | Зонирование
+                                .input-box.col-xl-12
+                                  label.radio
+                                    input(type="radio" name='style2')
+                                    | На усмотрение дизайнера
+                                .input-box.col-xl-12
+                                  textarea(placeholder='Особенности').input.input_style3.input_textarea
+                        .design-form__block.col-xl-4.col-lg-12
+                          .design-form__block-container
+                            .design-form__block-section.design-form__block-section_title
+                              span 03
+                              span.t-size-18 Контактные<br> данные
+                            .design-form__block-section
+                              .row
+                                .input-box.col-xl-12.col-lg-6.col-12
+                                  input(type="text" name="name" placeholder="Имя").input.input_style3.required
+                                .input-box.col-xl-12.col-lg-6.col-12
+                                  input(type="text" name="name2" placeholder="Фамилия").input.input_style3
+                                .input-box.col-xl-12.col-lg-6.col-12
+                                  input(type="text" name="name3" placeholder="Отчество").input.input_style3
+                                .input-box.col-xl-12.col-lg-6.col-12
+                                  input(type="email" name="email" placeholder="e-mail").input.input_style3.required
+                                .input-box.col-xl-12.col-lg-6.col-12
+                                  input(type="text" name="phone" placeholder="Номер телефона +7").input.input_style3
+                                .input-box.col-xl-12
+                                  textarea(placeholder='Комментарии').input.input_style3.input_textarea
+                    .design-form__submit.row
+                      .col-xl-4.col-sm-6.col-12
+                        button(type='submit').button.button_style1 Заказать
           include blocks/footer
     script(src="https://unpkg.com/current-device/umd/current-device.min.js")       
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js")
     script(src="js/libs.min.js")            
     script(src="js/common.min.js")

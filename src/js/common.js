@@ -14,6 +14,7 @@ $(document).ready(function () {
   fancybox();
   validation();
   designTab();
+  designForm();
 });
 $(window).resize(function () {
   innerWidth = $('body').innerWidth();
@@ -31,7 +32,7 @@ $(window).on('scroll', function() {
 //global variables
 var innerWidth = $('body').innerWidth(),
 scrollTop = $(window).scrollTop(),
-$checkbox = $('.checkbox'),
+$checkbox = $('.checkbox, .radio'),
 $slider = $('.slider'),
 popupCloseTimer,
 //scroll-styling
@@ -64,9 +65,9 @@ function lazy() {
 function scrollBtnTop() {
   var $btn = $('.button_scroll-top');
   if(scrollTop>200) {
-    $btn.fadeIn();
+    $btn.fadeIn(200);
   } else {
-    $btn.fadeOut();
+    $btn.fadeOut(200);
   }
 }
 
@@ -250,10 +251,17 @@ function aside() {
   });
 }
 
+function numChange(target) {
+  target.val(target.val()
+    .replace(/[^\d,.]*/g, '')
+    .replace(/([,.])[,.]+/g, '$1')
+    .replace(/^[^\d]*(\d+([.,]\d{0,5})?).*$/g, '$1')
+  )
+}
 
 //checkboses
 function inputs() {
-  var $reset = $('.form-reset-btn'),
+  var $reset = $('.reset-btn'),
   $input = $('input'),
   $form = $('form');
 
@@ -264,6 +272,19 @@ function inputs() {
     checkboxCheck();
     filterState();
   })
+  $input.on('input', function() {
+    if($(this).hasClass('input_number')) {
+      numChange($(this));
+    }
+  })
+  $('input[type="file"]').on('input', function() {
+    if($(this).val() != '') {
+      $(this).parents('.input-box').find('.label-loaded').remove();
+      $(this).parents('.input-box').prepend('<span class="label-loaded">План помещения упешно загружен!</span>');
+    }
+  })
+
+
 
   $reset.on('click', function() {
     setTimeout(function() {
@@ -271,18 +292,6 @@ function inputs() {
       filterState();
     }, 100)
   })
-
-  function checkboxCheck() {
-    $checkbox.each(function() {
-      if($(this).find('input').prop('checked')) {
-        $(this).addClass('checked');
-      } else if($('#' + $(this).attr('for')).prop('checked')) {
-        $(this).addClass('checked');
-      } else {
-        $(this).removeClass('checked');
-      }
-    })
-  }
 
   function filterState() {
     $form.each(function() {
@@ -295,6 +304,18 @@ function inputs() {
       }
     })
   }
+}
+
+function checkboxCheck() {
+  $checkbox.each(function() {
+    if($(this).find('input').prop('checked')) {
+      $(this).addClass('checked');
+    } else if($('#' + $(this).attr('for')).prop('checked')) {
+      $(this).addClass('checked');
+    } else {
+      $(this).removeClass('checked');
+    }
+  })
 }
 
 //sliders
@@ -439,6 +460,51 @@ function designTab() {
   })
 
 }
+function designForm() {
+  var $roomTabLink = $('.design-form__head-section .content'),
+      $roomTabItem = $('.design-form__tab'),
+      $stateToggleBtn = $('.design-form__toggle-section .button'),
+      index = 0;
+
+      tabChange(index)
+
+      $roomTabLink.on('click', function(e) {
+        e.preventDefault();
+        index = $(this).parent().index();
+        $roomTabLink.removeClass('active');
+        tabChange(index)
+      })
+      $stateToggleBtn.on('click', function(e) {
+        e.preventDefault();
+        $stateToggleBtn.removeClass('active');
+        $(this).addClass('active');
+        if($(this).hasClass('button_toggle_state2')) {
+          $('.design-form__brand').show();
+          $('.design-form__block_style').addClass('active');
+          $('.design-form__block_style').find('input').prop('disabled', false);
+          $('.design-form__block_style').find('textarea').val('').prop('disabled', false);
+        } else {
+          $('.design-form__brand').hide();
+          $('.design-form__block_style').removeClass('active');
+          $('.design-form__block_style').find('input').prop('checked', false).prop('disabled', true);
+          $('.design-form__block_style').find('textarea').val('').prop('disabled', true);
+          checkboxCheck();
+        }
+      })
+
+      function tabChange(index) {
+        $roomTabLink.removeClass('active');
+        $roomTabLink.parent().eq(index).find($roomTabLink).addClass('active');
+        $roomTabItem.removeClass('active');
+        $roomTabItem.find('input').prop('checked', false).prop('disabled', true);
+        $roomTabItem.eq(index).find('input').prop('disabled', false);
+        $roomTabItem.eq(index).addClass('active');
+        checkboxCheck();
+      }
+      
+
+
+}
 
 //more 
 function moreInfo() {
@@ -548,11 +614,7 @@ function calculator() {
       $(e.target).closest('.' + inputClass);
       $target = $(e.target).closest('.' + inputClass);
       if(e.type == 'input') {
-        $target.val($target.val()
-          .replace(/[^\d,.]*/g, '')
-          .replace(/([,.])[,.]+/g, '$1')
-          .replace(/^[^\d]*(\d+([.,]\d{0,5})?).*$/g, '$1')
-        )
+        numChange($target);
         actionProcessing($block, 'calculationTile');
         actionProcessing($block, 'calculatePrice');
         actionProcessing($block, 'totalPrice');
