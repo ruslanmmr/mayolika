@@ -233,22 +233,24 @@
                     <!--button--><a class="button button_style2 search-open" href=""><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon15"></use></svg></a><a class="button button_style2 setup-open" href=""><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon14"></use></svg></a>
                   </div>
                   <div class="header__items">
-                    <div class="profile-toggle">
-                      <div class="profile-toggle__item dropdown-item"><a class="profile-toggle__button dropdown-item__button" href="#">
-                          <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon21"></use></svg>Ivanovkonstantin_82@gmail.com</a>
-                        <div class="dropdown-item__container scroll">
-                          <div class="scroll-container">
-                            <div class="scroll-wrapper">
-                              <ul>
-                                <li><a class="button button_style3" href="#">Что-нибудь должно быть здесь</a></li>
-                                <li><a class="button button_style3" href="#">Что-нибудь должно быть здесь</a></li>
-                                <li><a class="button button_style3" href="#">Что-нибудь должно быть здесь</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div><a class="button button_style2 button_profile button_color1" href="#"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon23"></use></svg></a>
-                    </div><a class="button button_style2 button_cart" href="#"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon24"></use></svg><span class="cart-count">20</span></a>
+                    <!--.profile-toggle
+                    .profile-toggle__item.dropdown-item
+                      a(href="#").profile-toggle__button.dropdown-item__button
+                        <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon21"></use></svg>
+                        | Ivanovkonstantin_82@gmail.com
+                      .dropdown-item__container.scroll
+                        .scroll-container
+                          .scroll-wrapper
+                            ul
+                              li
+                                a(href="#").button.button_style3 Что-нибудь должно быть здесь
+                              li
+                                a(href="#").button.button_style3 Что-нибудь должно быть здесь
+                              li
+                                a(href="#").button.button_style3 Что-нибудь должно быть здесь
+                    a(href="#").button.button_style2.button_profile.button_color1
+                      <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon23"></use></svg>
+                    --><a class="button button_style2 button_cart" href="#"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon24"></use></svg><span class="cart-count">20</span></a>
                   </div>
                 </div>
               </div>
@@ -339,7 +341,7 @@
                       <input class="input input_style2" type="text" name="phone" placeholder="Номер телефона +7">
                     </div>
                     <div class="col-12">
-                      <textarea class="input input_style2 input_textarea required" placeholder="Текст сообщения" name="message"></textarea>
+                      <textarea class="input input_style2 input_textarea" placeholder="Текст сообщения" name="message"></textarea>
                     </div>
                     <div class="col-12 contact-form__button">
                       <button class="button button_style1" type="submit">Отправить</button>
