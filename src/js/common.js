@@ -18,11 +18,9 @@ $(document).ready(function () {
 });
 $(window).resize(function () {
   innerWidth = $('body').innerWidth();
-  setTimeout(function() {
-    $('img').each(function() {
-      imagesResize($(this))
-    });
-  }, 100)
+  $('img').each(function() {
+    imagesResize($(this))
+  });
 });
 $(window).on('scroll', function() {
   scrollTop = $(window).scrollTop();
@@ -56,7 +54,6 @@ function lazy() {
     defaultImage: false,
     afterLoad: function(element) {
       imagesResize(element);
-      element.addClass('visible');
     }
   });
 }
@@ -75,14 +72,17 @@ function imagesResize(element) {
   var box = element.parent();
   if(!box.hasClass('cover-box_size-auto')) {
     var boxH = box.height(),
-      boxW = box.width(),
-      imgH = element.height(),
-      imgW = element.width();
-    if ((boxW / boxH) >= (imgW / imgH)) {
+        boxW = box.width();
+    setTimeout(function() {
+      var imgH = element.height(),
+          imgW = element.width();
+      if ((boxW / boxH) >= (imgW / imgH)) {
       element.addClass('ww').removeClass('wh');
-    } else {
-      element.addClass('wh').removeClass('ww');
-    }
+      } else {
+        element.addClass('wh').removeClass('ww');
+      }
+      element.addClass('visible');
+    }, 100)
   }
 }
 

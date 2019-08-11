@@ -76,7 +76,7 @@
     }
   }
   &__image {
-    height: 160px;
+    height: 170px;
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
@@ -134,15 +134,19 @@
   }
   &__price {
     margin: 12px 0 0 0;
-    display: block;
     font-weight: 500;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     .current-price {
       color: #000;
       font-size: 18px;
+      white-space: nowrap;
     }
     .old-price {
-      font-size: 16px;
+      font-size: 14px;
       margin-right: 0.5em;
+      white-space: nowrap;
       color: $color6;
       text-decoration: line-through;
     }
@@ -393,5 +397,8 @@
   }
   .product-slider__slide .cover-box_contain img {
     padding: 30px;
+  }
+  .catalogue-block__image {
+    height: 185px;
   }
 }
