@@ -14,7 +14,7 @@ html(lang="ru")
             include blocks/header
             .main__content
               include blocks/breadcrumbs
-              .product-card
+              section.product-card
                 .product-head
                   .row
                     .product-head__gallery.col-xl-6.col-lg-5.col-sm-12
@@ -129,22 +129,21 @@ html(lang="ru")
                                     .icon-box.icon-box_style1.appointment-list__icon <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon12"></use></svg>
                                     span Для еще чего-то
                             a(href="#").button.button_style6.product-head__button.button-toggle Больше информации
-                section.section
-                  h5.section__title Похожие коллекции
-                  .row
-                    include blocks/elements-block
-                    +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
-                    +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
-                    +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
-                    +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
-                section.section
-                  h5.section__title Cопутствующие товары
-                  .row
-                    include blocks/elements-block
-                    +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
-                    +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
-                    +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
-                    +block('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
+              include blocks/cards
+              section.section.catalogue
+                h5.section__title Похожие коллекции
+                .row
+                  +block2('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
+                  +block2('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
+                  +block2('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
+                  +block2('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
+              section.section.catalogue
+                h5.section__title Cопутствующие товары
+                .row
+                  +block2('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
+                  +block2('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
+                  +block2('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
+                  +block2('Marbella Arabesco')(data-src="img/banner/tile5.jpg")
                 include blocks/interesting-items
           include blocks/footer
     script(src="https://unpkg.com/current-device/umd/current-device.min.js")       

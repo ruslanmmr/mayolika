@@ -56,6 +56,12 @@
       flex-direction: column;
       transition: .2s;
       height: 100%;
+      &:hover {
+        box-shadow: 0 0 16px rgba(0,0,0,.2);
+        .design-form__block-section_title span:first-child {
+          color: $color1;
+        }
+      }
     }
     &-section {
       width: 100%;
@@ -94,14 +100,6 @@
             line-height: 1.25;
           }
         }
-      }
-    }
-    &:hover {
-      .design-form__block-container {
-        box-shadow: 0 0 16px rgba(0,0,0,.2);
-      }
-      .design-form__block-section_title span:first-child {
-        color: $color1;
       }
     }
     &_style {

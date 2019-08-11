@@ -4,7 +4,7 @@
   }
 }
 .banner {
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 .tile-categories-manufacturer {
   margin-top: 45px;
@@ -271,7 +271,7 @@
         .block__more {
           opacity: 1;
           visibility: visible;
-          transform: translateY(100%);
+          transform: translateY(0);
           color: #000;
         }
         .icon {
@@ -302,9 +302,9 @@
       position: absolute;
       z-index: 2;
       left: 0;
-      bottom: 0;
+      top: 100%;
       background-color: #fff;
-      transform: translateY(90%);
+      transform: translateY(-40px);
       opacity: 0;
       visibility: hidden;
       transition: 0.2s;

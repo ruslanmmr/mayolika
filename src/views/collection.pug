@@ -13,8 +13,15 @@ html(lang="ru")
           .main__top
             include blocks/header
             .main__content
-              include blocks/banner-title
-              include blocks/catalogue-block
+              section.catalogue
+                .banner.banner_top
+                  .block.block_type4.block_size4
+                      a(href="#").content.background-box
+                        .lazy(data-src='img/banner/stock-photo-catalogue.jpg')
+                        .block__text
+                          h1.block__title.t-size-64 AltaCera
+                          span.block__description Натуральные природные оттенки и сочное текстильное<br> оформление обеспечивают роскошный интерьер.
+                include blocks/catalogue-block
               include blocks/interesting-items
               .categories-block-last
                 include blocks/categories2

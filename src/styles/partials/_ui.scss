@@ -658,15 +658,6 @@
     }
   }
 }
-.input-box {
-  &__label {
-    font-size: 12px;
-    color: #757575;
-    display: block;
-    margin-bottom: 4px;
-    white-space: nowrap;
-  }
-}
 //cover-box
 .background-box {
   overflow: hidden;
@@ -736,7 +727,8 @@
   font-size: 12px;
   color: $color6;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  white-space: nowrap;
 }
 .label-loaded {
   display: block;

@@ -13,7 +13,43 @@ html(lang="ru")
           .main__top
             include blocks/header
             .main__content
-              include blocks/news-section
+              mixin block(title)
+                section.news-preview.col-xl-6.col-12
+                  .news-preview__container
+                    .block.block_size5.block_background.news-preview__image
+                      a(href="#").content.background-box
+                        .lazy(data-src='img/banner/terra.jpg')
+                    .news-preview__content
+                      .news-preview__top
+                        a(href="#").news-preview__title
+                          h2=title
+                        p.news-preview__text Когда ванная комната отделывается плитками, последней операцией обязательно заделываются швы между ними. Лишь после этого отделочная работа считается завершенной, и поверхность приобретает аккуратный вид.
+                      .news-preview__more
+                        a(href="#").button.button_style1 Читать полностью
+              section.news
+                .news__head.block.block_type4.block_size6
+                  .content.background-box
+                    .lazy(data-src='img/banner/bg-news.jpg')
+                    .block__text
+                      h1.block__title.t-size-64 Информация<br> для покупателя
+                .news__container.row
+                  +block('Ремонт своими руками')
+                  +block('Способы и особенности укладки керамической плитки')
+                  +block('Ремонт своими руками')
+                  +block('Ремонт своими руками')
+                .pagination
+                  ul.pagination__list
+                    li.pagination__item
+                      a(href="#").pagination__link.active 1
+                    li.pagination__item
+                      a(href="#").pagination__link 2
+                    li.pagination__item
+                      a(href="#").pagination__link 3
+                    li.pagination__item
+                      a(href="#").pagination__link ...
+                    li.pagination__item
+                      a(href="#").pagination__link 10
+                  a(href="#").button.button_style1.pagination__button Показать больше
           include blocks/footer
     script(src="https://unpkg.com/current-device/umd/current-device.min.js")       
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")

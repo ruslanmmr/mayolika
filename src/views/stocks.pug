@@ -1,0 +1,78 @@
+doctype html
+html(lang="ru")
+  head
+    include blocks/head
+  body
+    .wrapper
+      a(href="#").button.button_scroll-top
+        span
+         <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon18"></use></svg>
+      include blocks/aside   
+      main.main
+        .main__container
+          .main__top
+            include blocks/header
+            .main__content
+              section.catalogue
+                .banner.banner_top
+                  .block.block_type4.block_size4
+                    .content.background-box
+                      .lazy(data-src='img/banner/stock-photo-catalogue.jpg')
+                      .block__text
+                        h1.block__title.t-size-64 Акции
+                        span.block__description Описание к странице
+                .catalogue__sorting.sorting
+                  .row
+                    .select-box.col-xl-3.col-lg-4.col-sm-6
+                      span.label Цена
+                      .select
+                        select
+                          option(value="" data-display="Не выбрано") Не выбрано
+                          option(value="") По возрaстанию
+                          option(value="") По убыванию
+                    .select-box.col-xl-3.col-lg-4.col-sm-6
+                      span.label Размер
+                      .select
+                        select
+                          option(value="" data-display="Все размеры") Все размеры
+                          option(value="") Какой-то размер
+                          option(value="") Какой-то размер
+                    .select-box.col-xl-3.col-lg-4.col-sm-6
+                      span.label Назначение
+                      .select
+                        select
+                          option(value="" data-display="Не выбрано") Не выбрано
+                          option(value="") Для ванной
+                          option(value="") Для кухни
+                          option(value="") Для пола
+                          option(value="") Для фасада
+                    .select-box.col-xl-3.col-lg-4.col-sm-6
+                      span.label Тип плитки
+                      .select
+                        select
+                          option(value="" data-display="Все типы") Все типы
+                          option(value="") Керамогранит
+                          option(value="") Плитка
+                          option(value="") Декор
+                          option(value="") Мозайка
+                .catalogue__list.row
+                  include blocks/cards
+                  +block4('Marbella Arabesco')(data-src="img/banner/tile11.jpg")
+                  +block5('Ceresit СМ 9 Plus 25 кг', 'Клей для плитки', 'Водно-дисперсионный силиконовый гидрофобизатор для защиты от влаги и загрязнения')(data-src='img/banner/interesting1.jpg')
+                  +block4('Marbella Arabesco')(data-src="img/banner/tile11.jpg")
+                  +block4('Marbella Arabesco')(data-src="img/banner/tile11.jpg")
+                .catalogue__pagination.pagination
+                  ul.pagination__list
+                    li.pagination__item
+                      a(href="#").pagination__link.active 1
+                    li.pagination__item
+                      a(href="#").pagination__link 2
+                    li.pagination__item
+                      a(href="#").pagination__link 3
+                  a(href="#").button.button_style1.pagination__button Показать больше
+              include blocks/interesting-items
+          include blocks/footer
+    script(src="https://unpkg.com/current-device/umd/current-device.min.js")       
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="js/libs.min.js")            
+    script(src="js/common.min.js")
