@@ -83,6 +83,8 @@ function imagesResize(element) {
       }
       element.addClass('visible');
     }, 100)
+  } else {
+    element.addClass('visible');
   }
 }
 
