@@ -785,7 +785,7 @@ function validation() {
     })
     
     $.validator.addMethod("correctPhone", function(value, element){
-      if (/^(?!_$)([+]{1}[0-9]{1} [(]{1}[0-9]{3}[)]{1} [0-9]{3}[-]{1}[0-9]{2}[-]{1}[0-9]{2})$/.test(value)) {
+      if (/^\s*$/.test(value) || /^(?!_$)([+]{1}[0-9]{1} [(]{1}[0-9]{3}[)]{1} [0-9]{3}[-]{1}[0-9]{2}[-]{1}[0-9]{2})$/.test(value)) {
           return true;  
       } else {
           return false;   
@@ -803,7 +803,6 @@ function validation() {
           email: true
         },
         phone: {
-          required: true,
           correctPhone: true
         },
         personalData: {

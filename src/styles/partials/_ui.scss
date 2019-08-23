@@ -465,6 +465,9 @@
   &_textarea {
     min-height: 110px;
     height: 100%;
+    &.required {
+      height: auto;
+    }
   }
   &_style3 {
     border: 1px solid $color3;
