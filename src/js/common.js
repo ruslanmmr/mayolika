@@ -15,6 +15,7 @@ $(document).ready(function () {
   validation();
   designTab();
   designForm();
+  svg4everybody();
 });
 $(window).resize(function () {
   innerWidth = $('body').innerWidth();
@@ -32,6 +33,9 @@ var innerWidth = $('body').innerWidth(),
 scrollTop = $(window).scrollTop(),
 $checkbox = $('.checkbox, .radio'),
 $slider = $('.slider'),
+$reset = $('.reset-btn'),
+$input = $('input'),
+$form = $('form'),
 popupCloseTimer,
 //scroll-styling
 cursorcolorVar = "transparent",
@@ -261,53 +265,6 @@ function numChange(target) {
   )
 }
 
-//checkboses
-function inputs() {
-  var $reset = $('.reset-btn'),
-  $input = $('input'),
-  $form = $('form');
-
-  checkboxCheck();
-  filterState();
-
-  $input.on('change', function() {
-    checkboxCheck();
-    filterState();
-  })
-  $input.on('input', function() {
-    if($(this).hasClass('input_number')) {
-      numChange($(this));
-    }
-  })
-  $('input[type="file"]').on('input', function() {
-    if($(this).val() != '') {
-      $(this).parents('.input-box').find('.label-loaded').remove();
-      $(this).parents('.input-box').prepend('<span class="label-loaded">План помещения успешно загружен!</span>');
-    }
-  })
-
-
-
-  $reset.on('click', function() {
-    setTimeout(function() {
-      checkboxCheck();
-      filterState();
-    }, 100)
-  })
-
-  function filterState() {
-    $form.each(function() {
-      if($(this).find($reset).length) {
-        if($(this).find('input:checked').length > 0 || $(this).find('input').val()) {
-          $(this).find($reset).prop('disabled', false);
-        } else {
-          $reset.prop('disabled', true);
-        }
-      }
-    })
-  }
-}
-
 function checkboxCheck() {
   $checkbox.each(function() {
     if($(this).find('input').prop('checked')) {
@@ -445,7 +402,6 @@ function gallery() {
     $('.product-slider-nav__item').eq(activeSlide).find($galleryLink).addClass('active');
   }
 }
-//
 function designTab() {
   var $tabItem = $('.design-tab'),
     $tabLink = $('.design-info__nav-item .button');
@@ -507,8 +463,6 @@ function designForm() {
 
 
 }
-
-//more 
 function moreInfo() {
   var $buttonToggle = $('.product-head__item .button-toggle');
 
@@ -517,7 +471,6 @@ function moreInfo() {
     $(this).parents('.product-head__item').find('.product-head__more-info').toggleClass('active');
   })
 }
-
 //calcutor
 function calculator() {
   var controlClass = 'product-calculator__control',
@@ -537,7 +490,7 @@ function calculator() {
     actionProcessing($block, 'totalPrice');
   })
 
-  $(document).on('touchstart touchend mousedown mouseup click input mouseout', '.product-calculator', function(e) {
+  $(document).on('touchstart touchend mousedown mouseup change click input mouseout', '.product-calculator', function(e) {
     var $target = $(e.target),
         $block = $(this);
     
@@ -616,18 +569,14 @@ function calculator() {
       $(e.target).closest('.' + inputClass);
       $target = $(e.target).closest('.' + inputClass);
       if(e.type == 'input') {
-        numChange($target);
         actionProcessing($block, 'calculationTile');
         actionProcessing($block, 'calculatePrice');
         actionProcessing($block, 'totalPrice');
-        $target.on('change', function() {
-          console.log('change')
-          actionProcessing($block, 'adjustment');
-          actionProcessing($block, 'calculatePrice');
-          actionProcessing($block, 'totalPrice');
-        })
-      } else if(e.type == 'mouseout') {
+      } else if(e.type == 'change' || e.type == 'mouseout') {
         $target.blur();
+        actionProcessing($block, 'adjustment');
+        actionProcessing($block, 'calculatePrice');
+        actionProcessing($block, 'totalPrice');
       }
     }
   })
@@ -765,47 +714,92 @@ function fancybox() {
           c = document.getElementById("pano");
       Ceramic3DPanorama(c,'',path);
     }
-    if($(slide.$content).hasClass('popup')) {
-      validation();
-    }
   });
 }
 
-//validate
-function validation() {
-  var $phoneInput = $('input[name="phone"]'),
-      $form = $(".validate-form");
 
-  if($form.length > 0) {  
-    $phoneInput.mask("+7 (999) 999-99-99", {completed:function(){$form.validate().element($phoneInput)}});  
-    $phoneInput.on('keyup', function() {
-      if($(this).hasClass('error')) {
-        $form.validate().element($phoneInput);
+//inputs
+function inputs() {
+  checkboxCheck();
+  filterState();
+
+  $input.on('change', function() {
+    checkboxCheck();
+    filterState();
+  })
+
+  $(document).on('input change click', '.js-validation', function(e) {
+    var $target = $(e.target);
+
+    //только цифры, и '.'
+    if($target.hasClass('js-validation_num-only')) {
+      $target.val($target.val()
+      .replace(/[^\d,.]*/g, '')
+      .replace(/([,.])[,.]+/g, '$1')
+      .replace(/^[^\d]*(\d+([.,]\d{0,5})?).*$/g, '$1'))
+    }
+    //номер телефона
+    if($target.hasClass('js-validation_phone') && !$target.hasClass('js-masked')) {
+      if(e.type == 'click') {
+        $target.mask("+7 (999) 999-99-99");
+        $target.focus();
+        $target.addClass('js-masked');
+      }
+    }
+
+    //условие для файлов
+    else if($target.hasClass('js-validation_file')) {
+      if($(this).val() != '') {
+        $(this).parents('.input-box').find('.label-loaded').remove();
+        $(this).parents('.input-box').prepend('<span class="label-loaded">План помещения успешно загружен!</span>');
+      }
+    }
+  });
+
+
+
+  $reset.on('click', function() {
+    setTimeout(function() {
+      checkboxCheck();
+      filterState();
+    }, 100)
+  })
+
+  function filterState() {
+    $form.each(function() {
+      if($(this).find($reset).length) {
+        if($(this).find('input:checked').length > 0 || $(this).find('input').val()) {
+          $(this).find($reset).prop('disabled', false);
+        } else {
+          $reset.prop('disabled', true);
+        }
       }
     })
-    
+  }
+}
+//validate
+function validation() {
+  var $form = $(".form");
+
+  if($form.length > 0) {
+    $.validator.addClassRules("js-validation_phone", {correctPhone: true});
     $.validator.addMethod("correctPhone", function(value, element){
       if (/^\s*$/.test(value) || /^(?!_$)([+]{1}[0-9]{1} [(]{1}[0-9]{3}[)]{1} [0-9]{3}[-]{1}[0-9]{2}[-]{1}[0-9]{2})$/.test(value)) {
           return true;  
       } else {
           return false;   
       };
-    });
-
-    $.validator.addMethod("req", $.validator.methods.required,
+    }, 'Укажите корректный номер телефона');
+    $.validator.addClassRules("required", {required: true});
+    $.validator.addMethod("required", $.validator.methods.required,
     "Пожалуйста, заполните это поле");
-
-    $.validator.addClassRules("required", { req: true});
+    $.validator.addClassRules("js-validation_email", {email: true});
+    $.validator.addMethod("email", $.validator.methods.email,
+    "Укажите корректный адрес электронной почты");
 
     $form.validate({
       rules: {
-        email: {
-          email: true
-        },
-        phone: {
-          correctPhone: true
-        },
-        personalData: {
+        data: {
           required: true
         },
         payment: {
@@ -813,19 +807,11 @@ function validation() {
         }
       },
       messages: {
-        email: {
-          required: "Пожалуйста, заполните это поле",
-          email: jQuery.validator.format("Введите корректный адрес электронной почты")
-        },
         payment: {
           required: "Пожалуйста, выберите способ оплаты",
         },
-        personalData: {
+        data: {
           required: "Согласие обязательно для продолжения",
-        },
-        phone: {
-          required: "Пожалуйста, заполните это поле",
-          correctPhone: jQuery.validator.format("Укажите корректный номер телефона")
         }
       },
       submitHandler: function(form) {

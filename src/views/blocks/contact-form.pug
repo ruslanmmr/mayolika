@@ -2,14 +2,14 @@ section.section.contact-form-section
   .contact-form-section__top
     h6.contact-form-section__title.t-size-18 Затрудняетесь с выбором плитки? Есть вопросы?
     span Мы с радостью на них ответим. Просто напишите нам
-  form.contact-form.validate-form
+  form.form.contact-form
     .row
       .col-xl-6.col-12
-        input(type="text" name="name" placeholder="Ваше имя").input.input_style2.required
+        input(type="text" name="1" placeholder="Ваше имя").input.input_style2.required
       .col-xl-6.col-12
-        input(type="text" name="phone" placeholder="Номер телефона +7").input.input_style2.required
+        input(type="text" name="2" placeholder="Номер телефона +7").input.input_style2.js-validation.js-validation_phone.required
       .col-12
-        textarea(placeholder='Текст сообщения' name="message").input.input_style2.input_textarea.required
+        textarea(placeholder='Текст сообщения' name="3").input.input_style2.input_textarea.required
       .col-12.contact-form__button
         button(type='submit').button.button_style1 Отправить
   .contact-form-section__bottom

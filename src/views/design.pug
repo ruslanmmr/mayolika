@@ -77,7 +77,7 @@ html(lang="ru")
                         p.design-tab__text.t-size-18 3D визуализация — это набор созданных дизайнером изображений, дающий представление об общей картине помещения: как будут сочетаться разные материалы, цвета и элементы. Вы сможете визуально оценить заранее и исправить все недочеты, чтобы итоговый вариант на 100% соответствовал вашим ожиданиям.
                 .section.design-form
                   h5.section__title.design__title.t-size-36 Закажите дизайн проект прямо сейчас!
-                  form(action="#").design-form__form.validate-form
+                  form(action="#").form.design-form__form
                     .design-form__head
                       .row
                         .design-form__head-section.col-xl-4.col-lg-12
@@ -171,18 +171,18 @@ html(lang="ru")
                               .row
                                 .input-box.col-xl-4
                                   span.label Длина (м.)
-                                  input(type="text" placeholder='0').input.input_number.input_style3
+                                  input(type="text" placeholder='0').input.input_number.input_style3.js-validation.js-validation_num-only
                                 .input-box.col-xl-4
                                   span.label Ширина (м.)
-                                  input(type="text" placeholder='0').input.input_number.input_style3
+                                  input(type="text" placeholder='0').input.input_number.input_style3.js-validation.js-validation_num-only
                                 .input-box.col-xl-4
                                   span.label Высота (м.)
-                                  input(type="text" placeholder='0').input.input_number.input_style3
+                                  input(type="text" placeholder='0').input.input_number.input_style3.js-validation.js-validation_num-only
                                 .input-box.col-xl-12
                                   textarea(placeholder='Особенности').input.input_style3.input_textarea
                                 .input-box.col-xl-12
                                   label.button.button_load Загрузить план помещения
-                                    input(type="file")
+                                    input(type="file").js-validation.js-validation_file
                         .design-form__block.design-form__block_style.active.col-xl-4.col-lg-6.col-12
                           .design-form__block-container
                             .design-form__block-section.design-form__block-section_title
@@ -226,15 +226,15 @@ html(lang="ru")
                             .design-form__block-section
                               .row
                                 .input-box.col-xl-12.col-lg-6.col-12
-                                  input(type="text" name="name" placeholder="Имя").input.input_style3.required
+                                  input(type="text" name="name1" placeholder="Имя").input.input_style3.required
                                 .input-box.col-xl-12.col-lg-6.col-12
-                                  input(type="text" name="name2" placeholder="Фамилия").input.input_style3
+                                  input(type="text" name="name2" placeholder="Фамилия").input.input_style3.required
                                 .input-box.col-xl-12.col-lg-6.col-12
-                                  input(type="text" name="name3" placeholder="Отчество").input.input_style3
+                                  input(type="text" name="name3" placeholder="Отчество").input.input_style3.required
                                 .input-box.col-xl-12.col-lg-6.col-12
-                                  input(type="email" name="email" placeholder="e-mail").input.input_style3.required
+                                  input(type="email" name="email" placeholder="e-mail").input.input_style3.js-validation.js-validation_email
                                 .input-box.col-xl-12.col-lg-6.col-12
-                                  input(type="text" name="phone" placeholder="Номер телефона +7").input.input_style3
+                                  input(type="text" name="phone" placeholder="Номер телефона +7").input.input_style3.js-validation.js-validation_phone.required
                                 .input-box.col-xl-12
                                   textarea(placeholder='Комментарии').input.input_style3.input_textarea
                     .design-form__submit.row

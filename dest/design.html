@@ -47,7 +47,7 @@
                         <li class="nav__item"><a class="nav__link nav__link_decorated button button_style3" href="#">Новинки</a></li>
                         <li class="nav__item"><a class="nav__link nav__link_decorated button button_style3" href="#">Акции</a></li>
                         <li class="nav__item"><a class="nav__link nav__link_decorated button button_style3" href="#">Хиты продаж</a></li>
-                        <li class="nav__item"><a class="nav__link button button_style3" href="#">Дизайн проекты</a></li>
+                        <li class="nav__item"><a class="nav__link button button_style3" href="#">Дизайн-проекты</a></li>
                         <li class="nav__item"><a class="nav__link button button_style3" href="#">Оплата и доставка</a></li>
                         <li class="nav__item"><a class="nav__link button button_style3" href="#">Для покупателя</a></li>
                         <li class="nav__item"><a class="nav__link button button_style3" href="#">О компании</a></li>
@@ -58,7 +58,7 @@
                           <div class="nav__label">Телефоны:</div><a class="nav__link button button_style3 nav__phone" href="tel:74732070396">+7 (473) 207-03-96</a><a class="nav__link button button_style3 nav__phone" href="tel:74732070396">+7 (473) 207-03-96</a>
                         </li>
                         <li class="nav__item">
-                          <div class="nav__label">Режим работы:</div><span>Пн-Пт, 09:00 - 19:00 Сб-Вс<br> Сб-Вс, 10:00 - 17:00</span>
+                          <div class="nav__label">Режим работы:</div><span>Пн-Пт, 09:00 - 19:00<br> Сб-Вс, 10:00 - 17:00</span>
                         </li>
                       </ul>
                     </nav>
@@ -95,10 +95,10 @@
                         <div class="filter-section__content">
                           <div class="filter-section__price">
                             <div class="filter-section__price-input">
-                              <input class="input input_style1" type="number" placeholder="от 0">
+                              <input class="input input_style1 js-validation js-validation_num-only" type="text" placeholder="от 0">
                             </div>
                             <div class="filter-section__price-input">
-                              <input class="input input_style1" type="number" placeholder="до 99999">
+                              <input class="input input_style1 js-validation js-validation_num-only" type="text" placeholder="до 99999">
                             </div>
                           </div>
                         </div>
@@ -213,9 +213,9 @@
               <div class="header__container">
                 <div class="header__top">
                   <div class="header__info">
-                    <div class="header__info-item"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon8"></use></svg><span class="header__info-text"> <span>Пн-Пт, 09:00 - 19:00, </span><span>Сб-Вс, 10:00 - 17:00</span></span></div>
+                    <div class="header__info-item"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon28"></use></svg><span class="header__info-text"> <span>Пн-Пт, 09:00 - 19:00, </span><span>Сб-Вс, 10:00 - 17:00</span></span></div>
                     <div class="header__info-item">
-                       <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon28"></use></svg><span class="header__info-text"> <span>+7 (473) 207-03-96 |   </span><span>+7 (473) 207-03-98</span></span></div>
+                       <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon8"></use></svg><span class="header__info-text"> <span>+7 (473) 207-03-96 |   </span><span>+7 (473) 207-03-98</span></span></div>
                   </div>
                 </div>
                 <div class="header__bottom">
@@ -311,7 +311,7 @@
                 </div>
                 <div class="section design-form">
                   <h5 class="section__title design__title t-size-36">Закажите дизайн проект прямо сейчас!</h5>
-                  <form class="design-form__form validate-form" action="#">
+                  <form class="form design-form__form" action="#">
                     <div class="design-form__head">
                       <div class="row">
                         <div class="design-form__head-section col-xl-4 col-lg-12">
@@ -413,20 +413,20 @@
                             <div class="design-form__block-section">
                               <div class="row">
                                 <div class="input-box col-xl-4"><span class="label">Длина (м.)</span>
-                                  <input class="input input_number input_style3" type="text" placeholder="0">
+                                  <input class="input input_number input_style3 js-validation js-validation_num-only" type="text" placeholder="0">
                                 </div>
                                 <div class="input-box col-xl-4"><span class="label">Ширина (м.)</span>
-                                  <input class="input input_number input_style3" type="text" placeholder="0">
+                                  <input class="input input_number input_style3 js-validation js-validation_num-only" type="text" placeholder="0">
                                 </div>
                                 <div class="input-box col-xl-4"><span class="label">Высота (м.)</span>
-                                  <input class="input input_number input_style3" type="text" placeholder="0">
+                                  <input class="input input_number input_style3 js-validation js-validation_num-only" type="text" placeholder="0">
                                 </div>
                                 <div class="input-box col-xl-12">
                                   <textarea class="input input_style3 input_textarea" placeholder="Особенности"></textarea>
                                 </div>
                                 <div class="input-box col-xl-12">
                                   <label class="button button_load">Загрузить план помещения
-                                    <input type="file">
+                                    <input class="js-validation js-validation_file" type="file">
                                   </label>
                                 </div>
                               </div>
@@ -485,19 +485,19 @@
                             <div class="design-form__block-section">
                               <div class="row">
                                 <div class="input-box col-xl-12 col-lg-6 col-12">
-                                  <input class="input input_style3 required" type="text" name="name" placeholder="Имя">
+                                  <input class="input input_style3 required" type="text" name="name1" placeholder="Имя">
                                 </div>
                                 <div class="input-box col-xl-12 col-lg-6 col-12">
-                                  <input class="input input_style3" type="text" name="name2" placeholder="Фамилия">
+                                  <input class="input input_style3 required" type="text" name="name2" placeholder="Фамилия">
                                 </div>
                                 <div class="input-box col-xl-12 col-lg-6 col-12">
-                                  <input class="input input_style3" type="text" name="name3" placeholder="Отчество">
+                                  <input class="input input_style3 required" type="text" name="name3" placeholder="Отчество">
                                 </div>
                                 <div class="input-box col-xl-12 col-lg-6 col-12">
-                                  <input class="input input_style3 required" type="email" name="email" placeholder="e-mail">
+                                  <input class="input input_style3 js-validation js-validation_email" type="email" name="email" placeholder="e-mail">
                                 </div>
                                 <div class="input-box col-xl-12 col-lg-6 col-12">
-                                  <input class="input input_style3" type="text" name="phone" placeholder="Номер телефона +7">
+                                  <input class="input input_style3 js-validation js-validation_phone required" type="text" name="phone" placeholder="Номер телефона +7">
                                 </div>
                                 <div class="input-box col-xl-12">
                                   <textarea class="input input_style3 input_textarea" placeholder="Комментарии"></textarea>
@@ -526,7 +526,7 @@
                   <div class="footer__section col-xl-5 col-lg-6"><span>Мы в сосетях:<a href="https://vk.com" target="_blank">
                         <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon36"></use></svg>majolica_vrn </a>|<a href="https://www.instagram.com/majolica_vrn/" target="_blank">
                         <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon35"></use></svg>@majolica_vrn</a></span><span>Режим работы: <strong>Пн-Пт, 09:00 - 19:00; Сб-Вс, 10:00 - 17:00</strong></span></div>
-                  <div class="footer__section col-xl-5 col-lg-6"><span>Адрес: <strong>394000, г. Воронеж, пер. Отличников, 1Б.</strong></span><span>Телефоны: <strong>+7 (473) 207-03-96; +7(473) 207-03-98</strong></span></div>
+                  <div class="footer__section col-xl-5 col-lg-6"><span>Адрес: <strong>394000, г. Воронеж, пер. Отличников, 1Б</strong></span><span>Телефоны: <strong>+7 (473) 207-03-96; +7(473) 207-03-98</strong></span></div>
                 </div>
               </div>
             </div>

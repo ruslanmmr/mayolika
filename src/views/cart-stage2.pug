@@ -42,9 +42,9 @@ html(lang="ru")
                           .form__item.col-xl-12
                             input(type="text" name="name" placeholder="Имя и фамилия").input.input_style3.required
                           .form__item.col-xl-12
-                            input(type="email" name="email" placeholder="e-mail").input.input_style3
+                            input(type="email" name="email" placeholder="e-mail").input.input_style3.js-validation.js-validation_email
                           .form__item.col-xl-12
-                            input(type="text" name="phone" placeholder="Номер телефона +7").input.input_style3.required
+                            input(type="text" name="phone" placeholder="Номер телефона +7").input.input_style3.js-validation.js-validation_phone.required
                           .form__item.col-xl-12
                             .select
                               select
@@ -53,7 +53,7 @@ html(lang="ru")
                       .form__section.col-xl-8.col-lg-7.col-sm-6.col-12
                         .form__item.form__item_textarea
                           textarea(placeholder='Текст сообщения' name="text").input.input_style3.input_textarea
-                  .cart__section.cart__label Забрать ваш заказ вы можете по адресу: 
+                  .cart__section.cart__label Забрать Ваш заказ вы можете по адресу: 
                     a(href="https://yandex.ua/maps/-/CCDAIA1f" target='_blank').link г. Воронеж, пер. Отличников 1а
                     | . Режим работы с 9.00-18.00, Пн-Пт. 
                   .form__section
@@ -79,13 +79,13 @@ html(lang="ru")
                     li
                       label.checkbox
                         input(type="checkbox")
-                        | Нужна разгрузка и подъем на этаж (Стоимость услуги: 350 руб)
+                        | Нужна разгрузка и подъем на этаж
                     li
                       label.checkbox
                         | Я даю свое согласие на обработку моих 
                         a(href="#").link персональных данных
                         | .
-                        input(type="checkbox" name="personalData").required
+                        input(type="checkbox" name="data").required
                   .cart__section.cart__next
                     button(type='submit').button.button_style1 Продолжить
           include blocks/footer
