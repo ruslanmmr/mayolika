@@ -193,7 +193,7 @@ function aside() {
   var $catalogueToggle = $('.catalogue-toggle'),
   $filterToggle = $('.filter-toggle, .setup-open'),
   $sectionToggle = $('.filter-section__title'),
-  $navToggle = $('.nav-toggle');
+  $navToggle = $('.nav-toggle, .show-catalogue-btn');
 
   //при клике на кнопку каталога
   $catalogueToggle.on('click', function(e) {
@@ -225,6 +225,7 @@ function aside() {
   //при клике на кнопку навигации
   $navToggle.on('click', function(e) {
     e.preventDefault();
+    $('aside').removeClass('filtered');
     if($('html').hasClass('nav-opened')) {
       scrollLock.show($("body"));
       $('html').removeClass('filter-opened').removeClass('catalogue-opened').removeClass('nav-opened');

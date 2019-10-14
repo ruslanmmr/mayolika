@@ -20,7 +20,10 @@ aside.aside
           .toggle-item
             <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon14"></use></svg>
             <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon17"></use></svg>
-        span.aside__title Подберите плитку
+        .aside__filter-head
+          span.aside__title Подберите плитку
+          .aside__show-btn-container
+            a(href="#").button.button_style1.aside__button.show-catalogue-btn Показать 0 товаров
       .aside__nav
         .scroll
           .scroll-container.sl--scrollable
@@ -183,6 +186,5 @@ aside.aside
                         input(type="checkbox")
                         | Значение
                 button(type='reset' disabled).button.button_style4.filter__reset.reset-btn Сбросить фильтры
-                button(type='submit').button.button_style1.filter__submit Показать результаты
 
                 

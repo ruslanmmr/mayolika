@@ -1,3 +1,9 @@
+.show-catalogue-btn {
+  display: none;
+  margin-top: 20px;
+}
+
+
 .aside {
   width: 280px;
   position: relative;
@@ -24,16 +30,21 @@
       height: 100%;
     }
   }
+  &__filter-head {
+    padding: 0 15px 20px 15px;
+    margin: 0 -15px;
+    display: none;
+    border-bottom: 1px solid $color3;
+  }
+  &__show-btn-container {
+    display: none;
+  }
   &__title {
     display: block;
     text-align: center;
     font-size: 18px;
-    padding: 9px 0 20px 0;
     text-transform: uppercase;
     font-weight: 500;
-    display: none;
-    margin: 0 -15px;
-    border-bottom: 1px solid $color3;
     color: #000;
     line-height: 1;
   }
@@ -359,11 +370,19 @@
     .catalogue-toggle {
       display: none;
     }
-    .aside__title {
+    .aside__filter-head {
       display: block;
     }
     .aside__nav {
-      height: calc(100% - 48px);
+      height: calc(100% - 39px);
+    }
+    .filtered {
+      .show-catalogue-btn {
+        display: block;
+      }
+      .aside__nav {
+        height: calc(100% - 101px);
+      }
     }
   }
   .filter-section {
@@ -389,6 +408,9 @@
     transition: box-shadow 0.2s;
     .scroll:after {
       display: none;
+    }
+    &__show-btn-container {
+      display: block;
     }
     &__nav {
       padding: 0;
