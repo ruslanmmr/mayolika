@@ -8,6 +8,7 @@ $color5: #616161;
 $color6: #757575;
 $color7: #ED6842;
 $color8: #FFA54F;
+$color9: #e0e0e0;
 
 html, body {
   overflow: hidden;
@@ -46,6 +47,27 @@ body {
   &__content {
     padding-bottom: 75px;
   }
+  &.scroll-container {
+    height: 100vh;
+  }
+  .scrollbar-track-y {
+    width: 20px;
+    background-color: transparent;
+    .scrollbar-thumb {
+      width: 100%;
+      padding: 6px;
+      border-radius: 0;
+      background-color: transparent;
+      &:after {
+        content: '';
+        display: block;
+        height: 100%;
+        width: 100%;
+        background-color: $color9;
+        border-radius: 10px;
+      }
+    }
+  }
 }
 .container {
   max-width: 1200px;
@@ -58,6 +80,7 @@ body {
 .nicescroll-rails {
   width: 20px !important;
 }
+
 .nicescroll-cursors {
   padding: 5px !important;
   width: 20px !important;

@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  lazy();
   scrollInit();
+  lazy();
   dropdown();
   search();
   aside();
@@ -100,47 +100,45 @@ function select() {
     $('.select').niceSelect();
   }
 }
+
 //scroll
 function scrollInit() {
-  $scrollContainer.niceScroll(".scroll-wrapper", {
-    cursorcolor: cursorcolorVar,
-    cursorwidth: cursorwidthVar,
-    cursorborder: cursorborderVar,
-    cursorborderradius: cursorborderradiusVar,
-    zindex: zindexVar,
-    bouncescroll: bouncescrollVar,
-    autohidemode: "leave",
-  });
-  var timerId = setInterval(function() {
-    $scrollContainer.getNiceScroll().resize();
-  }, 50);
-  
+  var Scrollbar = window.Scrollbar;
+
+  //если у нас пк
   if ($('html').hasClass('desktop')) {
-    $('body').niceScroll({
-      cursorcolor: cursorcolorVar,
-      cursorwidth: cursorwidthVar,
-      cursorborder: cursorborderVar,
-      cursorborderradius: cursorborderradiusVar,
-      zindex: zindexVar,
-      bouncescroll: bouncescrollVar,
-      autohidemode: true
+    $('.main').addClass('scroll-container');
+  }
+  //если не пк - показываем стандартный скроллбар
+  else {
+    $('.main').addClass('scroll-container');
+    $('html, body').css('overflow', 'auto');
+  }
+
+  if($('.scroll-container').length > 0) {
+    Scrollbar.init(document.querySelector('.scroll-container'), {
+      damping: 0.1,
     });
-    var timerId = setInterval(function() {
-      $('body').getNiceScroll().resize();
-    }, 50);
+  }
+
+
+  /* if ($('html').hasClass('desktop')) {
+    Scrollbar.init(document.querySelector('.scroll-container'));
 
     $(".button_scroll-top").on('click', function(e) {
       e.preventDefault();
       $('body').getNiceScroll().doScrollPos(0,0);
     })
-  } else {
+  } 
+  else {
     $('html, body').css('overflow', 'auto');
     $(".button_scroll-top").on('click', function(e) {
       e.preventDefault();
       $("html, body").animate({ scrollTop: 0 }, 500);
     })
-  }
+  } */
 };
+
 
 //dropdowns
 function dropdown() {
@@ -268,6 +266,13 @@ function numChange(target) {
 
 function checkboxCheck() {
   $checkbox.each(function() {
+    
+    if($(this).find('input').prop('disabled')) {
+      $(this).addClass('disabled');
+    } else {
+      $(this).removeClass('disabled');
+    }
+    
     if($(this).find('input').prop('checked')) {
       $(this).addClass('checked');
     } else if($('#' + $(this).attr('for')).prop('checked')) {

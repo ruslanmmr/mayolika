@@ -1,4 +1,4 @@
-aside.aside
+aside.aside.filtered
   .aside__container
     .aside__head
       .logo
@@ -23,168 +23,167 @@ aside.aside
         .aside__filter-head
           span.aside__title Подберите плитку
           .aside__show-btn-container
-            a(href="#").button.button_style1.aside__button.show-catalogue-btn Показать 0 товаров
+            a(href="#").button.button_style1.aside__button.result-link Показать 0 товаров
       .aside__nav
-        .scroll
-          .scroll-container.sl--scrollable
-            .scroll-wrapper
-              nav.nav
-                ul.nav__list
-                  li.nav__item
-                    a(href="#").nav__link.nav__link_decorated.button.button_style3 Новинки
-                  li.nav__item
-                    a(href="#").nav__link.nav__link_decorated.button.button_style3 Акции
-                  li.nav__item
-                    a(href="#").nav__link.nav__link_decorated.button.button_style3 Хиты продаж
-                  li.nav__item
-                    a(href="#").nav__link.button.button_style3 Дизайн-проекты
-                  li.nav__item
-                    a(href="#").nav__link.button.button_style3 Оплата и доставка
-                  li.nav__item
-                    a(href="#").nav__link.button.button_style3 Для покупателя
-                  li.nav__item
-                    a(href="#").nav__link.button.button_style3 О компании
-                  li.nav__item
-                    a(href="#").nav__link.button.button_style3 Контакты
-                ul.nav__list.nav__list_contacts
-                  li.nav__item
-                    .nav__label Телефоны:
-                    a(href="tel:74732070396").nav__link.button.button_style3.nav__phone +7 (473) 207-03-96
-                    a(href="tel:74732070396").nav__link.button.button_style3.nav__phone +7 (473) 207-03-96
-                  li.nav__item
-                    .nav__label Режим работы:
-                    span Пн-Пт, 09:00 - 19:00<br> Сб-Вс, 10:00 - 17:00
-              .catalogue-nav
-                ul.catalogue-nav__list
-                  li.catalogue-nav__item
-                    a(href="catalogue.html").catalogue-nav__link.button.button_style3 КЕРАМИЧЕСКАЯ ПЛИТКА
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 Плитка для ванной
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 Плитка для кухни
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 Плитка для пола
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 Azori
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 AltaCera
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 Kerlife
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 Terra Design
-                ul.catalogue-nav__list
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 КЕРАМИЧЕСКИЙ ГРАНИТ
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 Керамогранит для пола 
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 Керамогранит для фасада
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 Zeus Ceramica
-                ul.catalogue-nav__list
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 СУХИЕ СМЕСИ
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 Грунтовка
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 Клей для плитки
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 Затирки
-                ul.catalogue-nav__list
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 Мозаика
-                  li.catalogue-nav__item
-                    a(href="#").catalogue-nav__link.button.button_style3 Мозаика стеклянная
-              form(action="#").filter
-                .filter-section.filter-section_price
-                  span.filter-section__title ЦЕНА:
-                  .filter-section__content
-                    .filter-section__price
-                      .filter-section__price-input
-                        input.input.input_style1(type="text" placeholder="от 0").js-validation.js-validation_num-only
-                      .filter-section__price-input
-                        input.input.input_style1(type="text" placeholder="до 99999").js-validation.js-validation_num-only
-                .filter-section.active
-                  a(href="#").filter-section__title ПРОИЗВОДИТЕЛЬ:
-                  .filter-section__content
-                    .filter-section__checkbox-list
-                      label.checkbox
-                        input(type="checkbox")
-                        | TerraDesign
-                      label.checkbox
-                        input(type="checkbox")
-                        | Kerlife
-                      label.checkbox
-                        input(type="checkbox")
-                        | Azori 
-                      label.checkbox
-                        input(type="checkbox")
-                        | AltaCera
-                .filter-section
-                  a(href="#").filter-section__title ПРОИЗВОДИТЕЛЬ:
-                  .filter-section__content
-                    .filter-section__checkbox-list
-                      label.checkbox
-                        input(type="checkbox")
-                        | Россия
-                      label.checkbox
-                        input(type="checkbox")
-                        | Китай
-                      label.checkbox
-                        input(type="checkbox")
-                        | Украина
-                .filter-section
-                  a(href="#").filter-section__title Размер:
-                  .filter-section__content
-                    .filter-section__checkbox-list
-                      label.checkbox
-                        input(type="checkbox")
-                        | Значение
-                      label.checkbox
-                        input(type="checkbox")
-                        | Значение
-                      label.checkbox
-                        input(type="checkbox")
-                        | Значение
-                .filter-section
-                  a(href="#").filter-section__title ЦВЕТ:
-                  .filter-section__content
-                    .filter-section__checkbox-list
-                      label.checkbox
-                        input(type="checkbox")
-                        | Значение
-                      label.checkbox
-                        input(type="checkbox")
-                        | Значение
-                      label.checkbox
-                        input(type="checkbox")
-                        | Значение
-                .filter-section
-                  a(href="#").filter-section__title НАЗНАЧЕНИЕ:
-                  .filter-section__content
-                    .filter-section__checkbox-list
-                      label.checkbox
-                        input(type="checkbox")
-                        | Значение
-                      label.checkbox
-                        input(type="checkbox")
-                        | Значение
-                      label.checkbox
-                        input(type="checkbox")
-                        | Значение
-                .filter-section
-                  a(href="#").filter-section__title Стиль:
-                  .filter-section__content
-                    .filter-section__checkbox-list
-                      label.checkbox
-                        input(type="checkbox")
-                        | Значение
-                      label.checkbox
-                        input(type="checkbox")
-                        | Значение
-                      label.checkbox
-                        input(type="checkbox")
-                        | Значение
-                button(type='reset' disabled).button.button_style4.filter__reset.reset-btn Сбросить фильтры
+        nav.nav
+          ul.nav__list
+            li.nav__item
+              a(href="#").nav__link.nav__link_decorated.button.button_style3 Новинки
+            li.nav__item
+              a(href="#").nav__link.nav__link_decorated.button.button_style3 Акции
+            li.nav__item
+              a(href="#").nav__link.nav__link_decorated.button.button_style3 Хиты продаж
+            li.nav__item
+              a(href="#").nav__link.button.button_style3 Дизайн-проекты
+            li.nav__item
+              a(href="#").nav__link.button.button_style3 Оплата и доставка
+            li.nav__item
+              a(href="#").nav__link.button.button_style3 Для покупателя
+            li.nav__item
+              a(href="#").nav__link.button.button_style3 О компании
+            li.nav__item
+              a(href="#").nav__link.button.button_style3 Контакты
+          ul.nav__list.nav__list_contacts
+            li.nav__item
+              .nav__label Телефоны:
+              a(href="tel:74732070396").nav__link.button.button_style3.nav__phone +7 (473) 207-03-96
+              a(href="tel:74732070396").nav__link.button.button_style3.nav__phone +7 (473) 207-03-96
+            li.nav__item
+              .nav__label Режим работы:
+              span Пн-Пт, 09:00 - 19:00<br> Сб-Вс, 10:00 - 17:00
+        .catalogue-nav
+          ul.catalogue-nav__list
+            li.catalogue-nav__item.first.level1
+              a.catalogue-nav__link.button.button_style3(href='kollekcii') &Kcy;&ocy;&lcy;&lcy;&iecy;&kcy;&tscy;&icy;&icy;
+              ul.catalogue-nav__list.dropdown-menu
+                li.catalogue-nav__item.first.level2
+                  a.catalogue-nav__link.button.button_style3(href='kollekcii/dlya-vannoj') &Dcy;&lcy;&yacy; &vcy;&acy;&ncy;&ncy;&ocy;&jcy;
+                li.catalogue-nav__item.level2
+                  a.catalogue-nav__link.button.button_style3(href='kollekcii/dlya-pola') &Dcy;&lcy;&yacy; &pcy;&ocy;&lcy;&acy;
+                li.catalogue-nav__item.last.level2
+                  a.catalogue-nav__link.button.button_style3(href='kollekcii/dlya-kuhni') &Dcy;&lcy;&yacy; &kcy;&ucy;&khcy;&ncy;&icy;
+            li.catalogue-nav__item.level1
+              a.catalogue-nav__link.button.button_style3(href='keramicheskaya-plitka') &Kcy;&iecy;&rcy;&acy;&mcy;&icy;&chcy;&iecy;&scy;&kcy;&acy;&yacy; &pcy;&lcy;&icy;&tcy;&kcy;&acy;
+              ul.catalogue-nav__list.dropdown-menu
+                li.catalogue-nav__item.first.level2
+                  a.catalogue-nav__link.button.button_style3(href='keramicheskaya-plitka/plitka-dlya-vannoj') &Pcy;&lcy;&icy;&tcy;&kcy;&acy; &dcy;&lcy;&yacy; &vcy;&acy;&ncy;&ncy;&ocy;&jcy;
+                li.catalogue-nav__item.level2
+                  a.catalogue-nav__link.button.button_style3(href='keramicheskaya-plitka/plitka-dlya-kuhni') &Pcy;&lcy;&icy;&tcy;&kcy;&acy; &dcy;&lcy;&yacy; &kcy;&ucy;&khcy;&ncy;&icy;
+                li.catalogue-nav__item.last.level2
+                  a.catalogue-nav__link.button.button_style3(href='keramicheskaya-plitka/plitka-dlya-pola') &Pcy;&lcy;&icy;&tcy;&kcy;&acy; &dcy;&lcy;&yacy; &pcy;&ocy;&lcy;&acy;
+            li.catalogue-nav__item.level1
+              a.catalogue-nav__link.button.button_style3(href='keramicheskij-granit') &Kcy;&iecy;&rcy;&acy;&mcy;&icy;&chcy;&iecy;&scy;&kcy;&icy;&jcy; &gcy;&rcy;&acy;&ncy;&icy;&tcy;
+              ul.catalogue-nav__list.dropdown-menu
+                li.catalogue-nav__item.first.level2
+                  a.catalogue-nav__link.button.button_style3(href='keramicheskij-granit/keramogranit-dlya-pola') &Kcy;&iecy;&rcy;&acy;&mcy;&ocy;&gcy;&rcy;&acy;&ncy;&icy;&tcy; &dcy;&lcy;&yacy; &pcy;&ocy;&lcy;&acy;
+                li.catalogue-nav__item.last.level2
+                  a.catalogue-nav__link.button.button_style3(href='keramicheskij-granit/keramogranit-dlya-fasada') &Kcy;&iecy;&rcy;&acy;&mcy;&ocy;&gcy;&rcy;&acy;&ncy;&icy;&tcy; &dcy;&lcy;&yacy; &fcy;&acy;&scy;&acy;&dcy;&acy;
+            li.catalogue-nav__item.level1
+              a.catalogue-nav__link.button.button_style3(href='mozaika') &Mcy;&ocy;&zcy;&acy;&icy;&kcy;&acy;
+              ul.catalogue-nav__list.dropdown-menu
+                li.catalogue-nav__item.first.level2
+                  a.catalogue-nav__link.button.button_style3(href='mozaika/mozaika-steklyannaya') &Mcy;&ocy;&zcy;&acy;&icy;&kcy;&acy; &scy;&tcy;&iecy;&kcy;&lcy;&yacy;&ncy;&ncy;&acy;&yacy;
+            li.catalogue-nav__item.last.level1
+              a.catalogue-nav__link.button.button_style3(href='soputstvuyuschie-tovary') &Scy;&ocy;&pcy;&ucy;&tcy;&scy;&tcy;&vcy;&ucy;&yucy;&shchcy;&icy;&iecy; &tcy;&ocy;&vcy;&acy;&rcy;&ycy;
+              ul.catalogue-nav__list.dropdown-menu
+                li.catalogue-nav__item.first.level2
+                  a.catalogue-nav__link.button.button_style3(href='suhie-smesi/gruntovka') &Gcy;&rcy;&ucy;&ncy;&tcy;&ocy;&vcy;&kcy;&acy;
+                li.catalogue-nav__item.level2
+                  a.catalogue-nav__link.button.button_style3(href='suhie-smesi/klej-dlya-plitki') &Kcy;&lcy;&iecy;&jcy; &dcy;&lcy;&yacy; &pcy;&lcy;&icy;&tcy;&kcy;&icy;
+                li.catalogue-nav__item.level2
+                  a.catalogue-nav__link.button.button_style3(href='suhie-smesi/zatirki') &Zcy;&acy;&tcy;&icy;&rcy;&kcy;&icy;
+                li.catalogue-nav__item.last.level2
+                  a.catalogue-nav__link.button.button_style3(href='katalog/soputstvuyuschie-tovary/bordyur') &Bcy;&ocy;&rcy;&dcy;&yucy;&rcy;
+        form(action="#").filter
+          .filter-section.filter-section_price
+            span.filter-section__title ЦЕНА:
+            .filter-section__content
+              .filter-section__price
+                .filter-section__price-input
+                  input.input.input_style1(type="text" placeholder="от 0").js-validation.js-validation_num-only
+                .filter-section__price-input
+                  input.input.input_style1(type="text" placeholder="до 99999").js-validation.js-validation_num-only
+          .filter-section.active
+            a(href="#").filter-section__title ПРОИЗВОДИТЕЛЬ:
+            .filter-section__content
+              .filter-section__checkbox-list
+                label.checkbox
+                  input(type="checkbox" disabled)
+                  | TerraDesign
+                label.checkbox
+                  input(type="checkbox")
+                  | Kerlife
+                label.checkbox
+                  input(type="checkbox")
+                  | Azori 
+                label.checkbox
+                  input(type="checkbox")
+                  | AltaCera
+          .filter-section
+            a(href="#").filter-section__title ПРОИЗВОДИТЕЛЬ:
+            .filter-section__content
+              .filter-section__checkbox-list
+                label.checkbox
+                  input(type="checkbox")
+                  | Россия
+                label.checkbox
+                  input(type="checkbox")
+                  | Китай
+                label.checkbox
+                  input(type="checkbox")
+                  | Украина
+          .filter-section
+            a(href="#").filter-section__title Размер:
+            .filter-section__content
+              .filter-section__checkbox-list
+                label.checkbox
+                  input(type="checkbox")
+                  | Значение
+                label.checkbox
+                  input(type="checkbox")
+                  | Значение
+                label.checkbox
+                  input(type="checkbox")
+                  | Значение
+          .filter-section
+            a(href="#").filter-section__title ЦВЕТ:
+            .filter-section__content
+              .filter-section__checkbox-list
+                label.checkbox
+                  input(type="checkbox")
+                  | Значение
+                label.checkbox
+                  input(type="checkbox")
+                  | Значение
+                label.checkbox
+                  input(type="checkbox")
+                  | Значение
+          .filter-section
+            a(href="#").filter-section__title НАЗНАЧЕНИЕ:
+            .filter-section__content
+              .filter-section__checkbox-list
+                label.checkbox
+                  input(type="checkbox")
+                  | Значение
+                label.checkbox
+                  input(type="checkbox")
+                  | Значение
+                label.checkbox
+                  input(type="checkbox")
+                  | Значение
+          .filter-section
+            a(href="#").filter-section__title Стиль:
+            .filter-section__content
+              .filter-section__checkbox-list
+                label.checkbox
+                  input(type="checkbox")
+                  | Значение
+                label.checkbox
+                  input(type="checkbox")
+                  | Значение
+                label.checkbox
+                  input(type="checkbox")
+                  | Значение
+          button(type='reset' disabled).button.button_style4.filter__reset.reset-btn Сбросить фильтры
 
                 

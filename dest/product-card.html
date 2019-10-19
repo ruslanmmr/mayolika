@@ -22,7 +22,7 @@
   </head>
   <body>
     <div class="wrapper" data-selectable="true"><a class="button button_scroll-top" href="#"><span><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon18"></use></svg></span></a>
-      <aside class="aside">
+      <aside class="aside filtered">
         <div class="aside__container">
           <div class="aside__head">
             <div class="logo"><a href="index.html"><img src="img/logos/logo.svg" alt="main-logo"></a></div><a class="nav-toggle button button_style2" href="#">
@@ -39,172 +39,175 @@
 <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon17"></use></svg>
                 </div></a>
               <div class="aside__filter-head"><span class="aside__title">Подберите плитку</span>
-                <div class="aside__show-btn-container"><a class="button button_style1 aside__button show-catalogue-btn" href="#">Показать 0 товаров</a></div>
+                <div class="aside__show-btn-container"><a class="button button_style1 aside__button result-link" href="#">Показать 0 товаров</a></div>
               </div>
             </div>
             <div class="aside__nav">
-              <div class="scroll">
-                <div class="scroll-container sl--scrollable">
-                  <div class="scroll-wrapper">
-                    <nav class="nav">
-                      <ul class="nav__list">
-                        <li class="nav__item"><a class="nav__link nav__link_decorated button button_style3" href="#">Новинки</a></li>
-                        <li class="nav__item"><a class="nav__link nav__link_decorated button button_style3" href="#">Акции</a></li>
-                        <li class="nav__item"><a class="nav__link nav__link_decorated button button_style3" href="#">Хиты продаж</a></li>
-                        <li class="nav__item"><a class="nav__link button button_style3" href="#">Дизайн-проекты</a></li>
-                        <li class="nav__item"><a class="nav__link button button_style3" href="#">Оплата и доставка</a></li>
-                        <li class="nav__item"><a class="nav__link button button_style3" href="#">Для покупателя</a></li>
-                        <li class="nav__item"><a class="nav__link button button_style3" href="#">О компании</a></li>
-                        <li class="nav__item"><a class="nav__link button button_style3" href="#">Контакты</a></li>
-                      </ul>
-                      <ul class="nav__list nav__list_contacts">
-                        <li class="nav__item">
-                          <div class="nav__label">Телефоны:</div><a class="nav__link button button_style3 nav__phone" href="tel:74732070396">+7 (473) 207-03-96</a><a class="nav__link button button_style3 nav__phone" href="tel:74732070396">+7 (473) 207-03-96</a>
-                        </li>
-                        <li class="nav__item">
-                          <div class="nav__label">Режим работы:</div><span>Пн-Пт, 09:00 - 19:00<br> Сб-Вс, 10:00 - 17:00</span>
-                        </li>
-                      </ul>
-                    </nav>
-                    <div class="catalogue-nav">
-                      <ul class="catalogue-nav__list">
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="catalogue.html">КЕРАМИЧЕСКАЯ ПЛИТКА</a></li>
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">Плитка для ванной</a></li>
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">Плитка для кухни</a></li>
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">Плитка для пола</a></li>
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">Azori</a></li>
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">AltaCera</a></li>
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">Kerlife</a></li>
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">Terra Design</a></li>
-                      </ul>
-                      <ul class="catalogue-nav__list">
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">КЕРАМИЧЕСКИЙ ГРАНИТ</a></li>
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">Керамогранит для пола </a></li>
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">Керамогранит для фасада</a></li>
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">Zeus Ceramica</a></li>
-                      </ul>
-                      <ul class="catalogue-nav__list">
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">СУХИЕ СМЕСИ</a></li>
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">Грунтовка</a></li>
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">Клей для плитки</a></li>
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">Затирки</a></li>
-                      </ul>
-                      <ul class="catalogue-nav__list">
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">Мозаика</a></li>
-                        <li class="catalogue-nav__item"><a class="catalogue-nav__link button button_style3" href="#">Мозаика стеклянная</a></li>
-                      </ul>
+              <nav class="nav">
+                <ul class="nav__list">
+                  <li class="nav__item"><a class="nav__link nav__link_decorated button button_style3" href="#">Новинки</a></li>
+                  <li class="nav__item"><a class="nav__link nav__link_decorated button button_style3" href="#">Акции</a></li>
+                  <li class="nav__item"><a class="nav__link nav__link_decorated button button_style3" href="#">Хиты продаж</a></li>
+                  <li class="nav__item"><a class="nav__link button button_style3" href="#">Дизайн-проекты</a></li>
+                  <li class="nav__item"><a class="nav__link button button_style3" href="#">Оплата и доставка</a></li>
+                  <li class="nav__item"><a class="nav__link button button_style3" href="#">Для покупателя</a></li>
+                  <li class="nav__item"><a class="nav__link button button_style3" href="#">О компании</a></li>
+                  <li class="nav__item"><a class="nav__link button button_style3" href="#">Контакты</a></li>
+                </ul>
+                <ul class="nav__list nav__list_contacts">
+                  <li class="nav__item">
+                    <div class="nav__label">Телефоны:</div><a class="nav__link button button_style3 nav__phone" href="tel:74732070396">+7 (473) 207-03-96</a><a class="nav__link button button_style3 nav__phone" href="tel:74732070396">+7 (473) 207-03-96</a>
+                  </li>
+                  <li class="nav__item">
+                    <div class="nav__label">Режим работы:</div><span>Пн-Пт, 09:00 - 19:00<br> Сб-Вс, 10:00 - 17:00</span>
+                  </li>
+                </ul>
+              </nav>
+              <div class="catalogue-nav">
+                <ul class="catalogue-nav__list">
+                  <li class="catalogue-nav__item first level1"><a class="catalogue-nav__link button button_style3" href="kollekcii">&Kcy;&ocy;&lcy;&lcy;&iecy;&kcy;&tscy;&icy;&icy;</a>
+                    <ul class="catalogue-nav__list dropdown-menu">
+                      <li class="catalogue-nav__item first level2"><a class="catalogue-nav__link button button_style3" href="kollekcii/dlya-vannoj">&Dcy;&lcy;&yacy; &vcy;&acy;&ncy;&ncy;&ocy;&jcy;</a></li>
+                      <li class="catalogue-nav__item level2"><a class="catalogue-nav__link button button_style3" href="kollekcii/dlya-pola">&Dcy;&lcy;&yacy; &pcy;&ocy;&lcy;&acy;</a></li>
+                      <li class="catalogue-nav__item last level2"><a class="catalogue-nav__link button button_style3" href="kollekcii/dlya-kuhni">&Dcy;&lcy;&yacy; &kcy;&ucy;&khcy;&ncy;&icy;</a></li>
+                    </ul>
+                  </li>
+                  <li class="catalogue-nav__item level1"><a class="catalogue-nav__link button button_style3" href="keramicheskaya-plitka">&Kcy;&iecy;&rcy;&acy;&mcy;&icy;&chcy;&iecy;&scy;&kcy;&acy;&yacy; &pcy;&lcy;&icy;&tcy;&kcy;&acy;</a>
+                    <ul class="catalogue-nav__list dropdown-menu">
+                      <li class="catalogue-nav__item first level2"><a class="catalogue-nav__link button button_style3" href="keramicheskaya-plitka/plitka-dlya-vannoj">&Pcy;&lcy;&icy;&tcy;&kcy;&acy; &dcy;&lcy;&yacy; &vcy;&acy;&ncy;&ncy;&ocy;&jcy;</a></li>
+                      <li class="catalogue-nav__item level2"><a class="catalogue-nav__link button button_style3" href="keramicheskaya-plitka/plitka-dlya-kuhni">&Pcy;&lcy;&icy;&tcy;&kcy;&acy; &dcy;&lcy;&yacy; &kcy;&ucy;&khcy;&ncy;&icy;</a></li>
+                      <li class="catalogue-nav__item last level2"><a class="catalogue-nav__link button button_style3" href="keramicheskaya-plitka/plitka-dlya-pola">&Pcy;&lcy;&icy;&tcy;&kcy;&acy; &dcy;&lcy;&yacy; &pcy;&ocy;&lcy;&acy;</a></li>
+                    </ul>
+                  </li>
+                  <li class="catalogue-nav__item level1"><a class="catalogue-nav__link button button_style3" href="keramicheskij-granit">&Kcy;&iecy;&rcy;&acy;&mcy;&icy;&chcy;&iecy;&scy;&kcy;&icy;&jcy; &gcy;&rcy;&acy;&ncy;&icy;&tcy;</a>
+                    <ul class="catalogue-nav__list dropdown-menu">
+                      <li class="catalogue-nav__item first level2"><a class="catalogue-nav__link button button_style3" href="keramicheskij-granit/keramogranit-dlya-pola">&Kcy;&iecy;&rcy;&acy;&mcy;&ocy;&gcy;&rcy;&acy;&ncy;&icy;&tcy; &dcy;&lcy;&yacy; &pcy;&ocy;&lcy;&acy;</a></li>
+                      <li class="catalogue-nav__item last level2"><a class="catalogue-nav__link button button_style3" href="keramicheskij-granit/keramogranit-dlya-fasada">&Kcy;&iecy;&rcy;&acy;&mcy;&ocy;&gcy;&rcy;&acy;&ncy;&icy;&tcy; &dcy;&lcy;&yacy; &fcy;&acy;&scy;&acy;&dcy;&acy;</a></li>
+                    </ul>
+                  </li>
+                  <li class="catalogue-nav__item level1"><a class="catalogue-nav__link button button_style3" href="mozaika">&Mcy;&ocy;&zcy;&acy;&icy;&kcy;&acy;</a>
+                    <ul class="catalogue-nav__list dropdown-menu">
+                      <li class="catalogue-nav__item first level2"><a class="catalogue-nav__link button button_style3" href="mozaika/mozaika-steklyannaya">&Mcy;&ocy;&zcy;&acy;&icy;&kcy;&acy; &scy;&tcy;&iecy;&kcy;&lcy;&yacy;&ncy;&ncy;&acy;&yacy;</a></li>
+                    </ul>
+                  </li>
+                  <li class="catalogue-nav__item last level1"><a class="catalogue-nav__link button button_style3" href="soputstvuyuschie-tovary">&Scy;&ocy;&pcy;&ucy;&tcy;&scy;&tcy;&vcy;&ucy;&yucy;&shchcy;&icy;&iecy; &tcy;&ocy;&vcy;&acy;&rcy;&ycy;</a>
+                    <ul class="catalogue-nav__list dropdown-menu">
+                      <li class="catalogue-nav__item first level2"><a class="catalogue-nav__link button button_style3" href="suhie-smesi/gruntovka">&Gcy;&rcy;&ucy;&ncy;&tcy;&ocy;&vcy;&kcy;&acy;</a></li>
+                      <li class="catalogue-nav__item level2"><a class="catalogue-nav__link button button_style3" href="suhie-smesi/klej-dlya-plitki">&Kcy;&lcy;&iecy;&jcy; &dcy;&lcy;&yacy; &pcy;&lcy;&icy;&tcy;&kcy;&icy;</a></li>
+                      <li class="catalogue-nav__item level2"><a class="catalogue-nav__link button button_style3" href="suhie-smesi/zatirki">&Zcy;&acy;&tcy;&icy;&rcy;&kcy;&icy;</a></li>
+                      <li class="catalogue-nav__item last level2"><a class="catalogue-nav__link button button_style3" href="katalog/soputstvuyuschie-tovary/bordyur">&Bcy;&ocy;&rcy;&dcy;&yucy;&rcy;</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <form class="filter" action="#">
+                <div class="filter-section filter-section_price"><span class="filter-section__title">ЦЕНА:</span>
+                  <div class="filter-section__content">
+                    <div class="filter-section__price">
+                      <div class="filter-section__price-input">
+                        <input class="input input_style1 js-validation js-validation_num-only" type="text" placeholder="от 0">
+                      </div>
+                      <div class="filter-section__price-input">
+                        <input class="input input_style1 js-validation js-validation_num-only" type="text" placeholder="до 99999">
+                      </div>
                     </div>
-                    <form class="filter" action="#">
-                      <div class="filter-section filter-section_price"><span class="filter-section__title">ЦЕНА:</span>
-                        <div class="filter-section__content">
-                          <div class="filter-section__price">
-                            <div class="filter-section__price-input">
-                              <input class="input input_style1 js-validation js-validation_num-only" type="text" placeholder="от 0">
-                            </div>
-                            <div class="filter-section__price-input">
-                              <input class="input input_style1 js-validation js-validation_num-only" type="text" placeholder="до 99999">
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="filter-section active"><a class="filter-section__title" href="#">ПРОИЗВОДИТЕЛЬ:</a>
-                        <div class="filter-section__content">
-                          <div class="filter-section__checkbox-list">
-                            <label class="checkbox">
-                              <input type="checkbox">TerraDesign
-                            </label>
-                            <label class="checkbox">
-                              <input type="checkbox">Kerlife
-                            </label>
-                            <label class="checkbox">
-                              <input type="checkbox">Azori 
-                            </label>
-                            <label class="checkbox">
-                              <input type="checkbox">AltaCera
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="filter-section"><a class="filter-section__title" href="#">ПРОИЗВОДИТЕЛЬ:</a>
-                        <div class="filter-section__content">
-                          <div class="filter-section__checkbox-list">
-                            <label class="checkbox">
-                              <input type="checkbox">Россия
-                            </label>
-                            <label class="checkbox">
-                              <input type="checkbox">Китай
-                            </label>
-                            <label class="checkbox">
-                              <input type="checkbox">Украина
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="filter-section"><a class="filter-section__title" href="#">Размер:</a>
-                        <div class="filter-section__content">
-                          <div class="filter-section__checkbox-list">
-                            <label class="checkbox">
-                              <input type="checkbox">Значение
-                            </label>
-                            <label class="checkbox">
-                              <input type="checkbox">Значение
-                            </label>
-                            <label class="checkbox">
-                              <input type="checkbox">Значение
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="filter-section"><a class="filter-section__title" href="#">ЦВЕТ:</a>
-                        <div class="filter-section__content">
-                          <div class="filter-section__checkbox-list">
-                            <label class="checkbox">
-                              <input type="checkbox">Значение
-                            </label>
-                            <label class="checkbox">
-                              <input type="checkbox">Значение
-                            </label>
-                            <label class="checkbox">
-                              <input type="checkbox">Значение
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="filter-section"><a class="filter-section__title" href="#">НАЗНАЧЕНИЕ:</a>
-                        <div class="filter-section__content">
-                          <div class="filter-section__checkbox-list">
-                            <label class="checkbox">
-                              <input type="checkbox">Значение
-                            </label>
-                            <label class="checkbox">
-                              <input type="checkbox">Значение
-                            </label>
-                            <label class="checkbox">
-                              <input type="checkbox">Значение
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="filter-section"><a class="filter-section__title" href="#">Стиль:</a>
-                        <div class="filter-section__content">
-                          <div class="filter-section__checkbox-list">
-                            <label class="checkbox">
-                              <input type="checkbox">Значение
-                            </label>
-                            <label class="checkbox">
-                              <input type="checkbox">Значение
-                            </label>
-                            <label class="checkbox">
-                              <input type="checkbox">Значение
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <button class="button button_style4 filter__reset reset-btn" type="reset" disabled>Сбросить фильтры</button>
-                    </form>
                   </div>
                 </div>
-              </div>
+                <div class="filter-section active"><a class="filter-section__title" href="#">ПРОИЗВОДИТЕЛЬ:</a>
+                  <div class="filter-section__content">
+                    <div class="filter-section__checkbox-list">
+                      <label class="checkbox">
+                        <input type="checkbox" disabled>TerraDesign
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox">Kerlife
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox">Azori 
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox">AltaCera
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="filter-section"><a class="filter-section__title" href="#">ПРОИЗВОДИТЕЛЬ:</a>
+                  <div class="filter-section__content">
+                    <div class="filter-section__checkbox-list">
+                      <label class="checkbox">
+                        <input type="checkbox">Россия
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox">Китай
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox">Украина
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="filter-section"><a class="filter-section__title" href="#">Размер:</a>
+                  <div class="filter-section__content">
+                    <div class="filter-section__checkbox-list">
+                      <label class="checkbox">
+                        <input type="checkbox">Значение
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox">Значение
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox">Значение
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="filter-section"><a class="filter-section__title" href="#">ЦВЕТ:</a>
+                  <div class="filter-section__content">
+                    <div class="filter-section__checkbox-list">
+                      <label class="checkbox">
+                        <input type="checkbox">Значение
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox">Значение
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox">Значение
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="filter-section"><a class="filter-section__title" href="#">НАЗНАЧЕНИЕ:</a>
+                  <div class="filter-section__content">
+                    <div class="filter-section__checkbox-list">
+                      <label class="checkbox">
+                        <input type="checkbox">Значение
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox">Значение
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox">Значение
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="filter-section"><a class="filter-section__title" href="#">Стиль:</a>
+                  <div class="filter-section__content">
+                    <div class="filter-section__checkbox-list">
+                      <label class="checkbox">
+                        <input type="checkbox">Значение
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox">Значение
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox">Значение
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <button class="button button_style4 filter__reset reset-btn" type="reset" disabled>Сбросить фильтры</button>
+              </form>
             </div>
           </div>
         </div>
