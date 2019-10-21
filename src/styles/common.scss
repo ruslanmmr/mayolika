@@ -38,21 +38,15 @@ body {
   max-width: 1200px;
   padding: 0 20px;
   overflow: hidden;
-  &__container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  &__content {
-    padding-bottom: 75px;
-  }
-  &.scroll-container {
+  &[data-scrollbar] {
     height: 100vh;
   }
   .scrollbar-track-y {
     width: 20px;
     background-color: transparent;
+    position: fixed;
+    right: 0;
+    top: 0;
     .scrollbar-thumb {
       width: 100%;
       padding: 6px;
@@ -67,6 +61,15 @@ body {
         border-radius: 10px;
       }
     }
+  }
+  &__container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__content {
+    padding-bottom: 75px;
   }
 }
 .container {
@@ -112,18 +115,36 @@ body {
   }
 }
 
+//правки
+#mse2_results {
+  margin: 0 !important;
+}
+
 @media all and(max-width: 992px) {
   .wrapper {
     display: block;
   }
   .main {
-    padding: 60px 15px;
+    padding: 60px 0;
     &__container {
-      padding: 20px 0 70px 0;
       min-height: calc(100vh - 120px)
     }
     &__content {
-      padding: 0;
+      padding: 20px 15px 70px 15px;
+      &[data-scrollbar] {
+        .scrollbar-track-y {
+          position: absolute;
+          width: 15px;
+          .scrollbar-thumb {
+            padding: 5px;
+          }
+        }
+        height: calc(100vh - 120px);
+        padding: 0;
+        .scroll-content {
+          padding: 20px 15px 70px 15px;
+        }
+      }
     }
   }
   .nicescroll-rails {

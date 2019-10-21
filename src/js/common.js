@@ -1,18 +1,16 @@
 $(document).ready(function () {
-  scrollInit();
   lazy();
+  pageScroll();
   dropdown();
   search();
   aside();
   inputs();
   slider();
-  scrollBtnTop();
   select();
   gallery();
   moreInfo();
   calculator();
   fancybox();
-  validation();
   designTab();
   designForm();
   svg4everybody();
@@ -25,12 +23,16 @@ $(window).resize(function () {
 });
 $(window).on('scroll', function() {
   scrollTop = $(window).scrollTop();
-  scrollBtnTop();
 })
 
 //global variables
 var innerWidth = $('body').innerWidth(),
 scrollTop = $(window).scrollTop(),
+//
+Scrollbar = window.Scrollbar,
+scrollbarMain,
+scrollbarsAside,
+//
 $checkbox = $('.checkbox, .radio'),
 $slider = $('.slider'),
 $reset = $('.reset-btn'),
@@ -62,16 +64,6 @@ function lazy() {
   });
 }
 
-//scrollTop
-function scrollBtnTop() {
-  var $btn = $('.button_scroll-top');
-  if(scrollTop>200) {
-    $btn.fadeIn(200);
-  } else {
-    $btn.fadeOut(200);
-  }
-}
-
 function imagesResize(element) {
   var box = element.parent();
   if(!box.hasClass('cover-box_size-auto')) {
@@ -94,51 +86,132 @@ function imagesResize(element) {
 
 //select
 function select() {
-  if ($('html').hasClass('android') || $('html').hasClass('ios')) {
-    return;
+  if ($('html').hasClass('desktop')) {
+    $('.select select').niceSelect();
   } else {
-    $('.select').niceSelect();
+    $('.select').addClass('.mobile-select')
   }
 }
 
 //scroll
-function scrollInit() {
-  var Scrollbar = window.Scrollbar;
+function pageScroll() {
 
-  //если у нас пк
+  var $btn = $('.button_scroll-top');
+
+  //для скролла страницы
   if ($('html').hasClass('desktop')) {
-    $('.main').addClass('scroll-container');
-  }
-  //если не пк - показываем стандартный скроллбар
-  else {
-    $('.main').addClass('scroll-container');
-    $('html, body').css('overflow', 'auto');
-  }
+    let scrollY,
+        flagInit,
+        inScroll=false,
+        scrollEvent=true,
+        scrollInit=false;
 
-  if($('.scroll-container').length > 0) {
-    Scrollbar.init(document.querySelector('.scroll-container'), {
-      damping: 0.1,
+    innerWidth>992 ? flagInit=true : flagInit=false;
+    
+    function initCustomScroll() {
+      if(innerWidth>992 && flagInit==true) {
+        if(scrollInit==true) {
+          scrollbarMain.destroy();
+        }
+        flagInit = false;
+        scrollbarMain = Scrollbar.init(document.querySelector('.main'), {
+          damping: 0.1,
+        });
+        addEvents();
+      } 
+      else if(innerWidth<=992 && flagInit==false) {
+        if(scrollInit==true) {
+          scrollbarMain.destroy();
+        }
+        flagInit = true;
+        scrollInit = true;
+        scrollbarMain = Scrollbar.init(document.querySelector('.main__content'), {
+          damping: 0.1,
+        });
+        addEvents();
+      }
+    }
+    initCustomScroll();
+    scrollInit = true;
+
+    $(window).resize(function () {
+      initCustomScroll();
     });
-  }
+
+    function addEvents() {
+      scrollbarMain.addListener(listener);
+      scrollbarMain.track.yAxis.show();
+
+      function listener(status) {
+        scrollY = scrollbarMain.offset.y;
+  
+        if(scrollEvent==true) {
+          scrollEvent=false;
+          setTimeout(function() {
+            scrollEvent=true;
+          }, 500)
+          lazy();
+        }
 
 
-  /* if ($('html').hasClass('desktop')) {
-    Scrollbar.init(document.querySelector('.scroll-container'));
+        console.log(scrollY, scrollbarMain.limit.y)
+        if(!inScroll) {
+          scrollY>200 ? $btn.fadeIn(200) : $btn.fadeOut(200);
+        }
+        (scrollY>0 && innerWidth<=992) ? $('.aside').addClass('scrolled') : $('.aside').removeClass('scrolled');
+      }
+    }
 
-    $(".button_scroll-top").on('click', function(e) {
+    //click event
+    $btn.on('click', function(e) {
       e.preventDefault();
-      $('body').getNiceScroll().doScrollPos(0,0);
+      inScroll = true;
+      $btn.fadeOut(200);
+      scrollbarMain.scrollTo(0, 0, 1000);
+      setTimeout(function() {
+        inScroll = false;
+      }, 1000)
     })
-  } 
+  }
+  // 
   else {
     $('html, body').css('overflow', 'auto');
-    $(".button_scroll-top").on('click', function(e) {
-      e.preventDefault();
-      $("html, body").animate({ scrollTop: 0 }, 500);
-    })
-  } */
-};
 
+    //добавление тени при прокрутке
+    if(scrollTop>0) {
+      $('.aside').addClass('scrolled');
+    } else {
+      $('.aside').removeClass('scrolled');
+    }
+    
+    $(window).on('scroll', function() {
+
+      if(scrollTop>0) {
+      $('.aside').addClass('scrolled');
+      } else {
+      $('.aside').removeClass('scrolled');
+      }
+      if(!$('html').hasClass('in-scroll')) {
+        if(scrollTop>200) {
+          $btn.fadeIn(200);
+        } else {
+          $btn.fadeOut(200);
+        }
+      }
+    })
+
+    $btn.on('click', function(e) {
+      e.preventDefault();
+      $('html').addClass('in-scroll');
+      $btn.fadeOut(200);
+      $("html, body").animate({scrollTop:0}, 1000);
+      setTimeout(function() {
+        $('html').removeClass('in-scroll')
+      }, 1000)
+    })
+
+  }
+};
 
 //dropdowns
 function dropdown() {
@@ -173,25 +246,34 @@ function search() {
 
   $searchOpen.on('click', function(e) {
     e.preventDefault();
-    $search.addClass('visible');
+    $search.show();
   })
   $searchClose.on('click', function(e) {
     e.preventDefault();
-    $search.removeClass('visible');
+    $search.hide();
   })
   $(window).resize(function () {
     if(innerWidth>576) {
-      $search.removeClass('visible');
+      $search.show(300);
     }
   });
 }
 
 //aside
 function aside() {
-  var $catalogueToggle = $('.catalogue-toggle'),
-  $filterToggle = $('.filter-toggle, .setup-open'),
-  $sectionToggle = $('.filter-section__title'),
-  $navToggle = $('.nav-toggle, .show-catalogue-btn');
+   var $catalogueToggle = $('.catalogue-toggle'),
+     $filterToggle = $('.filter-toggle'),
+     $setupOpen = $('.setup-open'),
+	   $sectionToggle = $('.filter-section__title'),
+     $navToggle = $('.nav-toggle, .show-catalogue-btn');
+     
+  setInterval(function() {
+    $('.aside__nav').height( $('.aside__content').height() - $('.aside__buttons').height())
+  }, 50)
+
+  //scrollbar init
+  scrollbarsAside = Scrollbar.initAll();
+  
 
   //при клике на кнопку каталога
   $catalogueToggle.on('click', function(e) {
@@ -200,7 +282,6 @@ function aside() {
     if($('html').hasClass('filter-opened')) {
       $('html').removeClass('filter-opened');
     }
-    $(".aside .scroll-container").getNiceScroll().doScrollPos(0,0);
   })
 
   //при клике на кнопку фильтров
@@ -211,19 +292,26 @@ function aside() {
       $('html').addClass('nav-opened');
     }
     $('html').toggleClass('filter-opened');
-    $(".aside .scroll-container").getNiceScroll().doScrollPos(0,0);
+  })
+
+  $setupOpen.on('click', function(e) {
+    e.preventDefault();
+    scrollLock.hide($("body"));
+    $('html').addClass('nav-opened').addClass('filter-opened');
   })
 
   //при клике на табы фильтров
   $sectionToggle.on('click', function(e) {
     e.preventDefault();
     $(this).parent().toggleClass('active');
+    scrollbarsAside[2].update();
   })
 
   //при клике на кнопку навигации
   $navToggle.on('click', function(e) {
     e.preventDefault();
     $('aside').removeClass('filtered');
+    
     if($('html').hasClass('nav-opened')) {
       scrollLock.show($("body"));
       $('html').removeClass('filter-opened').removeClass('catalogue-opened').removeClass('nav-opened');
@@ -232,28 +320,18 @@ function aside() {
       $('html').addClass('nav-opened');
     }
   })
-  
-  //добавление тени при прокрутке
-  if(scrollTop>0) {
-    $('.aside').addClass('scrolled');
-  } else {
-    $('.aside').removeClass('scrolled');
-  }
-  $(window).on('scroll', function() {
-    if(scrollTop>0) {
-      $('.aside').addClass('scrolled');
-    } else {
-      $('.aside').removeClass('scrolled');
-    }
-  })
-  
+
   //закртие навигации при условии изменения ширины монитора
   $(window).resize(function () {
-    if(innerWidth>992) {
-      $('body').removeClass('filter-opened').removeClass('catalogue-opened').removeClass('nav-opened');
-      scrollLock.show($("body"));
-    }
+  if(innerWidth>992) {
+    $('body').removeClass('filter-opened').removeClass('catalogue-opened').removeClass('nav-opened');
+    scrollLock.show($("body"));
+  }
   });
+
+  $reset.on('click', function() {
+    scrollbarsAside[2].scrollTo(0, 0, 1000);
+  })
 }
 
 function numChange(target) {
@@ -265,22 +343,20 @@ function numChange(target) {
 }
 
 function checkboxCheck() {
-  $checkbox.each(function() {
-    
-    if($(this).find('input').prop('disabled')) {
+   $checkbox.each(function() {
+      if($(this).find('input').prop('disabled')) {
       $(this).addClass('disabled');
-    } else {
+      } else {
       $(this).removeClass('disabled');
-    }
-    
-    if($(this).find('input').prop('checked')) {
+      }
+      if($(this).find('input').prop('checked')) {
       $(this).addClass('checked');
-    } else if($('#' + $(this).attr('for')).prop('checked')) {
+      } else if($('#' + $(this).attr('for')).prop('checked')) {
       $(this).addClass('checked');
-    } else {
+      } else {
       $(this).removeClass('checked');
-    }
-  })
+      }
+   })
 }
 
 //sliders
@@ -340,8 +416,8 @@ function slider() {
       fade: fadeVar,
       autoplay: autoplayVar,
       autoplaySpeed: 3000,
-      prevArrow: '<button class="slick-prev slick-arrow" aria-label="Previous" type="button"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon18"></use></svg></button>',
-      nextArrow: '<button class="slick-next slick-arrow" aria-label="Previous" type="button"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon18"></use></svg></button>',
+      prevArrow: '<button class="slick-prev slick-arrow" aria-label="Previous" type="button"><svg class="icon"><use xlink:href="/assets/components/project/dest/img/icons/icons-sprite.svg#icon18"></use></svg></button>',
+      nextArrow: '<button class="slick-next slick-arrow" aria-label="Previous" type="button"><svg class="icon"><use xlink:href="/assets/components/project/dest/img/icons/icons-sprite.svg#icon18"></use></svg></button>',
       responsive: [{
           breakpoint: 1201,
           settings: {
@@ -408,6 +484,7 @@ function gallery() {
     $('.product-slider-nav__item').eq(activeSlide).find($galleryLink).addClass('active');
   }
 }
+
 function designTab() {
   var $tabItem = $('.design-tab'),
     $tabLink = $('.design-info__nav-item .button');
@@ -424,6 +501,7 @@ function designTab() {
   })
 
 }
+
 function designForm() {
   var $roomTabLink = $('.design-form__head-section .content'),
       $roomTabItem = $('.design-form__tab'),
@@ -469,6 +547,7 @@ function designForm() {
 
 
 }
+
 function moreInfo() {
   var $buttonToggle = $('.product-head__item .button-toggle');
 
@@ -477,6 +556,7 @@ function moreInfo() {
     $(this).parents('.product-head__item').find('.product-head__more-info').toggleClass('active');
   })
 }
+
 //calcutor
 function calculator() {
   var controlClass = 'product-calculator__control',
@@ -493,7 +573,6 @@ function calculator() {
     var $block = $(this);
     actionProcessing($block, 'adjustment');
     actionProcessing($block, 'calculatePrice');
-    actionProcessing($block, 'totalPrice');
   })
 
   $(document).on('touchstart touchend mousedown mouseup change click input mouseout', '.product-calculator', function(e) {
@@ -526,7 +605,6 @@ function calculator() {
                 interval = setTimeout(myFunction, counter);
                 actionProcessing($block, actionType);
                 actionProcessing($block, 'calculatePrice');
-                actionProcessing($block, 'totalPrice');
               }
               interval = setTimeout(myFunction, counter);
             }, 300)
@@ -545,7 +623,6 @@ function calculator() {
             } else {
               actionProcessing($block, actionType);
               actionProcessing($block, 'calculatePrice');
-              actionProcessing($block, 'totalPrice');
             }
           }
         }
@@ -577,12 +654,10 @@ function calculator() {
       if(e.type == 'input') {
         actionProcessing($block, 'calculationTile');
         actionProcessing($block, 'calculatePrice');
-        actionProcessing($block, 'totalPrice');
       } else if(e.type == 'change' || e.type == 'mouseout') {
         $target.blur();
         actionProcessing($block, 'adjustment');
         actionProcessing($block, 'calculatePrice');
-        actionProcessing($block, 'totalPrice');
       }
     }
   })
@@ -590,45 +665,43 @@ function calculator() {
   //functions
   function actionProcessing($block, operation) {{
     var $price = $block.closest('.product-item').find('.product-price-item span'),
-        $orderPrice = $block.parents('.cart-form_with-total-price-count').find('.order-price span'),
-        $totalPrice = $block.parents('.cart-form_with-total-price-count').find('.total-price span'),
         $input = $block.find('.product-calculator__value-input'),
         $hiddenInput = $block.find('.product-calculator__count-input'),
         hiddenInputVal = parseFloat(+$hiddenInput.val()),
         frontInputVal = parseFloat(+$input.val()),
         tileSquare = parseFloat($hiddenInput.data('square')),
         minCount = parseFloat($hiddenInput.data('mincount')),
-        price = parseFloat($hiddenInput.data('price')),
-        items = 0,
-        other = 0;
+        price = parseFloat($hiddenInput.data('price'));
 
     if(operation == 'increase') {
-      $hiddenInput.val(hiddenInputVal + 1);
+      $hiddenInput.val(hiddenInputVal + 1).trigger('change');
       hiddenInputVal = parseFloat(+$hiddenInput.val());
+
       if($block.hasClass('product-calculator_js-count-calc')) {
         $input.val(hiddenInputVal);
       } else {
-        $input.val(parseFloat((hiddenInputVal * tileSquare).toFixed(2)));
+        $input.val(parseFloat((hiddenInputVal * tileSquare).toFixed(4)));
       }
     } else if (operation == 'reduce') {
       if (hiddenInputVal>minCount) {
-        $hiddenInput.val(hiddenInputVal - 1);
+        $hiddenInput.val(hiddenInputVal - 1).trigger('change');
         hiddenInputVal = parseFloat(+$hiddenInput.val());
+
         if($block.hasClass('product-calculator_js-count-calc')) {
           $input.val(hiddenInputVal);
         } else {
-          $input.val(parseFloat((hiddenInputVal * tileSquare).toFixed(2)));
+          $input.val(parseFloat((hiddenInputVal * tileSquare).toFixed(4)));
         }
-      }
+      } // переключение
     } else if (operation == 'measureChange') {
       if($block.hasClass('product-calculator_js-count-calc')) {
         $input.val(hiddenInputVal);
       } else {
-        $input.val(parseFloat((hiddenInputVal * tileSquare).toFixed(2)));
+        $input.val(parseFloat((hiddenInputVal * tileSquare).toFixed(4)));
       }
     } else if (operation == 'calculatePrice') {
       if($block.hasClass('product-calculator_tile')) {
-        $price.text(parseFloat((((hiddenInputVal*tileSquare).toFixed(2))*price).toFixed(2)));
+        $price.text(parseFloat((price*tileSquare*hiddenInputVal).toFixed(2)));
       } else {
         $price.text(parseFloat((hiddenInputVal*price).toFixed(2)));
       }
@@ -638,37 +711,25 @@ function calculator() {
         if($block.hasClass('product-calculator_js-count-calc')) {
           $input.val(minCount);
         } else {
-          $input.val(parseFloat((minCount * tileSquare).toFixed(2)));
+          $input.val(parseFloat((minCount * tileSquare).toFixed(4)));
         }
       } else {
         if($block.hasClass('product-calculator_js-count-calc')) {
           $input.val(hiddenInputVal);
         } else {
-          $input.val(parseFloat((hiddenInputVal*tileSquare).toFixed(2)));
+          $input.val(parseFloat((hiddenInputVal*tileSquare).toFixed(4)));
         }
       }
     } else if (operation == 'calculationTile') {
       if($block.hasClass('product-calculator_js-count-calc')) {
-        $hiddenInput.val(Math.ceil(frontInputVal));
+        $hiddenInput.val(Math.ceil(frontInputVal)).trigger('change');
       } else {
-        $hiddenInput.val(Math.ceil(frontInputVal/tileSquare));
-      }
-    } else if (operation == 'totalPrice') {
-      $('.product-price-item span').each(function(i, element) {
-        items = items + parseFloat($(element).text());
-      })
-      $totalPrice.text(parseFloat(items.toFixed(2)));
-      if($orderPrice.length > 0) {
-        if($('.product-price-other span').length > 0) {
-          $('.product-price-other span').each(function(i, element) {
-            other = other + parseFloat($(element).text());
-          })
-        }
-        $orderPrice.text(parseFloat((items + other).toFixed(2)));
+        $hiddenInput.val(Math.ceil(frontInputVal/tileSquare)).trigger('change');
       }
     }
   }}
 }
+
 //popup
 function fancybox() {
   $.fancybox.defaults.btnTpl.close = '<button data-fancybox-close class="fancybox-button fancybox-button--close" title="{{CLOSE}}">' +
@@ -760,6 +821,7 @@ function inputs() {
         $(this).parents('.input-box').prepend('<span class="label-loaded">План помещения успешно загружен!</span>');
       }
     }
+
   });
 
 
@@ -769,7 +831,7 @@ function inputs() {
       checkboxCheck();
       filterState();
     }, 100)
-  })
+  });
 
   function filterState() {
     $form.each(function() {
@@ -783,76 +845,4 @@ function inputs() {
     })
   }
 }
-//validate
-function validation() {
-  var $form = $(".form");
 
-  if($form.length > 0) {
-    $.validator.addClassRules("js-validation_phone", {correctPhone: true});
-    $.validator.addMethod("correctPhone", function(value, element){
-      if (/^\s*$/.test(value) || /^(?!_$)([+]{1}[0-9]{1} [(]{1}[0-9]{3}[)]{1} [0-9]{3}[-]{1}[0-9]{2}[-]{1}[0-9]{2})$/.test(value)) {
-          return true;  
-      } else {
-          return false;   
-      };
-    }, 'Укажите корректный номер телефона');
-    $.validator.addClassRules("required", {required: true});
-    $.validator.addMethod("required", $.validator.methods.required,
-    "Пожалуйста, заполните это поле");
-    $.validator.addClassRules("js-validation_email", {email: true});
-    $.validator.addMethod("email", $.validator.methods.email,
-    "Укажите корректный адрес электронной почты");
-
-    $form.validate({
-      rules: {
-        data: {
-          required: true
-        },
-        payment: {
-          required: true
-        }
-      },
-      messages: {
-        payment: {
-          required: "Пожалуйста, выберите способ оплаты",
-        },
-        data: {
-          required: "Согласие обязательно для продолжения",
-        }
-      },
-      submitHandler: function(form) {
-        //отправка формы
-        //если отправка успешна
-        succes(form);
-      }
-    });
-
-    function succes(form) {
-      if($(form).hasClass('contact-form')) {
-        //очистка полей формы
-        $(form).find('.input').val('');
-        //Если форма во всплывающем окне - закрыть окно
-        if($(form).parents('.popup').length > 0) {
-          $.fancybox.close();
-        }
-        //показать окно благодарности 
-        $.fancybox.open({
-          type: 'ajax',
-          src: '../popup-succes.html',
-          smallBtn: true,
-          touch: false
-        });
-        //закрыть автоматически чрез 3 сек
-        popupCloseTimer = setTimeout(function() {
-          $.fancybox.close();
-        }, 3000)
-      }
-      //временно
-      if($(form).hasClass('cart-form2')) {
-        document.location.href = "cart-stage3.html";
-      } else if($(form).hasClass('cart-form3')) {
-        document.location.href = "cart-stage4.html";
-      }
-    }
-  }
-}
