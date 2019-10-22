@@ -266,7 +266,7 @@
     height: 100%;
     position: relative;
     .label {
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
   }
   &__button {
@@ -287,13 +287,22 @@
     transition: 0.2s;
     opacity: 0;
     visibility: hidden;
-    padding-top: 25px;
+    padding: 40px 0 10px 0;
+    overflow: hidden;
     &.active {
       opacity: 1;
       visibility: visible;
     }
-    .scroll {
+    .scrollbar {
       height: 100%;
+      padding: 0 15px;
+      overflow: visible !important;
+    }
+    .scrollbar-track-y {
+      width: 15px;
+    }
+    .scrollbar-track-y {
+      position: absolute;
     }
     .button-toggle {
       position: absolute;
@@ -331,6 +340,7 @@
     border: 1px solid $color3;
     border-radius: 4px;
     flex: 1 1 100%;
+    min-height: 150px;
     .price-item {
       color: #000;
       font-size: 18px;
@@ -342,7 +352,7 @@
     }
   }
   &__section-block {
-    padding: 20px;
+    padding: 15px;
     &:not(:last-child) {
       border-bottom: 1px solid $color3;
     }

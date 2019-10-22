@@ -31,7 +31,7 @@ scrollTop = $(window).scrollTop(),
 //
 Scrollbar = window.Scrollbar,
 scrollbarMain,
-scrollbarsAside,
+scrollbarsOther,
 //
 $checkbox = $('.checkbox, .radio'),
 $slider = $('.slider'),
@@ -154,7 +154,6 @@ function pageScroll() {
         }
 
 
-        console.log(scrollY, scrollbarMain.limit.y)
         if(!inScroll) {
           scrollY>200 ? $btn.fadeIn(200) : $btn.fadeOut(200);
         }
@@ -272,7 +271,7 @@ function aside() {
   }, 50)
 
   //scrollbar init
-  scrollbarsAside = Scrollbar.initAll();
+  scrollbarsOther = Scrollbar.initAll();
   
 
   //при клике на кнопку каталога
@@ -304,7 +303,7 @@ function aside() {
   $sectionToggle.on('click', function(e) {
     e.preventDefault();
     $(this).parent().toggleClass('active');
-    scrollbarsAside[2].update();
+    scrollbarsOther[2].update();
   })
 
   //при клике на кнопку навигации
@@ -330,7 +329,7 @@ function aside() {
   });
 
   $reset.on('click', function() {
-    scrollbarsAside[2].scrollTo(0, 0, 1000);
+    scrollbarsOther[2].scrollTo(0, 0, 1000);
   })
 }
 
@@ -549,11 +548,16 @@ function designForm() {
 }
 
 function moreInfo() {
-  var $buttonToggle = $('.product-head__item .button-toggle');
+  let $buttonToggle = $('.product-head__item .button-toggle'),
+      $this;
 
   $buttonToggle.on('click', function(event) {
     event.preventDefault();
-    $(this).parents('.product-head__item').find('.product-head__more-info').toggleClass('active');
+    $this = $(this);
+
+    $this.parents('.product-head__item').find('.product-head__more-info').toggleClass('active');
+  
+  Scrollbar.get($this.parents('.product-head__item').find('.scrollbar'))
   })
 }
 
@@ -569,11 +573,7 @@ function calculator() {
       flagStart = false,
       flagEnd = false;
 
-  $('.product-calculator').each(function() {
-    var $block = $(this);
-    actionProcessing($block, 'adjustment');
-    actionProcessing($block, 'calculatePrice');
-  })
+  calc();
 
   $(document).on('touchstart touchend mousedown mouseup change click input mouseout', '.product-calculator', function(e) {
     var $target = $(e.target),
@@ -661,20 +661,39 @@ function calculator() {
       }
     }
   })
+}
 
-  //functions
-  function actionProcessing($block, operation) {{
-    var $price = $block.closest('.product-item').find('.product-price-item span'),
-        $input = $block.find('.product-calculator__value-input'),
-        $hiddenInput = $block.find('.product-calculator__count-input'),
-        hiddenInputVal = parseFloat(+$hiddenInput.val()),
-        frontInputVal = parseFloat(+$input.val()),
-        tileSquare = parseFloat($hiddenInput.data('square')),
-        minCount = parseFloat($hiddenInput.data('mincount')),
-        price = parseFloat($hiddenInput.data('price'));
+function calc() {
+  $('.product-calculator').each(function() {
+    var $block = $(this);
+    actionProcessing($block, 'adjustment');
+    actionProcessing($block, 'calculatePrice');
+  })
+}
 
-    if(operation == 'increase') {
-      $hiddenInput.val(hiddenInputVal + 1).trigger('change');
+ //calc processing
+ function actionProcessing($block, operation) {{
+  var $price = $block.closest('.product-item').find('.product-price-item span'),
+      $input = $block.find('.product-calculator__value-input'),
+      $hiddenInput = $block.find('.product-calculator__count-input'),
+      hiddenInputVal = parseFloat(+$hiddenInput.val()),
+      frontInputVal = parseFloat(+$input.val()),
+      tileSquare = parseFloat($hiddenInput.data('square')),
+      minCount = parseFloat($hiddenInput.data('mincount')),
+      price = parseFloat($hiddenInput.data('price'));
+
+  if(operation == 'increase') {
+    $hiddenInput.val(hiddenInputVal + 1).trigger('change');
+    hiddenInputVal = parseFloat(+$hiddenInput.val());
+
+    if($block.hasClass('product-calculator_js-count-calc')) {
+      $input.val(hiddenInputVal);
+    } else {
+      $input.val(parseFloat((hiddenInputVal * tileSquare).toFixed(4)));
+    }
+  } else if (operation == 'reduce') {
+    if (hiddenInputVal>minCount) {
+      $hiddenInput.val(hiddenInputVal - 1).trigger('change');
       hiddenInputVal = parseFloat(+$hiddenInput.val());
 
       if($block.hasClass('product-calculator_js-count-calc')) {
@@ -682,53 +701,49 @@ function calculator() {
       } else {
         $input.val(parseFloat((hiddenInputVal * tileSquare).toFixed(4)));
       }
-    } else if (operation == 'reduce') {
-      if (hiddenInputVal>minCount) {
-        $hiddenInput.val(hiddenInputVal - 1).trigger('change');
-        hiddenInputVal = parseFloat(+$hiddenInput.val());
-
-        if($block.hasClass('product-calculator_js-count-calc')) {
-          $input.val(hiddenInputVal);
-        } else {
-          $input.val(parseFloat((hiddenInputVal * tileSquare).toFixed(4)));
-        }
-      } // переключение
-    } else if (operation == 'measureChange') {
+    } // переключение
+  } else if (operation == 'measureChange') {
+    if($block.hasClass('product-calculator_js-count-calc')) {
+      $input.val(hiddenInputVal);
+    } else {
+      $input.val(parseFloat((hiddenInputVal * tileSquare).toFixed(4)));
+    }
+  } else if (operation == 'calculatePrice') {
+    if($block.hasClass('product-calculator_tile')) {
+      $price.text(parseFloat((price*tileSquare*hiddenInputVal).toFixed(2)));
+    } else {
+      $price.text(parseFloat((hiddenInputVal*price).toFixed(2)));
+    }
+  } else if (operation == 'adjustment') {
+    if(minCount > hiddenInputVal) {
+      $hiddenInput.val(minCount).trigger('change');
+      if($block.hasClass('product-calculator_js-count-calc')) {
+        $input.val(minCount);
+      } else {
+        $input.val(parseFloat((minCount * tileSquare).toFixed(4)));
+      }
+    } else {
       if($block.hasClass('product-calculator_js-count-calc')) {
         $input.val(hiddenInputVal);
       } else {
-        $input.val(parseFloat((hiddenInputVal * tileSquare).toFixed(4)));
-      }
-    } else if (operation == 'calculatePrice') {
-      if($block.hasClass('product-calculator_tile')) {
-        $price.text(parseFloat((price*tileSquare*hiddenInputVal).toFixed(2)));
-      } else {
-        $price.text(parseFloat((hiddenInputVal*price).toFixed(2)));
-      }
-    } else if (operation == 'adjustment') {
-      if(minCount > hiddenInputVal) {
-        $hiddenInput.val(minCount);
-        if($block.hasClass('product-calculator_js-count-calc')) {
-          $input.val(minCount);
-        } else {
-          $input.val(parseFloat((minCount * tileSquare).toFixed(4)));
-        }
-      } else {
-        if($block.hasClass('product-calculator_js-count-calc')) {
-          $input.val(hiddenInputVal);
-        } else {
-          $input.val(parseFloat((hiddenInputVal*tileSquare).toFixed(4)));
-        }
-      }
-    } else if (operation == 'calculationTile') {
-      if($block.hasClass('product-calculator_js-count-calc')) {
-        $hiddenInput.val(Math.ceil(frontInputVal)).trigger('change');
-      } else {
-        $hiddenInput.val(Math.ceil(frontInputVal/tileSquare)).trigger('change');
+        $input.val(parseFloat((hiddenInputVal*tileSquare).toFixed(4)));
       }
     }
-  }}
-}
+  } 
+  else if (operation == 'calculationTile') {
+    if($block.hasClass('product-calculator_js-count-calc')) {
+      $hiddenInput.val(Math.ceil(frontInputVal));
+      if($hiddenInput.val()>=minCount) {
+        $hiddenInput.trigger('change');
+      }
+    } else {
+      $hiddenInput.val(Math.ceil(frontInputVal/tileSquare));
+      if($hiddenInput.val()>=minCount) {
+        $hiddenInput.trigger('change');
+      }
+    }
+  }
+}}
 
 //popup
 function fancybox() {

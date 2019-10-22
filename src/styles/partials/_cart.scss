@@ -145,6 +145,12 @@
   &:not(:last-child) {
     margin-bottom: 20px;
   }
+  position: relative;
+  .btn-sm {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+  }
   .product-calculator__section_controls {
     margin-top: 30px;
   }

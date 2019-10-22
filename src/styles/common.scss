@@ -115,10 +115,6 @@ body {
   }
 }
 
-//правки
-#mse2_results {
-  margin: 0 !important;
-}
 
 @media all and(max-width: 992px) {
   .wrapper {
@@ -175,3 +171,4 @@ body {
 @import "partials/news";
 @import "partials/cart";
 @import "partials/footer";
+@import "partials/new-styles";
