@@ -1,17 +1,19 @@
 .footer {
   font-size: 12px;
-  &__copy {
+  &__bottom {
     text-align: center;
-    color: $color6;
     background-color: #F8F8F8;
-    padding: 15px 0;
+    padding: 10px 0;
+    color: $color6;
+    overflow: hidden;
+  }
+  &__copy {
+    line-height: 20px;
+    display: block;
   }
   &__contacts {
     background: #EEEEEE;
     padding: 20px;
-    .row {
-      justify-content: center;
-    }
   }
   &__section {
     text-align: center;
@@ -40,6 +42,26 @@
         }
       }
     }
+  }
+}
+
+.artica-link {
+  a {
+    display: inline-block;
+    line-height: 20px;
+    transition: 0.2s;
+    margin-bottom: -2px;
+    &:hover {
+      svg {
+        fill: #000;
+      }
+    }
+  }
+  svg {
+    fill: $color5;
+    height: 17px;
+    display: block;
+    transition: 0.2s;
   }
 }
 

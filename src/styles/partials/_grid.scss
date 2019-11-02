@@ -5,6 +5,9 @@
   &_inner {
     height: calc(100% + 20px);
   }
+  &_center {
+    justify-content: center;
+  }
 }
 
 .col-1,

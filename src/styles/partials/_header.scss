@@ -5,7 +5,6 @@
     display: flex;
     width: 100%;
     max-width: 375px;
-    margin-right: 30px;
   }
   .setup-open,
   .search-close, 
@@ -13,23 +12,17 @@
     display: none;
   }
   &__container {
-    height: 140px;
-    padding: 20px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  &__top {
-    padding: 0 0 10px 0;
+    padding: 25px 0 20px 0;
+    margin-bottom: 54px;
     border-bottom: 1px solid $color3;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
   }
   &__info {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    padding: 0 30px;
     &-item {
       position: relative;
       padding-left: 35px;
@@ -47,6 +40,15 @@
       top: 50%;
       transform: translateY(-50%);
     }
+    &-text {
+      br {
+        display: none;
+      }
+      span {
+        white-space: nowrap;
+        line-height: 20px;
+      }
+    }
   }
   &__bottom {
     padding-top: 15px;
@@ -55,41 +57,7 @@
     justify-content: space-between;
   }
   &__items {
-    display: flex;
-    align-items: center;
     flex-shrink: 0;
-  }
-}
-.profile-toggle {
-  margin-right: 20px;
-  display: flex;
-  align-items: center;
-  &__item.visible {
-    .icon {
-      transform: rotate(180deg);
-    }
-  }
-  &__item {
-    margin-right: 10px;
-  }
-  &__button {
-    text-decoration: none;
-    color: $color5;
-    transition: 0.2s;
-    display: inline-block;
-    &:hover {
-      color: #000;
-      .icon {
-        fill: #000;
-      }
-    }
-    .icon {
-      width: 10px;
-      height: 10px;
-      fill: rgba(0, 0, 0, 0.5);
-      margin-right: 7px;
-      margin-bottom: -0.1em;
-    }
   }
 }
 .search {
@@ -136,10 +104,26 @@
   }
 }
 
-@media all and(max-width: 992px) {
-  .profile-toggle__item {
-    display: none;
+@media all and(max-width: 1400px) {
+  .header {
+    &__info-item {
+      padding-left: 30px;
+      &:not(:last-child) {
+        padding-right: 20px;
+      }
+    }
   }
+}
+@media all and(max-width: 1200px) {
+  .header {
+    &__info-item {
+      br {
+        display: block;
+      }
+    }
+  }
+}
+@media all and(max-width: 992px) {
   .header {
     position: fixed;
     z-index: 200;
@@ -172,13 +156,11 @@
     }
     &__container {
       height: 60px;
-      padding: 0;
+      padding: 0 15px;
+      margin: 0;
     }
-    &__top {
+    &__info {
       display: none;
-    }
-    &__bottom {
-      padding: 10px 15px;
     }
   }
   &.end-scroll .header {
@@ -186,9 +168,6 @@
   }
 }
 @media all and(max-width: 576px) {
-  .profile-toggle {
-    margin-right: 30px;
-  }
   .header__buttons {
     width: auto;
     margin: 0;

@@ -15,6 +15,7 @@
   .scrollbar {
     padding: 0 15px;
   }
+  
 
   .scrollbar-track-y {
     width: 15px;
@@ -85,6 +86,13 @@
       right: 19px;
     }
   }
+
+  .artica-link {
+    justify-content: flex-start !important;
+    padding-left: 15px;
+    font-size: 13px;
+  }
+
 }
 
 .logo {
@@ -132,6 +140,9 @@
       .nav__item {
         &:not(:last-child) {
           margin-bottom: 10px;
+        }
+        &_artica {
+          margin-top: 20px;
         }
       }
     }
