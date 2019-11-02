@@ -22,14 +22,8 @@
     width: 100%;
     position: relative;
   }
-  &_payment {
-    //display: flex;
-  }
   &__hidden-content {
     position: relative;
-    //bottom: 0;
-    //left: 0;
-    //transform: translateY(100%);
     input {
       position: absolute;
       visibility: hidden;
@@ -62,11 +56,17 @@
   text-align: center;
   font-size: 24px;
 }
+.cart-block {
+  margin-bottom: 30px;
+}
+.cart-navigation {
+  margin-bottom: 45px;
+}
 .cart {
+  &__next {
+    margin-top: 45px;
+  }
   &__section {
-    &:not(:last-child) {
-      margin-bottom: 45px;
-    }
     &_payment {
       display: flex;
     }
@@ -194,11 +194,13 @@
     margin-bottom: 10px;
   }
   &__image {
-    height: 110px;
-    width: 150px;
+    height: 120px;
+    width: 120px;
+    flex: 0 0 120px;
   }
   &__text {
     padding: 10px 0 10px 25px;
+    flex: 1 1 100%;
   }
   &__brand {
     color: $color1;
@@ -308,7 +310,8 @@
       padding: 0 0 0 20px;
     }
     &__image {
-      width: 100px;
+      height: 100px;
+      flex: 0 0 100px;
     }
     &__section {
       padding: 0;
@@ -329,7 +332,12 @@
   .cart__next .button {
     width: 100%;
   }
-  .cart__section:not(:last-child) {
+  .cart-navigation {
     margin-bottom: 40px;
+  }
+  .cart {
+    &__next {
+      margin-top: 40px;
+    }
   }
 }

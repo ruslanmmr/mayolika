@@ -3,6 +3,8 @@ html(lang="ru")
   head
     include blocks/head
   body
+    .cartMessage
+      span
     .wrapper
       a(href="#").button.button_scroll-top
         span
@@ -42,19 +44,19 @@ html(lang="ru")
                               span Увеличить
                       .product-slider-nav.row
                         //item1
-                        .product-slider-nav__item.col-xl-4
+                        .product-slider-nav__item.col-xl-4.col-sm-12.col-4
                           a(href="#").block.block_size-image.cover-box.zoom-item.zoom-item_type-small.active
                             .zoom-item__icon
                               <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon13"></use></svg>
                             img(data-src="img/contentImages/gallery-item1.jpg", alt="").lazy
                         //item2
-                        .product-slider-nav__item.col-xl-4
+                        .product-slider-nav__item.col-xl-4.col-sm-12.col-4
                           a(href="#").block.block_size-image.cover-box.zoom-item.zoom-item_type-small
                             .zoom-item__icon
                               <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
                             img(data-src="img/contentImages/stock-photo-interior1.jpg", alt="").lazy
                         //item3
-                        .product-slider-nav__item.col-xl-4
+                        .product-slider-nav__item.col-xl-4.col-sm-12.col-4
                           a(href="#").block.block_size-image.zoom-item.zoom-item_type-small.cover-box
                             .zoom-item__icon
                               <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
@@ -159,7 +161,6 @@ html(lang="ru")
                   +block2('Marbella Arabesco')(data-src="img/contentImages/tile11.jpg")
               include blocks/interesting-items
           include blocks/footer
-    script(src="js/c3dpano.min.js")
     script(src="https://unpkg.com/current-device/umd/current-device.min.js")
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
     script(src="js/libs.min.js")            

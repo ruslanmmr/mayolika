@@ -11,12 +11,18 @@
   padding: 15px;
   overflow: hidden;
   width: calc(100% + 30px);
+  position: relative;
   a {
     outline: none;
   }
   .slide {
     padding: 0 10px;
     height: auto;
+    &:not(:last-child) {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
     &__container {
       position: relative;
     }
@@ -31,6 +37,11 @@
   }
   &.visible {
     opacity: 1;
+    .slide {
+      &:not(:last-child) {
+        position: static;
+      }
+    }
   }
   .slick-arrow {
     font-size: 0;
@@ -167,7 +178,32 @@
     margin-right: 15px;
   }
 }
-
+.color-cart {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  .box-color {
+    display: block;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    border: 1px solid $color3;
+    margin-right: 10px;
+  }
+}
+.cartMessage {
+  position: fixed;
+  z-index: 200;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  color: #fff;
+  background-color: #626060;
+  border-radius: 6px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  display: none;
+  max-width: 500px;
+}
 .button {
   outline: none;
   box-shadow: none;
@@ -182,6 +218,7 @@
   text-decoration: none;
   color: $color4;
   background-color: transparent;
+  position: relative;
   &_style1 {
     border-radius: 4px;
     background-color: $color1;
@@ -192,6 +229,35 @@
     }
     &:hover {
       background-color: $color2;
+    }
+    .btn-txt,
+    .loader {
+      transition: 0.2s;
+    }
+    .loader {
+      opacity: 0;
+      height: 14px;
+      margin: 0 auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .btn-txt {
+      opacity: 1;
+      position: relative;
+      z-index: 2;
+      color: #fff !important;
+    }
+    &.onload {
+      pointer-events: none;
+      background-color: $color2;
+      .btn-txt {
+        opacity: 0;
+      }
+      .loader {
+        opacity: 1;
+      }
     }
   }
   &_style2 {
@@ -231,13 +297,13 @@
       position: absolute;
       left: -10px;
       top: -5px;
-      width: 22px;
-      height: 22px;
+      min-width: 22px;
+      padding: 0 5px;
       line-height: 22px;
       font-size: 10px;
       background-color: #E52329;
       color: #fff;
-      border-radius: 100%;
+      border-radius: 22px;
       text-align: center;
     }
   }
@@ -662,6 +728,13 @@
     height: 100%;
     top: 0;
     left: 0;
+    transition: opacity 0.5s;
+    opacity: 0!important;
+    visibility: hidden!important;
+    &.visible {
+      opacity: 1 !important;
+      visibility: visible!important;
+    }
   }
 }
 .cover-box {
@@ -677,10 +750,12 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0 !important;
-    transition: opacity 0.2s;
+    opacity: 0!important;
+    visibility: hidden!important;
+    transition: opacity 0.5s;
     &.visible {
       opacity: 1 !important;
+      visibility: visible!important;
     }
   }
   .wh {
@@ -1127,6 +1202,11 @@ label.error {
   }
 }
 @media all and(max-width: 576px) {
+  .cartMessage {
+    right: 15px;
+    top: 15px;
+    max-width: 290px;
+  }
   .fancybox-slide--html {
     padding: 15px;
   }

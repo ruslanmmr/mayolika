@@ -1,12 +1,12 @@
-$(document).ready(function () {
+$(document).ready(function() {
+  slider();
+  select();
   lazy();
   pageScroll();
   dropdown();
   search();
   aside();
   inputs();
-  slider();
-  select();
   gallery();
   moreInfo();
   calculator();
@@ -15,6 +15,7 @@ $(document).ready(function () {
   designForm();
   svg4everybody();
 });
+
 $(window).resize(function () {
   innerWidth = $('body').innerWidth();
   $('img').each(function() {
@@ -25,13 +26,14 @@ $(window).on('scroll', function() {
   scrollTop = $(window).scrollTop();
 })
 
+
 //global variables
 var innerWidth = $('body').innerWidth(),
 scrollTop = $(window).scrollTop(),
 //
 Scrollbar = window.Scrollbar,
 scrollbarMain,
-scrollbarsOther,
+scrollbarsOther = Scrollbar.initAll(),
 //
 $checkbox = $('.checkbox, .radio'),
 $slider = $('.slider'),
@@ -48,14 +50,44 @@ zindexVar = [100],
 bouncescrollVar = false,
 $scrollContainer = $('.scroll-container');
 
+//cart message
+let $cartMessage = {
+  el: $('.cartMessage'),
+  timeout: '',
+  fadeTime: 2000,
+  state: false,
+  show: function(t='Товар был добавлен в корзину') {
+    if(this.state==true) {
+      clearTimeout(this.timeout)
+    } else {
+      this.state = true;
+      this.el.fadeIn(200);
+    }
+    this.timerStart();
+    this.el.find('span').text(t);
+  },
+  fade: function() {
+    this.state = false;
+    this.el.fadeOut(200);
+  },
+  timerStart: function() {
+    this.timeout = setTimeout(() => {
+      this.fade();
+    }, this.fadeTime)
+  }
+}
+
+$.fn.hasAttr = function(name) {  
+  return this.attr(name) !== undefined;
+};
 
 //lazy
 function lazy() {
   $(".lazy").Lazy({
-    effect: 'fadeIn',
+    effect: 'show',
     visibleOnly: true,
-    effectTime: 300,
-    threshold: 0,
+    effectTime: 0,
+    threshold: 500,
     imageBase: false,
     defaultImage: false,
     afterLoad: function(element) {
@@ -63,7 +95,6 @@ function lazy() {
     }
   });
 }
-
 function imagesResize(element) {
   var box = element.parent();
   if(!box.hasClass('cover-box_size-auto')) {
@@ -77,20 +108,213 @@ function imagesResize(element) {
       } else {
         element.addClass('wh').removeClass('ww');
       }
-      element.addClass('visible');
+      setTimeout(function() {
+        element.addClass('visible');
+      }, 100)  
     }, 100)
   } else {
     element.addClass('visible');
   }
 }
 
+
+
+
+
 //select
+(function($) {
+  $.fn.niceSelect = function(method) {  
+    // Methods
+    if (typeof method == 'string') {      
+      if (method == 'update') {
+        this.each(function() {
+          var $select = $(this);
+          var $dropdown = $(this).next('.nice-select');
+          var open = $dropdown.hasClass('open');
+          
+          if ($dropdown.length) {
+            $dropdown.remove();
+            create_nice_select($select);
+            
+            if (open) {
+              $select.next().trigger('click');
+            }
+          }
+        });
+        return this;
+      } else if (method == 'destroy') {
+        this.each(function() {
+          var $select = $(this);
+          var $dropdown = $(this).next('.nice-select');
+          
+          if ($dropdown.length) {
+            $dropdown.remove();
+            $select.css('display', '');
+          }
+        });
+        if ($('.nice-select').length == 0) {
+          $(document).off('.nice_select');
+        }
+        return this;
+      }
+    }
+    
+    // Create custom markup
+    this.each(function() {
+      var $select = $(this);
+
+      if(!$select.next().hasClass('nice-select')) {
+        if($select.parent().hasClass('color-select')) {
+          $select.hide();
+          create_nice_select($select);
+        } else {
+          if($('html').hasClass('desktop')) {
+            $select.hide();
+            create_nice_select($select);
+          } else {
+            $select.parent().addClass('mobile-select')
+          }
+        }
+      }
+    });
+    
+    function create_nice_select($select) {
+      $select.after($('<div></div>')
+        .addClass('nice-select')
+        .addClass($select.attr('class') || '')
+        .addClass($select.attr('disabled') ? 'disabled' : '')
+        .attr('tabindex', $select.attr('disabled') ? null : '0')
+        .html('<span class="current"></span><div class="list scrollbar"></div>')
+      );
+        
+      var $dropdown = $select.next();
+      var $options = $select.find('option');
+      var $selected = $select.find('option:selected');
+      
+      $dropdown.find('.current').html($selected.data('display') || $selected.html());
+      
+      $options.each(function(i) {
+        var $option = $(this);
+        var display = $option.data('display');
+        var $index = $option.index();
+
+        $dropdown.find('.list').append($('<div></div>')
+          .attr('data-value', $option.val())
+          .attr('data-display', (display || null))
+          .addClass('option' +
+            ($option.is(':selected') ? ' selected' : '') +
+            ($option.is(':disabled') ? ' disabled' : ''))
+          .html($option.text())
+        );
+
+        if($select.parent().hasClass('color-select')) {
+          let color = $option.data('color');
+          if($option.hasAttr('data-color')) {
+            $dropdown.find('.option').eq($index).prepend('<span class="color-label"></span>');
+          $dropdown.find('.option').eq($index).find('.color-label').css('background-color', color)
+          }
+        }
+      });
+
+      Scrollbar.init($dropdown[0].querySelector('.list'), {
+        damping: 0.1,
+        alwaysShowTracks: true
+      });
+
+    }
+    
+    // Unbind existing events in case that the plugin has been initialized before
+    $(document).off('.nice_select');
+    // Open/close
+    $(document).on('click.nice_select', '.nice-select', function(event) {
+      var $dropdown = $(this);
+      
+      $('.nice-select').not($dropdown).removeClass('open');
+      $dropdown.toggleClass('open');
+      
+      if ($dropdown.hasClass('open')) {
+        $dropdown.find('.option');  
+        $dropdown.find('.focus').removeClass('focus');
+        $dropdown.find('.selected').addClass('focus');
+      } else {
+        $dropdown.focus();
+      }
+    });
+    // Close when clicking outside
+    $(document).on('click.nice_select', function(event) {
+      if ($(event.target).closest('.nice-select').length === 0) {
+        $('.nice-select').removeClass('open').find('.option');  
+      }
+    });
+    // Option click
+    $(document).on('click.nice_select', '.nice-select .option:not(.disabled)', function(event) {
+      var $option = $(this);
+      var $dropdown = $option.closest('.nice-select');
+      
+      $dropdown.find('.selected').removeClass('selected');
+      $option.addClass('selected');
+      
+      var text = $option.data('display') || $option.html();
+      $dropdown.find('.current').html(text);
+      
+      $dropdown.prev('select').val($option.data('value')).trigger('change');
+    });
+    // Keyboard events
+    $(document).on('keydown.nice_select', '.nice-select', function(event) {    
+      var $dropdown = $(this);
+      var $focused_option = $($dropdown.find('.focus') || $dropdown.find('.list .option.selected'));
+      
+      // Space or Enter
+      if (event.keyCode == 32 || event.keyCode == 13) {
+        if ($dropdown.hasClass('open')) {
+          $focused_option.trigger('click');
+        } else {
+          $dropdown.trigger('click');
+        }
+        return false;
+      // Down
+      } else if (event.keyCode == 40) {
+        if (!$dropdown.hasClass('open')) {
+          $dropdown.trigger('click');
+        } else {
+          var $next = $focused_option.nextAll('.option:not(.disabled)').first();
+          if ($next.length > 0) {
+            $dropdown.find('.focus').removeClass('focus');
+            $next.addClass('focus');
+          }
+        }
+        return false;
+      // Up
+      } else if (event.keyCode == 38) {
+        if (!$dropdown.hasClass('open')) {
+          $dropdown.trigger('click');
+        } else {
+          var $prev = $focused_option.prevAll('.option:not(.disabled)').first();
+          if ($prev.length > 0) {
+            $dropdown.find('.focus').removeClass('focus');
+            $prev.addClass('focus');
+          }
+        }
+        return false;
+      // Esc
+      } else if (event.keyCode == 27) {
+        if ($dropdown.hasClass('open')) {
+          $dropdown.trigger('click');
+        }
+      // Tab
+      } else if (event.keyCode == 9) {
+        if ($dropdown.hasClass('open')) {
+          return false;
+        }
+      }
+    });
+    return this;
+  };
+
+}(jQuery));
+
 function select() {
-  if ($('html').hasClass('desktop')) {
-    $('.select select').niceSelect();
-  } else {
-    $('.select').addClass('.mobile-select')
-  }
+  $('.select select').niceSelect();
 }
 
 //scroll
@@ -270,10 +494,6 @@ function aside() {
     $('.aside__nav').height( $('.aside__content').height() - $('.aside__buttons').height())
   }, 50)
 
-  //scrollbar init
-  scrollbarsOther = Scrollbar.initAll();
-  
-
   //при клике на кнопку каталога
   $catalogueToggle.on('click', function(e) {
     e.preventDefault();
@@ -365,7 +585,7 @@ function slider() {
   });
 
   $slider.each(function () {
-    $(this).on('init reInit afterChange', function(){
+    $(this).on('init reInit beforeChange afterChange', function(){
       lazy();
     });
 
@@ -662,7 +882,6 @@ function calculator() {
     }
   })
 }
-
 function calc() {
   $('.product-calculator').each(function() {
     var $block = $(this);
@@ -671,8 +890,18 @@ function calc() {
   })
 }
 
- //calc processing
- function actionProcessing($block, operation) {{
+function priceCorrecting(number, decimals) {
+  let i, j, kw, kd, km;
+  i = parseInt(number = (+number || 0).toFixed(decimals)) + '';
+  ((j = i.length) > 3) ? (j = j % 3) : (j = 0)
+  km = j ? i.substr(0, j) + ' ' : '';
+  kw = i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + ' ');
+  kd = (decimals ? '.' + Math.abs(number - i).toFixed(decimals).replace(/-/, '0').slice(2) : '');
+  return (km+kw+kd).replace(/(0+)$/, '').replace(/[^0-9]$/, '');
+}
+
+//calc processing
+function actionProcessing($block, operation) {{
   var $price = $block.closest('.product-item').find('.product-price-item span'),
       $input = $block.find('.product-calculator__value-input'),
       $hiddenInput = $block.find('.product-calculator__count-input'),
@@ -710,9 +939,9 @@ function calc() {
     }
   } else if (operation == 'calculatePrice') {
     if($block.hasClass('product-calculator_tile')) {
-      $price.text(parseFloat((price*tileSquare*hiddenInputVal).toFixed(2)));
+      $price.text(priceCorrecting((price*tileSquare*hiddenInputVal), '2'))
     } else {
-      $price.text(parseFloat((hiddenInputVal*price).toFixed(2)));
+      $price.text(priceCorrecting((hiddenInputVal*price), '2'))
     }
   } else if (operation == 'adjustment') {
     if(minCount > hiddenInputVal) {
@@ -797,6 +1026,7 @@ function fancybox() {
       Ceramic3DPanorama(c,'',path);
     }
   });
+  
 }
 
 

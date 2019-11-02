@@ -152,6 +152,7 @@ gulp.task("watch", function () {
     watch("./src/views/**/*.pug", gulp.series("pug"));
     watch("./src/styles/**/*.scss", gulp.series("styles"));
     watch("./src/js/**/*.js", gulp.series("scripts"));
+    watch("./src/libs/**/*.js", gulp.series("libs"));
     watch(["./src/img/**/*.{jpg,jpeg,png,gif,svg}", "!./src/img/favicons/*.{jpg,jpeg,png,gif}"], gulp.series("images"));
     watch("./src/img/favicons/*.{jpg,jpeg,png,gif}", gulp.series("favicons"));
     watch("./src/fonts/**/*", gulp.series("destFonts"));

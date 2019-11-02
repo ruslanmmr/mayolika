@@ -42,19 +42,19 @@ html(lang="ru")
                               span Увеличить
                       .product-slider-nav.row
                         //item1
-                        .product-slider-nav__item.col-xl-4
+                        .product-slider-nav__item.col-xl-4.col-sm-12.col-4
                           a(href="#").block.block_size-image.cover-box.zoom-item.zoom-item_type-small.active
                             .zoom-item__icon
                               <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
                             img(data-src="img/contentImages/tile10.jpg", alt="").lazy
                         //item2
-                        .product-slider-nav__item.col-xl-4
+                        .product-slider-nav__item.col-xl-4.col-sm-12.col-4
                           a(href="#").block.block_size-image.cover-box.zoom-item.zoom-item_type-small
                             .zoom-item__icon
                               <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
                             img(data-src="img/contentImages/tile10.jpg", alt="").lazy
                         //item3
-                        .product-slider-nav__item.col-xl-4
+                        .product-slider-nav__item.col-xl-4.col-sm-12.col-4
                           a(href="#").block.block_size-image.cover-box.zoom-item.zoom-item_type-small
                             .zoom-item__icon
                               <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg>
@@ -77,7 +77,17 @@ html(lang="ru")
                                     span Италия
                               .product-head__section-block
                                 include blocks/calculator
-                            button.button.button_style1.product-head__button В корзину
+                              .product-head__section-block
+                                .select.color-select
+                                  select
+                                    option(value="Не выбрано" data-display='Выберите цвет') Не выбрано
+                                    option(data-color="#f" value="Желтый") Желтый
+                                    option(data-color="#ff" value="Желтый") Желтый
+                                    option(data-color="#ffff" value="Желтый") Желтый
+                                    option(data-color="#fffff" value="Желтый") Желтый
+                            button.button.button_style1.product-head__button.onload
+                              span.btn-txt В корзину
+                              img(src="img/icons/loader2.svg", alt="loader").loader
                         .col-xl-6.col-12
                           .product-head__item
                             .product-head__more-info
@@ -129,6 +139,7 @@ html(lang="ru")
                                     .icon-box.icon-box_style1.appointment-list__icon <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon12"></use></svg>
                                     span Для еще чего-то
                             a(href="#").button.button_style6.product-head__button.button-toggle Больше информации
+              
               include blocks/cards
               section.section.catalogue
                 h5.section__title Похожие коллекции

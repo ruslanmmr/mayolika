@@ -282,7 +282,7 @@
                                 a(href="#").button.button_style3 Что-нибудь должно быть здесь
                     a(href="#").button.button_style2.button_profile.button_color1
                       <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon23"></use></svg>
-                    --><a class="button button_style2 button_cart" href="#"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon24"></use></svg><span class="cart-count">20</span></a>
+                    --><a class="button button_style2 button_cart" href="#"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon24"></use></svg><span class="cart-count">2000</span></a>
                   </div>
                 </div>
               </div>
@@ -313,13 +313,13 @@
                       </div>
                       <div class="product-slider-nav row">
                         <!--item1-->
-                        <div class="product-slider-nav__item col-xl-4"><a class="block block_size-image cover-box zoom-item zoom-item_type-small active" href="#">
+                        <div class="product-slider-nav__item col-xl-4 col-sm-12 col-4"><a class="block block_size-image cover-box zoom-item zoom-item_type-small active" href="#">
                             <div class="zoom-item__icon"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg></div><img class="lazy" data-src="img/contentImages/tile10.jpg" alt=""></a></div>
                         <!--item2-->
-                        <div class="product-slider-nav__item col-xl-4"><a class="block block_size-image cover-box zoom-item zoom-item_type-small" href="#">
+                        <div class="product-slider-nav__item col-xl-4 col-sm-12 col-4"><a class="block block_size-image cover-box zoom-item zoom-item_type-small" href="#">
                             <div class="zoom-item__icon"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg></div><img class="lazy" data-src="img/contentImages/tile10.jpg" alt=""></a></div>
                         <!--item3-->
-                        <div class="product-slider-nav__item col-xl-4"><a class="block block_size-image cover-box zoom-item zoom-item_type-small" href="#">
+                        <div class="product-slider-nav__item col-xl-4 col-sm-12 col-4"><a class="block block_size-image cover-box zoom-item zoom-item_type-small" href="#">
                             <div class="zoom-item__icon"><svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon6"></use></svg></div><img class="lazy" data-src="img/contentImages/tile10.jpg" alt=""></a></div>
                       </div>
                     </div>
@@ -353,8 +353,19 @@
                                   <div class="product-calculator__section"><span class="product-calculator__js-toggle product-calculator__js-toggle_square"><span>м</span></span><span class="product-calculator__js-toggle product-calculator__js-toggle_switch"></span><span class="product-calculator__js-toggle product-calculator__js-toggle_count"> <span>шт.</span></span></div>
                                 </div>
                               </div>
+                              <div class="product-head__section-block">
+                                <div class="select color-select">
+                                  <select>
+                                    <option value="Не выбрано" data-display="Выберите цвет">Не выбрано</option>
+                                    <option data-color="#f" value="Желтый">Желтый</option>
+                                    <option data-color="#ff" value="Желтый">Желтый</option>
+                                    <option data-color="#ffff" value="Желтый">Желтый</option>
+                                    <option data-color="#fffff" value="Желтый">Желтый</option>
+                                  </select>
+                                </div>
+                              </div>
                             </div>
-                            <button class="button button_style1 product-head__button">В корзину</button>
+                            <button class="button button_style1 product-head__button onload"><span class="btn-txt">В корзину</span><img class="loader" src="img/icons/loader2.svg" alt="loader"></button>
                           </div>
                         </div>
                         <div class="col-xl-6 col-12">
