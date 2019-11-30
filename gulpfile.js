@@ -174,13 +174,15 @@ gulp.task("deploy", function () {
     return gulp.src('./dest/**')
       .pipe(rsync({
         root: './dest/',
-        hostname: 's20040@h10.modhost.pro',
-        destination: '/home/s20040/www/assets/components/project/dest',
+        hostname: '185.20.226.60',
+        destination: '/assets/components/project/dest',
+        username: 'dima',
         archive: true,
         silent: false,
-        compress: true
+        compress: true,
+        shell: 'ftp'
     }));
 });
 
 
-//данные s20040 OJudKXmuBah1
+//данные dima Z7w3W5v5

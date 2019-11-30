@@ -357,7 +357,12 @@
                       </label>
                     </li>
                     <li>
-                      <label class="checkbox">Я даю свое согласие на обработку моих <a class="link" href="#">персональных данных</a>.
+                      <label class="checkbox">Я даю свое согласие на обработку моих <a class="link" href="javascript:;" data-src="#personal" data-fancybox>персональных данных</a>.
+                        <input class="required" type="checkbox" name="data">
+                      </label>
+                    </li>
+                    <li>
+                      <label class="checkbox">Я даю свое согласие с условями <a class="link" href="javascript:;" data-src="#doc" data-fancybox>договора</a>.
                         <input class="required" type="checkbox" name="data">
                       </label>
                     </li>
@@ -397,5 +402,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
     <script src="js/libs.min.js">           </script>
     <script src="js/common.min.js"></script>
+    <!--popup1-->
+    <div class="popup popup-modal fancybox-content" id="personal">
+      <div class="popup-modal__content">
+        <p>Настоящим Я, действуя своей волей и в своем интересе, при размещении (вводе) своих персональных данных на Интернет сайте remeslovrn.ru (далее - Оператор) подтверждаю свое согласие на обработку указанных мной персональных данных Оператором в целях предложения мне услуг, новых услуг, предлагаемых Оператором, в целях проведения опросов, анкетирования, рекламных и маркетинговых исследований в отношении услуг, предоставляемых Оператором, в том числе путем осуществления прямых контактов со мною посредством средств связи, указанных мной на настоящем сайте.</p>
+        <p>Настоящее право (согласие) предоставляется на осуществление любых действий в отношении моих персональных данных, которые необходимы и желаемы для достижения вышеуказанных целей, включая, без ограничения, сбор, систематизацию, накопление, хранение, уточнение (обновление, изменение), использование, передачу, обезличивание, блокирование и уничтожение персональных данных, под которыми понимаются все данные, указанные мной на настоящем сайте.</p>
+        <p>Настоящим подтверждаю, что уведомлен о том, что обработка персональных данных осуществляется Оператором любым способом, в том числе как с использованием средств автоматизации (включая программное обеспечение), так и без использования средств автоматизации (с использованием различных материальных носителей, включая бумажные носители).</p>
+      </div>
+      <div class="popup-modal__btn"><a class="button button_style1" href="javascript:;" data-fancybox-close>Прочитал и ознакомился</a></div>
+    </div>
+    <!--popup2-->
+    <div class="popup popup-modal fancybox-content" id="doc">
+      <div class="popup-modal__content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+      <div class="popup-modal__btn"><a class="button button_style1" href="javascript:;" data-fancybox-close>Прочитал и ознакомился</a></div>
+    </div>
   </body>
 </html>

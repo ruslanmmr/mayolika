@@ -331,6 +331,8 @@ function pageScroll() {
         scrollInit=false;
 
     innerWidth>992 ? flagInit=true : flagInit=false;
+
+    let updateInterval;
     
     function initCustomScroll() {
       if(innerWidth>992 && flagInit==true) {
@@ -363,6 +365,10 @@ function pageScroll() {
     });
 
     function addEvents() {
+      clearInterval(updateInterval)
+      updateInterval = setInterval(function() {
+        scrollbarMain.update();
+      }, 250)
       scrollbarMain.addListener(listener);
       scrollbarMain.track.yAxis.show();
 
@@ -390,7 +396,7 @@ function pageScroll() {
       e.preventDefault();
       inScroll = true;
       $btn.fadeOut(200);
-      scrollbarMain.scrollTo(0, 0, 1000);
+      scrollbarMain.scrollTo(0, 0, 500);
       setTimeout(function() {
         inScroll = false;
       }, 1000)
@@ -427,7 +433,7 @@ function pageScroll() {
       e.preventDefault();
       $('html').addClass('in-scroll');
       $btn.fadeOut(200);
-      $("html, body").animate({scrollTop:0}, 1000);
+      $("html, body").animate({scrollTop:0}, 500);
       setTimeout(function() {
         $('html').removeClass('in-scroll')
       }, 1000)
