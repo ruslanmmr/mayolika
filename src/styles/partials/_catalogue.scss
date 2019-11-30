@@ -5,6 +5,7 @@
   &_type2 {
     .catalogue-block__container {
       &:hover {
+        z-index: 10;
         .catalogue-block__content {
           .catalogue-block__section {
             &:last-child {
