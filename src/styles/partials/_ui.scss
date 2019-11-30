@@ -191,6 +191,15 @@
     margin-right: 10px;
   }
 }
+.calcMessage {
+  padding: 7px 10px;
+  font-size: 10px;
+  display: block;
+  color: #000;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
 .cartMessage {
   position: fixed;
   z-index: 200;
@@ -948,9 +957,6 @@
     &_square {
       color: $color1;
       pointer-events: none;
-      &:after {
-        content: '²';
-      }
     }
     &_switch {
       width: 40px;

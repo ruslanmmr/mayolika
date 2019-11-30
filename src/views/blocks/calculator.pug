@@ -1,6 +1,8 @@
 .product-calculator.product-calculator_tile.product-item
   input(type='text' data-price='1490' data-mincount='6' data-square='0.1875' hidden disabled).product-calculator__count-input
   .product-calculator__section
+    .calcMessage Выбранное количество плитки в м² корректируется кратно площади одной плитки.
+  .product-calculator__section
     .product-price.product-price-item 
       span 0
       | ₽
@@ -12,7 +14,7 @@
       <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon2"></use></svg>
   .product-calculator__section
     span.product-calculator__js-toggle.product-calculator__js-toggle_square
-      span м
+      span м²
     span.product-calculator__js-toggle.product-calculator__js-toggle_switch
     span.product-calculator__js-toggle.product-calculator__js-toggle_count 
       span шт.
