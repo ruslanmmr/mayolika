@@ -11,5 +11,21 @@ mixin slide(description, title)
 .main-banner
   .main-banner__container
     .slider.slider_type2.main-banner__slider
-      +slide('Натуральные природные оттенки и сочное текстильное оформление обеспечивают роскошный интерьер.', 'Azori Nuvola Verde')(src='#' data-src="img/contentImages/stock-photo-interior-of-bathroom-with-wooden-ceiling-d-rendering-311164529.jpg", alt="")
-      +slide('Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et enim sed tellus sodales gravida ac a arcu. In congue feugiat bibendum. Etiam eget leo turpis. Cras vel auctor purus.', 'Azori Nuvola Another')(src='#' data-src="img/contentImages/shutterstock_396818590.jpg", alt="")
+      a(href="#").main-slide.slide
+        .slide__container
+          .block.block_type4.block_size6
+            .content.background-box
+              .lazy(data-src="img/contentImages/stock-photo-interior-of-bathroom-with-wooden-ceiling-d-rendering-311164529.jpg")
+          .main-slide__description
+            span.main-slide__category Коллекция плитки
+            span.t-size-36.main-slide__title Azori Nuvola Verde
+            .main-slide__text Коллекция Moncada White предназначена для облицовки ванных комнат в стиле барокко. В нее входит ...
+      a(href="#").main-slide.slide
+        .slide__container
+          .block.block_type4.block_size6
+            .content.background-box
+              .lazy(data-src="../../img/contentImages/stock-photo-catalogue.jpg")
+          .main-slide__description
+            span.main-slide__category Коллекция плитки
+            span.t-size-36.main-slide__title Azori Nuvola Verde
+            .main-slide__text Эта коллекция рекомендуется для облицовки ванных комнат в элегантном стиле. В состав Vardo Lattice входит 4 вида настенной керамической плит ...

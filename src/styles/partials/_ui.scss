@@ -1194,6 +1194,20 @@ label.error {
   }
 }
 
+
+
+
+
+@media all and(max-width: 1440px) {
+  .slider {
+    .slick-next {
+      right: 35px;
+    }
+    .slick-prev {
+      left: 35px;
+    }
+  }
+}
 @media all and(max-width: 1200px) {
   .zoom-item__icon .icon {
     width: 30px;

@@ -2,7 +2,6 @@ $(document).ready(function() {
   slider();
   select();
   lazy();
-  pageScroll();
   dropdown();
   search();
   aside();
@@ -14,6 +13,7 @@ $(document).ready(function() {
   designTab();
   designForm();
   svg4everybody();
+  pageScroll.init();
 });
 
 $(window).resize(function () {
@@ -116,10 +116,6 @@ function imagesResize(element) {
     element.addClass('visible');
   }
 }
-
-
-
-
 
 //select
 (function($) {
@@ -317,130 +313,147 @@ function select() {
   $('.select select').niceSelect();
 }
 
-//scroll
-function pageScroll() {
+let pageScroll = {
+  $BtnToTop: $('.button_scroll-top'),
+  init: function() {
+    //для скролла страницы
+    if ($('html').hasClass('desktop')) {
+      let scrollY,
+          flagInit,
+          inScroll=false,
+          scrollEvent=true,
+          scrollInit=false;
 
-  var $btn = $('.button_scroll-top');
+      innerWidth>992 ? flagInit=true : flagInit=false;
 
-  //для скролла страницы
-  if ($('html').hasClass('desktop')) {
-    let scrollY,
-        flagInit,
-        inScroll=false,
-        scrollEvent=true,
-        scrollInit=false;
-
-    innerWidth>992 ? flagInit=true : flagInit=false;
-
-    let updateInterval;
-    
-    function initCustomScroll() {
-      if(innerWidth>992 && flagInit==true) {
-        if(scrollInit==true) {
-          scrollbarMain.destroy();
+      let updateInterval;
+      
+      function initCustomScroll() {
+        if(innerWidth>992 && flagInit==true) {
+          if(scrollInit==true) {
+            scrollbarMain.destroy();
+          }
+          flagInit = false;
+          scrollbarMain = Scrollbar.init(document.querySelector('.main'), {
+            damping: 0.1,
+          });
+          addEvents();
+        } 
+        else if(innerWidth<=992 && flagInit==false) {
+          if(scrollInit==true) {
+            scrollbarMain.destroy();
+          }
+          flagInit = true;
+          scrollInit = true;
+          scrollbarMain = Scrollbar.init(document.querySelector('.main__content'), {
+            damping: 0.1,
+          });
+          addEvents();
         }
-        flagInit = false;
-        scrollbarMain = Scrollbar.init(document.querySelector('.main'), {
-          damping: 0.1,
-        });
-        addEvents();
-      } 
-      else if(innerWidth<=992 && flagInit==false) {
-        if(scrollInit==true) {
-          scrollbarMain.destroy();
-        }
-        flagInit = true;
-        scrollInit = true;
-        scrollbarMain = Scrollbar.init(document.querySelector('.main__content'), {
-          damping: 0.1,
-        });
-        addEvents();
       }
-    }
-    initCustomScroll();
-    scrollInit = true;
-
-    $(window).resize(function () {
       initCustomScroll();
-    });
+      scrollInit = true;
 
-    function addEvents() {
-      clearInterval(updateInterval)
-      updateInterval = setInterval(function() {
-        scrollbarMain.update();
-      }, 250)
-      scrollbarMain.addListener(listener);
-      scrollbarMain.track.yAxis.show();
+      $(window).resize(function () {
+        initCustomScroll();
+      });
 
-      function listener(status) {
-        scrollY = scrollbarMain.offset.y;
-  
-        if(scrollEvent==true) {
-          scrollEvent=false;
-          setTimeout(function() {
-            scrollEvent=true;
-          }, 500)
-          lazy();
+      function addEvents() {
+        clearInterval(updateInterval)
+        updateInterval = setInterval(function() {
+          scrollbarMain.update();
+        }, 250)
+        scrollbarMain.addListener(listener);
+        scrollbarMain.track.yAxis.show();
+
+        function listener(status) {
+          scrollY = scrollbarMain.offset.y;
+
+          if(scrollEvent==true) {
+            scrollEvent=false;
+            setTimeout(function() {
+              scrollEvent=true;
+            }, 500)
+            lazy();
+          }
+
+
+          if(!inScroll) {
+            scrollY>200 ? pageScroll.$BtnToTop.fadeIn(200) : pageScroll.$BtnToTop.fadeOut(200);
+          }
+          (scrollY>0 && innerWidth<=992) ? $('.aside').addClass('scrolled') : $('.aside').removeClass('scrolled');
         }
-
-
-        if(!inScroll) {
-          scrollY>200 ? $btn.fadeIn(200) : $btn.fadeOut(200);
-        }
-        (scrollY>0 && innerWidth<=992) ? $('.aside').addClass('scrolled') : $('.aside').removeClass('scrolled');
       }
+
+      //click event
+      pageScroll.$BtnToTop.on('click', function(e) {
+        e.preventDefault();
+        inScroll = true;
+        pageScroll.$BtnToTop.fadeOut(200);
+        scrollbarMain.scrollTo(0, 0, 500);
+        setTimeout(function() {
+          inScroll = false;
+        }, 1000)
+      })
     }
+    // 
+    else {
+      $('html, body').css('overflow', 'auto');
 
-    //click event
-    $btn.on('click', function(e) {
-      e.preventDefault();
-      inScroll = true;
-      $btn.fadeOut(200);
-      scrollbarMain.scrollTo(0, 0, 500);
-      setTimeout(function() {
-        inScroll = false;
-      }, 1000)
-    })
-  }
-  // 
-  else {
-    $('html, body').css('overflow', 'auto');
-
-    //добавление тени при прокрутке
-    if(scrollTop>0) {
-      $('.aside').addClass('scrolled');
-    } else {
-      $('.aside').removeClass('scrolled');
-    }
-    
-    $(window).on('scroll', function() {
-
+      //добавление тени при прокрутке
       if(scrollTop>0) {
-      $('.aside').addClass('scrolled');
+        $('.aside').addClass('scrolled');
       } else {
-      $('.aside').removeClass('scrolled');
+        $('.aside').removeClass('scrolled');
       }
-      if(!$('html').hasClass('in-scroll')) {
-        if(scrollTop>200) {
-          $btn.fadeIn(200);
+      
+      $(window).on('scroll', function() {
+
+        if(scrollTop>0) {
+        $('.aside').addClass('scrolled');
         } else {
-          $btn.fadeOut(200);
+        $('.aside').removeClass('scrolled');
         }
-      }
-    })
+        if(!$('html').hasClass('in-scroll')) {
+          if(scrollTop>200) {
+            pageScroll.$BtnToTop.fadeIn(200);
+          } else {
+            pageScroll.$BtnToTop.fadeOut(200);
+          }
+        }
+      })
 
-    $btn.on('click', function(e) {
-      e.preventDefault();
-      $('html').addClass('in-scroll');
-      $btn.fadeOut(200);
-      $("html, body").animate({scrollTop:0}, 500);
-      setTimeout(function() {
-        $('html').removeClass('in-scroll')
-      }, 1000)
-    })
+      pageScroll.$BtnToTop.on('click', function(e) {
+        e.preventDefault();
+        $('html').addClass('in-scroll');
+        pageScroll.$BtnToTop.fadeOut(200);
+        $("html, body").animate({scrollTop:0}, 500);
+        setTimeout(function() {
+          $('html').removeClass('in-scroll')
+        }, 1000)
+      })
 
+    }
+  },
+  scrollTo: function(block) {
+    let h,
+        ph;
+
+    if ($('html').hasClass('desktop')) {
+      h = block.offset().top - 20;
+      ph = $('.main .scroll-content').offset().top;
+      console.log(ph, h)
+      scrollbarMain.scrollTo(0, -(ph - h), 500);
+    } else {
+        if(innerWidth<=992) {
+          h = block.offset().top - 80;
+        } else {
+          h = block.offset().top - 20;
+        }
+        $("html, body").animate({scrollTop:h}, 500);
+    }
   }
-};
+}
 
 //dropdowns
 function dropdown() {
@@ -611,7 +624,7 @@ function slider() {
 
     if ($(this).hasClass('main-banner__slider')) {
       fadeVar = true;
-      autoplayVar = true;
+      //autoplayVar = true;
     }
     if ($(this).hasClass('interesting-items__slider')) {
       slideCount1200 = 3,

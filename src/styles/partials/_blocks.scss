@@ -460,7 +460,7 @@
 }
 
 
-@media all and(max-width: 1480px) {
+@media all and(max-width: 1440px) {
   .block_size1 .content {
     height: 270px;
   }
@@ -508,15 +508,15 @@
       height: 200px;
     }
   }
+  .block_size6 .content {
+    height: 350px;
+  }
   .block_type4 .block__sub-title {
     margin-top: 10px;
     padding-top: 10px;
   }
   .block_type5 .block__icon {
     margin-bottom: 20px;
-  }
-  .block_size6 .content {
-    height: 350px;
   }
   .block_type2 {
     .content {
