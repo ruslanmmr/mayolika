@@ -103,7 +103,7 @@
     background-color: #ED6842;
     .icon {
       width: 18px;
-      height: 18px;
+      height: 19px;
       fill: #fff;
       stroke: #fff;
     }
@@ -167,6 +167,13 @@
   padding: 0;
   margin: 0;
   list-style: none;
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1 1 100%;
+    padding-right: 25px;
+  }
   &__item {
     display: flex;
     align-items: center;
@@ -175,7 +182,7 @@
     }
   }
   &__icon {
-    margin-right: 15px;
+    margin-right: 10px;
   }
 }
 .color-cart {
