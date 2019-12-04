@@ -11,6 +11,7 @@ $(document).ready(function() {
   calculator();
   fancybox();
   designTab();
+  descr();
   designForm();
   svg4everybody();
   pageScroll.init();
@@ -1110,3 +1111,53 @@ function inputs() {
   }
 }
 
+function descr() {
+  let $container = $('.product-head__description'),
+      $content = $('.product-head__description .content'),
+      $btn = $('.product-head__more-btn'),
+      showText = $btn.find('.button').data('show-text'),
+      hideText = $btn.find('.button').data('hide-text'),
+      maxh,
+      hc
+  if($container.length>0) {
+    maxh = $container.height() + 10;
+
+    function check() {
+      hc = $content.height();
+      if(hc>maxh) {
+        $btn.show();
+      } else {
+        $btn.hide();
+      }
+      if($container.hasClass('active')) {
+        $(this).css('height', hc+5)
+      }
+    }
+    check();
+
+    $(window).resize(function () {
+      check();
+    });
+
+    $btn.find('.button').on('click', function(event) {
+      event.preventDefault();
+      toggleNav()
+    })
+
+    function toggleNav(state) {
+      console.log(hideText, showText)
+      if(!$container.hasClass('active')) {
+        $container.addClass('active');
+        $container.css('height', hc+5);
+        $btn.find('.button').addClass('active');
+        $btn.find('.button span').text(hideText);
+      } else {
+        $container.removeClass('active');
+        $container.css('height', maxh);
+        $btn.find('.button').removeClass('active');
+        $btn.find('.button span').text(showText);
+      }
+    }
+
+  }
+}
