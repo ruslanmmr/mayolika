@@ -355,31 +355,13 @@
   }
   &__more-btn {
     display: none;
-    .button {
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      .icon {
-        width: 10px;
-        height: 10px;
-        transform: rotate(180deg);
-        transition: 0.2s;
-      }
-      &:hover {
-        .icon {
-          fill: #000;
-        }
-      }
-      &.active {
-        .icon {
-          transform: rotate(0);
-        }
-      }
+    .link {
+      margin-top: 5px;
+      display: inline-block;
     }
   }
   &__description {
-    height: 150px;
+    height: 108px;
     overflow: hidden;
     transition: height 0.5s;
     position: relative;

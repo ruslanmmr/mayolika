@@ -477,6 +477,13 @@
     color: $color2;
     border-color: transparent;
   }
+  &_type2 {
+    color: $color5;
+    border-color: $color5;
+    &:hover {
+      color: $color6;
+    }
+  }
 }
 .input {
   line-height: 1;

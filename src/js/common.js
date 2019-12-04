@@ -1115,8 +1115,8 @@ function descr() {
   let $container = $('.product-head__description'),
       $content = $('.product-head__description .content'),
       $btn = $('.product-head__more-btn'),
-      showText = $btn.find('.button').data('show-text'),
-      hideText = $btn.find('.button').data('hide-text'),
+      showText = $btn.find('.link').data('show-text'),
+      hideText = $btn.find('.link').data('hide-text'),
       maxh,
       hc
   if($container.length>0) {
@@ -1139,7 +1139,7 @@ function descr() {
       check();
     });
 
-    $btn.find('.button').on('click', function(event) {
+    $btn.find('.link').on('click', function(event) {
       event.preventDefault();
       toggleNav()
     })
@@ -1148,13 +1148,13 @@ function descr() {
       if(!$container.hasClass('active')) {
         $container.addClass('active');
         $container.css('height', hc+5);
-        $btn.find('.button').addClass('active');
-        $btn.find('.button span').text(hideText);
+        $btn.find('.link').addClass('active');
+        $btn.find('.link').text(hideText);
       } else {
         $container.removeClass('active');
         $container.css('height', maxh);
-        $btn.find('.button').removeClass('active');
-        $btn.find('.button span').text(showText);
+        $btn.find('.link').removeClass('active');
+        $btn.find('.link').text(showText);
       }
     }
 
