@@ -1144,8 +1144,7 @@ function descr() {
       toggleNav()
     })
 
-    function toggleNav(state) {
-      console.log(hideText, showText)
+    function toggleNav() {
       if(!$container.hasClass('active')) {
         $container.addClass('active');
         $container.css('height', hc+5);
