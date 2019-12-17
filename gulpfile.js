@@ -175,7 +175,7 @@ gulp.task("deploy", function () {
       .pipe(rsync({
         root: './dest/',
         hostname: '185.20.226.60',
-        destination: '/assets/components/project/dest',
+        destination: 'assets/components/project/dest',
         username: 'dima',
         archive: true,
         silent: false,

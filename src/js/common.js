@@ -15,6 +15,7 @@ $(document).ready(function() {
   designForm();
   svg4everybody();
   pageScroll.init();
+  $('[name="phone"]').inputmask('+7 (999) 999-99-99');
 });
 
 $(window).resize(function () {
@@ -1069,14 +1070,6 @@ function inputs() {
       .replace(/[^\d,.]*/g, '')
       .replace(/([,.])[,.]+/g, '$1')
       .replace(/^[^\d]*(\d+([.,]\d{0,5})?).*$/g, '$1'))
-    }
-    //номер телефона
-    if($target.hasClass('js-validation_phone') && !$target.hasClass('js-masked')) {
-      if(e.type == 'click') {
-        $target.mask("+7 (999) 999-99-99");
-        $target.focus();
-        $target.addClass('js-masked');
-      }
     }
 
     //условие для файлов
