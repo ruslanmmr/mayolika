@@ -116,7 +116,10 @@
 }
 @media all and(max-width: 1200px) {
   .header {
-    &__info-item {
+    &__info-text {
+      span {
+        white-space: normal;
+      }
       br {
         display: block;
       }

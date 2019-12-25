@@ -15,7 +15,7 @@ $(document).ready(function() {
   designForm();
   svg4everybody();
   pageScroll.init();
-  $('[name="phone"]').inputmask('+7 (999) 999-99-99');
+  $('[name="phone"]').inputmask('+7 (999) 999-99-99', {clearIncomplete: true});
 });
 
 $(window).resize(function () {

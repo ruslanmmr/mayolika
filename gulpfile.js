@@ -174,9 +174,9 @@ gulp.task("deploy", function () {
     return gulp.src('./dest/**')
       .pipe(rsync({
         root: './dest/',
-        hostname: '185.20.226.60',
-        destination: 'assets/components/project/dest',
-        username: 'dima',
+        hostname: 'remeslo36.beget.tech',
+        destination: '/home/r/remeslo36/remeslo36.ru/public_html/assets/components/project/dest',
+        username: 'remeslo36_d',
         archive: true,
         silent: false,
         compress: true,
@@ -185,4 +185,4 @@ gulp.task("deploy", function () {
 });
 
 
-//данные dima Z7w3W5v5
+//данные remeslo36_d KQfZvE0%
