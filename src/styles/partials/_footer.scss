@@ -17,6 +17,9 @@
   }
   &__section {
     text-align: center;
+    br {
+      display: none;
+    }
     span {
       display: block;
       &:first-child {

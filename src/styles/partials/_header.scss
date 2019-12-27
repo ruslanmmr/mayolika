@@ -44,10 +44,8 @@
       br {
         display: none;
       }
-      span {
-        white-space: nowrap;
-        line-height: 20px;
-      }
+      white-space: nowrap;
+      line-height: 20px;
     }
   }
   &__bottom {
@@ -117,9 +115,6 @@
 @media all and(max-width: 1200px) {
   .header {
     &__info-text {
-      span {
-        white-space: normal;
-      }
       br {
         display: block;
       }

@@ -10,10 +10,11 @@ section.section.contact-form-section
         input(type="text" name="phone" placeholder="Номер телефона +7").input.input_style2.required
       .col-12
         textarea(placeholder='Текст сообщения' name="").input.input_style2.input_textarea.required.fix
-        span text
       .col-12.contact-form__button
         button(type='submit').button.button_style1 Отправить
   .contact-form-section__bottom
     span.contact-form-section__title.t-size-18 Или позвоните нам по телефонам:
-    span.contact-form-section__number +7 (473) 207-03-96
-    span.contact-form-section__number +7 (473) 207-03-98
+    br
+    a(href="tel:74732070396").contact-form-section__number +7 (473) 207-03-96
+    br
+    a(href="tel:74732070398").contact-form-section__number +7 (473) 207-03-98

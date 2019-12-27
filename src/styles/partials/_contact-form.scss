@@ -1,23 +1,33 @@
 .contact-form-section {
   span {
-    display: block;
-    text-align: center;
     color: #000;
   }
   &__title {
     margin-bottom: 15px;
-    display: block;
     color: #000;
+    display: inline-block;
     text-align: center;
   }
   &__number {
     font-weight: 500;
     font-size: 24px;
+    color: #000;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.2s;
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
   }
   &__bottom {
     margin-top: 70px;
+    text-align: center;
   }
   &__top {
+    text-align: center;
     margin-bottom: 30px;
   }
 }

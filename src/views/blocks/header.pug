@@ -18,14 +18,15 @@ header.header
     .header__info
       .header__info-item
         <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon28"></use></svg>
-        span.header__info-text 
-          span Пн-Пт, 09:00 - 19:00,<br> 
-          span Сб-Вс, 10:00 - 17:00
+        .header__info-text 
+          | Пн-Пт, 09:00 - 19:00,<br> 
+          | Сб-Вс, 10:00 - 17:00
       .header__info-item 
         <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon8"></use></svg>
-        span.header__info-text 
-          span +7 (473) 207-03-96 |<br>   
-          span +7 (473) 207-03-98
+        .header__info-text 
+          a(href="tel:+74732070396").link.link_type2 +7 (473) 207-03-96 
+          | | <br>   
+          a(href="tel:+74732070398").link.link_type2 +7 (473) 207-03-98
     .header__cart
       a(href="#").button.button_style2.button_cart
         <svg class="icon"><use xlink:href="img/icons/icons-sprite.svg#icon24"></use></svg>
