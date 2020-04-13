@@ -626,7 +626,7 @@ function slider() {
 
     if ($(this).hasClass('main-banner__slider')) {
       fadeVar = true;
-      //autoplayVar = true;
+      autoplayVar = true;
     }
     if ($(this).hasClass('interesting-items__slider')) {
       slideCount1200 = 3,
