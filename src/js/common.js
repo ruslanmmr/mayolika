@@ -601,6 +601,9 @@ function checkboxCheck() {
 
 //sliders
 function slider() {
+  let prevArrow = '<button class="slick-prev slick-arrow" aria-label="Previous" type="button"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.998 5.613"><path stroke="none" d="M4.416 0L0 4.582l1.07 1.03L4.454 2.1l3.513 3.386 1.03-1.07z" clip-rule="evenodd" fill-rule="evenodd"></path></svg></button>',
+      nextArrow = '<button class="slick-next slick-arrow" aria-label="Next" type="button"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.998 5.613"><path stroke="none" d="M4.416 0L0 4.582l1.07 1.03L4.454 2.1l3.513 3.386 1.03-1.07z" clip-rule="evenodd" fill-rule="evenodd"></path></svg></button>';
+
   $slider.on('init', function () {
     $(this).addClass('visible');
   });
@@ -626,7 +629,7 @@ function slider() {
 
     if ($(this).hasClass('main-banner__slider')) {
       fadeVar = true;
-      autoplayVar = true;
+      //autoplayVar = true;
     }
     if ($(this).hasClass('interesting-items__slider')) {
       slideCount1200 = 3,
@@ -656,8 +659,8 @@ function slider() {
       fade: fadeVar,
       autoplay: autoplayVar,
       autoplaySpeed: 3000,
-      prevArrow: '<button class="slick-prev slick-arrow" aria-label="Previous" type="button"><svg class="icon"><use xlink:href="/assets/components/project/dest/img/icons/icons-sprite.svg#icon18"></use></svg></button>',
-      nextArrow: '<button class="slick-next slick-arrow" aria-label="Previous" type="button"><svg class="icon"><use xlink:href="/assets/components/project/dest/img/icons/icons-sprite.svg#icon18"></use></svg></button>',
+      prevArrow: prevArrow,
+      nextArrow: nextArrow,
       responsive: [{
           breakpoint: 1201,
           settings: {

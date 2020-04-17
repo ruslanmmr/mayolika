@@ -1,0 +1,75 @@
+.footer {
+  font-size: 12px;
+  &__bottom {
+    text-align: center;
+    background-color: #F8F8F8;
+    padding: 10px 20px;
+    color: $color6;
+    overflow: hidden;
+  }
+  &__copy {
+    line-height: 20px;
+    display: block;
+  }
+  &__contacts {
+    background: #EEEEEE;
+    padding: 20px;
+  }
+  &__section {
+    text-align: center;
+    br {
+      display: none;
+    }
+    span {
+      display: block;
+      &:first-child {
+        margin-bottom: 15px;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      display: inline-block;
+      margin: 0 5px;
+      .icon {
+        width: 14px;
+        height: 14px;
+        margin-right: 3px;
+        fill: $color6;
+        transform: translateY(0.3em);
+      }
+      &:hover {
+        color: #000;
+        .icon {
+          fill: #000;
+        }
+      }
+    }
+  }
+}
+
+.artica-link {
+  a {
+    display: inline-block;
+    line-height: 20px;
+    transition: 0.2s;
+    margin-bottom: -2px;
+    &:hover {
+      svg {
+        fill: #000;
+      }
+    }
+  }
+  svg {
+    fill: $color5;
+    height: 17px;
+    display: block;
+    transition: 0.2s;
+  }
+}
+
+@media all and(max-width: 992px) {
+  .footer {
+    display: none;
+  }
+}

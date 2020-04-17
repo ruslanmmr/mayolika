@@ -1,6 +1,5 @@
-var gulp = require("gulp"),
+let gulp = require("gulp"),
     browsersync = require("browser-sync").create(),
-    packageJson = require('./package.json'),
     autoprefixer = require("gulp-autoprefixer"),
     babel = require("gulp-babel"),
     uglify = require("gulp-uglify"),
@@ -11,12 +10,7 @@ var gulp = require("gulp"),
     sourcemaps = require("gulp-sourcemaps"),
     rename = require("gulp-rename"),
     imagemin = require("gulp-imagemin"),
-    pngquant = require("imagemin-pngquant"),
-    imageminJpegRecompress = require("imagemin-jpeg-recompress"),
     favicons = require("gulp-favicons"),
-    iconfont = require("gulp-iconfont"),
-    iconfontcss = require("gulp-iconfont-css"),
-	  svgSprite = require("gulp-svg-sprites"),
     replace = require("gulp-replace"),
     newer = require("gulp-newer"),
     plumber = require("gulp-plumber"),
@@ -25,8 +19,18 @@ var gulp = require("gulp"),
     clean = require("gulp-clean"),
     rsync = require('gulp-rsync');
 
+let $images = ["./src/img/**/*.{jpg,jpeg,png,gif}", "!./src/img/favicons/*.{jpg,jpeg,png,gif}"],
+    $pug = ["./src/views/**/*.pug", "!./src/views/blocks/*.pug"],
+    $pug_watch = "./src/views/**/*.pug",
+    $scripts = ["./src/js/*.js"],
+    $libs = ["./src/libs/**/*.js"],
+    $styles = ["./src/styles/*.scss", "!./src/styles/components/*.scss"],
+    $styles_watch = ["./src/styles/*.scss", "./src/styles/components/*.scss"],
+    $favicons = "./src/img/favicons/*.{jpg,jpeg,png,gif}",
+    $other = ["./src/**/*", "!./src/img/**/*.{jpg,jpeg,png,gif}", "!./src/js/*.js", "!./src/styles/*.scss", "!./src/styles/components","!./src/styles/components/**/*", "!./src/views", "!./src/views/**/*"];
+
 gulp.task("pug", function () {
-  return gulp.src(["./src/views/**/*.pug", "!./src/views/blocks/*.pug"])
+  return gulp.src($pug)
     .pipe(pug({
       pretty: true
     }))
@@ -38,37 +42,48 @@ gulp.task("pug", function () {
     .on("end", browsersync.reload);
 });
 
+gulp.task("libs", function () {
+  return gulp.src($libs)
+    .pipe(concat("libs.min.js"))
+    .pipe(uglify())
+    .pipe(gulp.dest("./dest/js/"))
+    .pipe(debug({"title": "libs"}))
+    .on("end", browsersync.reload);
+});
+
 gulp.task("scripts", function () {
-    return gulp.src(["./src/js/**/*.js", "!./src/vendor/**/*.js"])
-        .pipe(sourcemaps.init())
-        .pipe(babel({presets: ["@babel/preset-env"]}))
-        .pipe(uglify())
-        .pipe(rename({suffix: ".min"}))
-        .pipe(sourcemaps.write("./maps/"))
-        .pipe(gulp.dest("./dest/js/"))
-        .pipe(debug({"title": "scripts"}))
-        .on("end", browsersync.reload);
+  return gulp.src($scripts)
+    .pipe(babel({presets: ["@babel/preset-env"]}))
+    .pipe(rename({suffix: ".min"}))
+    .pipe(gulp.dest("./dest/js/"))
+    .pipe(debug({"title": "scripts"}))
+    .on("end", browsersync.reload);
 });
 
 gulp.task("styles", function() {
-    return gulp.src(["./src/styles/**/*.scss"])
-        .pipe(plumber())
-        .pipe(sourcemaps.init())
-        .pipe(sass())
-        .pipe(autoprefixer({browsers: ["last 12 versions", "> 1%"]}))
-        .pipe(mincss({compatibility: "ie8", level: {1: {specialComments: 0}}}))
-        .pipe(rename({suffix: ".min"}))
-        .pipe(replace("../../dest/", "../"))
-        .pipe(plumber.stop())
-        .pipe(sourcemaps.write("./maps/"))
-        .pipe(gulp.dest("./dest/styles/"))
-        .pipe(debug({"title": "styles"}))
-        .on("end", browsersync.reload);
+    return gulp.src($styles)
+      .pipe(plumber())
+      .pipe(sourcemaps.init())
+      .pipe(sass())
+      .pipe(autoprefixer())
+      .pipe(mincss())
+      .pipe(rename({suffix: ".min"}))
+      .pipe(replace("../../dest/", "../"))
+      .pipe(plumber.stop())
+      .pipe(sourcemaps.write("./maps/"))
+      .pipe(gulp.dest("./dest/styles/"))
+      .pipe(debug({"title": "styles"}))
+      .on("end", browsersync.reload);
 });
 
 gulp.task("images", function () {
-  return gulp.src(["./src/img/**/*.{jpg,jpeg,png,gif,svg}", "!./src/img/favicons/*.{jpg,jpeg,png,gif}"])
+  return gulp.src($images)
     .pipe(newer("./dest/img/"))
+    .pipe(imagemin([
+      imagemin.gifsicle({interlaced: true}),
+      imagemin.mozjpeg({quality: 75, progressive: true}),
+      imagemin.optipng({optimizationLevel: 5})
+    ]))
     .pipe(gulp.dest("./dest/img/"))
     .pipe(debug({
       "title": "images"
@@ -77,7 +92,7 @@ gulp.task("images", function () {
 });
 
 gulp.task("favicons", function () {
-  return gulp.src("./src/img/favicons/*.{jpg,jpeg,png,gif}")
+  return gulp.src($favicons)
     .pipe(favicons({
       icons: {
         appleIcon: true,
@@ -97,21 +112,9 @@ gulp.task("favicons", function () {
     }));
 });
 
-gulp.task("destPHP", function () {
-  return gulp.src("./src/php/**/*")
+gulp.task("other", function () {
+  return gulp.src($other)
     .pipe(gulp.dest("./dest/"))
-    .on("end", browsersync.reload);
-});
-
-gulp.task("destVideos", function () {
-  return gulp.src("./src/videos/**/*")
-    .pipe(gulp.dest("./dest/videos/"))
-    .on("end", browsersync.reload);
-});
-
-gulp.task("destFonts", function () {
-  return gulp.src("./src/fonts/**/*")
-    .pipe(gulp.dest("./dest/fonts/"))
     .on("end", browsersync.reload);
 });
 
@@ -136,36 +139,24 @@ gulp.task("serve", function () {
   });
 });
 
-gulp.task("libs", function () {
-    return gulp.src("./src/libs/**/*.js")
-        //.pipe(babel({presets: ["@babel/preset-env"]}))
-        .pipe(concat("libs.js"))
-        .pipe(uglify())
-        .pipe(rename({suffix: ".min"}))
-        .pipe(gulp.dest("./dest/js/"))
-        .pipe(debug({"title": "scripts"}))
-        .on("end", browsersync.reload);
-});
-
 gulp.task("watch", function () {
   return new Promise((res, rej) => {
-    watch("./src/views/**/*.pug", gulp.series("pug"));
-    watch("./src/styles/**/*.scss", gulp.series("styles"));
-    watch("./src/js/**/*.js", gulp.series("scripts"));
-    watch("./src/libs/**/*.js", gulp.series("libs"));
-    watch(["./src/img/**/*.{jpg,jpeg,png,gif,svg}", "!./src/img/favicons/*.{jpg,jpeg,png,gif}"], gulp.series("images"));
-    watch("./src/img/favicons/*.{jpg,jpeg,png,gif}", gulp.series("favicons"));
-    watch("./src/fonts/**/*", gulp.series("destFonts"));
-    watch("./src/php/**/*", gulp.series("destPHP"));
-    watch("./src/videos/**/*", gulp.series("destVideos"));
+    watch($pug_watch, gulp.series("pug"));
+    watch($styles_watch, gulp.series("styles"));
+    watch($scripts, gulp.series("scripts"));
+    watch($libs, gulp.series("libs"));
+    watch($images, gulp.series("images"));
+    watch($favicons, gulp.series("favicons"));
+    watch($other, gulp.series("other"));
     res();
   });
 });
 
 
-// BUILD
+
+// dest
 gulp.task("default", gulp.series("clean",
-  gulp.parallel("pug", "styles", "libs", "scripts", "destFonts", "destVideos", "destPHP", "images", "favicons"),
+  gulp.parallel("pug", "scripts", "libs", "styles", "images", "favicons", "other"),
   gulp.parallel("watch", "serve")
 ));
 
@@ -183,6 +174,5 @@ gulp.task("deploy", function () {
         shell: 'ftp'
     }));
 });
-
 
 //данные remeslo36_d KQfZvE0%

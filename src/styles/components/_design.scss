@@ -1,0 +1,143 @@
+.design {
+  &__title {
+    color: #000;
+  }
+}
+.design-tab {
+  color: #000;
+  text-align: center;
+  &__image {
+    margin-bottom: 25px;
+    position: relative;
+  }
+  &__title {
+    display: block;
+    margin-bottom: 0.5em;
+  }
+}
+.design-info__nav {
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.design-form {
+  .input_textarea {
+    min-height: 80px;
+  }
+  &__tab {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+  &__toggle-section {
+    height: 50%;
+    .button {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  &__head {
+    margin-bottom: 20px;
+  }
+  &__blocks {
+    margin: 20px 0 40px 0;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+  &__block {
+    &-container {
+      border: 1px solid $color3;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      transition: .2s;
+      height: 100%;
+      &:hover {
+        box-shadow: 0 0 16px rgba(0,0,0,.2);
+        .design-form__block-section_title span:first-child {
+          color: $color1;
+        }
+      }
+    }
+    &-section {
+      width: 100%;
+      padding: 20px;
+      &:first-child {
+        flex-shrink: 0;
+      }
+      &:nth-child(3) {
+        flex-shrink: 0;
+      }
+      &:nth-child(2) {
+        flex: 1 1 100%;
+      }
+      &:not(:last-child) {
+        border-bottom: 1px solid $color3;
+      }
+      &:last-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      &_title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        color: #000;
+        span {
+          &:first-child {
+            font-size: 48px;
+            line-height: 1;
+            margin-right: 15px;
+            transition: .2s;
+          }
+          &:last-child {
+            line-height: 1.25;
+          }
+        }
+      }
+    }
+    &_style {
+      pointer-events: none;
+      opacity: 0.5;
+      &.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+  &__submit {
+    justify-content: center;
+    .button {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+@media all and(max-width: 1200px) {
+  .design-form__head-section {
+    &:nth-child(1) {
+      order: 2;
+    }
+  }
+  .design-form__toggle-section .button {
+    height: auto;
+  }
+}
+@media all and(max-width: 576px) {
+  .design-form__block_style {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+  .design-form__blocks {
+    margin-bottom: 30px;
+  }
+}

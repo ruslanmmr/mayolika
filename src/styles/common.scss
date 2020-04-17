@@ -1,4 +1,4 @@
-@import "./partials/fonts";
+@import "./components/fonts";
 
 $color1: #e52329;
 $color2: #ff3c43;
@@ -158,17 +158,17 @@ body {
   }
 }
 
-@import "partials/ui";
-@import "partials/select";
-@import "partials/catalogue";
-@import "partials/header";
-@import "partials/aside";
-@import "partials/blocks";
-@import "partials/design";
-@import "partials/text";
-@import "partials/main-slider";
-@import "partials/contact-form";
-@import "partials/news";
-@import "partials/cart";
-@import "partials/footer";
-@import "partials/new-styles";
+@import "components/ui";
+@import "components/select";
+@import "components/catalogue";
+@import "components/header";
+@import "components/aside";
+@import "components/blocks";
+@import "components/design";
+@import "components/text";
+@import "components/main-slider";
+@import "components/contact-form";
+@import "components/news";
+@import "components/cart";
+@import "components/footer";
+@import "components/new-styles";
