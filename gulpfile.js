@@ -29,16 +29,11 @@ let $images = ["./src/img/**/*.{jpg,jpeg,png,gif}", "!./src/img/favicons/*.{jpg,
     $favicons = "./src/img/favicons/*.{jpg,jpeg,png,gif}",
     $other = ["./src/**/*", "!./src/img/**/*.{jpg,jpeg,png,gif}", "!./src/js/*.js", "!./src/styles/*.scss", "!./src/styles/components","!./src/styles/components/**/*", "!./src/views", "!./src/views/**/*"];
 
-gulp.task("pug", function () {
+gulp.task("pug", function() {
   return gulp.src($pug)
-    .pipe(pug({
-      pretty: true
-    }))
-    .pipe(replace("../dest/", "../"))
+    .pipe(debug({title: 'pug'}))
+    .pipe(pug({pretty:true}))
     .pipe(gulp.dest("./dest/"))
-    .pipe(debug({
-      "title": "html"
-    }))
     .on("end", browsersync.reload);
 });
 
@@ -167,12 +162,9 @@ gulp.task("deploy", function () {
         root: './dest/',
         hostname: 'remeslo36.beget.tech',
         destination: '/home/r/remeslo36/remeslo36.ru/public_html/assets/components/project/dest',
-        username: 'remeslo36_d',
+        username: 'remeslo36',
         archive: true,
         silent: false,
-        compress: true,
-        shell: 'ftp'
+        compress: true
     }));
 });
-
-//данные remeslo36_d KQfZvE0%

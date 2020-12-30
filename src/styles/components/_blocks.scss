@@ -450,6 +450,28 @@
       padding-top: 68%;
     }
   }
+  &_brands {
+    @media all and(min-width: 993px) {
+      .content {
+        height: 148px;
+        &:before {
+          display: none;
+        }
+        img {
+          padding: 30px 50px;
+        }
+      }
+    }
+  }
+  &_banner {
+    .content {
+      &::before {
+        content: '';
+        display: block;
+        padding-top: 50%;
+      }
+    }
+  }
 }
 .categories-block-last {
   margin-top: 60px;

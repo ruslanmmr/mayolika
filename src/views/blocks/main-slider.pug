@@ -1,29 +1,26 @@
 .main-banner
   .main-banner__container
     .slider.slider_type2.main-banner__slider
-      .main-slide.slide.alert-new-item
-        .block.block_type4.block_size6
-          .content.background-box
-            .lazy(data-src="img/contentImages/new-background.jpeg")
-            .alert-new-item__container
-              span.alert-new-item__text.t-size-36 Дорогие покупатели!
-              strong.alert-new-item__title.t-size-64 Мы работаем 
-                span online
-              span.alert-new-item__text.t-size-22 Подробности по телефону:
-              a(href="tel:89102450616").alert-new-item__phone.t-size-38 8 910 245 0616
-              a.button.button_style1(href='dizajn-proekty/zakaz-dizajn-proekta') Заказать дизайн-проект
-      a(href="#").main-slide.slide
+      //slide
+      .main-slide.slide
         .slide__container
-          .block.block_type4.block_size6
+          .block.block_type4
+            .content.background-box
+              .lazy(data-src="img/Frame 4.jpg")
+      //slide
+      a.main-slide.slide(href="#")
+        .slide__container
+          .block.block_type4
             .content.background-box
               .lazy(data-src="img/contentImages/stock-photo-interior-of-bathroom-with-wooden-ceiling-d-rendering-311164529.jpg")
           .main-slide__description
             span.main-slide__category Коллекция плитки
             span.t-size-36.main-slide__title Azori Nuvola Verde
             .main-slide__text Коллекция Moncada White предназначена для облицовки ванных комнат в стиле барокко. В нее входит ...
-      a(href="#").main-slide.slide
+      //slide
+      a.main-slide.slide(href="#")
         .slide__container
-          .block.block_type4.block_size6
+          .block.block_type4
             .content.background-box
               .lazy(data-src="../../img/contentImages/stock-photo-catalogue.jpg")
           .main-slide__description

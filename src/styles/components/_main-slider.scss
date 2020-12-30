@@ -10,6 +10,13 @@
   text-decoration: none;
   color: #fff;
   position: relative;
+  .content {
+    &::before {
+      content: '';
+      display: block;
+      padding-top: 50%;
+    }
+  }
   &__description {
     position: absolute;
     bottom: 25px;
@@ -48,13 +55,15 @@
       width: calc(100% - 40px);
       max-width: calc(100% - 40px);
     }
-    .content {
-      height: 430px;
-    }
   }
 }
 @media all and(max-width: 576px) {
   .main-banner {
+    .content {
+      &::before {
+        padding-top: 75%;
+      }
+    }
     &__slider {
       padding-bottom: 0;
       .slick-arrow {
@@ -70,11 +79,8 @@
     }
   }
   .main-slide {
-    .content {
-      height: 400px;
-    }
     &__title {
-      margin: 0;
+      margin: 0 !important;
     }
     &__description {
       max-width: calc(100% - 30px);
